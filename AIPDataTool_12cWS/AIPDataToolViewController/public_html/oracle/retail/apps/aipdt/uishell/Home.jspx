@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="aipdatatoolviewcontrollerBundle"
+         value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:form id="f1">
+        <af:pageTemplate viewId="/oracle/retail/apps/framework/uishell/pagetemplate/RetailPageTemplate.jspx"
+                         value="#{bindings.pageTemplateBinding}" id="pt1">
+          <f:facet name="addSidebarSection1"/>
+          <f:facet name="addSidebarSection2"/>
+          <f:facet name="addSidebarSection3"/>
+          <f:facet name="addSidebarSection4"/>
+          <f:facet name="addSidebarSection5"/>
+          <f:facet name="addDefaultGlobalMenuSection"/>
+          <f:facet name="customSidebarArea"/>
+          <f:facet name="customContentArea"/>
+          <f:facet name="customGlobalMenuArea"/>
+          <f:facet name="customApplicationMenuBar"/>
+          <f:attribute name="sidebarNavTreeModelXml"
+                       value="/oracle/retail/apps/framework/uishell/config/custom/HomeSidebarNavigationTreeModel.xml"/>
+          <f:attribute name="globalMenuModelXml"
+                       value="/oracle/retail/apps/framework/uishell/config/custom/HomeGlobalMenuModel.xml"/>
+          <f:attribute name="applicationTitle"
+                       value="#{aipdatatoolviewcontrollerBundle.NDM_TOOL}"/>
+          <f:attribute name="renderNavigationTreeSearch" value="false"/> 
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

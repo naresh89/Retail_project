@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="WhToStPriorityMatrixPageDef"
+                Package="oracle.retail.apps.aipdt.rswspm.publicui.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="WhStPriorityMatrixAM.WhToStPriorityMatrixProgVO" DataControl="AipdtRootAMDataControl"
+              RangeSize="25" id="WhToStPriorityMatrixProgVOIterator"/>
+    <iterator Binds="WhStPriorityMatrixAM.StorePriorityMatrixVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="StorePriorityMatrixVOIterator"/>
+    <searchRegion Binds="StorePriorityMatrixVOIterator" Criteria="StorePriorityMatrixVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="StorePriorityMatrixVOQuery"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="WhToStPriorityMatrixProgVOIterator" StaticList="false" Uses="LOV_StoreAttr"
+                  id="StoreAttr"/>
+    <methodAction id="onClickResetAction" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="onClickResetAction" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.WhStPriorityMatrixAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.onClickResetAction_AipdtRootAMDataControl_dataProvider_WhStPriorityMatrixAM_onClickResetAction_result"/>
+    <methodAction id="saveMatrix" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveMatrix"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.WhStPriorityMatrixAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.saveMatrix_AipdtRootAMDataControl_dataProvider_WhStPriorityMatrixAM_saveMatrix_result"/>
+    <tree IterBinding="StorePriorityMatrixVOIterator" id="StorePriorityMatrixVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.rswspm.model.view.StorePriorityMatrixVO"
+                      Name="StorePriorityMatrixVO0">
+        <AttrNames>
+          <Item Value="StoreCode"/>
+          <Item Value="StockingPointDesc1"/>
+          <Item Value="StockingPointDesc2"/>
+          <Item Value="StockingPointDesc3"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="searchMatrix" RequiresUpdateModel="true" Action="invokeMethod" MethodName="searchMatrix"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.WhStPriorityMatrixAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.searchMatrix_AipdtRootAMDataControl_dataProvider_WhStPriorityMatrixAM_searchMatrix_result">
+      <NamedData NDName="selectedStoreCodes" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="saveMatrixValidation" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="saveMatrixValidation" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.WhStPriorityMatrixAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.saveMatrixValidation_AipdtRootAMDataControl_dataProvider_WhStPriorityMatrixAM_saveMatrixValidation_result"/>
+    <methodAction id="warehouseValidationrowLevel" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="warehouseValidationrowLevel" IsViewObjectMethod="false"
+                  DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.WhStPriorityMatrixAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.warehouseValidationrowLevel_AipdtRootAMDataControl_dataProvider_WhStPriorityMatrixAM_warehouseValidationrowLevel_result"/>
+  </bindings>
+</pageDefinition>

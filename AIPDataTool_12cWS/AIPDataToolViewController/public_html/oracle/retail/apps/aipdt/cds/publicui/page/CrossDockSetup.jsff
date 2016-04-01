@@ -1,0 +1,1540 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:retail="/retailApps"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:RetailAppCustomComponent="/RetailAppCustomComponent"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:h="http://java.sun.com/jsf/html">
+    <c:set var="aipdatatoolviewcontrollerBundle"
+           value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+    <retail:appsPanel id="ap1" contentsFacet="stretch" title="" saveAndCloseRendered="true" saveAndCloseVisible="true"
+                      saveRendered="true" saveVisible="true" cancelRendered="true" cancelVisible="true"
+                      saveAction="#{pageFlowScope.CrossDockSetupBean.handleSave}"
+                      saveAndCloseAction="#{pageFlowScope.CrossDockSetupBean.handleSaveAndClose}"
+                      cancelAction="#{pageFlowScope.CrossDockSetupBean.handleCancel}"
+                      saveDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.saveBtnDisabled}"
+                      saveAndCloseDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.saveBtnDisabled}"
+                      savePartialSubmit="true" saveAndClosePartialSubmit="true" cancelPartialSubmit="true"
+                      panelPartialTriggers="::b1" binding="#{pageFlowScope.CrossDockSetupBean.appsPanel}">
+        <f:facet name="contents"/>
+        <f:facet name="contentsStretch">
+            <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="parent" partialTriggers="b3">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelGroupLayout layout="scroll" id="pgl12" inlineStyle="Width:100%">
+                        <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl4">
+                            <af:showDetailHeader text="#{aipdatatoolviewcontrollerBundle.SEARCH}" disclosed="true"
+                                                 id="sdh1">
+                                <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SEARCH_PANEL_BOXES_HEIGHT}"
+                                           id="s6"/>
+                                <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl1">
+                                    <af:panelGroupLayout id="pgl27" layout="horizontal" valign="top">
+                                        <af:panelBox text="#{aipdatatoolviewcontrollerBundle.PRODUCT_HIERARCHY}"
+                                                     id="pb1" showDisclosure="false"
+                                                     inlineStyle="#{aipdatatoolviewcontrollerBundle.PROD_HIER_PANEL_BOX_WIDTH}">
+                                            <af:panelGroupLayout id="pgl3" layout="horizontal">
+                                                <af:panelFormLayout id="pfl1" rows="4" maxColumns="1">
+                                                    <af:selectOneChoice value="#{bindings.Department.inputValue}"
+                                                                        label="#{aipdatatoolviewcontrollerBundle.DEPT_LABEL}"
+                                                                        shortDesc="#{bindings.Department.hints.tooltip}"
+                                                                        id="soc1"
+                                                                        valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onDepartmentChange}"
+                                                                        autoSubmit="true"
+                                                                        binding="#{pageFlowScope.CrossDockSetupBean.deptComp}"
+                                                                        disabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.departmentDisabled}">
+                                                        <f:selectItems value="#{bindings.Department.items}" id="si1"/>
+                                                    </af:selectOneChoice>
+                                                    <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.CLASS_LABEL}"
+                                                                             id="plam1">
+                                                        <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="ClassCode"
+                                                                                                          AttributeDesc="ClassName"
+                                                                                                          FieldBinding="Class1"
+                                                                                                          listAttributeName="ClassId"
+                                                                                                          valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onClassChange}"
+                                                                                                          id="smicb2"
+                                                                                                          binding="#{pageFlowScope.CrossDockSetupBean.multiSelectBaseFieldsBean.classComp}"
+                                                                                                          IsDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.classDisabled}"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.SUBCLASS_LABEL}"
+                                                                             id="plam2">
+                                                        <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="SubclassCode"
+                                                                                                          AttributeDesc="SubclassDescription"
+                                                                                                          FieldBinding="Subclass"
+                                                                                                          listAttributeName="SubclassId"
+                                                                                                          IsDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.subclassDisabled}"
+                                                                                                          id="smicb1"
+                                                                                                          binding="#{pageFlowScope.CrossDockSetupBean.multiSelectBaseFieldsBean.subClassComp}"
+                                                                                                          valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onSubclassChange}"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:selectOneChoice value="#{bindings.ItemList.inputValue}"
+                                                                        shortDesc="#{bindings.ItemList.hints.tooltip}"
+                                                                        id="soc2"
+                                                                        label="#{aipdatatoolviewcontrollerBundle.ITEM_LIST_LABEL}"
+                                                                        disabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.itemListDisabled}"
+                                                                        binding="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.itemListComp}"
+                                                                        contentStyle="#{aipdatatoolviewcontrollerBundle.SELECT_ONE_CHOICE_COMP_WIDTH}">
+                                                        <f:selectItems value="#{bindings.ItemList.items}" id="si2"/>
+                                                    </af:selectOneChoice>
+                                                </af:panelFormLayout>
+                                                <af:spacer width="#{aipdatatoolviewcontrollerBundle.PROD_HIER_SPCR_BTWN_FORM_WIDTH}"
+                                                           id="s3"/>
+                                                <af:panelFormLayout id="pfl3" rows="4" maxColumns="1"
+                                                                    partialTriggers="soc1">
+                                                    <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.ORD_SUPP_LABEL}"
+                                                                             id="plam6">
+                                                        <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="SupplierCode"
+                                                                                                               AttributeDesc="SupplierName"
+                                                                                                               AttributeListIdName="SupplierId"
+                                                                                                               AttrMasterBinding="Department"
+                                                                                                               AttrMasterCode="DepartmentCode"
+                                                                                                               AttrMasterDesc="DepartmentName"
+                                                                                                               FieldBinding="#{bindings.Supplier}"
+                                                                                                               AttrMasterListAttrName="DepartmentId"
+                                                                                                               id="msilov1"
+                                                                                                               ToolTip="#{aipdatatoolviewcontrollerBundle.ORD_SUPP_LABEL}"
+                                                                                                               Label="#{aipdatatoolviewcontrollerBundle.ORD_SUPP_LABEL}"
+                                                                                                               ChangeMethodName="onSupplierChange"
+                                                                                                               GeneralDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.ordFromSupplierDisabled}"
+                                                                                                               ManagedBean="#{pageFlowScope.CrossDockSetupBean}"
+                                                                                                               binding="#{pageFlowScope.CrossDockSetupBean.multiSelectBaseFieldsBean.supplierComp}"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.VPN_LABEL}"
+                                                                             id="plam3">
+                                                        <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleCode"
+                                                                                                               AttributeDesc="StyleDesc"
+                                                                                                               AttributeListIdName="StyleId"
+                                                                                                               AttrMasterBinding="Department"
+                                                                                                               AttrMasterCode="DepartmentCode"
+                                                                                                               AttrMasterDesc="DepartmentName"
+                                                                                                               FieldBinding="#{bindings.Vpn}"
+                                                                                                               AttrMasterListAttrName="DepartmentId"
+                                                                                                               id="msilov4"
+                                                                                                               ManagedBean="#{pageFlowScope.CrossDockSetupBean}"
+                                                                                                               binding="#{pageFlowScope.CrossDockSetupBean.multiSelectBaseFieldsBean.vpnComp}"
+                                                                                                               GeneralDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.styleDisabled}"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.VPN_COLOR_LABEL}"
+                                                                             id="plam4">
+                                                        <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleColorCode"
+                                                                                                               AttributeDesc="StyleColorDesc"
+                                                                                                               AttributeListIdName="StyleColorId"
+                                                                                                               AttrMasterBinding="Department"
+                                                                                                               AttrMasterCode="DepartmentCode"
+                                                                                                               AttrMasterDesc="DepartmentName"
+                                                                                                               AttrMasterListAttrName="DepartmentId"
+                                                                                                               FieldBinding="#{bindings.StyleColor}"
+                                                                                                               id="msilov3"
+                                                                                                               ManagedBean="#{pageFlowScope.CrossDockSetupBean}"
+                                                                                                               binding="#{pageFlowScope.CrossDockSetupBean.multiSelectBaseFieldsBean.styleColourComp}"
+                                                                                                               GeneralDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.styleColorDisabled}"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.SKU_LABEL}"
+                                                                             id="plam5">
+                                                        <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="CommodityCode"
+                                                                                                               AttributeDesc="CommodityName"
+                                                                                                               AttributeListIdName="CommodityId"
+                                                                                                               AttrMasterBinding="Department"
+                                                                                                               AttrMasterCode="DepartmentCode"
+                                                                                                               AttrMasterDesc="DepartmentName"
+                                                                                                               AttrMasterListAttrName="DepartmentId"
+                                                                                                               FieldBinding="#{bindings.Item}"
+                                                                                                               id="msilov2"
+                                                                                                               ManagedBean="#{pageFlowScope.CrossDockSetupBean}"
+                                                                                                               binding="#{pageFlowScope.CrossDockSetupBean.multiSelectBaseFieldsBean.itemComp}"
+                                                                                                               GeneralDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.skuDisabled}"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelFormLayout>
+                                            </af:panelGroupLayout>
+                                        </af:panelBox>
+                                        <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_PANEL_BOXES_WIDTH}"
+                                                   id="s1"/>
+                                        <af:panelBox text="#{aipdatatoolviewcontrollerBundle.DESTINATION}" id="pb2"
+                                                     showDisclosure="false"
+                                                     inlineStyle="#{aipdatatoolviewcontrollerBundle.DEST_PANEL_BOX_WIDTH}">
+                                            <af:panelFormLayout id="pfl2">
+                                                <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                                                                    label="#{aipdatatoolviewcontrollerBundle.REGION_LABEL}"
+                                                                    shortDesc="#{bindings.Region.hints.tooltip}"
+                                                                    id="soc5"
+                                                                    binding="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.regionComp}"
+                                                                    valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onRegionChange}"
+                                                                    disabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.regionDisabled}"
+                                                                    contentStyle="#{aipdatatoolviewcontrollerBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    autoSubmit="true">
+                                                    <f:selectItems value="#{bindings.Region.items}" id="si4"/>
+                                                    <f:validator binding="#{bindings.Region.validator}"/>
+                                                </af:selectOneChoice>
+                                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.STORE_LABEL}"
+                                                                         id="plam8">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                                                      AttributeDesc="StoreName"
+                                                                                                      FieldBinding="Store"
+                                                                                                      listAttributeName="StoreId"
+                                                                                                      IsDisabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.storeDisabled}"
+                                                                                                      valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onStoreChange}"
+                                                                                                      id="smicb3"
+                                                                                                      binding="#{pageFlowScope.CrossDockSetupBean.multiSelectBaseFieldsBean.storeComp}"
+                                                                                                      autoSubmit="true"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:selectOneChoice value="#{bindings.StoreList.inputValue}"
+                                                                    label="#{aipdatatoolviewcontrollerBundle.STORE_LIST_LABEL}"
+                                                                    shortDesc="#{bindings.StoreList.hints.tooltip}"
+                                                                    id="soc4"
+                                                                    disabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.storeListDisabled}"
+                                                                    contentStyle="#{aipdatatoolviewcontrollerBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    binding="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.storeListComp}"
+                                                                    valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onStoreListChange}"
+                                                                    autoSubmit="true">
+                                                    <f:selectItems value="#{bindings.StoreList.items}" id="si3"/>
+                                                </af:selectOneChoice>
+                                                <af:spacer height="35" id="s4"/>
+                                            </af:panelFormLayout>
+                                        </af:panelBox>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                                <hr style="margin: 0; height: 0.5px; background: rgb(226,231,236); border: none;"
+                                    class="AFStretchWidth"/>
+                                <af:spacer id="s2"
+                                           height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_PANEL_BOXES_SEARCH_RESET_BTN_HEIGHT}"/>
+                                <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal">
+                                    <af:button text="#{aipdatatoolviewcontrollerBundle.SEARCH}" id="b1"
+                                               disabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.searchBtnDisabled}"
+                                               partialSubmit="true" inlineStyle="width:75px; text-align:center;"
+                                               actionListener="#{pageFlowScope.CrossDockSetupBean.handleSearch}"
+                                               binding="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.searchBtn}"></af:button>
+                                    <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SEARCH_RESET_BTN_WIDTH}"
+                                               id="s5"/>
+                                    <af:button text="#{aipdatatoolviewcontrollerBundle.RESET_LABEL}" id="b2"
+                                               partialSubmit="true" immediate="true" inlineStyle="width:75px; text-align:center;"
+                                               actionListener="#{pageFlowScope.CrossDockSetupBean.handleReset}">
+                                        <af:target execute="@this" render="pgl5"/>
+                                    </af:button>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                        <af:showDetailHeader text="#{aipdatatoolviewcontrollerBundle.RESULTS}" disclosed="true"
+                                             partialTriggers="b3" id="sdh2">
+                            <f:facet name="context"/>
+                            <f:facet name="menuBar"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="legend"/>
+                            <f:facet name="info"/>
+                            <af:panelGroupLayout id="pgl5"
+                                                 binding="#{pageFlowScope.CrossDockSetupBean.resultsContainer}"
+                                                 partialTriggers="b1">
+                                <retail:appsTable id="at1" styleClass="AFStretchWidth" exportEnabled="false"
+                                                  exportFilename="#{pageFlowScope.CrossDockSetupBean.exportFileName}"
+                                                  rendered="#{bindings.CrossDockSetupResultVOIterator.estimatedRowCount gt 0}"
+                                                  tableId="t1" viewEnabled="false">
+                                    <f:facet name="additionalToolbarButtons">
+                                        <af:panelGroupLayout id="pgl47" layout="horizontal">
+                                            <af:menuBar id="mb1">
+                                                <af:menu text="#{aipdatatoolviewcontrollerBundle.EXPORT_TO_EXCEL}"
+                                                         id="m2" icon="/oracle/retail/apps/aipdt/images/E2E.jpg">
+                                                    <af:commandMenuItem text="#{aipdatatoolviewcontrollerBundle.EXPORT_ALL_ROWS}"
+                                                                        id="cmi1">
+                                                        <af:setPropertyListener from="true"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                        <af:exportCollectionActionListener exportedId="t1"
+                                                                                           type="excelHTML"
+                                                                                           filename="#{pageFlowScope.CrossDockSetupBean.exportFileName}"
+                                                                                           title="#{aipdatatoolviewcontrollerBundle.CDS_ALL_ROWS}"/>
+                                                        <af:setPropertyListener from="false"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                    </af:commandMenuItem>
+                                                    <af:commandMenuItem text="#{aipdatatoolviewcontrollerBundle.EXPORT_SELECTED_ROWS}"
+                                                                        id="cmi2">
+                                                        <af:setPropertyListener from="true"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                        <af:exportCollectionActionListener exportedId="t1"
+                                                                                           type="excelHTML"
+                                                                                           exportedRows="selected"
+                                                                                           filterMethod="#{pageFlowScope.CrossDockSetupBean.exportSelectedRows}"
+                                                                                           filename="#{pageFlowScope.CrossDockSetupBean.exportFileName}"
+                                                                                           title="#{aipdatatoolviewcontrollerBundle.CDS_SELECTED_ROWS}"/>
+                                                        <af:setPropertyListener from="false"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                    </af:commandMenuItem>
+                                                </af:menu>
+                                            </af:menuBar>
+                                            <af:button text="#{aipdatatoolviewcontrollerBundle.MHT_PT_DOW_SET_ALL}"
+                                                       id="b9"
+                                                       actionListener="#{pageFlowScope.CrossDockSetupBean.handleDOWSetAllAction}"
+                                                       partialSubmit="true">
+                                                <af:target execute="@this"/>
+                                            </af:button>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <f:facet name="additionalActionItems">
+                                        <af:group id="g1">
+                                            <af:commandMenuItem text="#{aipdatatoolviewcontrollerBundle.SAVE}"
+                                                                action="#{pageFlowScope.CrossDockSetupBean.handleSave}"
+                                                                partialTriggers=":::b1"
+                                                                disabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.saveBtnDisabled}"/>
+                                            <af:commandMenuItem text="#{aipdatatoolviewcontrollerBundle.SAVE_AND_CLOSE}"
+                                                                id="cmi4" partialTriggers=":::b1"
+                                                                disabled="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.saveBtnDisabled}"
+                                                                action="#{pageFlowScope.CrossDockSetupBean.handleSaveAndClose}"/>
+                                        </af:group>
+                                    </f:facet>
+                                    <f:facet name="table">
+                                        <af:table value="#{bindings.CrossDockSetupResultVO.collectionModel}" var="row"
+                                                  rows="#{bindings.CrossDockSetupResultVO.rangeSize}"
+                                                  freezeDirection="start" partialTriggers="::::b3"
+                                                  emptyText="#{bindings.CrossDockSetupResultVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                  rowBandingInterval="0"
+                                                  selectedRowKeys="#{bindings.CrossDockSetupResultVO.collectionModel.selectedRow}"
+                                                  selectionListener="#{bindings.CrossDockSetupResultVO.collectionModel.makeCurrent}"
+                                                  rowSelection="multiple"
+                                                  rendered="#{bindings.CrossDockSetupResultVO.rangeSize gt 0}"
+                                                  fetchSize="#{bindings.CrossDockSetupResultVO.rangeSize}"
+                                                  filterModel="#{bindings.CrossDockSetupResultVOQuery.queryDescriptor}"
+                                                  queryListener="#{bindings.CrossDockSetupResultVOQuery.processQuery}"
+                                                  filterVisible="false" varStatus="vs" id="t1"
+                                                  binding="#{pageFlowScope.CrossDockSetupBean.resultTable}">
+                                            <af:column id="c1" align="center" width="40"
+                                                       rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                <af:selectBooleanCheckbox value="#{row.bindings.UpdateInd.inputValue}"
+                                                                          label="#{row.bindings.UpdateInd.label}"
+                                                                          shortDesc="#{bindings.CrossDockSetupResultVO.hints.UpdateInd.tooltip}"
+                                                                          id="sbc2" autoSubmit="true"
+                                                                          valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onSelectionOfCheckBox}">
+                                                    <af:target execute="@this" events="valueChange" render="t1" />
+                                                </af:selectBooleanCheckbox>
+                                                <f:facet name="header">
+                                                    <af:selectBooleanCheckbox id="sbc4" autoSubmit="true"
+                                                                              valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onSelectionOfAllCheckBox}"
+                                                                              binding="#{pageFlowScope.CrossDockSetupBean.selectAllComp}"/>
+                                                </f:facet>
+                                            </af:column>
+                                            <af:column headerText="#{aipdatatoolviewcontrollerBundle.DEPT_LABEL}"
+                                                       id="c3"
+                                                       sortProperty="#{bindings.CrossDockSetupResultVO.hints.DepartmentCode.name}"
+                                                       filterable="true" sortable="true">
+                                                <af:link text="#{row.DepartmentCode} - #{row.DepartmentDesc}" id="l3"
+                                                         actionListener="#{pageFlowScope.CrossDockSetupBean.onClickViewItemPopup}">
+                                                    <af:target execute="@this"/>
+                                                </af:link>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.SupplierCode.name}"
+                                                       filterable="true" sortable="true" headerNoWrap="true"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.ORD_SUPP_LABEL}"
+                                                       id="c4">
+                                                <af:outputText value="#{row.SupplierCode}"
+                                                               shortDesc="#{bindings.CrossDockSetupResultVO.hints.SupplierCode.tooltip}"
+                                                               id="ot4"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.SupplierDesc.name}"
+                                                       filterable="true" sortable="true" headerNoWrap="true"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.ORD_SUPP_NAME_LABEL}"
+                                                       id="c5">
+                                                <af:outputText value="#{row.SupplierDesc}"
+                                                               shortDesc="#{bindings.CrossDockSetupResultVO.hints.SupplierDesc.tooltip}"
+                                                               id="ot5"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.RegionCode.name}"
+                                                       filterable="true" sortable="true"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.REGION_LABEL}"
+                                                       id="c6">
+                                                <af:link text="#{row.RegionCode}" id="l6"
+                                                         actionListener="#{pageFlowScope.CrossDockSetupBean.onClickViewCDSReportPopup}"
+                                                         rendered="#{row.StoreCode eq null and row.RegionCode ne null}">
+                                                    <af:target execute="@this"/>
+                                                </af:link>
+                                                <af:outputText value="#{row.RegionCode}"
+                                                               shortDesc="#{bindings.CrossDockSetupResultVO.hints.RegionCode.tooltip}"
+                                                               rendered="#{row.StoreCode ne null and row.RegionCode ne null}"
+                                                               id="ot47"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.RegionDesc.name}"
+                                                       filterable="true" sortable="true"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.REGION_NAME_LABEL}"
+                                                       id="c7">
+                                                <af:outputText value="#{row.RegionDesc}"
+                                                               shortDesc="#{bindings.CrossDockSetupResultVO.hints.RegionDesc.tooltip}"
+                                                               id="ot7"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.StoreCode.name}"
+                                                       filterable="true" sortable="true"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.STORE_LABEL}"
+                                                       visible="#{row.StoreCode ne null}"
+                                                       id="c8">
+                                                <af:link text="#{aipdatatoolviewcontrollerBundle.ALL_STORES}" id="l7"
+                                                         actionListener="#{pageFlowScope.CrossDockSetupBean.onClickViewStorePopup}"
+                                                         rendered="#{fn:startsWith(row.StoreCode, 'All') and row.RegionCode eq null}"
+                                                         immediate="true"/>
+                                                <af:outputText value="#{row.StoreCode}"
+                                                               shortDesc="#{bindings.CrossDockSetupResultVO.hints.StoreCode.tooltip}"
+                                                               rendered="#{row.StoreCode ne null and row.RegionCode ne null}"
+                                                               id="ot81"/>
+                                            </af:column>
+                                            <c:if test="#{row.StoreDesc != null}">
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.StoreDesc.name}"
+                                                       filterable="true" sortable="true"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.STORE_NAME_LABEL}"
+                                                       id="c9">
+                                                <af:outputText value="#{row.StoreDesc}"
+                                                               shortDesc="#{bindings.CrossDockSetupResultVO.hints.StoreDesc.tooltip}"
+                                                               id="ot9"/>
+                                            </af:column>
+                                            </c:if>
+                                            <af:column id="c71"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.DOW}">
+                                                <af:link text="#{aipdatatoolviewcontrollerBundle.SET_DOW}" id="l1"
+                                                         actionListener="#{pageFlowScope.CrossDockSetupBean.onClickViewRowDOWSetPopup}">
+                                                    <af:target execute="@this"/>
+                                                </af:link>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.StockingPointNumber.name}"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.CROSS_DOCK_WAREHOUSE}"
+                                                       id="c10" partialTriggers="sbc2">
+                                                <af:selectOneChoice value="#{row.bindings.StockingPointNumber.inputValue}"
+                                                                    label="#{row.bindings.StockingPointNumber.label}"
+                                                                    shortDesc="#{bindings.CrossDockSetupResultVO.hints.StockingPointNumber.tooltip}"
+                                                                    required="#{row.bindings.UpdateInd.inputValue}" autoSubmit="true"
+                                                                    id="soc3">
+                                                    <f:selectItems value="#{row.bindings.StockingPointNumber.items}"
+                                                                   id="si6"/>
+                                                    <f:validator binding="#{row.bindings.StockingPointNumber.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.StartDate.name}"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.START_DATE}"
+                                                       width="210" align="center" id="c12" partialTriggers="sbc2">
+                                                <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                                              label="#{bindings.CrossDockSetupResultVO.hints.StartDate.label}"
+                                                              columns="#{bindings.CrossDockSetupResultVO.hints.StartDate.displayWidth}"
+                                                              shortDesc="#{bindings.CrossDockSetupResultVO.hints.StartDate.tooltip}"
+                                                              id="id2" autoSubmit="true" simple="true"
+                                                              minValue="#{pageFlowScope.CrossDockSetupBean.VDate}"
+                                                              maxValue="#{pageFlowScope.CrossDockSetupBean.sysHighDate}"
+                                                              valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onStartDateChange}"
+                                                              partialTriggers="id4" required="#{row.bindings.UpdateInd.inputValue}"
+                                                              binding="#{pageFlowScope.CrossDockSetupBean.startDateRowComp}">
+                                                    <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                                    <af:convertDateTime pattern="#{bindings.CrossDockSetupResultVO.hints.StartDate.format}"/>
+                                                    <!--<af:validateDateTimeRange minimum="#{pageFlowScope.CrossDockSetupBean.VDate}" 
+                                                                              maximum="#{row.bindings.EndDate.inputValue}"/>-->
+                                                </af:inputDate>
+                                                <f:facet name="header">
+                                                    <af:panelGroupLayout id="pgl11" layout="vertical">
+                                                        <af:outputText value="#{bindings.CrossDockSetupResultVO.hints.StartDate.label}"
+                                                                       id="ot10"/>
+                                                        <af:separator id="s10"/>
+                                                        <af:panelGroupLayout id="pgl17" layout="horizontal"
+                                                                             rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                            <af:inputDate binding="#{pageFlowScope.CrossDockSetupBean.startDateHeaderComp}"
+                                                                          id="id5" columns="11" autoSubmit="true"
+                                                                          minValue="#{pageFlowScope.CrossDockSetupBean.VDate}"
+                                                                          maxValue="#{pageFlowScope.CrossDockSetupBean.sysHighDate}">
+                                                                <af:convertDateTime pattern="#{bindings.CrossDockSetupResultVO.hints.StartDate.format}"/>
+                                                            </af:inputDate>
+                                                            <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SET_ALL_WIDTH}"
+                                                                       id="s13"/>
+                                                            <af:button text="#{aipdatatoolviewcontrollerBundle.SET_ALL}"
+                                                                       id="b7" partialSubmit="true" inlineStyle="width:75px; text-align:center;"
+                                                                       action="#{pageFlowScope.CrossDockSetupBean.handleStartDateSetAll}">
+                                                                <af:target execute="@this"/>
+                                                            </af:button>
+                                                        </af:panelGroupLayout>
+                                                    </af:panelGroupLayout>
+                                                </f:facet>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupResultVO.hints.EndDate.name}"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.END_DATE}"
+                                                       width="210px" align="center" id="c13" partialTriggers="sbc2">
+                                                <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                                              label="#{bindings.CrossDockSetupResultVO.hints.EndDate.label}"
+                                                              columns="#{bindings.CrossDockSetupResultVO.hints.EndDate.displayWidth}"
+                                                              shortDesc="#{bindings.CrossDockSetupResultVO.hints.EndDate.tooltip}"
+                                                              id="id4" autoSubmit="true" simple="true"
+                                                              minValue="#{row.bindings.StartDate.inputValue}"
+                                                              maxValue="#{pageFlowScope.CrossDockSetupBean.sysHighDate}"
+                                                              partialTriggers="id2" required="#{row.bindings.UpdateInd.inputValue}"
+                                                              valueChangeListener="#{pageFlowScope.CrossDockSetupBean.onEndDateChange}"
+                                                              binding="#{pageFlowScope.CrossDockSetupBean.endDateRowComp}">
+                                                    <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                                    <af:convertDateTime pattern="#{bindings.CrossDockSetupResultVO.hints.EndDate.format}"/>
+                                                    <!--<af:validateDateTimeRange minimum="#{row.bindings.StartDate.inputValue}"
+                                                                              maximum="#{pageFlowScope.CrossDockSetupBean.sysHighDate}"/>-->
+                                                </af:inputDate>
+                                                <f:facet name="header">
+                                                    <af:panelGroupLayout id="pgl10" layout="vertical">
+                                                        <af:outputText value="#{bindings.CrossDockSetupResultVO.hints.EndDate.label}"
+                                                                       id="ot11"/>
+                                                        <af:separator id="s8"/>
+                                                        <af:panelGroupLayout id="pgl16" layout="horizontal"
+                                                                             rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                            <af:inputDate id="id3" columns="11" autoSubmit="true"
+                                                                          minValue="#{pageFlowScope.CrossDockSetupBean.VDate}"
+                                                                          maxValue="#{pageFlowScope.CrossDockSetupBean.sysHighDate}"
+                                                                          binding="#{pageFlowScope.CrossDockSetupBean.endDateHeaderComp}">
+                                                                <af:convertDateTime pattern="#{bindings.CrossDockSetupResultVO.hints.EndDate.format}"/>
+                                                            </af:inputDate>
+                                                            <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SET_ALL_WIDTH}"
+                                                                       id="s18"/>
+                                                            <af:button text="#{aipdatatoolviewcontrollerBundle.SET_ALL}"
+                                                                       id="b8" partialSubmit="true" inlineStyle="width:75px; text-align:center;"
+                                                                       action="#{pageFlowScope.CrossDockSetupBean.handleEndDateSetAll}">
+                                                                <af:target execute="@this"/>
+                                                            </af:button>
+                                                        </af:panelGroupLayout>
+                                                    </af:panelGroupLayout>
+                                                </f:facet>
+                                            </af:column>
+                                            <!-- <af:column headerText="#{aipdatatoolviewcontrollerBundle.MAX_HOLDING_TIME}"
+                                                       align="center" id="c30" inlineStyle="font-size:large;">
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c14">
+                                                    <af:inputText value="#{row.bindings.MaxHoldingTime0.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime0.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime0.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime0.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime0.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime0.tooltip}"
+                                                                  id="it5">
+                                                        <f:validator binding="#{row.bindings.MaxHoldingTime0.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime0.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.SUN_LABEL}"
+                                                                        id="ol1"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c15">
+                                                    <af:inputText value="#{row.bindings.MaxHoldingTime1.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime1.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime1.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime1.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime1.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime1.tooltip}"
+                                                                  id="it6">
+                                                        <f:validator binding="#{row.bindings.MaxHoldingTime1.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime1.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.MON_LABEL}"
+                                                                        id="ol2"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c16">
+                                                    <af:inputText value="#{row.bindings.MaxHoldingTime2.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime2.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime2.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime2.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime2.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime2.tooltip}"
+                                                                  id="it7">
+                                                        <f:validator binding="#{row.bindings.MaxHoldingTime2.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime2.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.TUE_LABEL}"
+                                                                        id="ol3"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c17">
+                                                    <af:inputText value="#{row.bindings.MaxHoldingTime3.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime3.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime3.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime3.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime3.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime3.tooltip}"
+                                                                  id="it8">
+                                                        <f:validator binding="#{row.bindings.MaxHoldingTime3.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime3.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.WED_LABEL}"
+                                                                        id="ol4"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c18">
+                                                    <af:inputText value="#{row.bindings.MaxHoldingTime4.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime4.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime4.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime4.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime4.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime4.tooltip}"
+                                                                  id="it9">
+                                                        <f:validator binding="#{row.bindings.MaxHoldingTime4.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime4.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.THU_LABEL}"
+                                                                        id="ol5"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c19">
+                                                    <af:inputText value="#{row.bindings.MaxHoldingTime5.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime5.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime5.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime5.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime5.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime5.tooltip}"
+                                                                  id="it10">
+                                                        <f:validator binding="#{row.bindings.MaxHoldingTime5.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime5.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.FRI_LABEL}"
+                                                                        id="ol6"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c20">
+                                                    <af:inputText value="#{row.bindings.MaxHoldingTime6.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime6.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime6.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime6.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime6.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime6.tooltip}"
+                                                                  id="it11">
+                                                        <f:validator binding="#{row.bindings.MaxHoldingTime6.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.MaxHoldingTime6.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.SAT_LABEL}"
+                                                                        id="ol7"/>
+                                                    </f:facet>
+                                                </af:column>
+                                            </af:column>
+                                            <af:column headerText="#{aipdatatoolviewcontrollerBundle.PROCESSING_TIME}"
+                                                       align="center" id="c2" inlineStyle="font-size:large;">
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c21">
+                                                    <af:inputText value="#{row.bindings.ProcessingTime0.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime0.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime0.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime0.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime0.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime0.tooltip}"
+                                                                  id="it12">
+                                                        <f:validator binding="#{row.bindings.ProcessingTime0.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime0.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.SUN_LABEL}"
+                                                                        id="ol8"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c22">
+                                                    <af:inputText value="#{row.bindings.ProcessingTime1.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime1.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime1.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime1.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime1.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime1.tooltip}"
+                                                                  id="it13">
+                                                        <f:validator binding="#{row.bindings.ProcessingTime1.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime1.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.MON_LABEL}"
+                                                                        id="ol9"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c23">
+                                                    <af:inputText value="#{row.bindings.ProcessingTime2.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime2.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime2.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime2.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime2.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime2.tooltip}"
+                                                                  id="it14">
+                                                        <f:validator binding="#{row.bindings.ProcessingTime2.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime2.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.TUE_LABEL}"
+                                                                        id="ol10"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c24">
+                                                    <af:inputText value="#{row.bindings.ProcessingTime3.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime3.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime3.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime3.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime3.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime3.tooltip}"
+                                                                  id="it15">
+                                                        <f:validator binding="#{row.bindings.ProcessingTime3.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime3.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.WED_LABEL}"
+                                                                        id="ol11"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c25">
+                                                    <af:inputText value="#{row.bindings.ProcessingTime4.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime4.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime4.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime4.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime4.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime4.tooltip}"
+                                                                  id="it16">
+                                                        <f:validator binding="#{row.bindings.ProcessingTime4.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime4.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.THU_LABEL}"
+                                                                        id="ol12"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c26">
+                                                    <af:inputText value="#{row.bindings.ProcessingTime5.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime5.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime5.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime5.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime5.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime5.tooltip}"
+                                                                  id="it17">
+                                                        <f:validator binding="#{row.bindings.ProcessingTime5.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime5.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.FRI_LABEL}"
+                                                                        id="ol13"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column width="#{aipdatatoolviewcontrollerBundle.DOW_SHORT_WIDTH}"
+                                                           id="c27">
+                                                    <af:inputText value="#{row.bindings.ProcessingTime6.inputValue}"
+                                                                  label="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime6.label}"
+                                                                  required="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime6.mandatory}"
+                                                                  columns="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime6.displayWidth}"
+                                                                  maximumLength="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime6.precision}"
+                                                                  shortDesc="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime6.tooltip}"
+                                                                  id="it18">
+                                                        <f:validator binding="#{row.bindings.ProcessingTime6.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CrossDockSetupResultVO.hints.ProcessingTime6.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="#{aipdatatoolviewcontrollerBundle.SAT_LABEL}"
+                                                                        id="ol14"/>
+                                                    </f:facet>
+                                                </af:column>
+                                            </af:column> -->
+                                        </af:table>
+                                    </f:facet>
+                                    <f:facet name="popup"/>
+                                    <f:facet name="appsTableSecondaryToolbar"/>
+                                    <f:facet name="appsTableStatusbar"/>
+                                    <f:facet name="appsTableViewMenu"/>
+                                    <f:facet name="appsTableAfterToolbar"/>
+                                </retail:appsTable>
+                            </af:panelGroupLayout>
+                        </af:showDetailHeader>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+            </af:panelStretchLayout>
+        </f:facet>
+        <f:facet name="actionButtonBar"/>
+        <f:facet name="navigationBar"/>
+        <f:facet name="saveButtonMenu"/>
+        <f:facet name="submitButtonMenu"/>
+        <f:facet name="popup">
+            <af:panelGroupLayout id="pgl9">
+                <af:popup id="itemHierarchyPopup" contentDelivery="lazy"
+                          binding="#{pageFlowScope.CrossDockSetupBean.itemHierarchyPopup}">
+                    <af:dialog id="d1" title="#{aipdatatoolviewcontrollerBundle.COMMODITY_POPUP_TITLE}" type="none"
+                               resize="on" contentHeight="390" contentWidth="950">
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s47"/>
+                        <af:panelGroupLayout id="pc1">
+                            <retail:appsTable id="at3" exportEnabled="false" viewEnabled="false">
+                                <f:facet name="additionalToolbarButtons"/>
+                                <f:facet name="additionalActionItems"/>
+                                <f:facet name="table">
+                                    <af:table value="#{bindings.CrossDockSetupItemHierPopupVO.collectionModel}"
+                                              var="row" rows="#{bindings.CrossDockSetupItemHierPopupVO.rangeSize}"
+                                              emptyText="#{bindings.CrossDockSetupItemHierPopupVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" rowSelection="single"
+                                              fetchSize="#{bindings.CrossDockSetupItemHierPopupVO.rangeSize}"
+                                              filterModel="#{bindings.CrossDockSetupItemHierPopupVOQuery.queryDescriptor}"
+                                              queryListener="#{bindings.CrossDockSetupItemHierPopupVOQuery.processQuery}"
+                                              filterVisible="true" varStatus="vs" id="t4">
+                                        <af:column sortProperty="#{bindings.CrossDockSetupItemHierPopupVO.hints.VpnCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.VPN_LABEL}" id="c38">
+                                            <af:outputText value="#{row.VpnCode}"
+                                                           shortDesc="#{bindings.CrossDockSetupItemHierPopupVO.hints.VpnCode.tooltip}"
+                                                           id="ot15"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.CrossDockSetupItemHierPopupVO.hints.VpnName.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.VPN_NAME_LABEL}"
+                                                   id="c39">
+                                            <af:outputText value="#{row.VpnName}"
+                                                           shortDesc="#{bindings.CrossDockSetupItemHierPopupVO.hints.VpnName.tooltip}"
+                                                           id="ot16"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.CrossDockSetupItemHierPopupVO.hints.VpnColorCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.VPN_COLOR_LABEL}"
+                                                   id="c40">
+                                            <af:outputText value="#{row.VpnColorCode}"
+                                                           shortDesc="#{bindings.CrossDockSetupItemHierPopupVO.hints.VpnColorCode.tooltip}"
+                                                           id="ot17"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.CrossDockSetupItemHierPopupVO.hints.VpnColorName.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.VPN_COLOR_NAME_LABEL}"
+                                                   id="c41">
+                                            <af:outputText value="#{row.VpnColorName}"
+                                                           shortDesc="#{bindings.CrossDockSetupItemHierPopupVO.hints.VpnColorName.tooltip}"
+                                                           id="ot18"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.CrossDockSetupItemHierPopupVO.hints.CommodityCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.SKU_LABEL}" id="c42">
+                                            <af:outputText value="#{row.CommodityCode}"
+                                                           shortDesc="#{bindings.CrossDockSetupItemHierPopupVO.hints.CommodityCode.tooltip}"
+                                                           id="ot19"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.CrossDockSetupItemHierPopupVO.hints.CommodityName.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.SKU_NAME_LABEL}"
+                                                   id="c43">
+                                            <af:outputText value="#{row.CommodityName}"
+                                                           shortDesc="#{bindings.CrossDockSetupItemHierPopupVO.hints.CommodityName.tooltip}"
+                                                           id="ot20"/>
+                                        </af:column>
+                                    </af:table>
+                                </f:facet>
+                                <f:facet name="popup"/>
+                                <f:facet name="appsTableSecondaryToolbar"/>
+                                <f:facet name="appsTableStatusbar"/>
+                                <f:facet name="appsTableViewMenu"/>
+                                <f:facet name="appsTableAfterToolbar"/>
+                            </retail:appsTable>
+                        </af:panelGroupLayout>
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s25"/>
+                        <af:panelGroupLayout id="pgl6" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.CLOSE}" id="b13" inlineStyle="width:75px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.itemHierCloseListener}"/>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+                <af:popup id="storePopup" binding="#{pageFlowScope.CrossDockSetupBean.storePopup}"
+                          contentDelivery="lazy">
+                    <af:dialog id="d3" title="#{aipdatatoolviewcontrollerBundle.STORE_POPUP_TITLE}" type="none"
+                               contentHeight="370" contentWidth="400">
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s11"/>
+                        <af:panelGroupLayout id="pgl46">
+                            <retail:appsTable id="at2" exportEnabled="true" viewEnabled="false"
+                                              styleClass="AFStretchWidth">
+                                <f:facet name="additionalToolbarButtons"/>
+                                <f:facet name="additionalActionItems"/>
+                                <f:facet name="table">
+                                    <af:table value="#{bindings.CrossDockSetupStorePopupVO.collectionModel}" var="row"
+                                              rows="#{bindings.CrossDockSetupStorePopupVO.rangeSize}"
+                                              emptyText="#{bindings.CrossDockSetupStorePopupVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" rowSelection="single"
+                                              fetchSize="#{bindings.CrossDockSetupStorePopupVO.rangeSize}"
+                                              filterModel="#{bindings.CrossDockSetupStorePopupVOQuery.queryDescriptor}"
+                                              queryListener="#{bindings.CrossDockSetupStorePopupVOQuery.processQuery}"
+                                              filterVisible="true" varStatus="vs" id="t2">
+                                        <af:column sortProperty="#{bindings.CrossDockSetupStorePopupVO.hints.StoreCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.STORE_LABEL}" id="c11">
+                                            <af:outputText value="#{row.StoreCode}"
+                                                           shortDesc="#{bindings.CrossDockSetupStorePopupVO.hints.StoreCode.tooltip}"
+                                                           id="ot12"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.CrossDockSetupStorePopupVO.hints.StoreName.name}"
+                                                   filterable="true" sortable="true" width="75%"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.STORE_NAME_LABEL}"
+                                                   id="c28">
+                                            <af:outputText value="#{row.StoreName}"
+                                                           shortDesc="#{bindings.CrossDockSetupStorePopupVO.hints.StoreName.tooltip}"
+                                                           id="ot13"/>
+                                        </af:column>
+                                    </af:table>
+                                </f:facet>
+                                <f:facet name="popup"/>
+                                <f:facet name="appsTableSecondaryToolbar"/>
+                                <f:facet name="appsTableStatusbar"/>
+                                <f:facet name="appsTableViewMenu"/>
+                                <f:facet name="appsTableAfterToolbar"/>
+                            </retail:appsTable>
+                        </af:panelGroupLayout>
+                        <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s46"/>
+                        <af:panelGroupLayout id="pgl45" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.CLOSE}" id="b11" inlineStyle="width:75px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.storeCloseListener}"/>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+                <af:popup id="scpp" binding="#{pageFlowScope.CrossDockSetupBean.saveConfirmationPopup}">
+                    <af:panelWindow id="pw1" title="#{aipdatatoolviewcontrollerBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot8" value="#{aipdatatoolviewcontrollerBundle.CDS_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer height="20" id="s12"/>
+                        <af:panelGroupLayout id="pgl13" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.YES}" id="cb3" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.saveConfirmYesListener}"/>
+                            <af:spacer width="10" id="s14"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.NO}" id="cb4" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.saveConfirmNoListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="sccpp" binding="#{pageFlowScope.CrossDockSetupBean.saveCloseConfirmationPopup}">
+                    <af:panelWindow id="pw5" title="#{aipdatatoolviewcontrollerBundle.SAVE_CLOSE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot21"
+                                       value="#{aipdatatoolviewcontrollerBundle.CDS_SAVE_CLOSE_CONFIRMATION_MSG}"/>
+                        <af:spacer height="20" id="s19"/>
+                        <af:panelGroupLayout id="pgl7" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.YES}" id="b14" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.saveCloseConfirmYesListener}"/>
+                            <af:spacer width="10" id="s17"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.NO}" id="b16" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.saveCloseConfirmNoListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="rpp" binding="#{pageFlowScope.CrossDockSetupBean.resetPopup}">
+                    <af:panelWindow id="pw4" title="#{aipdatatoolviewcontrollerBundle.RESET_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot28" value="#{aipdatatoolviewcontrollerBundle.CDS_RESET_CONFIRMATION_MSG}"/>
+                        <af:spacer height="20" id="s23"/>
+                        <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.YES}" id="b3" partialSubmit="true"
+                                       immediate="true" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.resetYesListener}">
+                                <af:target execute="@this" render="pgl5"/>
+                            </af:button>
+                            <af:spacer width="10" id="s15"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.NO}" id="b4" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.resetNoListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="cpp" binding="#{pageFlowScope.CrossDockSetupBean.cancelPopup}">
+                    <af:panelWindow id="pw3" title="#{aipdatatoolviewcontrollerBundle.CANCEL_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot1" value="#{aipdatatoolviewcontrollerBundle.CDS_CANCEL_CONFIRMATION_MSG}"/>
+                        <af:spacer height="20" id="s21"/>
+                        <af:panelGroupLayout id="pgl15" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.YES}" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.cancelYesListener}" id="b5"/>
+                            <af:spacer width="10" id="s22"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.NO}" id="b6" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.cancelNoListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="sfpp" binding="#{pageFlowScope.CrossDockSetupBean.saveFailedPopup}">
+                    <af:panelWindow id="pw2" title="#{aipdatatoolviewcontrollerBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/raf/simple/images/delete_ena.png" modal="true"
+                                    closeIconVisible="false">
+                        <af:outputText id="ot2" value="#{aipdatatoolviewcontrollerBundle.SAVE_FAILED_MSG}"/>
+                        <af:spacer height="20" id="s16"/>
+                        <af:panelGroupLayout id="pgl18" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.OK}" id="cb1" inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.saveFailedOkListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="sspp" binding="#{pageFlowScope.CrossDockSetupBean.saveSuccessPopup}" >
+                    <af:panelWindow id="pw6" title="#{aipdatatoolviewcontrollerBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot3" value="#{aipdatatoolviewcontrollerBundle.CDS_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer height="20" id="s7"/>
+                        <af:panelGroupLayout id="pgl14" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.OK}" id="cb5"  inlineStyle="width:50px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.saveSuccessOkListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="dowpp" binding="#{pageFlowScope.CrossDockSetupBean.dowSetAllPopup}"
+                          contentDelivery="lazyUncached">
+                    <af:dialog id="d2" title="#{aipdatatoolviewcontrollerBundle.MHT_PT_DOW_SET_ALL}" type="none"
+                               contentHeight="25" contentWidth="900">
+                        <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s9"/>
+                        <af:panelGroupLayout id="pgl48">
+                            <af:table value="#{bindings.CrossDockSetupTimeSetAllVO.collectionModel}" var="row"
+                                      styleClass="AFStretchWidth" columnStretching="multiple"
+                                      rows="#{bindings.CrossDockSetupTimeSetAllVO.rangeSize}"
+                                      emptyText="#{bindings.CrossDockSetupTimeSetAllVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0" autoHeightRows="6"
+                                      fetchSize="#{bindings.CrossDockSetupTimeSetAllVO.rangeSize}" id="t3">
+                                <af:column headerText="#{aipdatatoolviewcontrollerBundle.DOW_S_TYPE}" id="c29" align="center">
+                                    <af:inputText value="#{row.bindings.Timetype.inputValue}" simple="true"
+                                                  readOnly="true"
+                                                  columns="#{bindings.CrossDockSetupTimeSetAllVO.hints.Timetype.displayWidth}"
+                                                  maximumLength="#{bindings.CrossDockSetupTimeSetAllVO.hints.Timetype.precision}"
+                                                  shortDesc="#{bindings.CrossDockSetupTimeSetAllVO.hints.Timetype.tooltip}"
+                                                  id="it24">
+                                        <f:validator binding="#{row.bindings.Timetype.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{aipdatatoolviewcontrollerBundle.SUN_LABEL}"
+                                           id="c31" align="center">
+                                    <af:inputText value="#{row.bindings.Sunday.inputValue}"
+                                                  label="#{bindings.CrossDockSetupTimeSetAllVO.hints.Sunday.label}"
+                                                  required="#{bindings.CrossDockSetupTimeSetAllVO.hints.Sunday.mandatory}"
+                                                  columns="#{bindings.CrossDockSetupTimeSetAllVO.hints.Sunday.displayWidth}"
+                                                  maximumLength="#{bindings.CrossDockSetupTimeSetAllVO.hints.Sunday.precision}"
+                                                  shortDesc="#{bindings.CrossDockSetupTimeSetAllVO.hints.Sunday.tooltip}"
+                                                  id="it3">
+                                        <f:validator binding="#{row.bindings.Sunday.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{aipdatatoolviewcontrollerBundle.MON_LABEL}"
+                                           align="center" id="c32">
+                                    <af:inputText value="#{row.bindings.Monday.inputValue}"
+                                                  label="#{bindings.CrossDockSetupTimeSetAllVO.hints.Monday.label}"
+                                                  required="#{bindings.CrossDockSetupTimeSetAllVO.hints.Monday.mandatory}"
+                                                  columns="#{bindings.CrossDockSetupTimeSetAllVO.hints.Monday.displayWidth}"
+                                                  maximumLength="#{bindings.CrossDockSetupTimeSetAllVO.hints.Monday.precision}"
+                                                  shortDesc="#{bindings.CrossDockSetupTimeSetAllVO.hints.Monday.tooltip}"
+                                                  id="it4">
+                                        <f:validator binding="#{row.bindings.Monday.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{aipdatatoolviewcontrollerBundle.TUE_LABEL}"
+                                           align="center" id="c33">
+                                    <af:inputText value="#{row.bindings.Tuesday.inputValue}"
+                                                  label="#{bindings.CrossDockSetupTimeSetAllVO.hints.Tuesday.label}"
+                                                  required="#{bindings.CrossDockSetupTimeSetAllVO.hints.Tuesday.mandatory}"
+                                                  columns="#{bindings.CrossDockSetupTimeSetAllVO.hints.Tuesday.displayWidth}"
+                                                  maximumLength="#{bindings.CrossDockSetupTimeSetAllVO.hints.Tuesday.precision}"
+                                                  shortDesc="#{bindings.CrossDockSetupTimeSetAllVO.hints.Tuesday.tooltip}"
+                                                  id="it19">
+                                        <f:validator binding="#{row.bindings.Tuesday.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{aipdatatoolviewcontrollerBundle.WED_LABEL}"
+                                           align="center" id="c34">
+                                    <af:inputText value="#{row.bindings.Wednesday.inputValue}"
+                                                  label="#{bindings.CrossDockSetupTimeSetAllVO.hints.Wednesday.label}"
+                                                  required="#{bindings.CrossDockSetupTimeSetAllVO.hints.Wednesday.mandatory}"
+                                                  columns="#{bindings.CrossDockSetupTimeSetAllVO.hints.Wednesday.displayWidth}"
+                                                  maximumLength="#{bindings.CrossDockSetupTimeSetAllVO.hints.Wednesday.precision}"
+                                                  shortDesc="#{bindings.CrossDockSetupTimeSetAllVO.hints.Wednesday.tooltip}"
+                                                  id="it20">
+                                        <f:validator binding="#{row.bindings.Wednesday.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{aipdatatoolviewcontrollerBundle.THU_LABEL}"
+                                           align="center" id="c35">
+                                    <af:inputText value="#{row.bindings.Thursday.inputValue}"
+                                                  label="#{bindings.CrossDockSetupTimeSetAllVO.hints.Thursday.label}"
+                                                  required="#{bindings.CrossDockSetupTimeSetAllVO.hints.Thursday.mandatory}"
+                                                  columns="#{bindings.CrossDockSetupTimeSetAllVO.hints.Thursday.displayWidth}"
+                                                  maximumLength="#{bindings.CrossDockSetupTimeSetAllVO.hints.Thursday.precision}"
+                                                  shortDesc="#{bindings.CrossDockSetupTimeSetAllVO.hints.Thursday.tooltip}"
+                                                  id="it21">
+                                        <f:validator binding="#{row.bindings.Thursday.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{aipdatatoolviewcontrollerBundle.FRI_LABEL}"
+                                           align="center" id="c36">
+                                    <af:inputText value="#{row.bindings.Friday.inputValue}"
+                                                  label="#{bindings.CrossDockSetupTimeSetAllVO.hints.Friday.label}"
+                                                  required="#{bindings.CrossDockSetupTimeSetAllVO.hints.Friday.mandatory}"
+                                                  columns="#{bindings.CrossDockSetupTimeSetAllVO.hints.Friday.displayWidth}"
+                                                  maximumLength="#{bindings.CrossDockSetupTimeSetAllVO.hints.Friday.precision}"
+                                                  shortDesc="#{bindings.CrossDockSetupTimeSetAllVO.hints.Friday.tooltip}"
+                                                  id="it22">
+                                        <f:validator binding="#{row.bindings.Friday.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{aipdatatoolviewcontrollerBundle.SAT_LABEL}"
+                                           align="center" id="c37">
+                                    <af:inputText value="#{row.bindings.Saturday.inputValue}"
+                                                  label="#{bindings.CrossDockSetupTimeSetAllVO.hints.Saturday.label}"
+                                                  required="#{bindings.CrossDockSetupTimeSetAllVO.hints.Saturday.mandatory}"
+                                                  columns="#{bindings.CrossDockSetupTimeSetAllVO.hints.Saturday.displayWidth}"
+                                                  maximumLength="#{bindings.CrossDockSetupTimeSetAllVO.hints.Saturday.precision}"
+                                                  shortDesc="#{bindings.CrossDockSetupTimeSetAllVO.hints.Saturday.tooltip}"
+                                                  id="it23">
+                                        <f:validator binding="#{row.bindings.Saturday.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                            </af:table>
+                        </af:panelGroupLayout>
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s50"/>
+                        <af:panelGroupLayout id="pgl49" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.SET_ALL}" id="b12" inlineStyle="width:75px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.dowSetAllListener}"/>
+                            <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SEARCH_RESET_BTN_WIDTH}" id="s48"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.CLOSE}" id="b10" inlineStyle="width:75px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.dowCloseListener}"/>
+                        </af:panelGroupLayout>
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s49"/>
+                    </af:dialog>
+                </af:popup>                
+                <af:popup id="cdsrpp" contentDelivery="lazyUncached"
+                          binding="#{pageFlowScope.CrossDockSetupBean.cdsHistReportPopup}">
+                    <af:dialog id="d4" title="#{aipdatatoolviewcontrollerBundle.CROSS_DOCK_SETUP_REPORT}" type="none"
+                               resize="on" contentHeight="450" contentWidth="1000">
+                        <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s20"/>
+                        <af:panelGroupLayout id="pgl19" layout="vertical">
+                            <af:panelFormLayout id="pfl4" rows="2">
+                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.DEPT_LABEL} : "
+                                                         id="plam7">
+                                    <af:outputText value="#{pageFlowScope.CrossDockSetupBean.selDept}" id="ot40"/>
+                                </af:panelLabelAndMessage>
+                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.ORD_SUPP_LABEL} : "
+                                                         id="plam9">
+                                    <af:outputText value="#{pageFlowScope.CrossDockSetupBean.selSupplier}" id="ot43"/>
+                                </af:panelLabelAndMessage>
+                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.REGION_LABEL} : "
+                                                         id="plam10"
+                                                         rendered="#{pageFlowScope.CrossDockSetupBean.selRegion ne null}">
+                                    <af:outputText value="#{pageFlowScope.CrossDockSetupBean.selRegion}" id="ot41"/>
+                                </af:panelLabelAndMessage>
+                                <!--<af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.STORE_LABEL} : "
+                                                         id="plam11"
+                                                         rendered="#{pageFlowScope.CrossDockSetupBean.selStore ne null}">
+                                    <af:outputText value="#{pageFlowScope.CrossDockSetupBean.selStore}" id="ot42"/>
+                                </af:panelLabelAndMessage>-->
+                            </af:panelFormLayout>
+                            <af:spacer height="10" id="s27"/>
+                            <af:separator id="s24"/>
+                            <af:spacer height="10" id="s28"/>
+                            <retail:appsTable id="at4" exportEnabled="false" viewEnabled="false">
+                                <f:facet name="additionalToolbarButtons"/>
+                                <f:facet name="additionalActionItems"/>
+                                <f:facet name="table">                                    
+                                    <af:table value="#{bindings.CrossDockSetupReportVO.collectionModel}" var="row"
+                                              rows="#{bindings.CrossDockSetupReportVO.rangeSize}"
+                                              emptyText="#{bindings.CrossDockSetupReportVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" columnStretching="multiple" filterVisible="true"
+                                              fetchSize="#{bindings.CrossDockSetupReportVO.rangeSize}" varStatus="vs"
+                                              id="t5">
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.CROSS_DOCK_WAREHOUSE}"
+                                                   align="center" sortable="true" filterable="true"
+                                                   sortProperty="#{bindings.CrossDockSetupReportVO.hints.StockingPointCode.name}"
+                                                   id="c60">
+                                            <af:outputText value="#{row.StockingPointCode} - #{row.StockingPointName}"
+                                                           shortDesc="#{bindings.CrossDockSetupReportVO.hints.StockingPointCode.tooltip}"
+                                                           id="ot39">                                                
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.STORE_LABEL}"
+                                                   align="center" sortable="true" filterable="true"
+                                                   sortProperty="#{bindings.CrossDockSetupReportVO.hints.StoreCode.name}"
+                                                   id="c2">
+                                            <af:outputText value="#{row.StoreCode} - #{row.StoreName}"
+                                                           shortDesc="#{bindings.CrossDockSetupReportVO.hints.StoreCode.tooltip}"
+                                                           id="ot42">                                                
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.StartDate.name}"
+                                                   sortable="true" align="center"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.START_DATE}" id="c44">
+                                            <f:facet name="filter">
+                                                <af:inputDate value="#{bindings.CrossDockSetupReportVOQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.StartDate.value}"
+                                                              id="id1">
+                                                    <af:convertDateTime pattern="#{bindings.CrossDockSetupReportVO.hints.StartDate.format}"/>
+                                                </af:inputDate>
+                                            </f:facet>
+                                            <af:outputText value="#{row.StartDate}"
+                                                           shortDesc="#{bindings.CrossDockSetupReportVO.hints.StartDate.tooltip}"
+                                                           id="ot22">
+                                                <af:convertDateTime pattern="#{bindings.CrossDockSetupReportVO.hints.StartDate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.EndDate.name}"
+                                                   sortable="true" align="center"
+                                                   headerText="#{aipdatatoolviewcontrollerBundle.END_DATE}" id="c45">
+                                            <f:facet name="filter">
+                                                <af:inputDate value="#{bindings.CrossDockSetupReportVOQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.EndDate.value}"
+                                                              id="id6">
+                                                    <af:convertDateTime pattern="#{bindings.CrossDockSetupReportVO.hints.EndDate.format}"/>
+                                                </af:inputDate>
+                                            </f:facet>
+                                            <af:outputText value="#{row.EndDate}"
+                                                           shortDesc="#{bindings.CrossDockSetupReportVO.hints.EndDate.tooltip}"
+                                                           id="ot23">
+                                                <af:convertDateTime pattern="#{bindings.CrossDockSetupReportVO.hints.EndDate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.MAX_HOLDING_TIME}"
+                                                   align="center" id="c61" inlineStyle="font-size:large;">
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime0.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.SUN_LABEL}"
+                                                       id="c46">
+                                                <af:outputText value="#{row.MaxHoldingTime0}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime0.tooltip}"
+                                                               id="ot24">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime0.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime1.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.MON_LABEL}"
+                                                       id="c47">
+                                                <af:outputText value="#{row.MaxHoldingTime1}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime1.tooltip}"
+                                                               id="ot25">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime1.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime2.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.TUE_LABEL}"
+                                                       id="c48">
+                                                <af:outputText value="#{row.MaxHoldingTime2}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime2.tooltip}"
+                                                               id="ot26">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime2.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime3.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.WED_LABEL}"
+                                                       id="c49">
+                                                <af:outputText value="#{row.MaxHoldingTime3}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime3.tooltip}"
+                                                               id="ot27">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime3.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime4.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.THU_LABEL}"
+                                                       id="c50">
+                                                <af:outputText value="#{row.MaxHoldingTime4}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime4.tooltip}"
+                                                               id="ot29">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime4.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime5.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.FRI_LABEL}"
+                                                       id="c51">
+                                                <af:outputText value="#{row.MaxHoldingTime5}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime5.tooltip}"
+                                                               id="ot30">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime5.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime6.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.SAT_LABEL}"
+                                                       id="c52">
+                                                <af:outputText value="#{row.MaxHoldingTime6}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime6.tooltip}"
+                                                               id="ot31">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.MaxHoldingTime6.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.PROCESSING_TIME}"
+                                                   align="center" id="c62" inlineStyle="font-size:large;">
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime0.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.SUN_LABEL}"
+                                                       id="c53">
+                                                <af:outputText value="#{row.ProcessingTime0}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime0.tooltip}"
+                                                               id="ot32">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime0.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime1.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.MON_LABEL}"
+                                                       id="c54">
+                                                <af:outputText value="#{row.ProcessingTime1}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime1.tooltip}"
+                                                               id="ot33">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime1.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime2.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.TUE_LABEL}"
+                                                       id="c55">
+                                                <af:outputText value="#{row.ProcessingTime2}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime2.tooltip}"
+                                                               id="ot34">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime2.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime3.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.WED_LABEL}"
+                                                       id="c56">
+                                                <af:outputText value="#{row.ProcessingTime3}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime3.tooltip}"
+                                                               id="ot35">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime3.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime4.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.THU_LABEL}"
+                                                       id="c57">
+                                                <af:outputText value="#{row.ProcessingTime4}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime4.tooltip}"
+                                                               id="ot36">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime4.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime5.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.FRI_LABEL}"
+                                                       id="c58">
+                                                <af:outputText value="#{row.ProcessingTime5}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime5.tooltip}"
+                                                               id="ot37">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime5.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime6.name}"
+                                                       align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.SAT_LABEL}"
+                                                       id="c59">
+                                                <af:outputText value="#{row.ProcessingTime6}"
+                                                               shortDesc="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime6.tooltip}"
+                                                               id="ot38">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CrossDockSetupReportVO.hints.ProcessingTime6.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                        </af:column>
+                                    </af:table>
+                                </f:facet>
+                                <f:facet name="popup"/>
+                                <f:facet name="appsTableSecondaryToolbar"/>
+                                <f:facet name="appsTableStatusbar"/>
+                                <f:facet name="appsTableViewMenu"/>
+                                <f:facet name="appsTableAfterToolbar"/>
+                            </retail:appsTable>
+                        </af:panelGroupLayout>
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s26"/>
+                        <af:panelGroupLayout id="pgl20" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.CLOSE}" id="b15" inlineStyle="width:75px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.cdsHistReportCloseListener}"/>
+                        </af:panelGroupLayout>
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s35"/>
+                    </af:dialog>
+                </af:popup>
+                <af:popup id="rdowpp" binding="#{pageFlowScope.CrossDockSetupBean.rowDOWPopup}"
+                          contentDelivery="lazyUncached">
+                    <af:dialog id="d5" title="#{aipdatatoolviewcontrollerBundle.CROSS_DOCK_SETUP_ROW_DOW_SETUP}" type="none"
+                               resize="on" contentHeight="170" contentWidth="900">
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s29"/>
+                        <af:panelGroupLayout id="pgl21" layout="vertical">
+                            <af:panelFormLayout id="pfl5" rows="2">
+                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.DEPT_LABEL} : "
+                                                         id="plam12">
+                                    <af:outputText value="#{pageFlowScope.CrossDockSetupBean.selDept}" id="ot14"/>
+                                </af:panelLabelAndMessage>
+                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.ORD_SUPP_LABEL} : "
+                                                         id="plam13">
+                                    <af:outputText value="#{pageFlowScope.CrossDockSetupBean.selSupplier}" id="ot44"/>
+                                </af:panelLabelAndMessage>
+                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.REGION_LABEL} : "
+                                                         id="plam14"
+                                                         rendered="#{pageFlowScope.CrossDockSetupBean.selRegion ne null}">
+                                    <af:outputText value="#{pageFlowScope.CrossDockSetupBean.selRegion}" id="ot45"/>
+                                </af:panelLabelAndMessage>
+                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.STORE_LABEL} : "
+                                                         id="plam15"
+                                                         rendered="#{pageFlowScope.CrossDockSetupBean.selStore ne null}">
+                                    <af:outputText value="#{pageFlowScope.CrossDockSetupBean.selStore}" id="ot46"/>
+                                </af:panelLabelAndMessage>
+                            </af:panelFormLayout>
+                            <af:spacer height="10" id="s30"/>
+                            <af:separator id="s31"/>
+                            <af:spacer height="10" id="s32"/>
+                                    <af:table value="#{bindings.CrossDockSetupDOWVO.collectionModel}" var="row"
+                                              rows="#{bindings.CrossDockSetupDOWVO.rangeSize}"
+                                              styleClass="AFStretchWidth"
+                                              emptyText="#{bindings.CrossDockSetupDOWVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.CrossDockSetupDOWVO.collectionModel.selectedRow}"
+                                              rowSelection="multiple"
+                                              autoHeightRows="6"
+                                              fetchSize="#{bindings.CrossDockSetupDOWVO.rangeSize}" id="t6">
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.DOW_S_TYPE}"
+                                                   align="center" id="c63">
+                                            <af:inputText value="#{row.bindings.Timetype.inputValue}"
+                                                          label="#{bindings.CrossDockSetupDOWVO.hints.Timetype.label}"
+                                                          required="#{bindings.CrossDockSetupDOWVO.hints.Timetype.mandatory}"
+                                                          columns="#{bindings.CrossDockSetupDOWVO.hints.Timetype.displayWidth}"
+                                                          maximumLength="#{bindings.CrossDockSetupDOWVO.hints.Timetype.precision}"
+                                                          shortDesc="#{bindings.CrossDockSetupDOWVO.hints.Timetype.tooltip}"
+                                                          readOnly="true"
+                                                          id="it25">
+                                                <f:validator binding="#{row.bindings.Timetype.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.SUN_LABEL}"
+                                                   align="center" id="c64">
+                                            <af:inputText value="#{row.bindings.Sunday.inputValue}"
+                                                          label="#{bindings.CrossDockSetupDOWVO.hints.Sunday.label}"
+                                                          required="#{bindings.CrossDockSetupDOWVO.hints.Sunday.mandatory}"
+                                                          columns="#{bindings.CrossDockSetupDOWVO.hints.Sunday.displayWidth}"
+                                                          maximumLength="#{bindings.CrossDockSetupDOWVO.hints.Sunday.precision}"
+                                                          shortDesc="#{bindings.CrossDockSetupDOWVO.hints.Sunday.tooltip}"
+                                                          id="it26">
+                                                <f:validator binding="#{row.bindings.Sunday.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CrossDockSetupDOWVO.hints.Sunday.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.MON_LABEL}"
+                                                   align="center" id="c65">
+                                            <af:inputText value="#{row.bindings.Monday.inputValue}"
+                                                          label="#{bindings.CrossDockSetupDOWVO.hints.Monday.label}"
+                                                          required="#{bindings.CrossDockSetupDOWVO.hints.Monday.mandatory}"
+                                                          columns="#{bindings.CrossDockSetupDOWVO.hints.Monday.displayWidth}"
+                                                          maximumLength="#{bindings.CrossDockSetupDOWVO.hints.Monday.precision}"
+                                                          shortDesc="#{bindings.CrossDockSetupDOWVO.hints.Monday.tooltip}"
+                                                          id="it27">
+                                                <f:validator binding="#{row.bindings.Monday.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CrossDockSetupDOWVO.hints.Monday.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.TUE_LABEL}"
+                                                   align="center" id="c66">
+                                            <af:inputText value="#{row.bindings.Tuesday.inputValue}"
+                                                          label="#{bindings.CrossDockSetupDOWVO.hints.Tuesday.label}"
+                                                          required="#{bindings.CrossDockSetupDOWVO.hints.Tuesday.mandatory}"
+                                                          columns="#{bindings.CrossDockSetupDOWVO.hints.Tuesday.displayWidth}"
+                                                          maximumLength="#{bindings.CrossDockSetupDOWVO.hints.Tuesday.precision}"
+                                                          shortDesc="#{bindings.CrossDockSetupDOWVO.hints.Tuesday.tooltip}"
+                                                          id="it28">
+                                                <f:validator binding="#{row.bindings.Tuesday.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CrossDockSetupDOWVO.hints.Tuesday.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.WED_LABEL}"
+                                                   align="center" id="c67">
+                                            <af:inputText value="#{row.bindings.Wednesday.inputValue}"
+                                                          label="#{bindings.CrossDockSetupDOWVO.hints.Wednesday.label}"
+                                                          required="#{bindings.CrossDockSetupDOWVO.hints.Wednesday.mandatory}"
+                                                          columns="#{bindings.CrossDockSetupDOWVO.hints.Wednesday.displayWidth}"
+                                                          maximumLength="#{bindings.CrossDockSetupDOWVO.hints.Wednesday.precision}"
+                                                          shortDesc="#{bindings.CrossDockSetupDOWVO.hints.Wednesday.tooltip}"
+                                                          id="it29">
+                                                <f:validator binding="#{row.bindings.Wednesday.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CrossDockSetupDOWVO.hints.Wednesday.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.THU_LABEL}"
+                                                   align="center" id="c68">
+                                            <af:inputText value="#{row.bindings.Thursday.inputValue}"
+                                                          label="#{bindings.CrossDockSetupDOWVO.hints.Thursday.label}"
+                                                          required="#{bindings.CrossDockSetupDOWVO.hints.Thursday.mandatory}"
+                                                          columns="#{bindings.CrossDockSetupDOWVO.hints.Thursday.displayWidth}"
+                                                          maximumLength="#{bindings.CrossDockSetupDOWVO.hints.Thursday.precision}"
+                                                          shortDesc="#{bindings.CrossDockSetupDOWVO.hints.Thursday.tooltip}"
+                                                          id="it30">
+                                                <f:validator binding="#{row.bindings.Thursday.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CrossDockSetupDOWVO.hints.Thursday.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.FRI_LABEL}"
+                                                   align="center" id="c69">
+                                            <af:inputText value="#{row.bindings.Friday.inputValue}"
+                                                          label="#{bindings.CrossDockSetupDOWVO.hints.Friday.label}"
+                                                          required="#{bindings.CrossDockSetupDOWVO.hints.Friday.mandatory}"
+                                                          columns="#{bindings.CrossDockSetupDOWVO.hints.Friday.displayWidth}"
+                                                          maximumLength="#{bindings.CrossDockSetupDOWVO.hints.Friday.precision}"
+                                                          shortDesc="#{bindings.CrossDockSetupDOWVO.hints.Friday.tooltip}"
+                                                          id="it31">
+                                                <f:validator binding="#{row.bindings.Friday.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CrossDockSetupDOWVO.hints.Friday.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatoolviewcontrollerBundle.SAT_LABEL}"
+                                                   align="center" id="c70">
+                                            <af:inputText value="#{row.bindings.Saturday.inputValue}"
+                                                          label="#{bindings.CrossDockSetupDOWVO.hints.Saturday.label}"
+                                                          required="#{bindings.CrossDockSetupDOWVO.hints.Saturday.mandatory}"
+                                                          columns="#{bindings.CrossDockSetupDOWVO.hints.Saturday.displayWidth}"
+                                                          maximumLength="#{bindings.CrossDockSetupDOWVO.hints.Saturday.precision}"
+                                                          shortDesc="#{bindings.CrossDockSetupDOWVO.hints.Saturday.tooltip}"
+                                                          id="it32">
+                                                <f:validator binding="#{row.bindings.Saturday.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CrossDockSetupDOWVO.hints.Saturday.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                    </af:table>
+                        </af:panelGroupLayout>
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s33"/>
+                        <af:panelGroupLayout id="pgl22" layout="horizontal" halign="end">
+                        <af:button text="#{aipdatatoolviewcontrollerBundle.SET}" id="b18" inlineStyle="width:75px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.rowDOWSetListener}"/>
+                            <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SEARCH_RESET_BTN_WIDTH}" id="s34"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.CLOSE}" id="b17" inlineStyle="width:75px; text-align:center;"
+                                       actionListener="#{pageFlowScope.CrossDockSetupBean.rowDOWCloseListener}"/>
+                        </af:panelGroupLayout>
+                        <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s36"/>
+                    </af:dialog>
+                </af:popup>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="appsPanelLegend"/>
+        <f:facet name="appsPanelContext"/>
+        <f:facet name="customSaveDropButton"/>
+        <f:facet name="localContext"/>
+        <f:facet name="taskStamp"/>
+        <f:facet name="scalingInfo"/>
+        <f:facet name="collaborationToolbar"/>
+        <f:facet name="appsPanelTrain"/>
+    </retail:appsPanel>
+</jsp:root>

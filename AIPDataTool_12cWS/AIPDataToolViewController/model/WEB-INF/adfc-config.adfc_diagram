@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">Home</property>
+      <property
+         name="page">/oracle/retail/apps/aipdt/uishell/Home.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Home&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">120.81445</property>
+      <property
+         name="x">229.0</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">Login</property>
+      <property
+         name="page">/oracle/retail/apps/aipdt/uishell/Login.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Login&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">127.49414</property>
+      <property
+         name="x">547.0</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">Preferences</property>
+      <property
+         name="page">/oracle/retail/apps/aipdt/uishell/Preferences.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Preferences&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">272.97656</property>
+      <property
+         name="x">544.0</property>
+   </View>
+   <View
+      id="View5">
+      <property
+         name="activityId">About</property>
+      <property
+         name="page">/oracle/retail/apps/aipdt/uishell/About.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>About&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">278.1953</property>
+      <property
+         name="x">220.0</property>
+   </View>
+</SDM>

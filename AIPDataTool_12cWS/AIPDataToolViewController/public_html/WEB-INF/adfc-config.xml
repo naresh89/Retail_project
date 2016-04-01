@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="Home">
+    <page>/oracle/retail/apps/aipdt/uishell/Home.jspx</page>
+  </view>
+  <view id="Login">
+    <page>/oracle/retail/apps/aipdt/uishell/Login.jspx</page>
+  </view>
+  <view id="Preferences">
+    <page>/oracle/retail/apps/aipdt/uishell/Preferences.jspx</page>
+  </view>
+  <view id="About">
+    <page>/oracle/retail/apps/aipdt/uishell/About.jspx</page>
+  </view>
+</adfc-config>

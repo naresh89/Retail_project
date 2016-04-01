@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.SupplyChainListMaintainAM">
+      <AppModuleConfig name="AppModuleSupplyChainListMaintainAMLocal" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel"
+                       ApplicationName="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.SupplyChainListMaintainAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.SupplyChainListMaintainAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/aipdt_dbDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AppModuleSupplyChainListMaintainAMShared" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel"
+                       ApplicationName="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.SupplyChainListMaintainAM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.SupplyChainListMaintainAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/aipdt_dbDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

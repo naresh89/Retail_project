@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26"
+                id="OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_closeContent1PageDef"
+                Package="oracle.retail.apps.aipdt.osos.publicui.flow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="closeContent" RequiresUpdateModel="true" Action="invokeMethod" MethodName="closeContent"
+                  IsViewObjectMethod="false" DataControl="RetailAppsUIShellController"
+                  InstanceName="data.RetailAppsUIShellController.dataProvider"
+                  ReturnName="data.RetailAppsUIShellController.methodResults.closeContent_RetailAppsUIShellController_dataProvider_closeContent_result">
+      <NamedData NDName="parameters"
+                 NDType="oracle.retail.apps.framework.uishell.navigation.handler.ContentParameters"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

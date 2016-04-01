@@ -1,0 +1,416 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:retail="/retailApps"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:RetailAppCustomComponent="/RetailAppCustomComponent"
+          xmlns:h="http://java.sun.com/jsf/html">
+    <c:set var="aipdatatooluiBundle"
+           value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+    <retail:appsPanel id="npAppsPanel" contentsFacet="stretch" title="" saveAndCloseRendered="true"
+                      saveAndCloseVisible="true" saveRendered="true" saveVisible="true" cancelRendered="true"
+                      cancelVisible="true" panelPartialTriggers="cb1"
+                      saveAndCloseDisabled="#{pageFlowScope.SupplyChainListCreationBean.saveDisabled}"
+                      saveDisabled="#{pageFlowScope.SupplyChainListCreationBean.saveDisabled}"
+                      cancelAction="#{pageFlowScope.SupplyChainListCreationBean.handleCancelSupplyChainList}"
+                      saveAndCloseAction="#{pageFlowScope.SupplyChainListCreationBean.handleSaveAndCloseSuppyChainList}"
+                      saveActionListener="#{pageFlowScope.SupplyChainListCreationBean.handleSaveSupplyChainList}" 
+                      savePartialSubmit="true"
+                      saveAndClosePartialSubmit="true" cancelPartialSubmit="true">
+        <f:facet name="contents"/>
+        <f:facet name="contentsStretch">
+            <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="parent">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelGroupLayout layout="scroll" id="pgl12" partialTriggers="cb2" inlineStyle="Width:100%">
+                        <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl4">
+                            <af:showDetailHeader text="#{aipdatatooluiBundle.SEARCH}" disclosed="true" id="sdh1">
+                                <af:panelBox text="Set working Group" id="pb2" showDisclosure="false">
+                                    <af:panelFormLayout id="pfl8" maxColumns="3" rows="1" labelWidth="75px">
+                                        <af:selectOneChoice value="#{bindings.WorkingLevelAttr.inputValue}"
+                                                            label="#{aipdatatooluiBundle.LIST_TYPE}"
+                                                            required="#{bindings.WorkingLevelAttr.hints.mandatory}"
+                                                            shortDesc="#{aipdatatooluiBundle.LIST_TYPE}"
+                                                            autoSubmit="true" id="soc1" partialTriggers="cb2" showRequired="true"
+                                                            valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onWorkingLevelChange}"
+                                                            disabled="#{pageFlowScope.SupplyChainListCreationBean.isWorkingLevelDisabled}"
+                                                            binding="#{pageFlowScope.SupplyChainListCreationBean.workingLevelBind}">
+                                            <f:selectItems value="#{bindings.WorkingLevelAttr.items}" id="si1"/>
+                                            <f:validator binding="#{bindings.WorkingLevelAttr.validator}"/>
+                                        </af:selectOneChoice>
+                                        <af:inputText value="#{bindings.ListNameAttr.inputValue}"
+                                                      label="#{aipdatatooluiBundle.LIST_NAME}"
+                                                      required="#{bindings.ListNameAttr.hints.mandatory}"
+                                                      columns="#{bindings.ListNameAttr.hints.displayWidth}"
+                                                      maximumLength="#{bindings.ListNameAttr.hints.precision}"
+                                                      shortDesc="#{aipdatatooluiBundle.LIST_NAME}"
+                                                      partialTriggers="cb2"  showRequired="true"
+                                                      disabled="#{pageFlowScope.SupplyChainListCreationBean.isListNameDisabled}"
+                                                      autoSubmit="true" contentStyle="width:115px" id="it1"
+                                                      binding="#{pageFlowScope.SupplyChainListCreationBean.listNameBind}"
+                                                      valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onListNameChange}">
+                                            <f:validator binding="#{bindings.ListNameAttr.validator}"/>
+                                        </af:inputText>
+                                        <af:selectOneChoice value="#{bindings.ListPrivacyAttr.inputValue}"
+                                                            label="#{aipdatatooluiBundle.LIST_PRIVACY}"
+                                                            required="#{bindings.ListPrivacyAttr.hints.mandatory}"
+                                                            shortDesc="#{aipdatatooluiBundle.LIST_PRIVACY}"
+                                                            autoSubmit="true" contentStyle="width:120px"
+                                                            visible="false"
+                                                            disabled="#{pageFlowScope.SupplyChainListCreationBean.isPrivacyDisabled}"
+                                                            partialTriggers="cb2" id="soc2"  showRequired="true"
+                                                            binding="#{pageFlowScope.SupplyChainListCreationBean.listPrivacyBind}"
+                                                            valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onListPrivacyChange}">
+                                            <f:selectItems value="#{bindings.ListPrivacyAttr.items}" id="si2"/>
+                                            <f:validator binding="#{bindings.ListPrivacyAttr.validator}"/>
+                                        </af:selectOneChoice>
+                                    </af:panelFormLayout>
+                                </af:panelBox>
+                                <af:panelGroupLayout id="pgl1" layout="horizontal" styleClass="AFStretchWidth">
+                                    <af:panelBox text="ITEM" id="pb1" showDisclosure="false">
+                                        <af:panelFormLayout id="pfl1" maxColumns="2" partialTriggers="soc1" rows="3">
+                                           
+                                            <af:panelLabelAndMessage label="#{aipdatatooluiBundle.DEPT_LABEL}"
+                                                                     id="plam1">
+                                                <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="DepartmentCode"
+                                                                                                  AttributeDesc="DepartmentName"
+                                                                                                  FieldBinding="Department"
+                                                                                                  listAttributeName="DepartmentId" 
+                                                                                                  selectAllVisible="false"
+                                                                                                  IsDisabled="#{pageFlowScope.SupplyChainListCreationBean.isDepartmentDisabled}"
+                                                                                                  binding="#{pageFlowScope.SupplyChainListCreationBean.multiSelectBaseFieldsBean.departmentComp}"
+                                                                                                  id="smicb3"
+                                                                                                  valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onDepartmentChange}"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:panelLabelAndMessage label="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                                     id="plam3">
+                                                <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="ClassCode"
+                                                                                                  AttributeDesc="ClassName"
+                                                                                                  FieldBinding="ClassIdAttr"
+                                                                                                  listAttributeName="ClassId"
+                                                                                                  IsDisabled="#{pageFlowScope.SupplyChainListCreationBean.isClassDisable}"
+                                                                                                  valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onClassChange}"
+                                                                                                  binding="#{pageFlowScope.SupplyChainListCreationBean.multiSelectBaseFieldsBean.classComp}"
+                                                                                                  id="smicb1"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                                     id="plam2">
+                                                <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="SubclassCode"
+                                                                                                  AttributeDesc="SubclassDescription"
+                                                                                                  FieldBinding="SubClassIdAttr"
+                                                                                                  listAttributeName="SubclassId"
+                                                                                                  IsDisabled="#{pageFlowScope.SupplyChainListCreationBean.isSubClassDisable}"
+                                                                                                  valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onSubClassChange}"
+                                                                                                  binding="#{pageFlowScope.SupplyChainListCreationBean.multiSelectBaseFieldsBean.subClassComp}"
+                                                                                                  id="smicb2"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                     id="plam6">
+                                                 <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleCode"
+                                                                                                       AttributeDesc="StyleDesc"
+                                                                                                       AttributeListIdName="StyleId"
+                                                                                                       AttrMasterBinding="Department"
+                                                                                                       AttrMasterCode="DepartmentCode"
+                                                                                                       AttrMasterDesc="DepartmentName"
+                                                                                                       FieldBinding="#{bindings.VPN}"
+                                                                                                       AttrMasterListAttrName="DepartmentId"
+                                                                                                       id="msilov1" Label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                       ChangeMethodName="onVPNVChange" ToolTip="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                       ManagedBean="#{pageFlowScope.SupplyChainListCreationBean}"
+                                                                                                       InputDisabled="#{pageFlowScope.SupplyChainListCreationBean.isVPNDisable}"
+                                                                                                       binding="#{pageFlowScope.SupplyChainListCreationBean.multiSelectBaseFieldsBean.vpnComp}"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"  partialTriggers="msilov1"
+                                                                     id="plam4">
+                                                 <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleColorCode"
+                                                                                                       AttributeDesc="StyleColorDesc"
+                                                                                                       AttributeListIdName="StyleColorId"
+                                                                                                       AttrMasterBinding="Department"
+                                                                                                       AttrMasterCode="DepartmentCode"
+                                                                                                       AttrMasterDesc="DepartmentName" 
+                                                                                                       AttrMasterListAttrName="DepartmentId" ToolTip="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                       FieldBinding="#{bindings.VPNOrColorCodeAttr}"
+                                                                                                       id="msilov2" Label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                       InputDisabled="#{pageFlowScope.SupplyChainListCreationBean.isVpnColourDisable}"
+                                                                                                       ChangeMethodName="onVPNColorChange"                                                                                                       
+                                                                                                       binding="#{pageFlowScope.SupplyChainListCreationBean.multiSelectBaseFieldsBean.styleColourComp}"
+                                                                                                       ManagedBean="#{pageFlowScope.SupplyChainListCreationBean}"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SKU_LABEL}" partialTriggers="msilov1"
+                                                                     id="plam5">
+                                          
+                                              <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="CommodityCode"
+                                                                                                       AttributeDesc="CommodityName"
+                                                                                                       AttributeListIdName="CommodityId"
+                                                                                                       AttrMasterBinding="Department"
+                                                                                                       AttrMasterCode="DepartmentCode"
+                                                                                                       AttrMasterDesc="DepartmentName"
+                                                                                                       AttrMasterListAttrName="DepartmentId" ToolTip="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                       FieldBinding="#{bindings.SKUCodeAttr}"
+                                                                                                       id="msilov3" Label="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                       InputDisabled="#{pageFlowScope.SupplyChainListCreationBean.isSKUDisable}"
+                                                                                                       ChangeMethodName="onSKUCodeChange"
+                                                                                                       binding="#{pageFlowScope.SupplyChainListCreationBean.multiSelectBaseFieldsBean.itemComp}"
+                                                                                                       ManagedBean="#{pageFlowScope.SupplyChainListCreationBean}"/>
+                                            </af:panelLabelAndMessage>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                    <af:spacer width="5px" id="s1"/>
+                                    <!--<af:panelBox text="SUPPLIER" id="pb3" showDisclosure="false">
+                                        <af:panelFormLayout partialTriggers="soc1" id="pfl0">
+                                            <f:facet name="footer"/>
+                                            <af:spacer height="28px" id="s2"/>
+                                            <af:inputListOfValues id="supplierCodeAttrId"
+                                                                  popupTitle="Search and Select: #{bindings.SupplierCodeAttr.hints.label}"
+                                                                  value="#{bindings.SupplierCodeAttr.inputValue}"
+                                                                  label="#{aipdatatooluiBundle.ITEM_SUPPLIER_LABEL}"
+                                                                  model="#{bindings.SupplierCodeAttr.listOfValuesModel}"
+                                                                  required="#{bindings.SupplierCodeAttr.hints.mandatory}"
+                                                                  columns="#{bindings.SupplierCodeAttr.hints.displayWidth}"
+                                                                  disabled="#{pageFlowScope.SupplyChainListCreationBean.isSupplierDisabled}"
+                                                                  shortDesc="#{bindings.SupplierCodeAttr.hints.tooltip}">
+                                                <f:validator binding="#{bindings.SupplierCodeAttr.validator}"/>
+                                            </af:inputListOfValues>
+                                            <af:spacer height="33px" id="s7"/>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>-->
+                                    <af:spacer width="5px" id="s6"/>
+                                    <af:panelBox text="STORE" id="pb4" showDisclosure="false">
+                                        <af:panelFormLayout partialTriggers="soc1" id="pfl2">
+                                            <af:spacer height="8px" id="s8"/>
+                                            <af:selectOneChoice value="#{bindings.RegionCodeAttr.inputValue}"
+                                                                label="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                required="#{bindings.RegionCodeAttr.hints.mandatory}"
+                                                                shortDesc="#{bindings.RegionCodeAttr.hints.tooltip}"
+                                                                binding="#{pageFlowScope.SupplyChainListCreationBean.regionCompBind}"
+                                                                valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onRegionChange}"
+                                                                disabled="#{pageFlowScope.SupplyChainListCreationBean.isRegionDisabled}"
+                                                                contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                autoSubmit="true" id="soc4">
+                                                <f:selectItems value="#{bindings.RegionCodeAttr.items}" id="si4"/>
+                                                <f:validator binding="#{bindings.RegionCodeAttr.validator}"/>
+                                            </af:selectOneChoice>
+                                            <af:panelLabelAndMessage label="#{aipdatatooluiBundle.STORE}" partialTriggers="soc4" id="plam8">
+                                                <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                                                  AttributeDesc="StoreName"
+                                                                                                  FieldBinding="StoreCodeAttr"
+                                                                                                  listAttributeName="StoreId"
+                                                                                                  TextWidth="150px"
+                                                                                                  id="smicb5"
+                                                                                                  selectAllVisible="true"
+                                                                                                  immediate="true"
+                                                                                                  binding="#{pageFlowScope.SupplyChainListCreationBean.multiSelectBaseFieldsBean.storeComp}"
+                                                                                                  valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onStoreChange}"
+                                                                                                  IsDisabled="#{pageFlowScope.SupplyChainListCreationBean.isStoreDisabled}"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:spacer height="28px" id="s9"/>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                    <af:spacer width="5px" id="s3"/>
+                                    <af:panelBox text="WAREHOUSE" id="pb5" showDisclosure="false">
+                                        <af:panelFormLayout partialTriggers="soc1" id="pfl3">
+                                            <af:spacer height="28px" id="s10"/>
+                                            <af:panelLabelAndMessage label="#{aipdatatooluiBundle.WAREHOUSE}"
+                                                                     id="plam7">
+                                                <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="WarehouseCode"
+                                                                                                  AttributeDesc="WarehouseName"
+                                                                                                  FieldBinding="WarehouseCodeAttr"
+                                                                                                  listAttributeName="WarehouseId"
+                                                                                                  TextWidth="150px"
+                                                                                                  id="smicb4"
+                                                                                                  selectAllVisible="true"
+                                                                                                  immediate="true"
+                                                                                                  binding="#{pageFlowScope.SupplyChainListCreationBean.multiSelectBaseFieldsBean.stockingPointComp}"
+                                                                                                  valueChangeListener="#{pageFlowScope.SupplyChainListCreationBean.onWarehouseChange}"
+                                                                                                  IsDisabled="#{pageFlowScope.SupplyChainListCreationBean.isWarehouseDisabled}"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:spacer height="28px" id="s11"/>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                </af:panelGroupLayout>
+                                <hr style="margin: 0; height: 1px; background: rgb(226,231,236); border: none;"
+                                    class="AFStretchWidth"/>
+                                <af:spacer id="s5" height="5"/>
+                                <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal">
+                                    <af:button text="#{aipdatatooluiBundle.SEARCH}" immediate="true"
+                                               disabled="#{pageFlowScope.SupplyChainListCreationBean.isSearchBtnDisabled}"
+                                               id="cb1" partialSubmit="true"
+                                               actionListener="#{pageFlowScope.SupplyChainListCreationBean.handleSearchBtnClick}"
+                                               binding="#{pageFlowScope.SupplyChainListCreationBean.searchBtnBind}">
+                                               </af:button>
+                                    <af:spacer width="10" height="10" id="s4"/>
+                                    <af:button text="#{aipdatatooluiBundle.RESET}" id="cb2" immediate="true"
+                                               disabled="false"
+                                               actionListener="#{pageFlowScope.SupplyChainListCreationBean.handleResetBtnClick}"/>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl11" styleClass="AFStretchWidth"
+                                             inlineStyle="border-style:solid; border-width:thin; border-color:rgb(226,231,236);">
+                            <af:showDetailHeader text="#{aipdatatooluiBundle.RESULTS}" disclosed="true" id="sdh2"
+                                                 styleClass="AFStretchWidth">
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                 <f:facet name="legend">
+                      <af:group id="g11111">
+                        <af:panelGroupLayout id="pgl21111" visible="#{bindings.DtGttListVOIterator.estimatedRowCount > 0 ? true : false}" partialTriggers="cb1 cb2" >
+                          <af:panelGroupLayout id="pg1l61111" layout="vertical"
+                                               halign="left">
+                            <af:spacer width="50" height="10" id="s15"/>
+                            <af:outputText value="#{aipdatatooluiBundle.NO_OF_RECORDS} #{bindings.DtGttListVOIterator.estimatedRowCount}" partialTriggers="cb1"
+                                           id="ot31"
+                                           inlineStyle="font-size:small; font-weight:bolder;"/>
+                          </af:panelGroupLayout>
+                          <br/>
+                          <af:panelGroupLayout partialTriggers="cb1" id="pgl15">
+                           <retail:appsTable id="at1"
+                                              actionsMenuRendered="true"
+                                              createEnabled="false"
+                                              editEnabled="false"
+                                              deleteEnabled="false"
+                                              viewEnabled="false"
+                                              exportEnabled="true"
+                                              styleClass="AFStretchWidth"
+                                              tableId="t1"
+                                              exportFilename="Create_Supply_Chain_List_export.xls"
+                                              featuresOff="detach freeze wrap">
+                                                <f:facet name="table">
+                                                        <af:table value="#{bindings.DtGttListVO.collectionModel}"
+                                                                  var="row" rows="#{bindings.DtGttListVO.rangeSize}"
+                                                                  emptyText="#{bindings.DtGttListVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                                  rowBandingInterval="1"
+                                                                  selectedRowKeys="#{bindings.DtGttListVO.collectionModel.selectedRow}"
+                                                                  selectionListener="#{bindings.DtGttListVO.collectionModel.makeCurrent}"
+                                                                  rowSelection="single" partialTriggers="::::cb1"
+                                                                  fetchSize="#{bindings.DtGttListVO.rangeSize}"
+                                                                  filterModel="#{bindings.DtGttListVOQuery.queryDescriptor}"
+                                                                  queryListener="#{bindings.DtGttListVOQuery.processQuery}"
+                                                                  filterVisible="true" varStatus="vs" id="t1">
+                                                            <af:column sortProperty="#{bindings.DtGttListVO.hints.Name.name}"
+                                                                       filterable="false" sortable="true"  width="320px"
+                                                                       headerText="#{bindings.DtGttListVO.hints.Name.label}"
+                                                                       id="c1">
+                                                                <af:outputText value="#{row.Name}"
+                                                                               shortDesc="#{bindings.DtGttListVO.hints.Name.tooltip}"
+                                                                               id="ot1"/>
+                                                            </af:column>
+                                                            <af:column sortProperty="#{bindings.DtGttListVO.hints.PrivacyDesc.name}"
+                                                                       filterable="false" sortable="true"   width="320px"
+                                                                       headerText="#{bindings.DtGttListVO.hints.Privacy.label}"
+                                                                       id="c2">
+                                                               <af:outputText value="#{row.PrivacyDesc}"
+                                                                               shortDesc="#{bindings.DtGttListVO.hints.PrivacyDesc.tooltip}"
+                                                                               id="ot2"/>
+                                                            </af:column>
+                                                            <af:column sortProperty="#{bindings.DtGttListVO.hints.SubTypeDesc.name}"
+                                                                       filterable="false" sortable="true"    width="320px"
+                                                                       headerText="#{bindings.DtGttListVO.hints.SubType.label}"
+                                                                       id="c3">
+                                                                <af:outputText value="#{row.SubTypeDesc}"
+                                                                               shortDesc="#{bindings.DtGttListVO.hints.SubTypeDesc.tooltip}"
+                                                                               id="ot3"/>
+                                                            </af:column>
+                                                            <af:column sortProperty="#{bindings.DtGttListVO.hints.Code.name}"
+                                                                       filterable="false" sortable="true"     width="320px"
+                                                                       headerText="#{bindings.DtGttListVO.hints.Code.label}"
+                                                                       id="c4">
+                                                                <af:outputText value="#{row.Code}"
+                                                                               shortDesc="#{bindings.DtGttListVO.hints.Code.tooltip}"
+                                                                               id="ot4"/>
+                                                            </af:column>
+                                                        </af:table>
+                                                    </f:facet>
+                                                </retail:appsTable>
+                          
+                           </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </af:group>
+                    </f:facet>
+                                <f:facet name="info"/>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </f:facet>
+        <f:facet name="popup">
+         <af:panelGroupLayout id="pgl0">
+        <af:popup id="savePopupId" binding="#{pageFlowScope.SupplyChainListCreationBean.savePopup}">
+                    <af:panelWindow id="pw1" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot12" value="#{aipdatatooluiBundle.SCLC_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s12"/>
+                        <af:panelGroupLayout id="pgl13" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="saveYesBtn" immediate="true"
+                                              actionListener="#{pageFlowScope.SupplyChainListCreationBean.saveYesListener}"/>
+                            <af:spacer width="10" height="10" id="s18"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb4" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveClosePopupId" binding="#{pageFlowScope.SupplyChainListCreationBean.saveClosePopup}">
+                    <af:panelWindow id="pw2" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot6" value="#{aipdatatooluiBundle.SCLC_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s19"/>
+                        <af:panelGroupLayout id="pgl14" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="saveCloseYesBtn" immediate="true"
+                                              actionListener="#{pageFlowScope.SupplyChainListCreationBean.saveYesListener}"/>
+                            <af:spacer width="10" height="10" id="s20"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb6" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+        <af:popup id="cancelPopupId" binding="#{pageFlowScope.SupplyChainListCreationBean.cancelPopup}">
+                    <af:panelWindow id="pw3" title="#{aipdatatooluiBundle.CANCEL_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot5" value="#{aipdatatooluiBundle.SCLC_CANCEL_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s21"/>
+                        <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cancelYesBtn" immediate="true"
+                                              actionListener="#{pageFlowScope.SupplyChainListCreationBean.cancelYesListener}"/>
+                            <af:spacer width="10" height="10" id="s22"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb8" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+        
+         <af:popup id="saveSuccessPopupId" binding="#{pageFlowScope.SupplyChainListCreationBean.saveSuccessPopup}">
+                    <af:panelWindow id="pw6" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="outputText1" value="#{aipdatatooluiBundle.SCLC_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="spacer1"/>
+                        <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="commandButton1" immediate="true"
+                                              actionListener="#{pageFlowScope.SupplyChainListCreationBean.saveOkListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveCloseSuccessPopupId" binding="#{pageFlowScope.SupplyChainListCreationBean.saveCloseSuccessPopup}">
+                    <af:panelWindow id="pw7" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="outputText2" value="#{aipdatatooluiBundle.SCLC_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="spacer2"/>
+                        <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="commandButton2" immediate="true"
+                                              actionListener="#{pageFlowScope.SupplyChainListCreationBean.saveCloseOkListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                 <af:popup id="resetPopup" >
+                    <af:panelWindow id="pw4" title="#{aipdatatooluiBundle.RESET_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot7" value="#{aipdatatooluiBundle.SCLC_RESET_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s23"/>
+                        <af:panelGroupLayout id="pgl3" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="resetYesBtn" immediate="true"
+                                              actionListener="#{pageFlowScope.SupplyChainListCreationBean.cancelYesListener}"/>
+                            <af:spacer width="10" height="10" id="s13"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb10" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                
+        </af:panelGroupLayout>
+        </f:facet>
+    </retail:appsPanel>
+</jsp:root>

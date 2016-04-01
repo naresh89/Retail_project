@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2"
+             id="__11">
+  <task-flow-definition id="OnOffSaleSupplyFlow">
+    <default-activity id="__7">initOnOffSaleSupply</default-activity>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__15">
+      <managed-bean-name id="__14">OnOffSaleSupplyBean</managed-bean-name>
+      <managed-bean-class id="__13">oracle.retail.apps.aipdt.osos.publicui.bean.OnOffSaleSupplyBean</managed-bean-class>
+      <managed-bean-scope id="__12">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="OnOffSaleSupply">
+      <page id="__8">/oracle/retail/apps/aipdt/osos/publicui/page/OnOffSaleSupply.jsff</page>
+    </view>
+    <method-call id="initOnOffSaleSupply">
+      <method id="__9">#{bindings.initOnOffSaleSupply.execute}</method>
+      <outcome id="__1">
+        <fixed-outcome id="__10">initOnOffSaleSupply</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Rollback">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome>
+        <fixed-outcome>Rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="closeContent1">
+      <method>#{bindings.closeContent.execute}</method>
+      <outcome>
+        <fixed-outcome>closeContent</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">initOnOffSaleSupply</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome id="__5">initOnOffSaleSupply</from-outcome>
+        <to-activity-id id="__4">OnOffSaleSupply</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id>OnOffSaleSupply</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>Rollback</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome>closeContent</from-outcome>
+        <to-activity-id>closeContent1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id>Rollback</from-activity-id>
+      <control-flow-case id="__21">
+        <from-outcome>Rollback</from-outcome>
+        <to-activity-id>closeContent1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

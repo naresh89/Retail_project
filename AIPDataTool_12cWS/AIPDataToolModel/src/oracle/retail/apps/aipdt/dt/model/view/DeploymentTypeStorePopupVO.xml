@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DeploymentTypeStorePopupVO"
+  Version="12.1.3.13.26"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewRowImpl"
+  ComponentClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewObjectImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewDefImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeStorePopupVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bindSupplierId"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="bindRegionId"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="bindDepartmentId"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="bindClassId"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="bindSubClassId"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="bindVpnId"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="bindVpnColorId"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="bindSkuId"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <SQLQuery><![CDATA[select distinct                     
+    vdsr.store_code,                 
+    vdsr.store_name                 
+from mv_dt_product_hierarchy prod,                    
+     v_dt_store_region vdsr,        
+     dt_expld_item_depl_type partition (V_DEFAULT) didt       
+where prod.department_id = nvl(:bindDepartmentId, prod.department_id)    
+  and prod.class_id = nvl(:bindClassId, prod.class_id)       
+  and prod.subclass_id = nvl(:bindSubClassId, prod.subclass_id)       
+  and prod.style_id = nvl(:bindVpnId, prod.style_id)       
+  and prod.style_color_id = nvl(:bindVpnColorId, prod.style_color_id)     
+  and prod.commodity_id = nvl(:bindSkuId, prod.commodity_id)     
+  and didt.commodity_id  = prod.commodity_id     
+  AND didt.supplier_id   = nvl(:bindSupplierId, didt.supplier_id)       
+  AND nvl(vdsr.region_id, 1) = nvl(nvl(:bindRegionId,vdsr.region_id), 1)      
+  AND didt.store_id      = vdsr.store_id]]></SQLQuery>
+  <ViewAttribute
+    Name="StoreCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="STORE_CODE"
+    Expression="STORE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StoreName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STORE_NAME"
+    Expression="STORE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="StoreCode"/>
+  </AttrArray>
+  <ResourceBundle>
+    <XliffBundle
+      id="oracle.retail.apps.aipdt.model.AIPDataToolModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

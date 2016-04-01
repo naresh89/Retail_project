@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AIPDataToolViewController"
+  Version="12.1.3.10.8"
+  SeparateXMLFiles="true"
+  PackageName="oracle.retail.apps.aipdt.view">
+  <DesignTime>
+    <Attr Name="_jprName"
+      Value="../../../../../../AIPDataToolViewController.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="Java"/>
+    <Attr Name="_NamedConnection" Value="aipdt_db"/>
+  </DesignTime>
+  <AppContainee
+    Name="RetailAppsModel"
+    FullName="oracle.retail.apps.framework.model.RetailAppsModel"
+    ObjectType="JboProject">
+    <DesignTime>
+      <Attr Name="_SourceName" Value="AdfRetailAppsModel.jar"/>
+    </DesignTime>
+  </AppContainee>
+</JboProject>

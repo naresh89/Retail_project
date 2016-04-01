@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="RsOrderScheduleFlow">
+    <default-activity>initRsOrderSchedule</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__11">
+      <managed-bean-name>RsOrderScheduleBean</managed-bean-name>
+      <managed-bean-class>oracle.retail.apps.aipdt.rsos.publicui.bean.RsOrderScheduleBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <method-call id="initRsOrderSchedule">
+      <method>#{bindings.initRsOrderSchedule.execute}</method>
+      <outcome>
+        <fixed-outcome>success</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="closeContent">
+      <method>#{bindings.closeContent.execute}</method>
+      <outcome>
+        <fixed-outcome>closeContent</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="rollbackData">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome>
+        <fixed-outcome>rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="RsOrderSchedule">
+      <page>/oracle/retail/apps/aipdt/rsos/publicui/page/RsOrderSchedule.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>initRsOrderSchedule</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>success</from-outcome>
+        <to-activity-id>RsOrderSchedule</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>RsOrderSchedule</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>closeContent</from-outcome>
+        <to-activity-id>closeContent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>rollbackData</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>rollbackData</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>rollback</from-outcome>
+        <to-activity-id>closeContent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

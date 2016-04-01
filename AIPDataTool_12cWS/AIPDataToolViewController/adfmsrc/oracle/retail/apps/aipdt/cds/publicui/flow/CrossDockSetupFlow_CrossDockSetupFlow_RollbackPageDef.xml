@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26"
+                id="CrossDockSetupFlow_CrossDockSetupFlow_RollbackPageDef"
+                Package="oracle.retail.apps.aipdt.cds.publicui.flow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AipdtRootAMDataControl"/>
+  </bindings>
+</pageDefinition>

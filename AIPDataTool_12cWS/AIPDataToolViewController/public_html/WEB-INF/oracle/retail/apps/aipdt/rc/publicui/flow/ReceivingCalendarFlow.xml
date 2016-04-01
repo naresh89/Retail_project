@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ReceivingCalendarFlow">
+    <default-activity id="__1">initReceivingCalendar</default-activity>
+    <data-control-scope id="__6">
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__3">
+      <managed-bean-name id="__4">ReceivingCalendarBean</managed-bean-name>
+      <managed-bean-class id="__5">oracle.retail.apps.aipdt.rc.publicui.bean.ReceivingCalendarBean</managed-bean-class>
+      <managed-bean-scope id="__2">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__17">
+      <managed-bean-name id="__16">InputDateBean</managed-bean-name>
+      <managed-bean-class id="__19">oracle.retail.apps.aipdt.common.publicui.bean.InputDateBean</managed-bean-class>
+      <managed-bean-scope id="__18">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="ReceivingCalendar.jsff">
+      <page id="__24">/oracle/retail/apps/aipdt/rc/publicui/page/ReceivingCalendar.jsff</page>
+    </view>
+    <method-call id="initReceivingCalendar">
+      <method id="__33">#{bindings.initReceivingCalendar.execute}</method>
+      <outcome id="__10">
+        <fixed-outcome id="__34">initReceivingCalendar</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="closeContent">
+      <method id="__20">#{bindings.closeContent.execute}</method>
+      <outcome id="__35">
+        <fixed-outcome id="__21">closeContent</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Rollback">
+      <method id="__23">#{bindings.Rollback.execute}</method>
+      <outcome id="__36">
+        <fixed-outcome id="__22">Rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">initReceivingCalendar</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">initReceivingCalendar</from-outcome>
+        <to-activity-id id="__15">ReceivingCalendar.jsff</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__37">
+      <from-activity-id id="__38">ReceivingCalendar.jsff</from-activity-id>
+      <control-flow-case id="__40">
+        <from-outcome id="__41">closeContent</from-outcome>
+        <to-activity-id id="__39">closeContent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__43">
+        <from-outcome id="__44">cancel</from-outcome>
+        <to-activity-id id="__42">Rollback</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__45">
+      <from-activity-id id="__46">Rollback</from-activity-id>
+      <control-flow-case id="__47">
+        <from-outcome id="__48">Rollback</from-outcome>
+        <to-activity-id id="__49">closeContent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

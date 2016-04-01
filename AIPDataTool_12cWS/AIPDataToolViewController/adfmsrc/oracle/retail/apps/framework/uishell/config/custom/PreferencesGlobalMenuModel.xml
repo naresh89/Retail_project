@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NavigationDefinition id="pb_menu_root"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:www.oracle.com:oracle.retail.apps.framework.navigation"
+    xsi:schemaLocation="urn:www.oracle.com:oracle.retail.apps.framework.navigation classpath:oracle/retail/apps/framework/uishell/navigation/model/schema/NavigationModel.xsd">
+<Items>
+    <Item id="mi_b2h" visible="true" type="link" 
+          title="#{adfBundle['RetailAppsViewControllerBundle'].BACK_TO_HOME}"
+          accessKey="#{adfBundle['RetailAppsViewControllerBundle'].BACK_TO_HOME_ACCESSKEY}"
+          shortDesc="#{adfBundle['RetailAppsViewControllerBundle'].BACK_TO_HOME}">
+        <url>/faces/Home</url>
+    </Item>
+</Items>    
+</NavigationDefinition>

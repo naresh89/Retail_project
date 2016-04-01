@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="SupplyChainListCreationPageDef"
+                Package="oracle.retail.apps.aipdt.list.create.publicui.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SupplyChainListCreationAM.SupplyListCreationProgVO1" DataControl="AipdtRootAMDataControl"
+              RangeSize="25" id="SupplyListCreationProgVO1Iterator"/>
+    <iterator Binds="SupplyChainListCreationAM.DtGttListVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="DtGttListVOIterator"/>
+    <searchRegion Binds="DtGttListVOIterator" Criteria="DtGttListVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="DtGttListVOQuery"/>
+  </executables>
+  <bindings>
+    <list IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_WorkingLevelAttr"
+          id="WorkingLevelAttr" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SupplyListCreationProgVO1Iterator" id="ListNameAttr">
+      <AttrNames>
+        <Item Value="ListNameAttr"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_ListPrivacyAttr"
+          id="ListPrivacyAttr" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_ClassIdAttr"
+                  id="ClassIdAttr"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_SubClassIdAttr"
+                  id="SubClassIdAttr"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_VPN"
+                  id="VPN"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_VPNOrColorCodeAttr"
+                  id="VPNOrColorCodeAttr"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_SKUCodeAttr"
+                  id="SKUCodeAttr"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_StoreCodeAttr"
+                  id="StoreCodeAttr"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_WarehouseCodeAttr"
+                  id="WarehouseCodeAttr"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_SupplierCodeAttr"
+                  id="SupplierCodeAttr"/>
+    <list IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_RegionCodeAttr"
+          id="RegionCodeAttr" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="DtGttListVOIterator" id="DtGttListVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.listcreate.model.view.DtGttListVO" Name="DtGttListVO0">
+        <AttrNames>
+          <Item Value="Name"/>
+          <Item Value="Privacy"/>
+          <Item Value="SubType"/>
+          <Item Value="Code"/>
+          <Item Value="Type"/>
+          <Item Value="PrivacyDesc"/>
+          <Item Value="SubTypeDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+     <methodAction id="createSearchListResult" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createSearchListResult" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.SupplyChainListCreationAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.createSearchListResult_AipdtRootAMDataControl_dataProvider_SupplyChainListCreationAM_createSearchListResult_result">
+      <NamedData NDName="levelType" NDType="java.lang.String"/>
+      <NamedData NDName="selctedCode" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="filterStoreVO" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterStoreVO"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.SupplyChainListCreationAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.filterStoreVO_AipdtRootAMDataControl_dataProvider_SupplyChainListCreationAM_filterStoreVO_result">
+      <NamedData NDName="regId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="onClickResetAction" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="onClickResetAction" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.SupplyChainListCreationAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.onClickResetAction_AipdtRootAMDataControl_dataProvider_SupplyChainListCreationAM_onClickResetAction_result"/>
+    <methodAction id="saveCreateList" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveCreateList"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.SupplyChainListCreationAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.saveCreateList_AipdtRootAMDataControl_dataProvider_SupplyChainListCreationAM_saveCreateList_result">
+      <NamedData NDName="selectedValues" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="validateListNameDuplicate" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="validateListNameDuplicate" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.SupplyChainListCreationAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.validateListNameDuplicate_AipdtRootAMDataControl_dataProvider_SupplyChainListCreationAM_validateListNameDuplicate_result"/>
+    <listOfValues IterBinding="SupplyListCreationProgVO1Iterator" StaticList="false" Uses="LOV_Department"
+                  id="Department"/>
+  </bindings>
+</pageDefinition>

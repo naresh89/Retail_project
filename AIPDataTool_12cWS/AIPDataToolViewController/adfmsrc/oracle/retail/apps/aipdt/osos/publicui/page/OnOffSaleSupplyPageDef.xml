@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="OnOffSaleSupplyPageDef"
+                Package="oracle.retail.apps.aipdt.osos.publicui.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="oracle.retail.apps.framework.uishell.pagetemplate.RetailUIShellMainAreaPageDef"
+          id="pageTemplateBinding" Refresh="ifNeeded"/>
+    <iterator Binds="Root.OnOffSaleSupplyAM.OnOffSaleSupplySearchFieldsVO1"
+              DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="OnOffSaleSupplySearchFieldsVO1Iterator"/>
+    <iterator Binds="OnOffSaleSupplyAM.OnOffSaleSupplyResultVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="OnOffSaleSupplyResultVOIterator"/>
+    <searchRegion id="OnOffSaleSupplyResultVOQuery" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="OnOffSaleSupplyResultVOIterator"/>
+    <iterator Binds="OnOffSaleSupplyAM.OnOffSaleSupplyItemHierPopupVO1" DataControl="AipdtRootAMDataControl"
+              RangeSize="25" id="OnOffSaleSupplyItemHierPopupVO1Iterator"/>
+    <iterator Binds="OnOffSaleSupplyAM.OnOffSaleSupplyStorePopupVO1" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="OnOffSaleSupplyStorePopupVO1Iterator"/>
+    <searchRegion id="OnOffSaleSupplyItemVOQuery" Binds="OnOffSaleSupplyItemHierPopupVO1Iterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <searchRegion id="OnOffSaleSupplyStoreVOQuery" Binds="OnOffSaleSupplyStorePopupVO1Iterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <listOfValues StaticList="false"
+                  IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator"
+                  Uses="LOV_Item" id="Item"/>                  
+    <list IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator"
+          StaticList="false" Uses="LOV_StoreList" id="StoreList"
+          DTSupportsMRU="false"/>
+    <list IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator"
+          StaticList="false" Uses="LOV_Department" id="Department"
+          DTSupportsMRU="true"/>
+    <list IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator"
+          StaticList="false" Uses="LOV_ItemList" id="ItemList1"
+          DTSupportsMRU="false"/>
+    <listOfValues IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator" StaticList="false" Uses="LOV_Class1"
+                  id="Class1"/>
+    <listOfValues IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator" StaticList="false" Uses="LOV_Store" id="Store"/>
+    <tree IterBinding="OnOffSaleSupplyResultVOIterator" id="OnOffSaleSupplyResultVO1">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplyResultVO"
+                      Name="OnOffSaleSupplyResultVO10">
+        <AttrNames>
+          <Item Value="AllStores"/>
+          <Item Value="ClassCode"/>
+          <Item Value="ClassName"/>
+          <Item Value="CommodityCode"/>
+          <Item Value="CommodityDesc"/>
+          <Item Value="DeptCode"/>
+          <Item Value="VpnCode"/>
+          <Item Value="VpnColorCode"/>
+          <Item Value="VpnColorName"/>
+          <Item Value="VpnDesc"/>
+          <Item Value="DeptName"/>
+          <Item Value="RegionCode"/>
+          <Item Value="RegionDesc"/>
+          <Item Value="StoreCode"/>
+          <Item Value="StoreDesc"/>
+          <Item Value="SubclassCode"/>
+          <Item Value="SubclassName"/>
+          <Item Value="SuppDesc"/>
+          <Item Value="SupplierCode"/>
+          <Item Value="Flag" Binds="Flag"/>
+          <Item Value="Id"/>
+          <Item Value="OffSaleDate"/>
+          <Item Value="OffSupplyDate"/>
+          <Item Value="OnSaleDate"/>
+          <Item Value="OnSupplyDate"/>
+          <Item Value="Check1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator" StaticList="false" Uses="LOV_Subclass" id="Subclass"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator" StaticList="false" Uses="LOV_Region" id="Region"
+          DTSupportsMRU="true" />
+    <listOfValues IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator" StaticList="false" Uses="LOV_Vpn" id="Vpn"/>
+    <listOfValues IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator" StaticList="false" Uses="LOV_Supplier"
+                  id="Supplier"/>
+    <listOfValues IterBinding="OnOffSaleSupplySearchFieldsVO1Iterator" StaticList="false" Uses="LOV_StyleColor"
+                  id="StyleColor"/>
+    <methodAction id="resetViewObject" RequiresUpdateModel="true" Action="invokeMethod" MethodName="resetViewObject"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.OnOffSaleSupplyAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.resetViewObject_AipdtRootAMDataControl_dataProvider_OnOffSaleSupplyAM_resetViewObject_result"/>
+    <methodAction id="filterSupplierLOVVO" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterSupplierLOVVO" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.OnOffSaleSupplyAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.filterSupplierLOVVO_AipdtRootAMDataControl_dataProvider_OnOffSaleSupplyAM_filterSupplierLOVVO_result">
+      <NamedData NDName="deptId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="filterStoreVO" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterStoreVO"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.OnOffSaleSupplyAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.filterStoreVO_AipdtRootAMDataControl_dataProvider_OnOffSaleSupplyAM_filterStoreVO_result">
+      <NamedData NDName="regId" NDType="java.lang.String"/>
+    </methodAction>
+    <button IterBinding="OnOffSaleSupplyResultVOIterator" id="Flag" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Flag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="OnOffSaleSupplyItemHierPopupVO1Iterator" id="OnOffSaleSupplyItemHierPopupVO1">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplyItemHierPopupVO"
+                      Name="OnOffSaleSupplyItemHierPopupVO10">
+        <AttrNames>
+          <Item Value="Classdesc"/>
+          <Item Value="Subclassdesc"/>
+          <Item Value="Vpndesc"/>
+          <Item Value="Vpncolordesc"/>
+          <Item Value="Skudesc"/>
+          <Item Value="CommodityId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="OnOffSaleSupplyStorePopupVO1Iterator" id="OnOffSaleSupplyStorePopupVO1">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplyStorePopupVO"
+                      Name="OnOffSaleSupplyStorePopupVO10">
+        <AttrNames>
+          <Item Value="StoreCode"/>
+          <Item Value="StoreName"/>
+          <Item Value="OnSaleDate"/>
+          <Item Value="OnSupplyDate"/>
+          <Item Value="OffSaleDate"/>
+          <Item Value="OffSupplyDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="oracle.retail.apps.aipdt.dt.model.appModule.DeploymentTypeAM">
+      <AppModuleConfig name="DeploymentTypeAMLocal" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel" ApplicationName="oracle.retail.apps.aipdt.dt.model.appModule.DeploymentTypeAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.dt.model.appModule.DeploymentTypeAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/aipdt_dbDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="DeploymentTypeAMShared" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel" ApplicationName="oracle.retail.apps.aipdt.dt.model.appModule.DeploymentTypeAM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.dt.model.appModule.DeploymentTypeAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/aipdt_dbDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

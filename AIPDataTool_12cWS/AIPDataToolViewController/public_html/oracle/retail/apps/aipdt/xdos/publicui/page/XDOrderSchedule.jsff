@@ -1,0 +1,1205 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:retail="/retailApps"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:RetailAppCustomComponent="/RetailAppCustomComponent">
+    <c:set var="aipdatatooluiBundle"
+           value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+    <retail:appsPanel id="ap1" contentsFacet="stretch" title="" saveAndCloseRendered="true" saveAndCloseVisible="true"
+                      saveRendered="true" saveVisible="true" cancelRendered="true" cancelVisible="true"
+                      saveActionListener="#{pageFlowScope.XDOrderScheduleBean.handleSave}"
+                      saveAndCloseDisabled="#{pageFlowScope.XDOrderScheduleBean.saveDisabled}"
+                      saveDisabled="#{pageFlowScope.XDOrderScheduleBean.saveDisabled}"
+                      saveAndCloseAction="#{pageFlowScope.XDOrderScheduleBean.handleSaveAndClose}"
+                      cancelAction="#{pageFlowScope.XDOrderScheduleBean.handleCancel}"
+                      binding="#{pageFlowScope.XDOrderScheduleBean.appsPanelBind}"
+                      cancelPartialSubmit="true">
+        <f:facet name="contents"/>
+        <f:facet name="contentsStretch">
+            <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="children">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="scroll">
+                        <af:panelGroupLayout id="pgl7" styleClass="AFStretchWidth" layout="vertical">
+                            <af:showDetailHeader text="#{aipdatatooluiBundle.SEARCH}" disclosed="true" id="sdh3"
+                                                 styleClass="AFStretchWidth">
+                                <af:spacer height="#{aipdatatooluiBundle.SPCR_BTWN_SEARCH_PANEL_BOXES_HEIGHT}" id="s6"/>
+                                <af:panelBox id="pb2" text="#{aipdatatooluiBundle.SETUP_TYPE}" showDisclosure="false">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        <af:spacer id="s1" width="10"/>
+                                        <af:spacer id="s3" width="30"/>
+                                        <af:panelLabelAndMessage id="pfl2">
+                                            <af:selectBooleanRadio value="#{pageFlowScope.XDOrderScheduleBean.isDefaultSelected}"
+                                                                   autoSubmit="true" group="SetupType"
+                                                                   text="#{aipdatatooluiBundle.DEFAULT}"
+                                                                   disabled="#{pageFlowScope.XDOrderScheduleBean.isDefaultDisable}"
+                                                                   shortDesc="#{aipdatatooluiBundle.DEFAULT}" id="sbc1"
+                                                                   simple="true"
+                                                                   binding="#{pageFlowScope.XDOrderScheduleBean.defaultRadioComp}"
+                                                                   valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onDefaultVCE}"/>
+                                            <af:spacer id="s5" width="30"/>
+                                            <af:selectBooleanRadio value="#{pageFlowScope.XDOrderScheduleBean.isExceptionSelected}"
+                                                                   autoSubmit="true" group="SetupType"
+                                                                   text="#{aipdatatooluiBundle.EXCEPTION}"
+                                                                   disabled="#{pageFlowScope.XDOrderScheduleBean.isExceptionDisable}"
+                                                                   shortDesc="#{aipdatatooluiBundle.EXCEPTION}"
+                                                                   id="sbc3" simple="true"
+                                                                   binding="#{pageFlowScope.XDOrderScheduleBean.exceptionRadioComp}"
+                                                                   valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onExceptionVCE}"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:panelGroupLayout>
+                                </af:panelBox>
+                                <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_PANEL_BOXES_WIDTH}" id="s10"/>
+                                <af:panelGroupLayout id="pgl3" layout="horizontal" styleClass="AFStretchWidth">
+                                    <af:panelBox text="#{aipdatatooluiBundle.PRODUCT_HIERARCHY}" id="pb3"
+                                                 showDisclosure="false" styleClass="AFStretchWidth">
+                                        <af:panelGroupLayout id="pgl4" layout="horizontal" valign="top">
+                                            <af:panelFormLayout id="pfl1" rows="4" maxColumns="1" fieldWidth="80"
+                                                                labelWidth="20">
+                                                <af:selectOneChoice value="#{bindings.Department.inputValue}"
+                                                                    shortDesc="#{aipdatatooluiBundle.DEPT_LABEL}"
+                                                                    id="soc1" autoSubmit="true"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    label="#{aipdatatooluiBundle.DEPT_LABEL}"
+                                                                    valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onDepartmentVCE}"
+                                                                    binding="#{pageFlowScope.XDOrderScheduleBean.departmentComp}">
+                                                    <f:selectItems value="#{bindings.Department.items}" id="si1"/>
+                                                </af:selectOneChoice>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                                         id="plam3">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="ClassCode"
+                                                                                                      AttributeDesc="ClassName"
+                                                                                                      FieldBinding="Class1"
+                                                                                                      listAttributeName="ClassId"
+                                                                                                      ShortDescText="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                                                                      IsDisabled="#{pageFlowScope.XDOrderScheduleBean.isClassDisable}"
+                                                                                                      id="smicb1"
+                                                                                                      binding="#{pageFlowScope.XDOrderScheduleBean.multiSelectBaseFieldsBean.classComp}"
+                                                                                                      valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onClassVCE}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                                         id="plam2">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="SubclassCode"
+                                                                                                      AttributeDesc="SubclassDescription"
+                                                                                                      FieldBinding="Subclass"
+                                                                                                      listAttributeName="SubclassId"
+                                                                                                      ShortDescText="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                                                                      IsDisabled="#{pageFlowScope.XDOrderScheduleBean.isSubClassDisable}"
+                                                                                                      id="smicb2"
+                                                                                                      binding="#{pageFlowScope.XDOrderScheduleBean.multiSelectBaseFieldsBean.subClassComp}"
+                                                                                                      valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onSubClassVCE}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:selectOneChoice value="#{bindings.ItemList.inputValue}"
+                                                                    shortDesc="#{aipdatatooluiBundle.ITEM_LIST_LABEL}"
+                                                                    id="soc2"
+                                                                    label="#{aipdatatooluiBundle.ITEM_LIST_LABEL}"
+                                                                    disabled="#{pageFlowScope.XDOrderScheduleBean.isItemListDisable}"
+                                                                    autoSubmit="true"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    binding="#{pageFlowScope.XDOrderScheduleBean.itemListComp}"
+                                                                    valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onItemListVCE}">
+                                                    <f:selectItems value="#{bindings.ItemList.items}" id="si2"/>
+                                                </af:selectOneChoice>
+                                            </af:panelFormLayout>
+                                            <af:spacer id="s2" width="60"/>
+                                            <af:panelFormLayout id="pfl3" rows="4" maxColumns="1" fieldWidth="80"
+                                                                labelWidth="20">
+                                                <af:inputListOfValues id="supplier1Id"
+                                                                      popupTitle="Search and Select: #{bindings.Supplier.hints.label}"
+                                                                      value="#{bindings.Supplier.inputValue}"
+                                                                      label="#{aipdatatooluiBundle.ORD_SUPP_LABEL}"
+                                                                      model="#{bindings.Supplier.listOfValuesModel}"
+                                                                      disabled="#{pageFlowScope.XDOrderScheduleBean.isSupplierDisable}"
+                                                                      contentStyle="width:150px;" autoSubmit="true"
+                                                                      partialTriggers="soc1"
+                                                                      columns="#{bindings.Supplier.hints.displayWidth}"
+                                                                      shortDesc="#{aipdatatooluiBundle.ORD_SUPP_LABEL}"
+                                                                      valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onSupplierVCE}"
+                                                                      binding="#{pageFlowScope.XDOrderScheduleBean.supplierComp}">
+                                                    <f:validator binding="#{bindings.Supplier.validator}"/>
+                                                </af:inputListOfValues>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                         id="plam6">
+                                                    <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleCode"
+                                                                                                           AttributeDesc="StyleDesc"
+                                                                                                           AttributeListIdName="StyleId"
+                                                                                                           AttrMasterBinding="Department"
+                                                                                                           AttrMasterCode="DepartmentCode"
+                                                                                                           AttrMasterDesc="DepartmentName"
+                                                                                                           FieldBinding="#{bindings.Vpn}"
+                                                                                                           AttrMasterListAttrName="DepartmentId"
+                                                                                                           id="msilov1"
+                                                                                                           inputSize="22"
+                                                                                                           ToolTip="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                           InputDisabled="#{pageFlowScope.XDOrderScheduleBean.isVPNDisable}"
+                                                                                                           ChangeMethodName="onVpnVCE"
+                                                                                                           ManagedBean="#{pageFlowScope.XDOrderScheduleBean}"
+                                                                                                           binding="#{pageFlowScope.XDOrderScheduleBean.multiSelectBaseFieldsBean.vpnComp}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                         id="plam4">
+                                                    <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleColorCode"
+                                                                                                           AttributeDesc="StyleColorDesc"
+                                                                                                           AttributeListIdName="StyleColorId"
+                                                                                                           AttrMasterBinding="Department"
+                                                                                                           AttrMasterCode="DepartmentCode"
+                                                                                                           AttrMasterDesc="DepartmentName"
+                                                                                                           AttrMasterListAttrName="DepartmentId"
+                                                                                                           FieldBinding="#{bindings.StyleColor}"
+                                                                                                           id="msilov3"
+                                                                                                           ToolTip="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                           inputSize="22"
+                                                                                                           InputDisabled="#{pageFlowScope.XDOrderScheduleBean.isVpnColourDisable}"
+                                                                                                           ChangeMethodName="onVpnColourVCE"
+                                                                                                           ManagedBean="#{pageFlowScope.XDOrderScheduleBean}"
+                                                                                                           binding="#{pageFlowScope.XDOrderScheduleBean.multiSelectBaseFieldsBean.styleColourComp}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                         id="plam5">
+                                                    <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="CommodityCode"
+                                                                                                           AttributeDesc="CommodityName"
+                                                                                                           AttributeListIdName="CommodityId"
+                                                                                                           AttrMasterBinding="Department"
+                                                                                                           AttrMasterCode="DepartmentCode"
+                                                                                                           AttrMasterDesc="DepartmentName"
+                                                                                                           AttrMasterListAttrName="DepartmentId"
+                                                                                                           FieldBinding="#{bindings.Item}"
+                                                                                                           id="msilov2"
+                                                                                                           inputSize="22"
+                                                                                                           ToolTip="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                           InputDisabled="#{pageFlowScope.XDOrderScheduleBean.isItemDisable}"
+                                                                                                           ChangeMethodName="onSkuVCE"
+                                                                                                           ManagedBean="#{pageFlowScope.XDOrderScheduleBean}"
+                                                                                                           binding="#{pageFlowScope.XDOrderScheduleBean.multiSelectBaseFieldsBean.itemComp}"/>
+                                                </af:panelLabelAndMessage>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelBox>
+                                    <af:spacer id="s8" width="10"/>
+                                    <af:panelBox text="#{aipdatatooluiBundle.SOURCE}" id="pb4" showDisclosure="false"
+                                                 styleClass="AFStretchWidth">
+                                        <af:panelGroupLayout halign="center" id="pgl10" valign="middle">
+                                            <af:panelFormLayout id="pfl6" labelAlignment="start" maxColumns="1">
+                                                <af:selectOneChoice value="#{bindings.Warehouse.inputValue}"
+                                                                    label="#{bindings.Warehouse.label}"
+                                                                    required="#{bindings.Warehouse.hints.mandatory}"
+                                                                    shortDesc="#{bindings.Warehouse.hints.tooltip}"
+                                                                    id="soc6" autoSubmit="true"
+                                                                    disabled="#{pageFlowScope.XDOrderScheduleBean.isWarehouseDisable}"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onWarehouseVCE}"
+                                                                    binding="#{pageFlowScope.XDOrderScheduleBean.warehouseComp}">
+                                                    <f:selectItems value="#{bindings.Warehouse.items}" id="si5"/>
+                                                    <f:validator binding="#{bindings.Warehouse.validator}"/>
+                                                </af:selectOneChoice>
+                                                <af:spacer id="s9" height="80"/>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelBox>
+                                    <af:spacer id="s13" width="10"/>
+                                    <af:panelBox text="#{aipdatatooluiBundle.DESTINATION}" id="pb1"
+                                                 showDisclosure="false" styleClass="AFStretchWidth">
+                                        <af:panelGroupLayout halign="center" id="pgl6" valign="middle">
+                                            <af:panelFormLayout id="pfl5" labelAlignment="start" maxColumns="1">
+                                                <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                                                                    label="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                    required="#{bindings.Region.hints.mandatory}"
+                                                                    shortDesc="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                    disabled="#{pageFlowScope.XDOrderScheduleBean.isRegionDisable}"
+                                                                    id="soc5" autoSubmit="true"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    binding="#{pageFlowScope.XDOrderScheduleBean.regionComp}"
+                                                                    valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onRegionVCE}">
+                                                    <f:selectItems value="#{bindings.Region.items}" id="si4"/>
+                                                    <f:validator binding="#{bindings.Region.validator}"/>
+                                                </af:selectOneChoice>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                                         id="plam8">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                                                      AttributeDesc="StoreName"
+                                                                                                      FieldBinding="Store"
+                                                                                                      listAttributeName="StoreId"
+                                                                                                      selectAllVisible="false"
+                                                                                                      ShortDescText="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                                                                      IsDisabled="#{pageFlowScope.XDOrderScheduleBean.isStoreDisable}"
+                                                                                                      binding="#{pageFlowScope.XDOrderScheduleBean.multiSelectBaseFieldsBean.storeComp}"
+                                                                                                      id="smicb3"
+                                                                                                      valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onStoreVCE}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:selectOneChoice value="#{bindings.StoreList.inputValue}"
+                                                                    label="#{aipdatatooluiBundle.STORE_LIST_LABEL}"
+                                                                    shortDesc="#{aipdatatooluiBundle.STORE_LIST_LABEL}"
+                                                                    id="soc4" partialTriggers="soc1"
+                                                                    disabled="#{pageFlowScope.XDOrderScheduleBean.isStoreListDisable}"
+                                                                    autoSubmit="true"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    binding="#{pageFlowScope.XDOrderScheduleBean.storeListComp}"
+                                                                    valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onStoreListVCE}">
+                                                    <f:selectItems value="#{bindings.StoreList.items}" id="si3"/>
+                                                </af:selectOneChoice>
+                                                <af:spacer id="s14" height="30"/>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelBox>
+                                </af:panelGroupLayout>
+                                <hr style="margin: 0; height: 0.5px; background: rgb(226,231,236); border: 2px;"
+                                    class="AFStretchWidth"/>
+                                <!--<af:separator id="s7" styleClass="AFStretchWidth" inlineStyle=""/>-->
+                                <af:spacer id="s11"
+                                           height="#{aipdatatooluiBundle.SPCR_BTWN_PANEL_BOXES_SEARCH_RESET_BTN_HEIGHT}"/>
+                                <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal">
+                                    <af:button text="#{aipdatatooluiBundle.SEARCH}" id="cb1" disabled="true"
+                                               partialSubmit="true"
+                                               binding="#{pageFlowScope.XDOrderScheduleBean.searchBtn}"
+                                               actionListener="#{pageFlowScope.XDOrderScheduleBean.handleSearch}">
+                                        <af:target execute="@this"/>
+                                    </af:button>
+                                    <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SEARCH_RESET_BTN_WIDTH}"
+                                               id="s12"/>
+                                    <af:spacer width="10" height="10" id="s4"/>
+                                    <af:button text="#{aipdatatooluiBundle.RESET}" id="cb2"
+                                               actionListener="#{pageFlowScope.XDOrderScheduleBean.handleReset}">
+                                        <af:target execute="@this" render="pgl5"/>
+                                    </af:button>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                            <af:showDetailHeader text="#{aipdatatooluiBundle.RESULTS}" disclosed="true" id="sdh2">
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                                <af:panelGroupLayout id="pgl5"
+                                                     binding="#{pageFlowScope.XDOrderScheduleBean.resultsContainer}">
+                                    <retail:appsTable id="at1" styleClass="AFStretchWidth" exportEnabled="false"
+                                                      exportFilename="#{pageFlowScope.XDOrderScheduleBean.exportFileName}"
+                                                      tableId="t1" viewEnabled="false"
+                                                      rendered="#{bindings.XDOrderScheduleResultsVO1Iterator.estimatedRowCount > 0}">
+                                        <f:facet name="additionalToolbarButtons">
+                                            <af:panelGroupLayout id="pgl47" layout="horizontal">
+                                                <af:menuBar id="mb1">
+                                                    <af:menu text="#{aipdatatooluiBundle.EXPORT_TO_EXCEL}" id="m2"
+                                                             icon="/oracle/retail/apps/aipdt/images/E2E.jpg">
+                                                        <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_ALL_ROWS}"
+                                                                            id="cmi1">
+                                                            <af:setPropertyListener from="true"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                            <af:exportCollectionActionListener exportedId="t1"
+                                                                                               type="excelHTML"
+                                                                                               filename="#{pageFlowScope.XDOrderScheduleBean.exportFileName}"/>
+                                                            <af:setPropertyListener from="false"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                        </af:commandMenuItem>
+                                                        <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_SELECTED_ROWS}"
+                                                                            id="cmi2">
+                                                            <af:setPropertyListener from="true"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                            <af:exportCollectionActionListener exportedId="t1"
+                                                                                               type="excelHTML"
+                                                                                               exportedRows="selected"
+                                                                                               filename="#{pageFlowScope.XDOrderScheduleBean.exportFileName}"
+                                                                                               filterMethod="#{pageFlowScope.XDOrderScheduleBean.exportSelectedRows}"/>
+                                                            <af:setPropertyListener from="false"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                        </af:commandMenuItem>
+                                                    </af:menu>
+                                                </af:menuBar>
+                                                <af:button text="#{aipdatatooluiBundle.DOW_SET_ALL}" id="b9"
+                                                           actionListener="#{pageFlowScope.XDOrderScheduleBean.handleDOWSetAllAction}"
+                                                           partialSubmit="true">
+                                                    <af:target execute="@this"/>
+                                                </af:button>
+                                            </af:panelGroupLayout>
+                                        </f:facet>
+                                        <f:facet name="additionalActionItems">
+                                            <af:group id="g1">
+                                                <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE}"
+                                                                    disabled="#{pageFlowScope.XDOrderScheduleBean.saveDisabled}"
+                                                                    id="cmi3" partialTriggers=":::cb1"
+                                                                    actionListener="#{pageFlowScope.XDOrderScheduleBean.handleSave}"/>
+                                                <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE_AND_CLOSE}"
+                                                                    id="cmi4" partialTriggers=":::cb1"
+                                                                    disabled="#{pageFlowScope.XDOrderScheduleBean.saveDisabled}"
+                                                                    action="#{pageFlowScope.XDOrderScheduleBean.handleSaveAndClose}"/>
+                                            </af:group>
+                                        </f:facet>
+                                        <f:facet name="table">
+                                            <af:table value="#{bindings.XDOrderScheduleResultsVO1.collectionModel}"
+                                                      var="row" rows="#{bindings.XDOrderScheduleResultsVO1.rangeSize}"
+                                                      emptyText="#{bindings.XDOrderScheduleResultsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.XDOrderScheduleResultsVO1.collectionModel.selectedRow}"
+                                                      selectionListener = "#{bindings.XDOrderScheduleResultsVO1.collectionModel.makeCurrent}"
+                                                      fetchSize="#{bindings.XDOrderScheduleResultsVO1.rangeSize}"
+                                                      filterModel="#{bindings.XDOrderScheduleResultsVO1Query.queryDescriptor}"
+                                                      filterVisible="false" varStatus="vs" id="t1"
+                                                      rowSelection="single" styleClass="AFStretchWidth"
+                                                      binding="#{pageFlowScope.XDOrderScheduleBean.resultsTableComp}"
+                                                      queryListener="#{pageFlowScope.XDOrderScheduleBean.processQuery}">
+                                                <af:column headerText="#{bindings.XDOrderScheduleResultsVO1.hints.UpdateInd.label}"
+                                                           id="c29" width="50%" align="center"
+                                                           rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                    <af:selectBooleanCheckbox value="#{row.bindings.UpdateInd.inputValue}"
+                                                                              label="#{row.bindings.UpdateInd.label}"
+                                                                              shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.UpdateInd.tooltip}"
+                                                                              id="sbc2" autoSubmit="true"
+                                                                              immediate="true"/>
+                                                    <f:facet name="header">
+                                                        <af:selectBooleanCheckbox id="checkBoxAllId" label=""
+                                                                                  autoSubmit="true" immediate="true"
+                                                                                  binding="#{pageFlowScope.XDOrderScheduleBean.checkBoxAllComp}"
+                                                                                  valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onCheckBoxAllValueChange}"/>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.DeptCode.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.DeptCode.label}"
+                                                           id="c1">
+                                                    <af:link text="#{row.DeptCode} - #{row.DeptName}" id="l3" partialSubmit="true"
+                                                             actionListener="#{pageFlowScope.XDOrderScheduleBean.onClickViewItemPopup}">
+                                                        
+                                                    </af:link>
+                                                    <!--<af:outputText value="#{row.DeptCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.DeptCode.tooltip}"
+                                                                   id="ot3"/>-->
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.DeptName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.DeptName.label}"
+                                                           id="c2">
+                                                    <af:outputText value="#{row.DeptName}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.DeptName.tooltip}"
+                                                                   id="ot4"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.ClassCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.ClassCode.label}"
+                                                           id="c3">
+                                                    <af:outputText value="#{row.ClassCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.ClassCode.tooltip}"
+                                                                   id="ot5"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.ClassName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.ClassName.label}"
+                                                           id="c4">
+                                                    <af:outputText value="#{row.ClassName}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.ClassName.tooltip}"
+                                                                   id="ot6"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.SubclassCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.SubclassCode.label}"
+                                                           id="c5">
+                                                    <af:outputText value="#{row.SubclassCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.SubclassCode.tooltip}"
+                                                                   id="ot7"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.SubclassName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.SubclassName.label}"
+                                                           id="c6">
+                                                    <af:outputText value="#{row.SubclassName}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.SubclassName.tooltip}"
+                                                                   id="ot8"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.VpnCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.VpnCode.label}"
+                                                           id="c7">
+                                                    <af:outputText value="#{row.VpnCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.VpnCode.tooltip}"
+                                                                   id="ot9"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.VpnDesc.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.VpnDesc.label}"
+                                                           id="c8">
+                                                    <af:outputText value="#{row.VpnDesc}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.VpnDesc.tooltip}"
+                                                                   id="ot10"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.VpnColorCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.VpnColorCode.label}"
+                                                           id="c9">
+                                                    <af:outputText value="#{row.VpnColorCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.VpnColorCode.tooltip}"
+                                                                   id="ot11"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.VpnColorName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.VpnColorName.label}"
+                                                           id="c10">
+                                                    <af:outputText value="#{row.VpnColorName}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.VpnColorName.tooltip}"
+                                                                   id="ot12"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.CommodityCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.CommodityCode.label}"
+                                                           id="c11">
+                                                    <af:outputText value="#{row.CommodityCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.CommodityCode.tooltip}"
+                                                                   id="ot13"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.CommodityDesc.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.CommodityDesc.label}"
+                                                           id="c12">
+                                                    <af:outputText value="#{row.CommodityDesc}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.CommodityDesc.tooltip}"
+                                                                   id="ot14"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.SupplierCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.SupplierCode.label}"
+                                                           id="c13">
+                                                    <af:outputText value="#{row.SupplierCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.SupplierCode.tooltip}"
+                                                                   id="ot16"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.SuppDesc.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.SuppDesc.label}"
+                                                           id="c14">
+                                                    <af:outputText value="#{row.SuppDesc}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.SuppDesc.tooltip}"
+                                                                   id="ot17"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.XdWarehouseCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.XdWarehouseCode.label}"
+                                                           id="c15">
+                                                    <af:outputText value="#{row.XdWarehouseCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.XdWarehouseCode.tooltip}"
+                                                                   id="ot18"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.XdWarehouseName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.XdWarehouseName.label}"
+                                                           id="c16">
+                                                    <af:outputText value="#{row.XdWarehouseName}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.XdWarehouseName.tooltip}"
+                                                                   id="ot20"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.StoreCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.StoreCode.label}"
+                                                           id="c17">
+                                                    <af:outputText value="#{row.StoreCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.StoreCode.tooltip}"
+                                                                   id="ot29"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.StoreDesc.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.StoreDesc.label}"
+                                                           id="c18">
+                                                    <af:outputText value="#{row.StoreDesc}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.StoreDesc.tooltip}"
+                                                                   id="ot30"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.label}"
+                                                           id="c19">
+                                                    <!--<af:inputText value="#{row.bindings.Frequency.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.displayWidth}"
+                                                                  maximumLength="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.precision}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.tooltip}"
+                                                                  id="it3">
+                                                        <f:validator binding="#{row.bindings.Frequency.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.format}"/>
+                                                    </af:inputText> -->
+                                                    <af:selectOneChoice value="#{row.bindings.Frequency.inputValue}"
+                                                                        label="#{row.bindings.Frequency.label}"
+                                                                        required="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.mandatory}"
+                                                                        shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.Frequency.tooltip}"
+                                                                        id="it3" readOnly="false" autoSubmit="true">
+                                                        <f:selectItems value="#{row.bindings.Frequency.items}"
+                                                                       id="si6"/>
+                                                        <f:validator binding="#{row.bindings.Frequency.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column  headerText="Lead Time"
+                                                           id="c49" rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                    <af:link text="Set Lead Time" id="l1"
+                                                             actionListener="#{pageFlowScope.XDOrderScheduleBean.onClickSetDowPopup}"
+                                                             partialSubmit="true">
+                                                    </af:link>
+                                                    <!--<af:outputText value="#{row.DeptCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.DeptCode.tooltip}"
+                                                                   id="ot3"/>-->
+                                                </af:column><!--
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.SunLeadTime.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.SunLeadTime.label}"
+                                                           id="c20" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                                    <af:inputText value="#{row.bindings.SunLeadTime.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.SunLeadTime.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.SunLeadTime.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.SunLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.XDOrderScheduleResultsVO1.hints.SunLeadTime.precision}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.SunLeadTime.tooltip}"
+                                                                  id="it4">
+                                                        <f:validator binding="#{row.bindings.SunLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.XDOrderScheduleResultsVO1.hints.SunLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.MonLeadTime.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.MonLeadTime.label}"
+                                                           id="c21" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                                    <af:inputText value="#{row.bindings.MonLeadTime.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.MonLeadTime.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.MonLeadTime.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.MonLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.XDOrderScheduleResultsVO1.hints.MonLeadTime.precision}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.MonLeadTime.tooltip}"
+                                                                  id="it5">
+                                                        <f:validator binding="#{row.bindings.MonLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.XDOrderScheduleResultsVO1.hints.MonLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.TueLeadTime.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.TueLeadTime.label}"
+                                                           id="c22" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                                    <af:inputText value="#{row.bindings.TueLeadTime.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.TueLeadTime.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.TueLeadTime.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.TueLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.XDOrderScheduleResultsVO1.hints.TueLeadTime.precision}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.TueLeadTime.tooltip}"
+                                                                  id="it6">
+                                                        <f:validator binding="#{row.bindings.TueLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.XDOrderScheduleResultsVO1.hints.TueLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.WedLeadTime.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.WedLeadTime.label}"
+                                                           id="c23" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                                    <af:inputText value="#{row.bindings.WedLeadTime.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.WedLeadTime.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.WedLeadTime.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.WedLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.XDOrderScheduleResultsVO1.hints.WedLeadTime.precision}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.WedLeadTime.tooltip}"
+                                                                  id="it7">
+                                                        <f:validator binding="#{row.bindings.WedLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.XDOrderScheduleResultsVO1.hints.WedLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.ThuLeadTime.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.ThuLeadTime.label}"
+                                                           id="c24" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                                    <af:inputText value="#{row.bindings.ThuLeadTime.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.ThuLeadTime.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.ThuLeadTime.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.ThuLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.XDOrderScheduleResultsVO1.hints.ThuLeadTime.precision}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.ThuLeadTime.tooltip}"
+                                                                  id="it8">
+                                                        <f:validator binding="#{row.bindings.ThuLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.XDOrderScheduleResultsVO1.hints.ThuLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.FriLeadTime.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.FriLeadTime.label}"
+                                                           id="c25" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                                    <af:inputText value="#{row.bindings.FriLeadTime.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.FriLeadTime.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.FriLeadTime.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.FriLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.XDOrderScheduleResultsVO1.hints.FriLeadTime.precision}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.FriLeadTime.tooltip}"
+                                                                  id="it9">
+                                                        <f:validator binding="#{row.bindings.FriLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.XDOrderScheduleResultsVO1.hints.FriLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.SatLeadTime.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.SatLeadTime.label}"
+                                                           id="c26" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                                    <af:inputText value="#{row.bindings.SatLeadTime.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.SatLeadTime.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.SatLeadTime.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.SatLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.XDOrderScheduleResultsVO1.hints.SatLeadTime.precision}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.SatLeadTime.tooltip}"
+                                                                  id="it10">
+                                                        <f:validator binding="#{row.bindings.SatLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.XDOrderScheduleResultsVO1.hints.SatLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column> -->
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.label}"
+                                                           width="155%" align="center" id="c27">
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.XDOrderScheduleResultsVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.StartDate.value}"
+                                                                      minValue="#{pageFlowScope.InputDateBean.minStartDate}"
+                                                                      maxValue="#{pageFlowScope.InputDateBean.sysHighDate}"
+                                                                      id="id1">
+                                                            <!--<af:convertDateTime pattern="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.format}"/>-->
+                                                            <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                                type="date"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.displayWidth}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.tooltip}"
+                                                                  minValue="#{pageFlowScope.InputDateBean.minStartDate}"
+                                                                  maxValue="#{pageFlowScope.InputDateBean.sysHighDate}"
+                                                                  autoSubmit="true" id="id2">
+                                                        <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                                        <!--<af:convertDateTime pattern="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.format}"/>-->
+                                                        <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                            type="date"/>
+                                                    </af:inputDate>
+                                                    <f:facet name="header">
+                                                        <af:group id="g3">
+                                                            <af:panelGroupLayout id="pgl18" layout="vertical">
+                                                                <af:outputText value="#{bindings.XDOrderScheduleResultsVO1.hints.StartDate.label}"
+                                                                               id="ot55"
+                                                                               inlineStyle="text-align:center;"/>
+                                                                <af:separator id="s15"/>
+                                                                <af:panelGroupLayout id="pgl17" layout="horizontal">
+                                                                    <af:inputDate id="setAllStartDateId" columns="8"
+                                                                                  autoSubmit="true"
+                                                                                  minValue="#{pageFlowScope.InputDateBean.minStartDate}"
+                                                                                  maxValue="#{pageFlowScope.InputDateBean.sysHighDate}"
+                                                                                  valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onSetAllValueChange}"
+                                                                                  binding="#{pageFlowScope.XDOrderScheduleBean.setAllStartDateComp}">
+                                                                        <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                                            type="date"/>
+                                                                    </af:inputDate>
+                                                                    <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                               id="startDateSetAllButton"
+                                                                               rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                               actionListener="#{pageFlowScope.XDOrderScheduleBean.handleSetAll}">
+                                                                        <af:target execute="@this" render="@this"/>
+                                                                    </af:button>
+                                                                </af:panelGroupLayout>
+                                                            </af:panelGroupLayout>
+                                                        </af:group>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.name}"
+                                                           filterable="false" sortable="false"
+                                                           headerText="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.label}"
+                                                           width="155%" align="center" id="c28">
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.XDOrderScheduleResultsVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.EndDate.value}"
+                                                                      minValue="#{pageFlowScope.InputDateBean.minEndDate}"
+                                                                      maxValue="#{pageFlowScope.InputDateBean.sysHighDate}"
+                                                                      id="id3">
+                                                            <!--<af:convertDateTime pattern="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.format}"/>-->
+                                                            <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                                type="date"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                                                  label="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.label}"
+                                                                  required="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.mandatory}"
+                                                                  columns="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.displayWidth}"
+                                                                  shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.tooltip}"
+                                                                  minValue="#{row.bindings.StartDate.inputValue}"
+                                                                  maxValue="#{pageFlowScope.InputDateBean.sysHighDate}"
+                                                                  autoSubmit="true" id="id4" partialTriggers="id2">
+                                                        <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                                        <!--<af:convertDateTime pattern="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.format}"/>-->
+                                                        <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                            type="date"/>
+                                                    </af:inputDate>
+                                                    <f:facet name="header">
+                                                        <af:group id="g2">
+                                                            <af:panelGroupLayout id="pgl12" layout="vertical">
+                                                                <af:outputText value="#{bindings.XDOrderScheduleResultsVO1.hints.EndDate.label}"
+                                                                               id="ot23"
+                                                                               inlineStyle="text-align:center;"/>
+                                                                <af:separator id="s16"/>
+                                                                <af:panelGroupLayout id="pgl19" layout="horizontal">
+                                                                    <af:inputDate id="setAllEndDateId" columns="8"
+                                                                                  autoSubmit="true"
+                                                                                  minValue="#{row.bindings.StartDate.inputValue}"
+                                                                                  maxValue="#{pageFlowScope.InputDateBean.sysHighDate}"
+                                                                                  valueChangeListener="#{pageFlowScope.XDOrderScheduleBean.onSetAllValueChange}"
+                                                                                  binding="#{pageFlowScope.XDOrderScheduleBean.setAllEndDateComp}">
+                                                                        <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                                            type="date"/>
+                                                                    </af:inputDate>
+                                                                    <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                               id="endDateSetAllButton"
+                                                                               rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                               actionListener="#{pageFlowScope.XDOrderScheduleBean.handleSetAll}">
+                                                                        <af:target execute="@this" render="@this"/>
+                                                                    </af:button>
+                                                                </af:panelGroupLayout>
+                                                            </af:panelGroupLayout>
+                                                        </af:group>
+                                                    </f:facet>
+                                                </af:column>
+                                            </af:table>
+                                        </f:facet>
+                                        <f:facet name="popup"/>
+                                        <f:facet name="appsTableSecondaryToolbar"/>
+                                        <f:facet name="appsTableStatusbar"/>
+                                        <f:facet name="appsTableViewMenu"/>
+                                        <f:facet name="appsTableAfterToolbar"/>
+                                    </retail:appsTable>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+            </af:panelStretchLayout>
+        </f:facet>
+        <f:facet name="popup">
+            <af:panelGroupLayout id="pgl9">
+                <af:popup id="itemHierarchyPopup" contentDelivery="lazy"
+                          binding="#{pageFlowScope.XDOrderScheduleBean.itemHierarchyPopup}">
+                    <af:dialog id="d1" title="#{aipdatatooluiBundle.COMMODITY_POPUP_TITLE}" type="none" resize="on"
+                               contentHeight="400" contentWidth="635">
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s47"/>
+                        <af:panelGroupLayout id="pc1">
+                            <retail:appsTable id="at3" exportEnabled="false" viewEnabled="false">
+                                <f:facet name="additionalToolbarButtons"/>
+                                <f:facet name="additionalActionItems"/>
+                                <f:facet name="table">
+                                    <af:table value="#{bindings.XDOrderScheduleItemHierPopupVO1.collectionModel}"
+                                              var="row" rows="#{bindings.XDOrderScheduleItemHierPopupVO1.rangeSize}"
+                                              emptyText="#{bindings.XDOrderScheduleItemHierPopupVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" styleClass="AFStretchWidth"
+                                              fetchSize="#{bindings.XDOrderScheduleItemHierPopupVO1.rangeSize}"
+                                              filterModel="#{bindings.XDOrderScheduleItemHierPopupVO1Query.queryDescriptor}"
+                                              queryListener="#{bindings.XDOrderScheduleItemHierPopupVO1Query.processQuery}"
+                                              filterVisible="true" varStatus="vs" id="t2">
+                                        <af:column sortProperty="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnCode.label}"
+                                                   id="c20">
+                                            <af:outputText value="#{row.VpnCode}"
+                                                           shortDesc="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnCode.tooltip}"
+                                                           id="ot24"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnName.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnName.label}"
+                                                   id="c30">
+                                            <af:outputText value="#{row.VpnName}"
+                                                           shortDesc="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnName.tooltip}"
+                                                           id="ot25"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnColorCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnColorCode.label}"
+                                                   id="c31">
+                                            <af:outputText value="#{row.VpnColorCode}"
+                                                           shortDesc="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnColorCode.tooltip}"
+                                                           id="ot15"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnColorName.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnColorName.label}"
+                                                   id="c32">
+                                            <af:outputText value="#{row.VpnColorName}"
+                                                           shortDesc="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.VpnColorName.tooltip}"
+                                                           id="ot19"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.CommodityCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.CommodityCode.label}"
+                                                   id="c33">
+                                            <af:outputText value="#{row.CommodityCode}"
+                                                           shortDesc="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.CommodityCode.tooltip}"
+                                                           id="ot21"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.CommodityName.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.CommodityName.label}"
+                                                   id="c34">
+                                            <af:outputText value="#{row.CommodityName}"
+                                                           shortDesc="#{bindings.XDOrderScheduleItemHierPopupVO1.hints.CommodityName.tooltip}"
+                                                           id="ot22"/>
+                                        </af:column>
+                                    </af:table>
+                                </f:facet>
+                                <f:facet name="popup"/>
+                                <f:facet name="appsTableSecondaryToolbar"/>
+                                <f:facet name="appsTableStatusbar"/>
+                                <f:facet name="appsTableViewMenu"/>
+                                <f:facet name="appsTableAfterToolbar"/>
+                            </retail:appsTable>
+                        </af:panelGroupLayout>
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s25"/>
+                        <af:panelGroupLayout id="pgl11" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatooluiBundle.CLOSE}" id="b13"
+                                       actionListener="#{pageFlowScope.XDOrderScheduleBean.itemHierCloseListener}"/>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+                <af:popup id="dowpp" contentDelivery="lazyUncached"
+                          binding="#{pageFlowScope.XDOrderScheduleBean.timePopup}">
+                    <af:dialog id="d2" title="#{aipdatatooluiBundle.DOW_SET_ALL}" type="none" contentHeight="25"
+                               contentWidth="310">
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s7"/>
+                        <af:panelGroupLayout id="pgl48">
+                            <af:table value="#{bindings.XDOrderScheduleTimeSetAllVO1.collectionModel}" var="row"
+                                      rows="#{bindings.XDOrderScheduleTimeSetAllVO1.rangeSize}"
+                                      emptyText="#{bindings.XDOrderScheduleTimeSetAllVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0" styleClass="AFStretchWidth" autoHeightRows="6"
+                                      fetchSize="#{bindings.XDOrderScheduleTimeSetAllVO1.rangeSize}" id="t4">
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.label}"
+                                           id="c35" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Sunday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.tooltip}"
+                                                  id="it11">
+                                        <f:validator binding="#{row.bindings.Sunday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.label}"
+                                           id="c36" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Monday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.tooltip}"
+                                                  id="it12">
+                                        <f:validator binding="#{row.bindings.Monday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.label}"
+                                           id="c37" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Tuesday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.tooltip}"
+                                                  id="it13">
+                                        <f:validator binding="#{row.bindings.Tuesday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.label}"
+                                           id="c38" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Wednesday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.tooltip}"
+                                                  id="it14">
+                                        <f:validator binding="#{row.bindings.Wednesday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.label}"
+                                           id="c39" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Thursday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.tooltip}"
+                                                  id="it15">
+                                        <f:validator binding="#{row.bindings.Thursday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.label}"
+                                           id="c40" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Friday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.tooltip}"
+                                                  id="it16">
+                                        <f:validator binding="#{row.bindings.Friday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.label}"
+                                           id="c41" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Saturday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.tooltip}"
+                                                  id="it17">
+                                        <f:validator binding="#{row.bindings.Saturday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                            </af:table>
+                        </af:panelGroupLayout>
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s50"/>
+                        <af:panelGroupLayout id="pgl49" layout="horizontal" halign="center">
+                            <af:button text="#{aipdatatooluiBundle.SET_ALL}" id="b12" partialSubmit="true"
+                                       actionListener="#{pageFlowScope.XDOrderScheduleBean.dowSetAllListener}"/>
+                            <af:spacer width="50" id="s48"/>
+                            <af:button text="#{aipdatatooluiBundle.CLOSE}" id="b10" partialSubmit="true"
+                                       actionListener="#{pageFlowScope.XDOrderScheduleBean.dowCloseListener}"/>
+                        </af:panelGroupLayout>
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s49"/>
+                    </af:dialog>
+                </af:popup>                
+                <af:popup id="dowSet" contentDelivery="lazyUncached"
+                          binding="#{pageFlowScope.XDOrderScheduleBean.dowSetPopup}">
+                    <af:dialog id="d3" title="#{aipdatatooluiBundle.RELEASE_LEAD_TIME}" type="none" modal="true" contentHeight="100"
+                               contentWidth="310" stretchChildren="first">
+                         <af:panelGroupLayout id="pgl32">
+                         <f:facet name="separator">
+                         <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s26"/>
+                                   </f:facet>
+                        <af:panelGroupLayout id="pgl20">
+                        <af:table value="#{bindings.XDOrderScheduleTimeSetAllVO1.collectionModel}" var="row"
+                                      rows="#{bindings.XDOrderScheduleTimeSetAllVO1.rangeSize}"
+                                      emptyText="#{bindings.XDOrderScheduleTimeSetAllVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0" styleClass="AFStretchWidth" autoHeightRows="6"
+                                      fetchSize="#{bindings.XDOrderScheduleTimeSetAllVO1.rangeSize}" id="t3">
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.label}"
+                                           id="c42" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Sunday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.tooltip}"
+                                                  id="it18">
+                                        <f:validator binding="#{row.bindings.Sunday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Sunday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.label}"
+                                           id="c43" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Monday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.tooltip}"
+                                                  id="it19">
+                                        <f:validator binding="#{row.bindings.Monday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Monday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.label}"
+                                           id="c44" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Tuesday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.tooltip}"
+                                                  id="it20">
+                                        <f:validator binding="#{row.bindings.Tuesday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Tuesday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.label}"
+                                           id="c45" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Wednesday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.tooltip}"
+                                                  id="it24">
+                                        <f:validator binding="#{row.bindings.Wednesday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Wednesday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.label}"
+                                           id="c46" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Thursday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.tooltip}"
+                                                  id="it21">
+                                        <f:validator binding="#{row.bindings.Thursday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Thursday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.label}"
+                                           id="c47" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Friday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.tooltip}"
+                                                  id="it22">
+                                        <f:validator binding="#{row.bindings.Friday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Friday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.label}"
+                                           id="c48" align="center" width="#{aipdatatooluiBundle.DOW_SHORT_WIDTH}">
+                                    <af:inputText value="#{row.bindings.Saturday.inputValue}"
+                                                  label="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.label}"
+                                                  required="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.mandatory}"
+                                                  columns="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.displayWidth}"
+                                                  maximumLength="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.precision}"
+                                                  shortDesc="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.tooltip}"
+                                                  id="it23">
+                                        <f:validator binding="#{row.bindings.Saturday.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.XDOrderScheduleTimeSetAllVO1.hints.Saturday.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                            </af:table>
+                        </af:panelGroupLayout>
+                        
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s27"/>
+                                   
+                        <af:panelGroupLayout id="pgl21" layout="horizontal" halign="center">
+                            
+                            <af:button text="#{aipdatatooluiBundle.OK_BUTTON_LABEL}" id="b1" partialSubmit="true"
+                                       actionListener="#{pageFlowScope.XDOrderScheduleBean.dowSetListener}"/>
+                                       <f:facet name="separator">
+                            <af:spacer width="50" id="s28"/>
+                            </f:facet>
+                            <af:button text="#{aipdatatooluiBundle.CLOSE}" id="b2" partialSubmit="true"
+                                       actionListener="#{pageFlowScope.XDOrderScheduleBean.dowCloseListener}"/>
+                        </af:panelGroupLayout>
+                        
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s29"/>
+                                   
+                                   </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+                <af:popup id="savePopup" binding="#{pageFlowScope.XDOrderScheduleBean.savePopup}">
+                    <af:panelWindow id="pw1" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot31" value="#{aipdatatooluiBundle.XDOS_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s17"/>
+                        <af:panelGroupLayout id="pgl13" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb3" immediate="true"
+                                              actionListener="#{pageFlowScope.XDOrderScheduleBean.handleSaveYes}"/>
+                            <af:spacer width="10" height="10" id="s18"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb4" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveClosePopup" binding="#{pageFlowScope.XDOrderScheduleBean.saveClosePopup}">
+                    <af:panelWindow id="pw2" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot2" value="#{aipdatatooluiBundle.XDOS_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s19"/>
+                        <af:panelGroupLayout id="pgl14" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb5" immediate="true"
+                                              actionListener="#{pageFlowScope.XDOrderScheduleBean.handleSaveCloseYes}"/>
+                            <af:spacer width="10" height="10" id="s20"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb6" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="cancelPopup" binding="#{pageFlowScope.XDOrderScheduleBean.cancelPopup}">
+                    <af:panelWindow id="pw3" title="#{aipdatatooluiBundle.CANCEL_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot1" value="#{aipdatatooluiBundle.XDOS_CANCEL_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s21"/>
+                        <af:panelGroupLayout id="pgl15" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb7" immediate="true"
+                                              actionListener="#{pageFlowScope.XDOrderScheduleBean.handleCancelYes}"/>
+                            <af:spacer width="10" height="10" id="s22"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb8" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="resetPopup" binding="#{pageFlowScope.XDOrderScheduleBean.resetPopup}">
+                    <af:panelWindow id="pw4" title="#{aipdatatooluiBundle.RESET_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot32" value="#{aipdatatooluiBundle.XDOS_RESET_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s23"/>
+                        <af:panelGroupLayout id="pgl16" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb9" immediate="true"
+                                              actionListener="#{pageFlowScope.XDOrderScheduleBean.handleResetYes}"/>
+                            <af:spacer width="10" height="10" id="s24"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb10" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveSuccessPopup" binding="#{pageFlowScope.XDOrderScheduleBean.saveSuccessPopup}">
+                    <af:panelWindow id="pw6" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="outputText1" value="#{aipdatatooluiBundle.XDOS_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="spacer1"/>
+                        <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="commandButton1" immediate="true"
+                                              actionListener="#{pageFlowScope.XDOrderScheduleBean.handleSaveOk}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveCloseSuccessPopup"
+                          binding="#{pageFlowScope.XDOrderScheduleBean.saveCloseSuccessPopup}">
+                    <af:panelWindow id="pw7" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="outputText2" value="#{aipdatatooluiBundle.XDOS_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="spacer2"/>
+                        <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="commandButton2" immediate="true"
+                                              actionListener="#{pageFlowScope.XDOrderScheduleBean.handleSaveCloseOk}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+            </af:panelGroupLayout>
+        </f:facet>
+    </retail:appsPanel>
+</jsp:root>

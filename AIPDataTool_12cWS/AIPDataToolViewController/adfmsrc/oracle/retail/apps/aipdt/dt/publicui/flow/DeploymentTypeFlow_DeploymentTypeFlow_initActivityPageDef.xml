@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26"
+                id="DeploymentTypeFlow_DeploymentTypeFlow_initActivityPageDef"
+                Package="oracle.retail.apps.aipdt.dt.publicui.flow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="initActivity" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initActivity"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.initActivity_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_initActivity_result"/>
+  </bindings>
+</pageDefinition>

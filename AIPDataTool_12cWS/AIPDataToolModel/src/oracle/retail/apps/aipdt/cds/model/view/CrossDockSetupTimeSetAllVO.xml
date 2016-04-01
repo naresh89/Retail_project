@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrossDockSetupTimeSetAllVO"
+  Version="12.1.3.13.26"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupTimeSetAllVORowImpl"
+  ComponentClass="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupTimeSetAllVOImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewDefImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <SQLQuery><![CDATA[select '' as Id, '' as DowSeq, '' as TimeType, '' as SUNDAY, '' AS MONDAY, '' AS TUESDAY, '' AS WEDNESDAY, '' AS THURSDAY, '' AS FRIDAY, '' AS SATURDAY from dual]]></SQLQuery>
+  <ViewAttribute
+    Name="Id"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="CHAR"
+    AliasName="ID"
+    Expression="ID"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Dowseq"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="CHAR"
+    AliasName="DOWSEQ"
+    Expression="DOWSEQ"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="Timetype"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TIMETYPE"
+    Expression="TIMETYPE"
+    SQLType="VARCHAR"
+    Precision="35"/>
+  <ViewAttribute
+    Name="Sunday"
+    IsPersistent="false"
+    PrecisionRule="true" Precision="1"
+    Type="java.lang.Integer"
+    ColumnType="Number"
+    AliasName="SUNDAY"
+    Expression="SUNDAY"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="Monday"
+    IsPersistent="false"
+    PrecisionRule="true" Precision="1"
+    Type="java.lang.Integer"
+    ColumnType="Number"
+    AliasName="MONDAY"
+    Expression="MONDAY"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="Tuesday"
+    IsPersistent="false"
+    PrecisionRule="true" Precision="1"
+    Type="java.lang.Integer"
+    ColumnType="Number"
+    AliasName="TUESDAY"
+    Expression="TUESDAY"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="Wednesday"
+    IsPersistent="false"
+    PrecisionRule="true" Precision="1"
+    Type="java.lang.Integer"
+    ColumnType="Number"
+    AliasName="WEDNESDAY"
+    Expression="WEDNESDAY"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="Thursday"
+    IsPersistent="false"
+    PrecisionRule="true" Precision="1"
+    Type="java.lang.Integer"
+    ColumnType="Number"
+    AliasName="THURSDAY"
+    Expression="THURSDAY"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="Friday"
+    IsPersistent="false"
+    PrecisionRule="true" Precision="1"
+    Type="java.lang.Integer"
+    ColumnType="Number"
+    AliasName="FRIDAY"
+    Expression="FRIDAY"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="Saturday"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="Number"
+    AliasName="SATURDAY"
+    Expression="SATURDAY"
+    SQLType="INTEGER"
+    Precision="1"/>
+</ViewObject>

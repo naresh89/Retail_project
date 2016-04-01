@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SkuVO"
+  Version="12.1.3.13.26"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="oracle.retail.apps.aipdt.common.model.view.SkuVORowImpl"
+  ComponentClass="oracle.retail.apps.aipdt.common.model.view.SkuVOImpl"
+  DefClass="oracle.retail.apps.aipdt.common.model.view.SkuVODefImpl"
+  PageIterMode="Partial"
+  FetchSize="1001"
+  RangeSize="1000"
+  FetchMode="FETCH_AS_NEEDED"
+  Passivate="All">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Def|Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.retail.apps.aipdt.common.model.view.SkuVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[select     
+d.DEPARTMENT_ID,   
+COMMODITY_CODE,     
+COMMODITY_NAME,   
+CLASS_ID,     
+SUBCLASS_ID,     
+STYLE_ID,     
+STYLE_COLOR_ID,     
+COMMODITY_ID     
+from      
+MV_DT_PRODUCT_HIERARCHY d]]></SQLQuery>
+  <ViewAttribute
+    Name="DepartmentId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="BIGINT"
+    AliasName="DEPARTMENT_ID"
+    Expression="DEPARTMENT_ID"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="CommodityCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="COMMODITY_CODE"
+    Expression="COMMODITY_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.retail.apps.aipdt.common.model.view.SkuVO.CommodityCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CommodityName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="COMMODITY_NAME"
+    Expression="COMMODITY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.retail.apps.aipdt.common.model.view.SkuVO.CommodityName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ClassId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="CLASS_ID"
+    Expression="CLASS_ID"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="SubclassId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="SUBCLASS_ID"
+    Expression="SUBCLASS_ID"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="StyleId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="STYLE_ID"
+    Expression="STYLE_ID"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="StyleColorId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="STYLE_COLOR_ID"
+    Expression="STYLE_COLOR_ID"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="CommodityId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="COMMODITY_ID"
+    Expression="COMMODITY_ID"
+    SQLType="INTEGER"
+    IsNotNull="true"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="CommodityId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <XliffBundle
+      id="oracle.retail.apps.aipdt.model.AIPDataToolModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

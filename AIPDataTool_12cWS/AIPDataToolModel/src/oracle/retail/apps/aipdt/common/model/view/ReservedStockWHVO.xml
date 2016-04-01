@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReservedStockWHVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewRowImpl"
+  ComponentClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewObjectImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewDefImpl"
+  PageIterMode="Full"
+  FetchSize="50"
+  RangeSize="50">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.retail.apps.aipdt.common.model.view.ReservedStockWHVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT sp.stocking_point_number AS warehouse_code, 
+       sp.stocking_point_id AS warehouse_id, 
+       sp.stocking_point_name AS warehouse_name, 
+       sp.wh_type as warehouse_type, 
+       rownum AS id 
+FROM V_DT_STOCKING_POINT sp where sp.stocking_point_type = 2 
+and UPPER(sp.wh_type) like 'CS_%']]></SQLQuery>
+  <ViewAttribute
+    Name="WarehouseCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="WAREHOUSE_CODE"
+    Expression="WAREHOUSE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WarehouseId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="WAREHOUSE_ID"
+    Expression="WAREHOUSE_ID"
+    SQLType="NUMERIC"
+    IsNotNull="true"
+    Passivate="true"/>
+  <ViewAttribute
+    Name="WarehouseName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="WAREHOUSE_NAME"
+    Expression="WAREHOUSE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WarehouseType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="6"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="WAREHOUSE_TYPE"
+    Expression="WAREHOUSE_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ID"
+    Expression="ID"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ResourceBundle>
+    <XliffBundle
+      id="oracle.retail.apps.aipdt.model.AIPDataToolModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NavigationDefinition id="pb_menu_root"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xmlns="urn:www.oracle.com:oracle.retail.apps.framework.navigation"
+                      xsi:schemaLocation="urn:www.oracle.com:oracle.retail.apps.framework.navigation classpath:oracle/retail/apps/framework/uishell/navigation/model/schema/NavigationModel.xsd">
+    <Items>
+        <Item id="pb_menu_acc" type="link"
+              visible="#{not securityContext.authenticated}"
+              title="#{adfBundle['RetailAppsViewControllerBundle'].ACCESSIBILITY}"
+              accessKey="#{adfBundle['RetailAppsViewControllerBundle'].ACCESSIBILITY_ACCESSKEY}">
+            <url>/faces/Preferences</url>
+        </Item>
+        <Item id="pb_menu_login" type="link"
+              visible="#{not securityContext.authenticated}"
+              title="#{adfBundle['RetailAppsViewControllerBundle'].LOGIN}"
+              accessKey="#{adfBundle['RetailAppsViewControllerBundle'].LOGIN_ACCESSKEY}">
+            <url>/faces/Login</url>
+        </Item>
+        <Item id="pb_menu_user" type="folder"
+              visible="#{securityContext.authenticated}"
+              title="#{backingBeanScope.GlobalMainMenuBean.userDisplayName}"
+              accessKey="#{adfBundle['RetailAppsViewControllerBundle'].USER_MENU_ACCESSKEY}">
+            <Items>
+                <Item id="pb_menu_prefs" type="link" visible="true"
+                      title="#{adfBundle['RetailAppsViewControllerBundle'].PREFERENCES}"
+                      accelerator="#{adfBundle['RetailAppsViewControllerBundle'].PREFERENCES_ACCELERATOR}">
+                    <url>/faces/Preferences</url>
+                </Item>
+                <Item id="pb_menu_rarm" type="link"
+                      visible="#{securityContext.userInRole['ROLE_MANAGER_DUTY']}"
+                      title="#{adfBundle['RetailAppsViewControllerBundle'].RASRM}"
+                      accelerator="#{adfBundle['RetailAppsViewControllerBundle'].RASRM_ACCELERATOR}"
+                      mode="all" target="_blank">
+                     <url>#{backingBeanScope.GlobalMainMenuBean.roleManagerUrl}?APP_STRIPE=#{backingBeanScope.GlobalMainMenuBean.applicationStripe}</url>
+                </Item>
+                <Item id="pb_menu_logout" type="action" visible="true"
+                      title="#{adfBundle['RetailAppsViewControllerBundle'].LOGOUT}"
+                      accelerator="#{adfBundle['RetailAppsViewControllerBundle'].LOGOUT_ACCELERATOR}">
+                    <Attributes>
+                        <Attribute attributeId="actionListener"
+                                   value="#{backingBeanScope.GlobalMainMenuBean.confirmLogout}"
+                                   isKey="false"/>
+                    </Attributes>
+                </Item>
+            </Items>
+        </Item>
+        <Item id="m_help" visible="true" type="folder"
+              title="#{adfBundle['RetailAppsViewControllerBundle'].HELP}"
+              accessKey="#{adfBundle['RetailAppsViewControllerBundle'].HELP_ACCESSKEY}">
+            <Items>
+                <Item id="mi_help"
+                      visible="#{adfFacesContext.helpProvider != null}"
+                      type="link" target="_blank"
+                      title="#{adfBundle['RetailAppsViewControllerBundle'].APPLICATION_HELP}"
+                      accelerator="#{adfBundle['RetailAppsViewControllerBundle'].APPLICATION_HELP_ACCELERATOR}">
+                    <url>#{adfFacesContext.helpProvider['ohg_about_about.htm'].externalUrl}</url>
+                </Item>
+                <Item id="mi_about" visible="true" type="link" target="_blank"
+                      title="#{adfBundle['RetailAppsViewControllerBundle'].ABOUT_APPLICATION}"
+                      accelerator="#{adfBundle['RetailAppsViewControllerBundle'].ABOUT_APPLICATION_ACCELERATOR}">
+                    <url>/faces/About</url>
+                </Item>
+            </Items>
+        </Item>
+    </Items>
+</NavigationDefinition>

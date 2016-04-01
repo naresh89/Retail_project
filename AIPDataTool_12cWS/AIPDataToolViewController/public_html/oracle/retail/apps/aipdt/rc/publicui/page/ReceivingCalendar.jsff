@@ -1,0 +1,496 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:retail="/retailApps" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:RetailAppCustomComponent="/RetailAppCustomComponent">
+  <c:set var="aipdatatooluiBundle"
+         value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+  <retail:appsPanel id="receivingCalendarRetailAppsPanel"
+                    contentsFacet="stretch" title="" saveAndCloseRendered="true"
+                    saveAndCloseVisible="true" saveRendered="true"
+                    saveVisible="true" cancelRendered="true"
+                    cancelVisible="true"
+                    saveAndCloseDisabled="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"
+                    saveDisabled="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"
+                    cancelAction="#{pageFlowScope.ReceivingCalendarBean.cancelReceivingCalendar}"
+                    saveAndCloseAction="#{pageFlowScope.ReceivingCalendarBean.handleSaveAndCloseEvent}"
+                    saveActionListener="#{pageFlowScope.ReceivingCalendarBean.handleSaveEvent}">
+    <f:facet name="contents"/>
+    <f:facet name="contentsStretch">
+      <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth"
+                             dimensionsFrom="parent">
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+          <af:panelGroupLayout layout="scroll" id="pgl12"
+                               inlineStyle="Width:100%">
+            <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%"
+                                 id="pgl4">
+              <af:showDetailHeader text="#{aipdatatooluiBundle.SEARCH}"
+                                   disclosed="true" id="sdh1">
+                <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%"
+                                     id="pgl1">
+                  <af:panelDashboard id="pd2" rowHeight="100px"
+                                     styleClass="AFStretchWidth"
+                                     dimensionsFrom="children"
+                                     inlineStyle="width:1100px;" columns="1">
+                    <af:panelBox text="#{aipdatatooluiBundle.LEVEL}" id="pb1"
+                                 showDisclosure="false">
+                      <af:spacer id="s7" height="15"/>
+                      <af:panelFormLayout id="pfl2" rows="1">
+                        <af:selectBooleanRadio id="sor1"
+                                               value="#{bindings.DefaultAttr.inputValue}"
+                                               group="WorkingLevel"
+                                               autoSubmit="true"
+                                               text="#{aipdatatooluiBundle.DEFAULT}"
+                                               immediate="true"
+                                               valueChangeListener="#{pageFlowScope.ReceivingCalendarBean.onDefaultVCE}"
+                                               disabled="#{pageFlowScope.ReceivingCalendarBean.selectDisabled}"></af:selectBooleanRadio>
+                        <af:selectBooleanRadio id="sor2"
+                                               value="#{bindings.ExceptionAttr.inputValue}"
+                                               group="WorkingLevel"
+                                               autoSubmit="true"
+                                               text="#{aipdatatooluiBundle.EXCEPTION}"
+                                               immediate="true"
+                                               valueChangeListener="#{pageFlowScope.ReceivingCalendarBean.onExceptionVCE}"
+                                               disabled="#{pageFlowScope.ReceivingCalendarBean.selectDisabled}"></af:selectBooleanRadio>
+                      </af:panelFormLayout>
+                    </af:panelBox>
+                  </af:panelDashboard>
+                  <af:panelDashboard id="pd1" rowHeight="150px"
+                                     styleClass="AFStretchWidth"
+                                     dimensionsFrom="children"
+                                     inlineStyle="width:1100px;">
+                    <af:panelBox text="#{aipdatatooluiBundle.TYPE}" id="pb2"
+                                 showDisclosure="false">
+                      <af:panelFormLayout id="pfl5">
+                        <af:selectOneChoice value="#{bindings.LocationType.inputValue}"
+                                            label="#{bindings.LocationType.label}"
+                                            required="#{bindings.LocationType.hints.mandatory}"
+                                            shortDesc="#{bindings.LocationType.hints.tooltip}"
+                                            id="soc2"
+                                            valueChangeListener="#{pageFlowScope.ReceivingCalendarBean.onLocationTypeVCE}"
+                                            autoSubmit="true"
+                                            contentStyle="width:173px"
+                                            binding="#{pageFlowScope.ReceivingCalendarBean.locationTypeComp}">
+                          <f:selectItems value="#{bindings.LocationType.items}"
+                                         id="si4"/>
+                          <f:attribute name="locationTypeVal"
+                                       value="#{bindings.LocationType.items[bindings.LocationType.inputValue].label}"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice value="#{bindings.ProductType.inputValue}"
+                                            label="#{bindings.ProductType.label}"
+                                            required="#{bindings.ProductType.hints.mandatory}"
+                                            shortDesc="#{bindings.ProductType.hints.tooltip}"
+                                            id="soc1" contentStyle="width:173px"
+                                            valueChangeListener="#{pageFlowScope.ReceivingCalendarBean.onProductTypeVCE}"
+                                            binding="#{pageFlowScope.ReceivingCalendarBean.productTypeComp}"
+                                            autoSubmit="true" disabled="true">
+                          <f:selectItems value="#{bindings.ProductType.items}"
+                                         id="si2"/>
+                          <f:attribute name="productTypeVal"
+                                       value="#{bindings.ProductType.items[bindings.ProductType.inputValue].label}"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                    </af:panelBox>
+                    <af:panelBox text="#{aipdatatooluiBundle.DESTINATION}"
+                                 id="pb3" showDisclosure="false">
+                      <af:panelFormLayout id="pfl6">
+                        <af:panelLabelAndMessage label="#{aipdatatooluiBundle.STORE}"
+                                                 id="plam1">
+                          <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                            AttributeDesc="StoreName"
+                                                                            FieldBinding="Store"
+                                                                            TextWidth="150px"
+                                                                            valueChangeListener="#{pageFlowScope.ReceivingCalendarBean.onStoreVCE}"
+                                                                            id="smicb1"
+                                                                            selectAllVisible="true"
+                                                                            binding="#{pageFlowScope.ReceivingCalendarBean.storeComponent}"
+                                                                            immediate="true"
+                                                                            IsDisabled="true"/>
+                        </af:panelLabelAndMessage>
+                        <af:selectOneChoice value="#{bindings.StoreFormat.inputValue}"
+                                            label="#{bindings.StoreFormat.label}"
+                                            required="#{bindings.StoreFormat.hints.mandatory}"
+                                            shortDesc="#{bindings.StoreFormat.hints.tooltip}"
+                                            id="soc3" contentStyle="width:173px"
+                                            binding="#{pageFlowScope.ReceivingCalendarBean.storeFormatComponent}"
+                                            valueChangeListener="#{pageFlowScope.ReceivingCalendarBean.onStoreFormatVCE}"
+                                            autoSubmit="true" disabled="true"
+                                            rendered="false">
+                          <f:selectItems value="#{bindings.StoreFormat.items}"
+                                         id="si3"/>
+                          <f:attribute name="storeFormatVal"
+                                       value="#{bindings.StoreFormat.items[bindings.StoreFormat.inputValue].label}"/>
+                        </af:selectOneChoice>
+                        <af:panelLabelAndMessage label="#{aipdatatooluiBundle.WAREHOUSE}"
+                                                 id="plam2">
+                          <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="WarehouseCode"
+                                                                            AttributeDesc="WarehouseName"
+                                                                            FieldBinding="StockingPoint"
+                                                                            TextWidth="150px"
+                                                                            valueChangeListener="#{pageFlowScope.ReceivingCalendarBean.onStockingPointVCE}"
+                                                                            id="smicb2"
+                                                                            selectAllVisible="true"
+                                                                            binding="#{pageFlowScope.ReceivingCalendarBean.warehouseComponent}"
+                                                                            immediate="true"
+                                                                            IsDisabled="true"/>
+                        </af:panelLabelAndMessage>
+                      </af:panelFormLayout>
+                    </af:panelBox>
+                  </af:panelDashboard>
+                </af:panelGroupLayout>
+                <hr style="margin: 0; height: 1px; background: rgb(226,231,236); border: none;"
+                    class="AFStretchWidth"/>
+                <af:spacer id="s2" height="5"/>
+                <af:panelGroupLayout id="pgl8" halign="right"
+                                     layout="horizontal">
+                  <af:commandButton text="#{aipdatatooluiBundle.SEARCH}"
+                                    id="cb1"
+                                    disabled="#{pageFlowScope.ReceivingCalendarBean.selectDisabled}"
+                                    actionListener="#{pageFlowScope.ReceivingCalendarBean.handleSearchEvent}"/>
+                  <af:spacer width="10" height="10" id="s4"/>
+                  <af:commandButton text="#{aipdatatooluiBundle.RESET}" id="cb2"
+                                    immediate="true" disabled="false"
+                                    actionListener="#{pageFlowScope.ReceivingCalendarBean.handleResetEvent}"/>
+                </af:panelGroupLayout>
+              </af:showDetailHeader>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl11" styleClass="AFStretchWidth"
+                                 inlineStyle="border-style:solid; border-width:thin; border-color:rgb(226,231,236);">
+              <af:showDetailHeader text="#{aipdatatooluiBundle.RESULTS}"
+                                   disclosed="true" id="sdh2"
+                                   styleClass="AFStretchWidth">
+                <f:facet name="context"/>
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="legend">
+                  <af:panelGroupLayout id="pgl2"
+                                       binding="#{pageFlowScope.ReceivingCalendarBean.resultsArea}"
+                                       visible="false">
+                    <retail:appsTable id="at1" styleClass="AFStretchWidth"
+                                      exportEnabled="false"
+                                      exportFilename="#{aipdatatooluiBundle.RC_EXPORT_FILE_NAME}"
+                                      tableId="t1" viewEnabled="false">
+                      <f:facet name="additionalToolbarButtons">
+                        <af:menuBar id="mb1">
+                          <af:menu text="#{aipdatatooluiBundle.EXPORT_TO_EXCEL}" id="m2"
+                                   icon="/oracle/retail/apps/aipdt/images/E2E.jpg">
+                            <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_ALL_ROWS}"
+                                                id="cmi1">
+                              <af:setPropertyListener from="true"
+                                                      to="#{pageFlowScope.hideSomeColumns}"
+                                                      type="action"/>
+                              <af:exportCollectionActionListener exportedId="t1"
+                                                                 type="excelHTML"
+                                                                 filename="#{aipdatatooluiBundle.RC_EXPORT_FILE_NAME}"/>
+                              <af:setPropertyListener from="false"
+                                                      to="#{pageFlowScope.hideSomeColumns}"
+                                                      type="action"/>
+                            </af:commandMenuItem>
+                            <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_SELECTED_ROWS}"
+                                                id="cmi2">
+                              <af:setPropertyListener from="true"
+                                                      to="#{pageFlowScope.hideSomeColumns}"
+                                                      type="action"/>
+                              <af:exportCollectionActionListener exportedId="t1"
+                                                                 type="excelHTML"
+                                                                 exportedRows="selected"
+                                                                 filename="#{aipdatatooluiBundle.RC_EXPORT_FILE_NAME}"/>
+                              <af:setPropertyListener from="false"
+                                                      to="#{pageFlowScope.hideSomeColumns}"
+                                                      type="action"/>
+                            </af:commandMenuItem>
+                          </af:menu>
+                        </af:menuBar>
+                      </f:facet>
+                      <f:facet name="additionalActionItems">
+                        <af:group id="g1">
+                          <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE}"
+                                              id="cmi3"
+                                              actionListener="#{pageFlowScope.ReceivingCalendarBean.handleSaveEvent}"
+                                              disabled="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"></af:commandMenuItem>
+                          <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE_AND_CLOSE}"
+                                              id="cmi4"
+                                              disabled="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"
+                                              action="#{pageFlowScope.ReceivingCalendarBean.habdleSaveAndCloseEvent}"></af:commandMenuItem>
+                        </af:group>
+                      </f:facet>
+                      <f:facet name="table">
+                        <af:table value="#{bindings.ReceivingCalendarResultsVO1.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.ReceivingCalendarResultsVO1.rangeSize}"
+                                  emptyText="#{bindings.ReceivingCalendarResultsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.ReceivingCalendarResultsVO1.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.ReceivingCalendarResultsVO1Query.queryDescriptor}"
+                                  queryListener="#{bindings.ReceivingCalendarResultsVO1Query.processQuery}"
+                                  filterVisible="true" varStatus="vs" id="t1"
+                                  binding="#{pageFlowScope.ReceivingCalendarBean.resultsTableComp}"
+                                  rowSelection="multiple"
+                                  partialTriggers="id3 id4">
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.DestinationDesc.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.DestinationDesc.label}"
+                                     id="c10" width="125%"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.DestinationDesc}"
+                                           id="ot1"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.Sun.name}"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.Sun.label}"
+                                     id="c3" width="50" align="center">
+                            <af:selectBooleanCheckbox value="#{row.bindings.Sun.inputValue}"
+                                                      label="#{bindings.ReceivingCalendarResultsVO1.hints.Sun.label}"
+                                                      shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.Sun.tooltip}"
+                                                      id="it6" autoSubmit="true"
+                                                      readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.Mon.name}"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.Mon.label}"
+                                     id="c4" width="50" align="center">
+                            <af:selectBooleanCheckbox value="#{row.bindings.Mon.inputValue}"
+                                                      label="#{bindings.ReceivingCalendarResultsVO1.hints.Mon.label}"
+                                                      shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.Mon.tooltip}"
+                                                      id="it2" autoSubmit="true"
+                                                      readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.Tue.name}"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.Tue.label}"
+                                     id="c9" width="50" align="center">
+                            <af:selectBooleanCheckbox value="#{row.bindings.Tue.inputValue}"
+                                                      label="#{bindings.ReceivingCalendarResultsVO1.hints.Tue.label}"
+                                                      shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.Tue.tooltip}"
+                                                      id="it4" autoSubmit="true"
+                                                      readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.Wed.name}"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.Wed.label}"
+                                     id="c2" width="50" align="center">
+                            <af:selectBooleanCheckbox value="#{row.bindings.Wed.inputValue}"
+                                                      label="#{bindings.ReceivingCalendarResultsVO1.hints.Wed.label}"
+                                                      shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.Wed.tooltip}"
+                                                      id="it1" autoSubmit="true"
+                                                      readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.Thu.name}"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.Thu.label}"
+                                     id="c6" width="50" align="center">
+                            <af:selectBooleanCheckbox value="#{row.bindings.Thu.inputValue}"
+                                                      label="#{bindings.ReceivingCalendarResultsVO1.hints.Thu.label}"
+                                                      shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.Thu.tooltip}"
+                                                      id="it5" autoSubmit="true"
+                                                      readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.Fri.name}"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.Fri.label}"
+                                     id="c5" width="50" align="center">
+                            <af:selectBooleanCheckbox value="#{row.bindings.Fri.inputValue}"
+                                                      label="#{bindings.ReceivingCalendarResultsVO1.hints.Fri.label}"
+                                                      shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.Fri.tooltip}"
+                                                      id="it7" autoSubmit="true"
+                                                      readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.Sat.name}"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.Sat.label}"
+                                     id="c1" width="50" align="center">
+                            <af:selectBooleanCheckbox value="#{row.bindings.Sat.inputValue}"
+                                                      label="#{bindings.ReceivingCalendarResultsVO1.hints.Sat.label}"
+                                                      shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.Sat.tooltip}"
+                                                      id="it3" autoSubmit="true"
+                                                      readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.StartDate.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.StartDate.label}"
+                                     id="c7">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.StartDate}"
+                                            id="id2"
+                                            minValue="#{pageFlowScope.InputDateBean.minStartDate}"
+                                            maxValue="#{pageFlowScope.InputDateBean.maxStartDate}">
+                                <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                    type="date"/>
+                              </af:inputDate>
+                            </f:facet>
+                            <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                          label="#{bindings.ReceivingCalendarResultsVO1.hints.StartDate.label}"
+                                          required="#{bindings.ReceivingCalendarResultsVO1.hints.StartDate.mandatory}"
+                                          shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.StartDate.tooltip}"
+                                          id="id3"
+                                          autoSubmit="true"
+                                          readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"
+                                          valueChangeListener="#{pageFlowScope.InputDateBean.onStartDateChange}"
+                                          minValue="#{pageFlowScope.InputDateBean.minStartDate}"
+                                          maxValue="#{pageFlowScope.InputDateBean.maxStartDate}"
+                                          binding="#{pageFlowScope.InputDateBean.startDateComp}"
+                                          contentStyle="#{pageFlowScope.InputDateBean.validStartDate?  null : 'outline-color:Red; outline-style:solid; outline-width:1.0px;'}">
+                              <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                              <!--<af:clientListener method="cleardatemsg" type="click"/>-->
+                              <!--<af:convertDateTime pattern="#{bindings.ReceivingCalendarResultsVO1.hints.StartDate.format}"/>-->
+                              <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                  type="date"/>
+                            </af:inputDate>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.ReceivingCalendarResultsVO1.hints.EndDate.name}"
+                                     filterable="true"
+                                     sortable="#{bindings.ExceptionAttr.inputValue}"
+                                     headerText="#{bindings.ReceivingCalendarResultsVO1.hints.EndDate.label}"
+                                     id="c8">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.EndDate}"
+                                            id="id1"
+                                            disabled="#{bindings.DefaultAttr.inputValue}"
+                                            minValue="#{pageFlowScope.InputDateBean.minEndDate}"
+                                            maxValue="#{pageFlowScope.InputDateBean.maxEndDate}">
+                                <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                    type="date"/>
+                              </af:inputDate>
+                            </f:facet>
+                            <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                          label="#{bindings.ReceivingCalendarResultsVO1.hints.EndDate.label}"
+                                          required="#{bindings.ReceivingCalendarResultsVO1.hints.EndDate.mandatory}"
+                                          shortDesc="#{bindings.ReceivingCalendarResultsVO1.hints.EndDate.tooltip}"
+                                          id="id4"
+                                          autoSubmit="true"
+                                          disabled="#{pageFlowScope.ReceivingCalendarBean.saveDisabled ne true and bindings.DefaultAttr.inputValue}"
+                                          readOnly="#{pageFlowScope.ReceivingCalendarBean.saveDisabled}"
+                                          valueChangeListener="#{pageFlowScope.InputDateBean.onEndDateChange}"
+                                          minValue="#{pageFlowScope.InputDateBean.minEndDate}"
+                                          maxValue="#{pageFlowScope.InputDateBean.maxEndDate}"
+                                          binding="#{pageFlowScope.InputDateBean.endDateComp}"
+                                          contentStyle="#{pageFlowScope.InputDateBean.validEndDate?  null : 'outline-color:Red; outline-style:solid; outline-width:1.0px;'}">
+                              <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                              <!--<af:clientListener method="cleardatemsg" type="click"/>-->
+                              <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                  type="date"/>
+                              <!--<af:convertDateTime pattern="#{bindings.ReceivingCalendarResultsVO1.hints.EndDate.format}"/>-->
+                            </af:inputDate>
+                          </af:column>
+                        </af:table>
+                      </f:facet>
+                    </retail:appsTable>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="info"/>
+              </af:showDetailHeader>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+    <f:facet name="popup">
+      <af:panelGroupLayout id="pgl0">
+        <af:popup id="savePopup"
+                  binding="#{pageFlowScope.ReceivingCalendarBean.savePopup}">
+          <af:panelWindow id="pw1"
+                          title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                          titleIconSource="/afr/confirmation.png" modal="true"
+                          closeIconVisible="false">
+            <af:outputText id="ot12"
+                           value="#{aipdatatooluiBundle.RECEIVING_CAL_SAVE_CONFIRMATION_MSG}"/>
+            <af:spacer width="10" height="20" id="s1"/>
+            <af:panelGroupLayout id="pgl13" layout="horizontal" halign="end">
+              <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb3"
+                                immediate="true"
+                                actionListener="#{pageFlowScope.ReceivingCalendarBean.saveYesListener}"/>
+              <af:spacer width="10" height="10" id="s18"/>
+              <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb4"
+                                immediate="true"/>
+            </af:panelGroupLayout>
+          </af:panelWindow>
+        </af:popup>
+        <af:popup id="saveClosePopup"
+                  binding="#{pageFlowScope.ReceivingCalendarBean.saveClosePopup}">
+          <af:panelWindow id="pw2"
+                          title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                          titleIconSource="/afr/confirmation.png" modal="true"
+                          closeIconVisible="false">
+            <af:outputText id="ot2"
+                           value="#{aipdatatooluiBundle.RECEIVING_CAL_SAVE_CONFIRMATION_MSG}"/>
+            <af:spacer width="10" height="20" id="s19"/>
+            <af:panelGroupLayout id="pgl14" layout="horizontal" halign="end">
+              <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb5"
+                                immediate="true"
+                                actionListener="#{pageFlowScope.ReceivingCalendarBean.saveCloseYesListener}"/>
+              <af:spacer width="10" height="10" id="s20"/>
+              <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb6"
+                                immediate="true"/>
+            </af:panelGroupLayout>
+          </af:panelWindow>
+        </af:popup>
+        <af:popup id="cancelPopup"
+                  binding="#{pageFlowScope.ReceivingCalendarBean.cancelPopup}">
+          <af:panelWindow id="pw3"
+                          title="#{aipdatatooluiBundle.CANCEL_CONFIRMATION}"
+                          titleIconSource="/afr/confirmation.png" modal="true"
+                          closeIconVisible="false">
+            <af:outputText id="ot3"
+                           value="#{aipdatatooluiBundle.RECEIVING_CAL_CANCEL_CONFIRMATION_MSG}"/>
+            <af:spacer width="10" height="20" id="s21"/>
+            <af:panelGroupLayout id="pgl15" layout="horizontal" halign="end">
+              <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb7"
+                                immediate="true"
+                                actionListener="#{pageFlowScope.ReceivingCalendarBean.cancelYesListener}"/>
+              <af:spacer width="10" height="10" id="s22"/>
+              <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb8"
+                                immediate="true"/>
+            </af:panelGroupLayout>
+          </af:panelWindow>
+        </af:popup>
+        <af:popup id="resetPopup"
+                  binding="#{pageFlowScope.ReceivingCalendarBean.resetPopup}">
+          <af:panelWindow id="pw4"
+                          title="#{aipdatatooluiBundle.RESET_CONFIRMATION}"
+                          titleIconSource="/afr/confirmation.png" modal="true"
+                          closeIconVisible="false">
+            <af:outputText id="ot4"
+                           value="#{aipdatatooluiBundle.RECEIVING_CAL_RESET_CONFIRMATION_MSG}"/>
+            <af:spacer width="10" height="20" id="s23"/>
+            <af:panelGroupLayout id="pgl16" layout="horizontal" halign="end">
+              <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb9"
+                                immediate="true"
+                                actionListener="#{pageFlowScope.ReceivingCalendarBean.resetYesListener}"/>
+              <af:spacer width="10" height="10" id="s25"/>
+              <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb10"
+                                immediate="true"/>
+            </af:panelGroupLayout>
+          </af:panelWindow>
+        </af:popup>
+        <af:popup id="saveSuccessPopup"
+                  binding="#{pageFlowScope.ReceivingCalendarBean.saveSuccessPopup}">
+          <af:panelWindow id="pw6"
+                          title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                          titleIconSource="/afr/confirmation.png" modal="true"
+                          closeIconVisible="false">
+            <af:outputText id="outputText1"
+                           value="#{aipdatatooluiBundle.RECEIVING_CAL_SAVE_SUCCESS_MSG}"/>
+            <af:spacer width="10" height="20" id="spacer1"/>
+            <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal"
+                                 halign="end">
+              <af:commandButton text="#{aipdatatooluiBundle.OK}"
+                                id="commandButton1" immediate="true"/>
+            </af:panelGroupLayout>
+          </af:panelWindow>
+        </af:popup>
+        <af:popup id="saveCloseSuccessPopup"
+                  binding="#{pageFlowScope.ReceivingCalendarBean.saveCloseSuccessPopup}">
+          <af:panelWindow id="pw7"
+                          title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                          titleIconSource="/afr/confirmation.png" modal="true"
+                          closeIconVisible="false">
+            <af:outputText id="outputText2"
+                           value="#{aipdatatooluiBundle.RECEIVING_CAL_SAVE_SUCCESS_MSG}"/>
+            <af:spacer width="10" height="20" id="spacer2"/>
+            <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"
+                                 halign="end">
+              <af:commandButton text="#{aipdatatooluiBundle.OK}"
+                                id="commandButton2" immediate="true"
+                                actionListener="#{pageFlowScope.ReceivingCalendarBean.saveCloseOkListener}"/>
+            </af:panelGroupLayout>
+          </af:panelWindow>
+        </af:popup>
+      </af:panelGroupLayout>
+    </f:facet>
+  </retail:appsPanel>
+</jsp:root>

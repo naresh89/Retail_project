@@ -1,0 +1,800 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:retail="/retailApps" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:RetailAppCustomComponent="/RetailAppCustomComponent">
+    <c:set var="aipdatatooluiBundle"
+           value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+    <retail:appsPanel id="ap1" contentsFacet="stretch" title="" saveAndCloseRendered="true" saveAndCloseVisible="true"
+                      saveRendered="true" saveVisible="true" cancelRendered="true" cancelVisible="true"
+                      saveAction="#{pageFlowScope.OnOffSaleSupplyBean.handleSave}"
+                      saveAndCloseAction="#{pageFlowScope.OnOffSaleSupplyBean.handleSaveAndClose}"
+                      saveAndCloseDisabled="#{pageFlowScope.OnOffSaleSupplyBean.saveDisabled}"
+                      saveDisabled="#{pageFlowScope.OnOffSaleSupplyBean.saveDisabled}"
+                      cancelAction="#{pageFlowScope.OnOffSaleSupplyBean.handleCancel}">
+        <f:facet name="contents"/>
+        <f:facet name="contentsStretch">
+            <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="parent">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl3">
+                        <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl14">
+                            <af:showDetailHeader text="#{aipdatatooluiBundle.SEARCH}" disclosed="true" id="sdh1">
+                                <af:spacer height="#{aipdatatooluiBundle.SPCR_BTWN_SEARCH_PANEL_BOXES_HEIGHT}"
+                                           id="se_sp1"/>
+                                <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl21">
+                                    <af:panelGroupLayout id="pgl5" layout="horizontal" valign="top">
+                                        <af:panelBox text="#{aipdatatooluiBundle.PRODUCT_HIERARCHY}"
+                                                     showDisclosure="false"
+                                                     inlineStyle="#{aipdatatooluiBundle.PROD_HIER_PANEL_BOX_WIDTH}"
+                                                     id="pb1">
+                                            <af:panelGroupLayout id="pgl1" layout="horizontal">
+                                                <af:panelFormLayout id="pfl1" rows="4" maxColumns="1">
+                                                    <af:selectOneChoice value="#{bindings.Department.inputValue}"
+                                                                        label="#{aipdatatooluiBundle.DEPT_LABEL}"
+                                                                        shortDesc="#{bindings.Department.hints.tooltip}"
+                                                                        id="Department" contentStyle="width:175px;"
+                                                                        valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onDepartmentChange}"
+                                                                        autoSubmit="true"
+                                                                        binding="#{pageFlowScope.OnOffSaleSupplyBean.deptComp}">
+                                                        <f:selectItems value="#{bindings.Department.items}" id="si3"/>
+                                                    </af:selectOneChoice>
+                                                    <af:panelLabelAndMessage label="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                                             id="plam1">
+                                                        <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="ClassCode"
+                                                                                                          AttributeDesc="ClassName"
+                                                                                                          FieldBinding="Class1"
+                                                                                                          IsDisabled="true"
+                                                                                                          listAttributeName="ClassId"
+                                                                                                          binding="#{pageFlowScope.OnOffSaleSupplyBean.multiSelectBaseFieldsBean.classComp}"
+                                                                                                          valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onClassChange}"
+                                                                                                          id="smicb1"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                                             id="plam2">
+                                                        <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="SubclassCode"
+                                                                                                          AttributeDesc="SubclassDescription"
+                                                                                                          FieldBinding="Subclass"
+                                                                                                          listAttributeName="SubclassId"
+                                                                                                          valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onSubclassChange}"
+                                                                                                          id="smicb2"
+                                                                                                          IsDisabled="true"
+                                                                                                          binding="#{pageFlowScope.OnOffSaleSupplyBean.multiSelectBaseFieldsBean.subClassComp}"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:selectOneChoice value="#{bindings.ItemList1.inputValue}"
+                                                                        label="#{aipdatatooluiBundle.ITEM_LIST_LABEL}"
+                                                                        shortDesc="#{bindings.ItemList1.hints.tooltip}"
+                                                                        id="soc7" contentStyle="width:175px;"
+                                                                        disabled="false" autoSubmit="true"
+                                                                        valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onItemListChange}"
+                                                                        binding="#{pageFlowScope.OnOffSaleSupplyBean.itemListComp}">
+                                                        <f:selectItems value="#{bindings.ItemList1.items}" id="si7"/>
+                                                    </af:selectOneChoice>
+                                                </af:panelFormLayout>
+                                                <af:spacer width="#{aipdatatooluiBundle.PROD_HIER_SPCR_BTWN_FORM_WIDTH}"
+                                                           id="s8"/>
+                                                <af:panelFormLayout id="pfl2" rows="4">
+                                                    <af:inputListOfValues id="supplierId"
+                                                                          popupTitle="Search and Select: #{bindings.Supplier.hints.label}"
+                                                                          value="#{bindings.Supplier.inputValue}"
+                                                                          label="#{aipdatatooluiBundle.ORD_SUPP_LABEL}"
+                                                                          model="#{bindings.Supplier.listOfValuesModel}"
+                                                                          columns="#{bindings.Supplier.hints.displayWidth}"
+                                                                          shortDesc="#{bindings.Supplier.hints.tooltip}"
+                                                                          autoSubmit="true" disabled="true"
+                                                                          binding="#{pageFlowScope.OnOffSaleSupplyBean.supplierComp}"
+                                                                          valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onSupplierChange}">
+                                                        <f:validator binding="#{bindings.Supplier.validator}"/>
+                                                    </af:inputListOfValues>
+                                                    <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                             id="plam5">
+                                                        <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleCode"
+                                                                                                               AttributeDesc="StyleDesc"
+                                                                                                               AttributeListIdName="StyleId"
+                                                                                                               AttrMasterBinding="Department"
+                                                                                                               AttrMasterCode="DepartmentCode"
+                                                                                                               AttrMasterDesc="DepartmentName"
+                                                                                                               FieldBinding="#{bindings.Vpn}"
+                                                                                                               AttrMasterListAttrName="DepartmentId"
+                                                                                                               id="msilov2" Label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                               ToolTip="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                               ChangeMethodName="onVpnChange"
+                                                                                                               ManagedBean="#{pageFlowScope.OnOffSaleSupplyBean}"
+                                                                                                               binding="#{pageFlowScope.OnOffSaleSupplyBean.multiSelectBaseFieldsBean.vpnComp}"
+                                                                                                               InputDisabled="false"
+                                                                                                               GeneralDisabled="true"
+                                                                                                               inputSize="19"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                             id="plam6">
+                                                        <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleColorCode"
+                                                                                                               AttributeDesc="StyleColorDesc"
+                                                                                                               AttributeListIdName="StyleColorId"
+                                                                                                               AttrMasterBinding="Department"
+                                                                                                               AttrMasterCode="DepartmentCode"
+                                                                                                               AttrMasterDesc="DepartmentName"
+                                                                                                               AttrMasterListAttrName="DepartmentId"
+                                                                                                               FieldBinding="#{bindings.StyleColor}"
+                                                                                                               id="msilov1" Label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                               ToolTip="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                               ChangeMethodName="onStyleColourChange"
+                                                                                                               ManagedBean="#{pageFlowScope.OnOffSaleSupplyBean}"
+                                                                                                               binding="#{pageFlowScope.OnOffSaleSupplyBean.multiSelectBaseFieldsBean.styleColourComp}"
+                                                                                                               InputDisabled="false"
+                                                                                                               GeneralDisabled="true"
+                                                                                                               inputSize="19"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                             id="plam4">
+                                                        <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="CommodityCode"
+                                                                                                               AttributeDesc="CommodityName"
+                                                                                                               AttributeListIdName="CommodityId"
+                                                                                                               AttrMasterBinding="Department"
+                                                                                                               AttrMasterCode="DepartmentCode"
+                                                                                                               AttrMasterDesc="DepartmentName"
+                                                                                                               AttrMasterListAttrName="DepartmentId"
+                                                                                                               FieldBinding="#{bindings.Item}"
+                                                                                                               id="msilov3" Label="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                               ToolTip="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                               ChangeMethodName="onItemChange"
+                                                                                                               ManagedBean="#{pageFlowScope.OnOffSaleSupplyBean}"
+                                                                                                               binding="#{pageFlowScope.OnOffSaleSupplyBean.multiSelectBaseFieldsBean.itemComp}"
+                                                                                                               InputDisabled="false"
+                                                                                                               GeneralDisabled="true"
+                                                                                                               inputSize="19"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelFormLayout>
+                                            </af:panelGroupLayout>
+                                        </af:panelBox>
+                                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_PANEL_BOXES_WIDTH}"
+                                                   id="s1_dest"/>
+                                        <af:panelBox text="#{aipdatatooluiBundle.DESTINATION}" showDisclosure="false"
+                                                     inlineStyle="width:325px;" id="pb3">
+                                            <af:panelFormLayout id="pfl3" rows="4" maxColumns="1">
+                                                <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                                                                    label="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                    contentStyle="width:175px;"
+                                                                    shortDesc="#{bindings.Region.hints.tooltip}"
+                                                                    id="soc1" autoSubmit="true"
+                                                                    valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onRegionChange}"
+                                                                    binding="#{pageFlowScope.OnOffSaleSupplyBean.regionComp}">
+                                                    <f:selectItems value="#{bindings.Region.items}" id="si8"/>
+                                                    <!--<f:validator binding="#{bindings.Region.validator}"/>-->
+                                                </af:selectOneChoice>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                                         id="plam3">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                                                      AttributeDesc="StoreName"
+                                                                                                      FieldBinding="Store"
+                                                                                                      listAttributeName="StoreId"
+                                                                                                      valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onStoreChange}"
+                                                                                                      id="smicb3"
+                                                                                                      binding="#{pageFlowScope.OnOffSaleSupplyBean.multiSelectBaseFieldsBean.storeComp}"
+                                                                                                      IsDisabled="false"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:selectOneChoice value="#{bindings.StoreList.inputValue}"
+                                                                    label="#{aipdatatooluiBundle.STORE_LIST_LABEL}"
+                                                                    shortDesc="#{bindings.StoreList.hints.tooltip}"
+                                                                    id="soc3" contentStyle="width:175px;"
+                                                                    disabled="false" autoSubmit="true"
+                                                                    valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onStoreListChange}"
+                                                                    binding="#{pageFlowScope.OnOffSaleSupplyBean.storeListComp}">
+                                                    <f:selectItems value="#{bindings.StoreList.items}" id="si4"/>
+                                                </af:selectOneChoice>
+                                                <af:spacer id="s9" height="30"/>
+                                            </af:panelFormLayout>
+                                        </af:panelBox>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                                <hr style="margin: 0; height: 0.5px; background: rgb(226,231,236); border: none;"
+                                    class="AFStretchWidth"/>
+                                <af:spacer id="s2"
+                                           height="#{aipdatatooluiBundle.SPCR_BTWN_PANEL_BOXES_SEARCH_RESET_BTN_HEIGHT}"/>
+                                <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal">
+                                    <af:commandButton text="#{aipdatatooluiBundle.SEARCH}" id="cb1" disabled="true"
+                                                      immediate="true"
+                                                      action="#{pageFlowScope.OnOffSaleSupplyBean.handleSearch}"
+                                                      binding="#{pageFlowScope.OnOffSaleSupplyBean.searchComp}"/>
+                                    <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SEARCH_RESET_BTN_WIDTH}" id="s4"/>
+                                    <af:commandButton text="#{aipdatatooluiBundle.RESET}" id="cb2"
+                                                      action="#{pageFlowScope.OnOffSaleSupplyBean.handleReset}"
+                                                      binding="#{pageFlowScope.OnOffSaleSupplyBean.resetComp}">
+                                                      <af:target execute="@this" render="sdh2"/>
+                                                      </af:commandButton>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                        <af:showDetailHeader text="#{aipdatatooluiBundle.RESULTS}" disclosed="true" id="sdh2"
+                                             styleClass="AFStretchWidth">
+                            <f:facet name="context"/>
+                            <f:facet name="menuBar"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="legend">
+                                <af:panelGroupLayout id="pgl4"
+                                                     binding="#{pageFlowScope.OnOffSaleSupplyBean.resultsArea}"
+                                                     visible="false">
+                                    <retail:appsTable id="at1" exportEnabled="false" viewEnabled="false"
+                                                      styleClass="AFStretchWidth">
+                                        <f:facet name="additionalToolbarButtons">
+                                            <af:menuBar id="mb1">
+                                                <af:menu text="#{aipdatatooluiBundle.EXPORT_TO_EXCEL}" id="m2"
+                                                         icon="/oracle/retail/apps/aipdt/images/E2E.jpg">
+                                                    <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_ALL_ROWS}"
+                                                                        id="cmi1" immediate="true">
+                                                        <af:setPropertyListener from="true"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                        <af:exportCollectionActionListener exportedId="t1"
+                                                                                           type="excelHTML"
+                                                                                           filename="#{pageFlowScope.OnOffSaleSupplyBean.exportFileName}"/>
+                                                        <af:setPropertyListener from="false"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                    </af:commandMenuItem>
+                                                    <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_SELECTED_ROWS}"
+                                                                        id="cmi2" immediate="true">
+                                                        <af:setPropertyListener from="true"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                        <af:exportCollectionActionListener exportedId="t1"
+                                                                                           type="excelHTML"
+                                                                                           exportedRows="selected"
+                                                                                           filename="#{pageFlowScope.OnOffSaleSupplyBean.exportFileName}"
+                                                                                           filterMethod="#{pageFlowScope.OnOffSaleSupplyBean.exportSelectedRows}"/>
+                                                        <af:setPropertyListener from="false"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                    </af:commandMenuItem>
+                                                </af:menu>
+                                            </af:menuBar>
+                                        </f:facet>
+                                        <f:facet name="additionalActionItems">
+                                            <af:group id="g1">
+                                                <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE}" id="cmi3"
+                                                                    disabled="#{pageFlowScope.OnOffSaleSupplyBean.saveDisabled}"
+                                                                    action="#{pageFlowScope.OnOffSaleSupplyBean.handleSave}"></af:commandMenuItem>
+                                                <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE_AND_CLOSE}"
+                                                                    id="cmi4"
+                                                                    disabled="#{pageFlowScope.OnOffSaleSupplyBean.saveDisabled}"
+                                                                    action="#{pageFlowScope.OnOffSaleSupplyBean.handleSaveAndClose}"></af:commandMenuItem>
+                                            </af:group>
+                                        </f:facet>
+                                        <f:facet name="table">
+                                            <af:table value="#{bindings.OnOffSaleSupplyResultVO1.collectionModel}"
+                                                      var="row" rows="#{bindings.OnOffSaleSupplyResultVO1.rangeSize}"
+                                                      emptyText="#{bindings.OnOffSaleSupplyResultVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.OnOffSaleSupplyResultVO1.collectionModel.selectedRow}"
+                                                      rowSelection="none"
+                                                      fetchSize="#{bindings.OnOffSaleSupplyResultVO1.rangeSize}" id="t1"
+                                                      binding="#{pageFlowScope.OnOffSaleSupplyBean.resultTableComp}"
+                                                      filterModel="#{bindings.OnOffSaleSupplyResultVOQuery.queryDescriptor}"
+                                                      queryListener="#{pageFlowScope.OnOffSaleSupplyBean.processQuery}"
+                                                      filterVisible="false">
+                                                <af:column sortable="false" id="c1" align="center" width="40" rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                    <af:selectBooleanCheckbox value="#{row.bindings.Flag.inputValue}"
+                                                                              label="#{row.bindings.Flag.label}"
+                                                                              autoSubmit="true"
+                                                                              shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.Flag.tooltip}"
+                                                                              id="sbc1" immediate="true"
+                                                                              binding="#{pageFlowScope.OnOffSaleSupplyBean.selectRecordComp}"
+                                                                              valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onRowSelection}"/>
+                                                    <f:facet name="header">
+                                                        <af:panelGroupLayout id="pgl0">
+                                                            <af:selectBooleanCheckbox id="sbc3" autoSubmit="true"
+                                                                                      valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onAllRowsSelection}"
+                                                                                      selected="false" immediate="true"
+                                                                                      binding="#{pageFlowScope.OnOffSaleSupplyBean.selectAllComp}"/>
+                                                        </af:panelGroupLayout>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.Id.name}"
+                                                           sortable="true"
+                                                           headerText="#{bindings.OnOffSaleSupplyResultVO1.hints.Id.label}"
+                                                           id="c2" rendered="false">
+                                                    <af:outputText value="#{row.Id}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.Id.tooltip}"
+                                                                   id="ot1">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.OnOffSaleSupplyResultVO1.hints.Id.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.DeptCode.name}"
+                                                           sortable="true"
+                                                           headerText="#{aipdatatooluiBundle.DEPT_LABEL}" id="c4"
+                                                           filterable="false">
+                                                    <af:link text=" #{row.DeptName}" id="cl1"
+                                                             actionListener="#{pageFlowScope.OnOffSaleSupplyBean.onClickViewItemPopup}"
+                                                             rendered="#{row.CommodityCode eq null}"/>
+                                                    <af:outputText value="#{row.DeptName}"
+                                                                   rendered="#{row.CommodityCode != null}" id="ot5"/>
+                                                </af:column>
+                                                 <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.ClassName.name}"
+                                                           sortable="true" rendered="true"
+                                                           headerText="#{aipdatatooluiBundle.CLASS_NAME_LABEL}" id="c7"
+                                                           filterable="true">
+                                                    <af:outputText value="#{row.ClassName}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.ClassName.tooltip}"
+                                                                   id="ot7"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.SubclassName.name}"
+                                                           sortable="true" rendered="true"
+                                                           headerText="#{aipdatatooluiBundle.SUBCLASS_NAME_LABEL}"
+                                                           id="c9" filterable="true">
+                                                    <af:outputText value="#{row.SubclassName}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.SubclassName.tooltip}"
+                                                                   id="ot9"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.VpnCode.name}"
+                                                           sortable="true" headerText="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                           id="c10" rendered="false" filterable="true">
+                                                    <af:outputText value="#{row.VpnCode}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.VpnCode.tooltip}"
+                                                                   id="ot10"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.VpnDesc.name}"
+                                                           sortable="true"
+                                                           headerText="#{aipdatatooluiBundle.VPN_NAME_LABEL}" id="c11"
+                                                           rendered="true" filterable="true">
+                                                    <af:outputText value="#{row.VpnDesc}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.VpnDesc.tooltip}"
+                                                                   id="ot11"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.VpnColorCode.name}"
+                                                           sortable="true"
+                                                           headerText="#{aipdatatooluiBundle.VPN_COLOR_LABEL}" id="c12"
+                                                           rendered="true" filterable="true">
+                                                <af:outputText value="#{row.VpnColorName}" rendered="true"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.VpnColorCode.tooltip}"
+                                                                   id="ot12"/>
+                                                </af:column>
+                                              
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.CommodityCode.name}"
+                                                           sortable="true" headerText="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                           rendered="true" id="c14" filterable="true">
+                                                    <af:outputText value="#{row.CommodityCode}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.CommodityCode.tooltip}"
+                                                                   id="ot14"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.CommodityDesc.name}"
+                                                           sortable="true" rendered="true"
+                                                           headerText="#{aipdatatooluiBundle.SKU_NAME_LABEL}" id="c15"
+                                                           filterable="true">
+                                                    <af:outputText value="#{row.CommodityDesc}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.CommodityDesc.tooltip}"
+                                                                   id="ot15"/>
+                                                </af:column>
+                                                <af:column headerText="#{aipdatatooluiBundle.REGION_LABEL}" id="c28"
+                                                           rendered="true" filterable="true">
+                                                    <af:link text="#{row.RegionCode}" id="cl6"
+                                                             actionListener="#{pageFlowScope.OnOffSaleSupplyBean.onClickViewStorePopup}"
+                                                             rendered="#{row.StoreCode eq null and row.RegionCode ne null}"
+                                                             immediate="true"/>
+                                                    <af:outputText value="#{row.RegionCode}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.RegionCode.tooltip}"
+                                                                   rendered="#{row.StoreCode ne null and row.RegionCode ne null}"
+                                                                   id="it3"></af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{aipdatatooluiBundle.REGION_NAME_LABEL}"
+                                                           id="c29" rendered="true" filterable="true">
+                                                    <af:outputText value="#{row.RegionDesc}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.RegionDesc.tooltip}"
+                                                                   id="ot27"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.StoreCode.name}"
+                                                           sortable="true"
+                                                           headerText="#{aipdatatooluiBundle.STORE_LABEL}" id="c16"
+                                                           filterable="true">
+                                                    <af:link text="#{aipdatatooluiBundle.ALL_STORES}" id="l1"
+                                                             actionListener="#{pageFlowScope.OnOffSaleSupplyBean.onClickViewStorePopup}"
+                                                             rendered="#{row.StoreCode eq null and row.RegionCode eq null}"
+                                                             immediate="true"/>
+                                                    <af:outputText value="#{row.StoreCode}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.StoreCode.tooltip}"
+                                                                   rendered="#{row.StoreCode != null}" id="ot16"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.StoreDesc.name}"
+                                                           sortable="true" rendered="true"
+                                                           headerText="#{aipdatatooluiBundle.STORE_NAME_LABEL}" id="c17"
+                                                           filterable="true">
+                                                    <af:outputText value="#{row.StoreDesc}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.StoreDesc.tooltip}"
+                                                                   id="ot17"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.SupplierCode.name}"
+                                                           sortable="true"  width="130"
+                                                           headerText="#{aipdatatooluiBundle.ORD_SUPP_LABEL}" id="c18"
+                                                           filterable="true">
+                                                    <af:outputText value="#{row.SupplierCode}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.SupplierCode.tooltip}"
+                                                                   id="ot18"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.SuppDesc.name}"
+                                                           sortable="true" rendered="true" width="172"
+                                                           headerText="#{aipdatatooluiBundle.ORD_SUPP_NAME_LABEL}"
+                                                           id="c19" filterable="true">
+                                                    <af:outputText value="#{row.SuppDesc}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.SuppDesc.tooltip}"
+                                                                   id="ot19"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSaleDate.name}"
+                                                           sortable="false"
+                                                           headerText="#{aipdatatooluiBundle.ON_SALE_DATE_LABEL}"
+                                                           id="c20" width="210px" align="center">
+                                                    <af:inputDate value="#{row.bindings.OnSaleDate.inputValue}"
+                                                                  label="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSaleDate.label}"
+                                                                  columns="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSaleDate.displayWidth}"
+                                                                  shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSaleDate.tooltip}"
+                                                                  disabled="false" id="id1"
+                                                                  binding="#{pageFlowScope.OnOffSaleSupplyBean.onSaleDateComp}"
+                                                                  inlineStyle="font-weight:bold;" autoSubmit="true"
+                                                                  valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onOnSaleDateChange}"
+                                                                  partialTriggers="id3">
+                                                        <f:validator binding="#{row.bindings.OnSaleDate.validator}"/>
+                                                        <af:validateDateTimeRange maximum="#{row.bindings.OffSaleDate.inputValue}"
+                                                                                  messageDetailNotInRange="#{aipdatatooluiBundle.OSOS_ON_SALE_GRT_OFF_SALE_MSG}"/>
+                                                        <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSaleDate.format}"/>
+                                                    </af:inputDate>
+                                                    <f:facet name="header">
+                                                        <af:panelGroupLayout id="pgl11" layout="vertical">
+                                                            <h:outputText value="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSaleDate.label}"
+                                                                          id="ol1"/>
+                                                            <af:separator id="s10"/>
+                                                            <af:panelGroupLayout id="pgl17" layout="horizontal">
+                                                                <af:inputDate binding="#{pageFlowScope.OnOffSaleSupplyBean.onSaleDateSetComp}"
+                                                                              id="id5" columns="11" autoSubmit="true"
+                                                                              validator="#{pageFlowScope.OnOffSaleSupplyBean.onOnSaleDateHeaderChange}">
+                                                                    <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSaleDate.format}"/>
+                                                                </af:inputDate>
+                                                                <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SET_ALL_WIDTH}"
+                                                                           id="s13"/>
+                                                                <af:button text="#{aipdatatooluiBundle.SET_ALL}" id="b1" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                           action="#{pageFlowScope.OnOffSaleSupplyBean.handleOnSaleDateSetAll}"/>
+                                                            </af:panelGroupLayout>
+                                                        </af:panelGroupLayout>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSupplyDate.name}"
+                                                           sortable="true"
+                                                           headerText="#{aipdatatooluiBundle.ON_SUPPLY_DATE_LABEL}"
+                                                           id="c21">
+                                                    <af:inputDate value="#{row.bindings.OnSupplyDate.inputValue}"
+                                                                  label="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSupplyDate.label}"
+                                                                  required="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSupplyDate.mandatory}"
+                                                                  columns="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSupplyDate.displayWidth}"
+                                                                  shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSupplyDate.tooltip}"
+                                                                  id="id2" disabled="true">
+                                                        <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyResultVO1.hints.OnSupplyDate.format}"/>
+                                                    </af:inputDate>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSaleDate.name}"
+                                                           sortable="false"
+                                                           headerText="#{aipdatatooluiBundle.OFF_SALE_DATE_LABEL}"
+                                                           id="c22" width="210" align="center">
+                                                    <af:inputDate value="#{row.bindings.OffSaleDate.inputValue}"
+                                                                  label="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSaleDate.label}"
+                                                                  columns="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSaleDate.displayWidth}"
+                                                                  shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSaleDate.tooltip}"
+                                                                  disabled="false" id="id3"
+                                                                  binding="#{pageFlowScope.OnOffSaleSupplyBean.offSaleDateComp}"
+                                                                  autoSubmit="true"
+                                                                  valueChangeListener="#{pageFlowScope.OnOffSaleSupplyBean.onOffSaleDateChange}"
+                                                                  partialTriggers="id1">
+                                                        <f:validator binding="#{row.bindings.OffSaleDate.validator}"/>
+                                                        <af:validateDateTimeRange minimum="#{row.bindings.OnSaleDate.inputValue}"
+                                                                                  messageDetailNotInRange="#{aipdatatooluiBundle.OSOS_OFF_SALE_LESS_ON_SALE_MSG}"/>
+                                                        <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSaleDate.format}"/>
+                                                    </af:inputDate>
+                                                    <f:facet name="header">
+                                                        <af:panelGroupLayout id="pgl9" layout="vertical">
+                                                            <h:outputLabel value="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSaleDate.label}"
+                                                                           id="ol2"/>
+                                                            <af:separator id="s6"/>
+                                                            <af:panelGroupLayout id="pgl13" layout="horizontal">
+                                                                <af:inputDate binding="#{pageFlowScope.OnOffSaleSupplyBean.offSaleDateSetComp}"
+                                                                              id="id6" columns="11"
+                                                                              validator="#{pageFlowScope.OnOffSaleSupplyBean.onOffSaleDateHeaderChange}"
+                                                                              autoSubmit="true"/>
+                                                                <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SET_ALL_WIDTH}"
+                                                                           id="s14"/>
+                                                                <af:button text="#{aipdatatooluiBundle.SET_ALL}" id="b2" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                           action="#{pageFlowScope.OnOffSaleSupplyBean.handleOffSaleDateSetAll}"/>
+                                                            </af:panelGroupLayout>
+                                                        </af:panelGroupLayout>
+                                                    </f:facet>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSupplyDate.name}"
+                                                           sortable="false"
+                                                           headerText="#{aipdatatooluiBundle.ON_SUPPLY_DATE_LABEL}"
+                                                           id="c23" rendered="true">
+                                                    <af:inputDate value="#{row.bindings.OffSupplyDate.inputValue}"
+                                                                  label="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSupplyDate.label}"
+                                                                  required="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSupplyDate.mandatory}"
+                                                                  columns="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSupplyDate.displayWidth}"
+                                                                  shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSupplyDate.tooltip}"
+                                                                  id="id4" disabled="true">
+                                                        <f:validator binding="#{row.bindings.OffSupplyDate.validator}"/>
+                                                        <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyResultVO1.hints.OffSupplyDate.format}"/>
+                                                    </af:inputDate>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.OnOffSaleSupplyResultVO1.hints.Flag.name}"
+                                                           sortable="true"
+                                                           headerText="#{bindings.OnOffSaleSupplyResultVO1.hints.Flag.label}"
+                                                           id="c24" rendered="false">
+                                                    <af:outputText value="#{row.Flag}"
+                                                                   shortDesc="#{bindings.OnOffSaleSupplyResultVO1.hints.Flag.tooltip}"
+                                                                   id="ot20"
+                                                                   binding="#{pageFlowScope.OnOffSaleSupplyBean.flagComp}">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.OnOffSaleSupplyResultVO1.hints.Flag.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                            </af:table>
+                                        </f:facet>
+                                        <f:facet name="popup"/>
+                                        <f:facet name="appsTableSecondaryToolbar"/>
+                                        <f:facet name="appsTableStatusbar"/>
+                                        <f:facet name="appsTableViewMenu"/>
+                                        <f:facet name="appsTableAfterToolbar"/>
+                                    </retail:appsTable>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                            <f:facet name="info"/>
+                        </af:showDetailHeader>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </f:facet>
+        <f:facet name="popup">
+            <af:panelGroupLayout id="pgl2">
+                <af:popup id="itemHierarchyPopup" binding="#{pageFlowScope.OnOffSaleSupplyBean.itemHierarchyPopup}">
+                    <af:dialog id="d1" title="#{aipdatatooluiBundle.COMMODITY_POPUP_TITLE}" type="none" resize="on"
+                               contentWidth="950" contentHeight="370">
+                        <af:panelGroupLayout id="pc1">
+                            <retail:appsTable id="at3" exportEnabled="false" viewEnabled="false">
+                                <f:facet name="additionalToolbarButtons"/>
+                                <f:facet name="additionalActionItems"/>
+                                <f:facet name="table">
+                                    <af:table value="#{bindings.OnOffSaleSupplyItemHierPopupVO1.collectionModel}"
+                                              var="row" rows="#{bindings.OnOffSaleSupplyItemHierPopupVO1.rangeSize}"
+                                              emptyText="#{bindings.OnOffSaleSupplyItemHierPopupVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              fetchSize="#{bindings.OnOffSaleSupplyItemHierPopupVO1.rangeSize}"
+                                              filterModel="#{bindings.OnOffSaleSupplyItemVOQuery.queryDescriptor}"
+                                              queryListener="#{bindings.OnOffSaleSupplyItemVOQuery.processQuery}"
+                                              filterVisible="true" varStatus="vs" id="t2">
+                                        <af:column sortProperty="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Classdesc.name}"
+                                                   filterable="true" sortable="true" width="170"
+                                                   headerText="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                   id="c3">
+                                            <af:outputText value="#{row.Classdesc}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Classdesc.tooltip}"
+                                                           id="ot2"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Subclassdesc.name}"
+                                                   filterable="true" sortable="true" width="170"
+                                                   headerText="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                   id="c5">
+                                            <af:outputText value="#{row.Subclassdesc}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Subclassdesc.tooltip}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Vpndesc.name}"
+                                                   filterable="true" sortable="true" width="300"
+                                                   headerText="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                   id="c6">
+                                            <af:outputText value="#{row.Vpndesc}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Vpndesc.tooltip}"
+                                                           id="ot6"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Vpncolordesc.name}"
+                                                   filterable="true" sortable="true" width="300"
+                                                   headerText="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                   id="c26">
+                                            <af:outputText value="#{row.Vpncolordesc}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Vpncolordesc.tooltip}"
+                                                           id="ot22"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Skudesc.name}"
+                                                   filterable="true" sortable="true" width="300"
+                                                   headerText="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                   id="c8">
+                                            <af:outputText value="#{row.Skudesc}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.Skudesc.tooltip}"
+                                                           id="ot8"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.CommodityId.name}"
+                                                   filterable="true" sortable="true" rendered="false"
+                                                   headerText="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.CommodityId.label}"
+                                                   id="c27">
+                                            <af:outputText value="#{row.CommodityId}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.CommodityId.tooltip}"
+                                                           id="ot23">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.OnOffSaleSupplyItemHierPopupVO1.hints.CommodityId.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                    </af:table>
+                                </f:facet>
+                                <f:facet name="popup"/>
+                                <f:facet name="appsTableSecondaryToolbar"/>
+                                <f:facet name="appsTableStatusbar"/>
+                                <f:facet name="appsTableViewMenu"/>
+                                <f:facet name="appsTableAfterToolbar"/>
+                            </retail:appsTable>
+                        </af:panelGroupLayout>
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s25"/>
+                        <af:panelGroupLayout id="pgl16" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.CLOSE}" id="cb9"/>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+                <af:popup id="storePopup" binding="#{pageFlowScope.OnOffSaleSupplyBean.storePopup}">
+                    <af:dialog id="d2" title="#{aipdatatooluiBundle.STORE_POPUP_TITLE}" type="none" contentHeight="370"
+                               contentWidth="400">
+                        <af:panelGroupLayout id="pc2">
+                            <retail:appsTable id="at2" exportEnabled="true" viewEnabled="false"
+                                              styleClass="AFStretchWidth">
+                                <f:facet name="additionalToolbarButtons"/>
+                                <f:facet name="additionalActionItems"/>
+                                <f:facet name="table">
+                                    <af:table value="#{bindings.OnOffSaleSupplyStorePopupVO1.collectionModel}" var="row"
+                                              rows="#{bindings.OnOffSaleSupplyStorePopupVO1.rangeSize}"
+                                              emptyText="#{bindings.OnOffSaleSupplyStorePopupVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              fetchSize="#{bindings.OnOffSaleSupplyStorePopupVO1.rangeSize}"
+                                              filterModel="#{bindings.OnOffSaleSupplyStoreVOQuery.queryDescriptor}"
+                                              queryListener="#{bindings.OnOffSaleSupplyStoreVOQuery.processQuery}"
+                                              filterVisible="true" varStatus="vs" id="t3">
+                                        <af:column headerText="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.CommodityId.label}"
+                                                   id="c34">
+                                            <af:outputText value="#{row.CommodityId}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.CommodityId.tooltip}"
+                                                           id="ot34">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.CommodityId.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.StoreCode.name}"
+                                                   filterable="true" sortable="true" width="100"
+                                                   headerText="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                   id="c13">
+                                            <af:outputText value="#{row.StoreCode}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.StoreCode.tooltip}"
+                                                           id="ot13"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.StoreName.name}"
+                                                   filterable="true" sortable="true" width="270"
+                                                   headerText="#{aipdatatooluiBundle.STORE_NAME_LABEL}"
+                                                   id="c25">
+                                            <af:outputText value="#{row.StoreName}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.StoreName.tooltip}"
+                                                           id="ot21"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OnSaleDate.label}"
+                                                   id="c30">
+                                            <af:outputText value="#{row.OnSaleDate}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OnSaleDate.tooltip}"
+                                                           id="ot28">
+                                                <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OnSaleDate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OnSupplyDate.label}"
+                                                   id="c31">
+                                            <af:outputText value="#{row.OnSupplyDate}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OnSupplyDate.tooltip}"
+                                                           id="ot29">
+                                                <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OnSupplyDate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OffSaleDate.label}"
+                                                   id="c32">
+                                            <af:outputText value="#{row.OffSaleDate}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OffSaleDate.tooltip}"
+                                                           id="ot31">
+                                                <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OffSaleDate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OffSupplyDate.label}"
+                                                   id="c33">
+                                            <af:outputText value="#{row.OffSupplyDate}"
+                                                           shortDesc="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OffSupplyDate.tooltip}"
+                                                           id="ot32">
+                                                <af:convertDateTime pattern="#{bindings.OnOffSaleSupplyStorePopupVO1.hints.OffSupplyDate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                    </af:table>
+                                </f:facet>
+                                <f:facet name="popup"/>
+                                <f:facet name="appsTableSecondaryToolbar"/>
+                                <f:facet name="appsTableStatusbar"/>
+                                <f:facet name="appsTableViewMenu"/>
+                                <f:facet name="appsTableAfterToolbar"/>
+                            </retail:appsTable>
+                        </af:panelGroupLayout>
+                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_WIDTH}"
+                                   height="#{aipdatatooluiBundle.SPCR_BTWN_POP_UP_HEIGHT}" id="s12"/>
+                        <af:panelGroupLayout id="pgl19" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.CLOSE}" id="cb11"/>
+                        </af:panelGroupLayout>
+                    </af:dialog>
+                </af:popup>
+                <af:popup id="resetPopup" binding="#{pageFlowScope.OnOffSaleSupplyBean.resetPopup}">
+                    <af:panelWindow id="pw4" title="#{aipdatatooluiBundle.RESET_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot4" value="#{aipdatatooluiBundle.OSOS_RESET_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s23"/>
+                        <af:panelGroupLayout id="pgl12" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb6"
+                                              actionListener="#{pageFlowScope.OnOffSaleSupplyBean.resetYesListener}">
+                                              <af:target execute="@this" render="sdh2"/>
+                                              </af:commandButton>
+                            <af:spacer width="10" height="10" id="s5"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb10" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="cancelPopup" binding="#{pageFlowScope.OnOffSaleSupplyBean.cancelPopup}">
+                    <af:panelWindow id="pw3" title="#{aipdatatooluiBundle.CANCEL_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot24" value="#{aipdatatooluiBundle.OSOS_CANCEL_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s21"/>
+                        <af:panelGroupLayout id="pgl15" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb7" immediate="true"
+                                              actionListener="#{pageFlowScope.OnOffSaleSupplyBean.cancelYesListener}"/>
+                            <af:spacer width="10" height="10" id="s22"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb8" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveSuccessPopup" binding="#{pageFlowScope.OnOffSaleSupplyBean.saveSuccessPopup}">
+                    <af:panelWindow id="pw1" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot25" value="#{aipdatatooluiBundle.OSOS_SAVE_SUCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="s1"/>
+                        <af:panelGroupLayout id="pgl6" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="cb3" immediate="true"
+                                              actionListener="#{pageFlowScope.OnOffSaleSupplyBean.resetYesListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="emptyResultPopup" binding="#{pageFlowScope.OnOffSaleSupplyBean.emptyResultPopup}">
+                    <af:panelWindow id="pw8" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/raf/retail-core/images/warning.png" modal="true"
+                                    closeIconVisible="false">
+                        <af:outputText id="ot33" value="#{aipdatatooluiBundle.OSOS_EMPTY_SAVE_MSG}"/>
+                        <af:spacer width="10" height="20" id="s11"/>
+                        <af:panelGroupLayout id="pgl20" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="cb12" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveFailedPopup" binding="#{pageFlowScope.OnOffSaleSupplyBean.saveFailedPopup}">
+                    <af:panelWindow id="pw2" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/raf/simple/images/delete_ena.png" modal="true"
+                                    closeIconVisible="false">
+                        <af:outputText id="ot26" value="#{aipdatatooluiBundle.OSOS_SAVE_FAILED_MSG}"/>
+                        <af:spacer width="10" height="20" id="s3"/>
+                        <af:panelGroupLayout id="pgl7" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="cb4" immediate="true"
+                                              actionListener="#{pageFlowScope.OnOffSaleSupplyBean.resetYesListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveCloseSuccessPopup"
+                          binding="#{pageFlowScope.OnOffSaleSupplyBean.saveCloseSuccessPopup}">
+                    <af:panelWindow id="pw6" title="#{aipdatatooluiBundle.SAVE_CLOSE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot30" value="#{aipdatatooluiBundle.OSOS_SAVE_CLOSE_SUCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="s7"/>
+                        <af:panelGroupLayout id="pgl22" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="cb5" immediate="true"
+                                              actionListener="#{pageFlowScope.OnOffSaleSupplyBean.cancelYesListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+            </af:panelGroupLayout>
+        </f:facet>
+    </retail:appsPanel>
+</jsp:root>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26"
+                id="CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_initActivityPageDef"
+                Package="oracle.retail.apps.aipdt.cnpd.publicui.flow" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="initActivity" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initActivity"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.initActivity_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_initActivity_result"/>
+  </bindings>
+</pageDefinition>

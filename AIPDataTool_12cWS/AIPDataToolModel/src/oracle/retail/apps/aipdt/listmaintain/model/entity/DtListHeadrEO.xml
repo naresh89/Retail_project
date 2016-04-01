@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DtListHeadrEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DT_LIST_HEADER"
+  AliasName="DtListHeadrEO"
+  BindingStyle="OracleName"
+  RowClass="oracle.retail.apps.aipdt.listmaintain.model.entity.DtListHeadrEOImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityDefImpl"
+  CollClass="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityCache">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="12"
+    Scale="0"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DT_LIST_HEADER"
+    PrimaryKey="true"
+    RetrievedOnUpdate="true"/>
+  <Attribute
+    Name="Name"
+    IsNotNull="true"
+    Precision="240"
+    ColumnName="NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DT_LIST_HEADER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Type"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DT_LIST_HEADER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SubType"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="SUB_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DT_LIST_HEADER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Privacy"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="PRIVACY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DT_LIST_HEADER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IsDeleted"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="IS_DELETED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DT_LIST_HEADER"
+    RetrievedOnUpdate="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IsAutoList"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="IS_AUTO_LIST"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DT_LIST_HEADER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Timestamp"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="TIMESTAMP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DT_LIST_HEADER"/>
+  <Attribute
+    Name="CreateUser"
+    IsNotNull="true"
+    Precision="16"
+    ColumnName="CREATE_USER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DT_LIST_HEADER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="16"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreateDate"
+    IsNotNull="true"
+    ColumnName="CREATE_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="DT_LIST_HEADER"/>
+  <Attribute
+    Name="UpdateUser"
+    Precision="30"
+    ColumnName="UPDATE_USER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DT_LIST_HEADER"
+    RetrievedOnUpdate="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UpdateDate"
+    ColumnName="UPDATE_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="DT_LIST_HEADER"
+    RetrievedOnUpdate="true"/>
+  <Attribute
+    Name="UpdateInd"
+    ColumnName="UPDATE_IND"
+    SQLType="BIT"
+    Type="java.lang.Boolean"
+    ColumnType="BIT"
+    IsPersistent="false"
+    IsQueriable="false"/>
+  <AccessorAttribute
+    Name="DtLookUpCodesEO"
+    Association="oracle.retail.apps.aipdt.listmaintain.model.association.HdrLookupAssociation"
+    AssociationEnd="oracle.retail.apps.aipdt.listmaintain.model.association.HdrLookupAssociation.DtLookUpCodesEO"
+    AssociationOtherEnd="oracle.retail.apps.aipdt.listmaintain.model.association.HdrLookupAssociation.DtListHeadrEO"
+    Type="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="DtListHeaderPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DT_LIST_HEADER_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.retail.apps.aipdt.listmaintain.model.entity.DtListHeadrEO.Id"/>
+    </AttrArray>
+  </Key>
+</Entity>

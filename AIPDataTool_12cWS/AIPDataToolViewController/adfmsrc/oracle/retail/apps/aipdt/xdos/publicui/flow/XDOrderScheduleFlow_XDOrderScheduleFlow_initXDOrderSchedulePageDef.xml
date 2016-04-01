@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="XDOrderScheduleFlow_XDOrderScheduleFlow_initXDOrderSchedulePageDef"
+                Package="oracle.retail.apps.aipdt.xdos.publicui.flow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="initXDOrderSchedule" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="initXDOrderSchedule" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.initXDOrderSchedule_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_initXDOrderSchedule_result"/>
+  </bindings>
+</pageDefinition>

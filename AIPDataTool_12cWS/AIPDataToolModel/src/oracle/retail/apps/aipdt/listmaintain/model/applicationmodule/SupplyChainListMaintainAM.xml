@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SupplyChainListMaintainAM"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  ComponentClass="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.SupplyChainListMaintainAMImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtApplicationModuleDefImpl"
+  ClearCacheOnRollback="true"
+  ComponentInterface="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.common.SupplyChainListMaintainAM">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.SupplyChainListMaintainAM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="DtListHeadrVO"
+    ViewObjectName="oracle.retail.apps.aipdt.listmaintain.model.view.DtListHeadrVO"/>
+  <ViewUsage
+    Name="SupplychainListMaintainProgVO"
+    ViewObjectName="oracle.retail.apps.aipdt.listmaintain.model.view.SupplychainListMaintainProgVO"/>
+  <ViewUsage
+    Name="DtListDetailROVO"
+    ViewObjectName="oracle.retail.apps.aipdt.listmaintain.model.view.DtListDetailROVO"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="initMaintainListActivity"
+      MethodName="initMaintainListActivity">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="onClickResetAction"
+      MethodName="onClickResetAction">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="onSearchClick"
+      MethodName="onSearchClick">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="saveMaintainList"
+      MethodName="saveMaintainList">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="onfetchListDtls"
+      MethodName="onfetchListDtls">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="listId"
+        Type="oracle.jbo.domain.Number"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

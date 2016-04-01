@@ -1,0 +1,314 @@
+/* Styles for Retail Apps Table, Apps Tree, and Apps Tree Table Components */
+
+/* Add Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* add enabled */
+retail|appsTable::add-button-enabled-icon,
+retail|appsTree::add-button-enabled-icon,
+retail|appsTreeTable::add-button-enabled-icon {
+    content: url(//raf/simple/images/add_ena.png);
+}
+
+/* add hover */
+retail|appsTable::add-button-hover-icon,
+retail|appsTree::add-button-hover-icon,
+retail|appsTreeTable::add-button-hover-icon {
+    content: url(//raf/simple/images/add_ovr.png);
+}
+
+/* add depressed */
+retail|appsTable::add-button-depressed-icon,
+retail|appsTree::add-button-depressed-icon,
+retail|appsTreeTable::add-button-depressed-icon {
+    content: url(//raf/simple/images/add_dwn.png);
+}
+
+/* add disabled */
+retail|appsTable::add-button-disabled-icon,
+retail|appsTree::add-button-disabled-icon,
+retail|appsTreeTable::add-button-disabled-icon {
+    content: url(//raf/simple/images/add_dis.png);
+}
+
+/* New Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* new enabled */
+retail|appsTable::new-button-enabled-icon,
+retail|appsTree::new-button-enabled-icon,
+retail|appsTreeTable::new-button-enabled-icon {
+    content: url(//afr/new_ena.png);
+}
+
+/* new hover */
+retail|appsTable::new-button-hover-icon,
+retail|appsTree::new-button-hover-icon,
+retail|appsTreeTable::new-button-hover-icon {
+    content: url(//afr/new_ovr.png);
+}
+
+/* new depressed */
+retail|appsTable::new-button-depressed-icon,
+retail|appsTree::new-button-depressed-icon,
+retail|appsTreeTable::new-button-depressed-icon {
+    content: url(//afr/new_dwn.png);
+}
+
+/* new disabled */
+retail|appsTable::new-button-disabled-icon,
+retail|appsTree::new-button-disabled-icon,
+retail|appsTreeTable::new-button-disabled-icon {
+    content: url(//afr/new_dis.png);
+}
+
+/* Duplicate Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* duplicate enabled */
+retail|appsTable::duplicate-button-enabled-icon,
+retail|appsTree::duplicate-button-enabled-icon,
+retail|appsTreeTable::duplicate-button-enabled-icon {
+    content: url(//raf/simple/images/duplicate_ena.png);
+}
+
+/* duplicate hover */
+retail|appsTable::duplicate-button-hover-icon,
+retail|appsTree::duplicate-button-hover-icon,
+retail|appsTreeTable::duplicate-button-hover-icon {
+    content: url(//raf/simple/images/duplicate_ovr.png);
+}
+
+/* duplicate depressed */
+retail|appsTable::duplicate-button-depressed-icon,
+retail|appsTree::duplicate-button-depressed-icon,
+retail|appsTreeTable::duplicate-button-depressed-icon {
+    content: url(//raf/simple/images/duplicate_dwn.png);
+}
+
+/* duplicate disabled */
+retail|appsTable::duplicate-button-disabled-icon,
+retail|appsTree::duplicate-button-disabled-icon,
+retail|appsTreeTable::duplicate-button-disabled-icon {
+    content: url(//raf/simple/images/duplicate_dis.png);
+}
+
+
+
+/* View Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* view enabled */
+retail|appsTable::view-button-enabled-icon,
+retail|appsTree::view-button-enabled-icon,
+retail|appsTreeTable::view-button-enabled-icon {
+    content: url(//raf/simple/images/view_ena.png);
+}
+
+/* view hover */
+retail|appsTable::view-button-hover-icon,
+retail|appsTree::view-button-hover-icon,
+retail|appsTreeTable::view-button-hover-icon {
+    content: url(//raf/simple/images/view_ovr.png);
+}
+
+/* view depressed */
+retail|appsTable::view-button-depressed-icon,
+retail|appsTree::view-button-depressed-icon,
+retail|appsTreeTable::view-button-depressed-icon {
+    content: url(//raf/simple/images/view_dwn.png);
+}
+
+/* view disabled */
+retail|appsTable::view-button-disabled-icon,
+retail|appsTree::view-button-disabled-icon,
+retail|appsTreeTable::view-button-disabled-icon {
+    content: url(//raf/simple/images/view_dis.png);
+}
+
+
+
+/* Edit Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* edit enabled */
+retail|appsTable::edit-button-enabled-icon,
+retail|appsTree::edit-button-enabled-icon,
+retail|appsTreeTable::edit-button-enabled-icon {
+    content: url(//raf/simple/images/update_ena.png);
+}
+
+/* edit hover */
+retail|appsTable::edit-button-hover-icon,
+retail|appsTree::edit-button-hover-icon,
+retail|appsTreeTable::edit-button-hover-icon {
+    content: url(//raf/simple/images/update_ovr.png);
+}
+
+/* edit depressed */
+retail|appsTable::edit-button-depressed-icon,
+retail|appsTree::edit-button-depressed-icon,
+retail|appsTreeTable::edit-button-depressed-icon {
+    content: url(//raf/simple/images/update_dwn.png);
+}
+
+/* edit disabled */
+retail|appsTable::edit-button-disabled-icon,
+retail|appsTree::edit-button-disabled-icon,
+retail|appsTreeTable::edit-button-disabled-icon {
+    content: url(//raf/simple/images/update_dis.png);
+}
+
+
+/* Delete Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* delete enabled */
+retail|appsTable::delete-button-enabled-icon,
+retail|appsTree::delete-button-enabled-icon,
+retail|appsTreeTable::delete-button-enabled-icon {
+    content: url(//raf/simple/images/delete_ena.png);
+}
+
+/* delete hover */
+retail|appsTable::delete-button-hover-icon,
+retail|appsTree::delete-button-hover-icon,
+retail|appsTreeTable::delete-button-hover-icon {
+    content: url(//raf/simple/images/delete_ovr.png);
+}
+
+/* delete depressed */
+retail|appsTable::delete-button-depressed-icon,
+retail|appsTree::delete-button-depressed-icon,
+retail|appsTreeTable::delete-button-depressed-icon {
+    content: url(//raf/simple/images/delete_dwn.png);
+}
+
+/* delete disabled */
+retail|appsTable::delete-button-disabled-icon,
+retail|appsTree::delete-button-disabled-icon,
+retail|appsTreeTable::delete-button-disabled-icon {
+    content: url(//raf/simple/images/delete_dis.png);
+}
+
+
+/* Edit All Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* edit all enabled */
+retail|appsTable::edit-all-button-enabled-icon,
+retail|appsTreeTable::edit-all-button-enabled-icon {
+    content: url(//raf/simple/images/edit_all_dwn.png); /* uses depressed icon */
+}
+
+/* edit all hover */
+retail|appsTable::edit-all-button-hover-icon,
+retail|appsTreeTable::edit-all-button-hover-icon {
+    content: url(//raf/simple/images/edit_all_ovr.png);
+}
+
+/* edit all depressed */
+retail|appsTable::edit-all-button-depressed-icon,
+retail|appsTreeTable::edit-all-button-depressed-icon {
+    content: url(//raf/simple/images/edit_all_ena.png); /* uses enabled icon */
+}
+
+/* edit all disabled */
+retail|appsTable::edit-all-button-disabled-icon,
+retail|appsTreeTable::edit-all-button-disabled-icon {
+    content: url(//raf/simple/images/edit_all_dis.png);
+}
+
+
+/* Click To Edit Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* click to edit enabled */
+retail|appsTable::click-to-edit-button-enabled-icon,
+retail|appsTreeTable::click-to-edit-button-enabled-icon {
+    content: url(//raf/simple/images/edit_all_ena.png);
+}
+
+/* click to edit hover */
+retail|appsTable::click-to-edit-button-hover-icon,
+retail|appsTreeTable::click-to-edit-button-hover-icon {
+    content: url(//raf/simple/images/edit_all_ovr.png);
+}
+
+/* click to edit depressed */
+retail|appsTable::click-to-edit-button-depressed-icon,
+retail|appsTreeTable::click-to-edit-button-depressed-icon {
+    content: url(//raf/simple/images/edit_all_dwn.png);
+}
+
+/* click to edit disabled */
+retail|appsTable::click-to-edit-button-disabled-icon,
+retail|appsTreeTable::click-to-edit-button-disabled-icon {
+    content: url(//raf/simple/images/edit_all_dis.png);
+}
+
+
+
+
+/* Export to Excel Button - states - Apps Table, Apps Tree, Apps Tree Table */
+/* export to excel enabled */
+retail|appsTable::excel-export-button-enabled-icon,
+retail|appsTree::excel-export-button-enabled-icon,
+retail|appsTreeTable::excel-export-button-enabled-icon {
+    content: url(//raf/simple/images/exporttoexcel_ena.png);
+}
+
+/* export to excel hover */
+retail|appsTable::excel-export-button-hover-icon,
+retail|appsTree::excel-export-button-hover-icon,
+retail|appsTreeTable::excel-export-button-hover-icon {
+    content: url(//raf/simple/images/exporttoexcel_ovr.png);
+}
+
+/* export to excel depressed */
+retail|appsTable::excel-export-button-depressed-icon,
+retail|appsTree::excel-export-button-depressed-icon,
+retail|appsTreeTable::excel-export-button-depressed-icon {
+    content: url(//raf/simple/images/exporttoexcel_dwn.png);
+}
+
+/* export to excel disabled */
+retail|appsTable::excel-export-button-disabled-icon,
+retail|appsTree::excel-export-button-disabled-icon,
+retail|appsTreeTable::excel-export-button-disabled-icon {
+    content: url(//raf/simple/images/exporttoexcel_dis.png);
+}
+
+
+/* Delete Dialog Warning Dialog */
+retail|appsTable::delete-dialog-warning-icon,
+retail|appsTree::delete-dialog-warning-icon,
+retail|appsTreeTable::delete-dialog-warning-icon {
+    content: url(//afr/alta-v1/warning_status.png);
+}
+
+
+/* Apps Panel Component */
+/* previous enabled */
+retail|appsPanel::previous-link-enabled-icon {
+    content: url(//raf/simple/images/previousitem_ena.png);
+}
+
+/* previous hover */
+retail|appsPanel::previous-link-hover-icon {
+    content: url(//raf/simple/images/previousitem_ovr.png);
+}
+
+/* previous depressed */
+retail|appsPanel::previous-link-depressed-icon {
+    content: url(//raf/simple/images/previousitem_dwn.png);
+}
+
+/* previous disabled */
+retail|appsPanel::previous-link-disabled-icon {
+    content: url(//raf/simple/images/previousitem_dis.png);
+}
+
+/* next enabled */
+retail|appsPanel::next-link-enabled-icon {
+    content: url(//raf/simple/images/nextitem_ena.png);
+}
+
+/* next hover */
+retail|appsPanel::next-link-hover-icon {
+    content: url(//raf/simple/images/nextitem_ovr.png);
+}
+
+/* next depressed */
+retail|appsPanel::next-link-depressed-icon {
+    content: url(//raf/simple/images/nextitem_dwn.png);
+}
+
+/* next disabled */
+retail|appsPanel::next-link-disabled-icon {
+    content: url(//raf/simple/images/nextitem_dis.png);
+}

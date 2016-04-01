@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OnOffSaleSupplyStorePopupVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewRowImpl"
+  ComponentClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewObjectImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewDefImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplyStorePopupVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[select        
+	distinct   prod.commodity_id,  
+	str.store_code,      
+	str.store_name,    
+  osos.on_sale_date,osos.on_supply_date,    
+  osos.off_sale_date,osos.off_supply_date    
+from           
+	mv_dt_product_hierarchy prod,      
+	dt_gtt_on_off_sale_supply gtt,          
+	v_dt_store_region str,      
+	dt_on_supply_off_supply osos      
+where          
+	prod.department_id = gtt.dept_id       
+	and osos.commodity_id=prod.commodity_id      
+	and nvl(str.region_id,1) = nvl(nvl(gtt.region_id,str.region_id),1)     
+	and str.store_id = osos.store_id    
+  and osos.commodity_id  = nvl(gtt.commodity_id,osos.commodity_id)]]></SQLQuery>
+  <ViewAttribute
+    Name="CommodityId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="COMMODITY_ID"
+    Expression="COMMODITY_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="StoreCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STORE_CODE"
+    Expression="STORE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StoreName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STORE_NAME"
+    Expression="STORE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OnSaleDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="ON_SALE_DATE"
+    Expression="ON_SALE_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="OnSupplyDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="ON_SUPPLY_DATE"
+    Expression="ON_SUPPLY_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="OffSaleDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="OFF_SALE_DATE"
+    Expression="OFF_SALE_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="OffSupplyDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="OFF_SUPPLY_DATE"
+    Expression="OFF_SUPPLY_DATE"
+    SQLType="DATE"/>
+  <ResourceBundle>
+    <XliffBundle
+      id="oracle.retail.apps.aipdt.model.AIPDataToolModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

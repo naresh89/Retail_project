@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<NavigationDefinition id="Folder_1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:www.oracle.com:oracle.retail.apps.framework.navigation"
+    xsi:schemaLocation="urn:www.oracle.com:oracle.retail.apps.framework.navigation classpath:oracle/retail/apps/framework/uishell/navigation/model/schema/NavigationModel.xsd">
+    <Items>
+        <Item id="regional"
+            title="#{adfBundle['RetailAppsViewControllerBundle'].REGIONAL}"
+            shortDesc="#{adfBundle['RetailAppsViewControllerBundle'].REGIONAL}" 
+            type="taskflow">
+              <url>/WEB-INF/oracle/retail/apps/framework/uishell/preferences/publicui/flow/RetailAppsRegionalFlow.xml#RetailAppsRegionalFlow</url>
+        </Item>
+        <Item id="language" 
+            title="#{adfBundle['RetailAppsViewControllerBundle'].LANGUAGE}" 
+            shortDesc="#{adfBundle['RetailAppsViewControllerBundle'].LANGUAGE}" 
+            type="taskflow" 
+            defaultContent="true">
+              <url>/WEB-INF/oracle/retail/apps/framework/uishell/preferences/publicui/flow/RetailAppsLanguageFlow.xml#RetailAppsLanguageFlow</url>
+        </Item>
+        <Item id="accessibility" 
+            title="#{adfBundle['RetailAppsViewControllerBundle'].ACCESSIBILITY}" 
+            shortDesc="#{adfBundle['RetailAppsViewControllerBundle'].ACCESSIBILITY}" 
+            type="taskflow">
+              <url>/WEB-INF/oracle/retail/apps/framework/uishell/preferences/publicui/flow/RetailAppsAccessibilityFlow.xml#RetailAppsAccessibilityFlow</url>
+        </Item>
+    </Items>
+</NavigationDefinition>

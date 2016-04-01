@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CrossDockSetupReportVO"
+  Version="12.1.3.13.26"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewRowImpl"
+  ComponentClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewObjectImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewDefImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="bindDepartmentId"
+    Kind="where"
+    Type="java.math.BigDecimal"
+    DefaultValue="-1"/>
+  <Variable
+    Name="bindSupplierId"
+    Kind="where"
+    Type="java.math.BigDecimal"
+    DefaultValue="-1"/>
+  <Variable
+    Name="bindRegionId"
+    Kind="where"
+    Type="java.math.BigDecimal"
+    DefaultValue="-1"/>
+  <Variable
+    Name="bindDestinationSeq"
+    Kind="where"
+    Type="java.lang.Integer"
+    DefaultValue="-1"/>
+  <SQLQuery><![CDATA[SELECT cross_dock_id,  
+               department_id,  
+               supplier_id,  
+               store_id,  
+               store_code,  
+               store_name,  
+               destination_seq,  
+               stocking_point_id,  
+               stocking_point_code,  
+               stocking_point_name,  
+               start_date,  
+               end_date,  
+               is_exception,  
+               a_processing_time processing_time_0,  
+               b_processing_time processing_time_1,  
+               c_processing_time processing_time_2,  
+               d_processing_time processing_time_3,  
+               e_processing_time processing_time_4,  
+               f_processing_time processing_time_5,  
+               g_processing_time processing_time_6,  
+               a_max_holding_time max_holding_time_0,  
+               b_max_holding_time max_holding_time_1,  
+               c_max_holding_time max_holding_time_2,  
+               d_max_holding_time max_holding_time_3,  
+               e_max_holding_time max_holding_time_4,  
+               f_max_holding_time max_holding_time_5,  
+               g_max_holding_time max_holding_time_6  
+          FROM (SELECT dcddc.cross_dock_id cross_dock_id,  
+					   dcds.department_id department_id,  
+					   dcddc.destination_seq destination_seq,  
+                       vdsr.store_id store_id,  
+                       vdsr.store_code store_code,  
+                       vdsr.store_name store_name,  
+                       dcddc.stocking_point_id stocking_point_id,  
+                       vdsp.stocking_point_number stocking_point_code,  
+                       vdsp.stocking_point_name stocking_point_name,  
+                       dcds.supplier_id supplier_id,  
+                       dcddc.is_exception is_exception,  
+                       dcddc.start_date start_date,  
+                       dcddc.end_date end_date,  
+                       dcddt.day_of_week day_of_week,  
+                       dcddt.processing_time processing_time,  
+                       dcddt.max_holding_time max_holding_time  
+                  FROM dt_dept_cd_setup dcds,  
+                       dt_dept_cd_dest_cycle partition( V_EXCEPTION ) dcddc,  
+                       dt_dept_cd_desthandle_time partition( V_EXCEPTION ) dcddt,  
+                       v_dt_store_region vdsr,  
+                       v_dt_stocking_point vdsp  
+                 WHERE dcds.department_id    = :bindDepartmentId  
+					 and dcds.store_id         = vdsr.store_id  
+           and dcddc.stocking_point_id = vdsp.stocking_point_id  
+					 and dcds.supplier_id      = :bindSupplierId  
+					 and ((:bindRegionId is NOT NULL and vdsr.region_id = :bindRegionId) OR  
+                           :bindRegionId is NULL) 
+					 and dcddc.status = 'A' 
+					 and dcddt.status = 'A' 
+					 and dcddc.cross_dock_id   = dcds.cross_dock_id  
+					 and dcddc.destination_seq = :bindDestinationSeq  
+					 and dcddc.cross_dock_id   = dcddt.cross_dock_id  
+					 and dcddc.destination_seq = dcddt.destination_seq  
+					 and dcddc.is_exception    = dcddt.is_exception  
+					 and dcddc.start_date      = dcddt.start_date)  
+PIVOT( MIN( processing_time) as processing_time,MIN( max_holding_time) as max_holding_time  
+        FOR day_of_week IN ( '0' AS "A",  
+                             '1' AS "B",  
+                             '2' AS "C",  
+                             '3' AS "D",  
+                             '4' AS "E",  
+                             '5' AS "F",  
+                             '6' AS "G"))]]></SQLQuery>
+  <ViewAttribute
+    Name="CrossDockId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CROSS_DOCK_ID"
+    Expression="CROSS_DOCK_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="DEPARTMENT_ID"
+    Expression="DEPARTMENT_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="SupplierId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="SUPPLIER_ID"
+    Expression="SUPPLIER_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="StoreId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="STORE_ID"
+    Expression="STORE_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="StoreCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STORE_CODE"
+    Expression="STORE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StoreName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STORE_NAME"
+    Expression="STORE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DestinationSeq"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="DESTINATION_SEQ"
+    Expression="DESTINATION_SEQ"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="StockingPointId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="STOCKING_POINT_ID"
+    Expression="STOCKING_POINT_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="StockingPointCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STOCKING_POINT_CODE"
+    Expression="STOCKING_POINT_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StockingPointName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STOCKING_POINT_NAME"
+    Expression="STOCKING_POINT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StartDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="START_DATE"
+    Expression="START_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="EndDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="END_DATE"
+    Expression="END_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="IsException"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IS_EXCEPTION"
+    Expression="IS_EXCEPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProcessingTime0"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROCESSING_TIME_0"
+    Expression="PROCESSING_TIME_0"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProcessingTime1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROCESSING_TIME_1"
+    Expression="PROCESSING_TIME_1"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProcessingTime2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROCESSING_TIME_2"
+    Expression="PROCESSING_TIME_2"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProcessingTime3"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROCESSING_TIME_3"
+    Expression="PROCESSING_TIME_3"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProcessingTime4"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROCESSING_TIME_4"
+    Expression="PROCESSING_TIME_4"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProcessingTime5"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROCESSING_TIME_5"
+    Expression="PROCESSING_TIME_5"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProcessingTime6"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROCESSING_TIME_6"
+    Expression="PROCESSING_TIME_6"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="MaxHoldingTime0"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MAX_HOLDING_TIME_0"
+    Expression="MAX_HOLDING_TIME_0"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="MaxHoldingTime1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MAX_HOLDING_TIME_1"
+    Expression="MAX_HOLDING_TIME_1"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="MaxHoldingTime2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MAX_HOLDING_TIME_2"
+    Expression="MAX_HOLDING_TIME_2"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="MaxHoldingTime3"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MAX_HOLDING_TIME_3"
+    Expression="MAX_HOLDING_TIME_3"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="MaxHoldingTime4"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MAX_HOLDING_TIME_4"
+    Expression="MAX_HOLDING_TIME_4"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="MaxHoldingTime5"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MAX_HOLDING_TIME_5"
+    Expression="MAX_HOLDING_TIME_5"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="MaxHoldingTime6"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MAX_HOLDING_TIME_6"
+    Expression="MAX_HOLDING_TIME_6"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="DepartmentId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <XliffBundle
+      id="oracle.retail.apps.aipdt.model.AIPDataToolModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

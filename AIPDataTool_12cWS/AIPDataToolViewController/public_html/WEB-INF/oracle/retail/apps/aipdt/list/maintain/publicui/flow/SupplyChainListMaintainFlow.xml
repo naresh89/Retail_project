@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SupplyChainListMaintainFlow">
+    <default-activity>initMaintainListActivity</default-activity>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>SupplyChainListMaintainBean</managed-bean-name>
+      <managed-bean-class>oracle.retail.apps.aipdt.list.maintain.publicui.bean.SupplyChainListMaintainBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <method-call id="initMaintainListActivity">
+      <method>#{bindings.initMaintainListActivity.execute}</method>
+      <outcome>
+        <fixed-outcome>success</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="SupplyChainListMaintain">
+      <page>/oracle/retail/apps/aipdt/list/maintain/publicui/page/SupplyChainListMaintain.jsff</page>
+    </view>
+    <method-call id="closeContent">
+      <method>#{bindings.closeContent.execute}</method>
+      <outcome>
+        <fixed-outcome>closeContent</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="rollbackData">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome>
+        <fixed-outcome>rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>initMaintainListActivity</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>success</from-outcome>
+        <to-activity-id>SupplyChainListMaintain</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>SupplyChainListMaintain</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>closeContent</from-outcome>
+        <to-activity-id>closeContent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>rollbackData</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>rollbackData</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>rollback</from-outcome>
+        <to-activity-id>closeContent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

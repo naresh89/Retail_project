@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReceivingCalendarAM"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  ComponentClass="oracle.retail.apps.aipdt.rc.model.applicationmodule.ReceivingCalendarAMImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtApplicationModuleDefImpl"
+  ComponentInterface="oracle.retail.apps.aipdt.rc.model.applicationmodule.common.ReceivingCalendarAM"
+  ClientProxyName="oracle.retail.apps.aipdt.rc.model.applicationmodule.client.ReceivingCalendarAMClient"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="ProductTypeVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.common.model.view.ProductTypeVO"/>
+  <ViewUsage
+    Name="LocationTypeVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.rc.model.view.LocationTypeVO"/>
+  <ViewUsage
+    Name="ReceivingCalendarResultsVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO"/>
+  <ViewUsage
+    Name="ReceivingCalendarSearchVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarSearchVO"/>
+  <ViewUsage
+    Name="DtReceivingCalendarVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.rc.model.view.DtReceivingCalendarVO"/>
+  <ViewUsage
+    Name="StoreVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.common.model.view.StoreVO"/>
+  <ViewUsage
+    Name="StoreFormatVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.common.model.view.StoreFormatVO"/>
+  <ViewUsage
+    Name="StockingPointVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.common.model.view.StockingPointVO"/>
+  <ViewUsage
+    Name="DateParamVO1"
+    ViewObjectName="oracle.retail.apps.aipdt.common.model.view.DateParamVO"/>
+  <ClientInterface>
+    <Method
+      Name="initReceivingCalendar">
+      <Return
+        Type="void"/>
+    </Method>
+    <Method
+      Name="saveReceivingCalendar">
+      <Return
+        Type="void"/>
+    </Method>
+    <Method
+      Name="setUserName">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="handleSelect">
+      <Return
+        Type="boolean"/>
+    </Method>
+    <Method
+      Name="handleReset">
+      <Return
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.1.64.93" id="DataBindings"
+             SeparateXMLFiles="false" Package="oracle.retail.apps.aipdt.view" ClientType="Generic">
+    <definitionFactories>
+        <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+                 className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+        <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    </definitionFactories>
+    <pageMap>
+        <page path="/oracle/retail/apps/aipdt/uishell/Home.jspx" usageId="oracle_retail_apps_aipdt_HomePageDef"/>
+        <page path="/oracle/retail/apps/aipdt/uishell/Login.jspx" usageId="oracle_retail_apps_aipdt_LoginPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/uishell/Preferences.jspx"
+              usageId="oracle_retail_apps_aipdt_PreferencesPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/uishell/About.jspx" usageId="oracle_retail_apps_aipdt_AboutPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/rc/publicui/page/ReceivingCalendar.jsff"
+              usageId="oracle_retail_apps_aipdt_view_ReceivingCalendarPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rc/publicui/flow/ReceivingCalendarFlow.xml#ReceivingCalendarFlow@initReceivingCalendar"
+              usageId="oracle_retail_apps_aipdt_view_ReceivingCalendarFlow_ReceivingCalendarFlow_initReceivingCalendarPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rc/publicui/flow/ReceivingCalendarFlow.xml#ReceivingCalendarFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_ReceivingCalendarFlow_ReceivingCalendarFlow_closeContentPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rc/publicui/flow/ReceivingCalendarFlow.xml#ReceivingCalendarFlow@Rollback"
+              usageId="oracle_retail_apps_aipdt_view_ReceivingCalendarFlow_ReceivingCalendarFlow_RollbackPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/osos/publicui/page/OnOffSaleSupply.jsff"
+              usageId="oracle_retail_apps_aipdt_view_OnOffSaleSupplyPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/osos/publicui/flow/OnOffSaleSupplyFlow.xml#OnOffSaleSupplyFlow@initOnOffSaleSupply"
+              usageId="oracle_retail_apps_aipdt_view_OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_initOnOffSaleSupplyPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/dt/publicui/page/DeploymentType.jsff"
+              usageId="oracle_retail_apps_aipdt_view_DeploymentTypePageDef"/>
+        <page path="/oracle/retail/apps/aipdt/np/publicui/page/NetworkPath.jsff"
+              usageId="oracle_retail_apps_aipdt_view_NetworkPathPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/np/publicui/flow/NetworkPathFlow.xml#NetworkPathFlow@initNetworkPath"
+              usageId="oracle_retail_apps_aipdt_view_NetworkPathFlow_NetworkPathFlow_initNetworkPathPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/np/publicui/flow/NetworkPathFlow.xml#NetworkPathFlow@Rollback"
+              usageId="oracle_retail_apps_aipdt_view_NetworkPathFlow_NetworkPathFlow_RollbackPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/np/publicui/flow/NetworkPathFlow.xml#NetworkPathFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_NetworkPathFlow_NetworkPathFlow_closeContentPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/osos/publicui/flow/OnOffSaleSupplyFlow.xml#OnOffSaleSupplyFlow@Rollback"
+              usageId="oracle_retail_apps_aipdt_view_OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_RollbackPageDef"/>       
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/cds/publicui/flow/CrossDockSetupFlow.xml#CrossDockSetupFlow@init"
+              usageId="oracle_retail_apps_aipdt_view_CrossDockSetupFlow_CrossDockSetupFlow_initPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/cds/publicui/page/CrossDockSetup.jsff"
+              usageId="oracle_retail_apps_aipdt_view_CrossDockSetupPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/list/create/publicui/page/SupplyChainListCreation.jsff"
+              usageId="oracle_retail_apps_aipdt_view_SupplyChainListCreationPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/list/create/publicui/flow/SupplyChainListCreationFlow.xml#SupplyChainListCreationFlow@initCreateListActivity"
+              usageId="oracle_retail_apps_aipdt_view_SupplyChainListCreationFlow_SupplyChainListCreationFlow_initCreateListActivityPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/dt/publicui/flow/DeploymentTypeFlow.xml#DeploymentTypeFlow@initActivity"
+              usageId="oracle_retail_apps_aipdt_view_DeploymentTypeFlow_DeploymentTypeFlow_initActivityPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/list/create/publicui/flow/SupplyChainListCreationFlow.xml#SupplyChainListCreationFlow@rollbackData"
+              usageId="oracle_retail_apps_aipdt_view_SupplyChainListCreationFlow_SupplyChainListCreationFlow_rollbackDataPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/list/create/publicui/flow/SupplyChainListCreationFlow.xml#SupplyChainListCreationFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_SupplyChainListCreationFlow_SupplyChainListCreationFlow_closeContentPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/dt/publicui/flow/DeploymentTypeFlow.xml#DeploymentTypeFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_DeploymentTypeFlow_DeploymentTypeFlow_closeContentPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/dt/publicui/flow/DeploymentTypeFlow.xml#DeploymentTypeFlow@Rollback1"
+              usageId="oracle_retail_apps_aipdt_view_DeploymentTypeFlow_DeploymentTypeFlow_Rollback1PageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/cds/publicui/flow/CrossDockSetupFlow.xml#CrossDockSetupFlow@Rollback"
+              usageId="oracle_retail_apps_aipdt_view_CrossDockSetupFlow_CrossDockSetupFlow_RollbackPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/cds/publicui/flow/CrossDockSetupFlow.xml#CrossDockSetupFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_CrossDockSetupFlow_CrossDockSetupFlow_closeContentPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/list/maintain/publicui/page/SupplyChainListMaintain.jsff"
+              usageId="oracle_retail_apps_aipdt_view_SupplyChainListMaintainPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/list/maintain/publicui/flow/SupplyChainListMaintainFlow.xml#SupplyChainListMaintainFlow@initMaintainListActivity"
+              usageId="oracle_retail_apps_aipdt_view_SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_initMaintainListActivityPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/list/maintain/publicui/flow/SupplyChainListMaintainFlow.xml#SupplyChainListMaintainFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_closeContentPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/list/maintain/publicui/flow/SupplyChainListMaintainFlow.xml#SupplyChainListMaintainFlow@rollbackData"
+              usageId="oracle_retail_apps_aipdt_view_SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_rollbackDataPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/osos/publicui/flow/OnOffSaleSupplyFlow.xml#OnOffSaleSupplyFlow@closeContent1"
+              usageId="oracle_retail_apps_aipdt_view_OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_closeContent1PageDef"/>
+        <page path="/oracle/retail/apps/aipdt/rswspm/publicui/page/WhToStPriorityMatrix.jsff"
+              usageId="oracle_retail_apps_aipdt_view_WhToStPriorityMatrixPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rswspm/publicui/flow/RsWhToStPriorityMatrixFlow.xml#RsWhToStPriorityMatrixFlow@initWhToStMatrix"
+              usageId="oracle_retail_apps_aipdt_view_RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_initWhToStMatrixPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rswspm/publicui/flow/RsWhToStPriorityMatrixFlow.xml#RsWhToStPriorityMatrixFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_closeContentPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rswspm/publicui/flow/RsWhToStPriorityMatrixFlow.xml#RsWhToStPriorityMatrixFlow@rollbackData"
+              usageId="oracle_retail_apps_aipdt_view_RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_rollbackDataPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/xdos/publicui/flow/XDOrderScheduleFlow.xml#XDOrderScheduleFlow@initXDOrderSchedule"
+              usageId="oracle_retail_apps_aipdt_view_XDOrderScheduleFlow_XDOrderScheduleFlow_initXDOrderSchedulePageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/xdos/publicui/flow/XDOrderScheduleFlow.xml#XDOrderScheduleFlow@Rollback"
+              usageId="oracle_retail_apps_aipdt_view_XDOrderScheduleFlow_XDOrderScheduleFlow_RollbackPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/xdos/publicui/flow/XDOrderScheduleFlow.xml#XDOrderScheduleFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_XDOrderScheduleFlow_XDOrderScheduleFlow_closeContentPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/xdos/publicui/page/XDOrderSchedule.jsff"
+              usageId="oracle_retail_apps_aipdt_view_XDOrderSchedulePageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/cnpd/publicui/flow/CorporateNonPlanningDaysFlow.xml#CorporateNonPlanningDaysFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_closeContentPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/cnpd/publicui/flow/CorporateNonPlanningDaysFlow.xml#CorporateNonPlanningDaysFlow@Rollback"
+              usageId="oracle_retail_apps_aipdt_view_CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_RollbackPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/cnpd/publicui/page/CorporateNonPlanningDays.jsff"
+              usageId="oracle_retail_apps_aipdt_view_CorporateNonPlanningDaysPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/cnpd/publicui/flow/CorporateNonPlanningDaysFlow.xml#CorporateNonPlanningDaysFlow@initActivity"
+              usageId="oracle_retail_apps_aipdt_view_CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_initActivityPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rsos/publicui/flow/RsOrderScheduleFlow.xml#RsOrderScheduleFlow@initRsOrderSchedule"
+              usageId="oracle_retail_apps_aipdt_view_RsOrderScheduleFlow_RsOrderScheduleFlow_initRsOrderSchedulePageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rsos/publicui/flow/RsOrderScheduleFlow.xml#RsOrderScheduleFlow@closeContent"
+              usageId="oracle_retail_apps_aipdt_view_RsOrderScheduleFlow_RsOrderScheduleFlow_closeContentPageDef"/>
+        <page path="/WEB-INF/oracle/retail/apps/aipdt/rsos/publicui/flow/RsOrderScheduleFlow.xml#RsOrderScheduleFlow@rollbackData"
+              usageId="oracle_retail_apps_aipdt_view_RsOrderScheduleFlow_RsOrderScheduleFlow_rollbackDataPageDef"/>
+        <page path="/oracle/retail/apps/aipdt/rsos/publicui/page/RsOrderSchedule.jsff"
+              usageId="oracle_retail_apps_aipdt_view_RsOrderSchedulePageDef"/>
+    </pageMap>
+    <pageDefinitionUsages>
+        <page id="oracle_retail_apps_aipdt_HomePageDef" path="oracle.retail.apps.aipdt.uishell.HomePageDef"/>
+        <page id="oracle_retail_apps_aipdt_LoginPageDef" path="oracle.retail.apps.aipdt.uishell.LoginPageDef"/>
+        <page id="oracle_retail_apps_aipdt_PreferencesPageDef"
+              path="oracle.retail.apps.aipdt.uishell.PreferencesPageDef"/>
+        <page id="oracle_retail_apps_aipdt_AboutPageDef" path="oracle.retail.apps.aipdt.uishell.AboutPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_ReceivingCalendarPageDef"
+              path="oracle.retail.apps.aipdt.rc.publicui.page.ReceivingCalendarPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_ReceivingCalendarFlow_ReceivingCalendarFlow_initReceivingCalendarPageDef"
+              path="oracle.retail.apps.aipdt.rc.publicui.flow.ReceivingCalendarFlow_ReceivingCalendarFlow_initReceivingCalendarPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_ReceivingCalendarFlow_ReceivingCalendarFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.rc.publicui.flow.ReceivingCalendarFlow_ReceivingCalendarFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_ReceivingCalendarFlow_ReceivingCalendarFlow_RollbackPageDef"
+              path="oracle.retail.apps.aipdt.rc.publicui.flow.ReceivingCalendarFlow_ReceivingCalendarFlow_RollbackPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_OnOffSaleSupplyPageDef"
+              path="oracle.retail.apps.aipdt.osos.publicui.page.OnOffSaleSupplyPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_DeploymentTypePageDef"
+              path="oracle.retail.apps.aipdt.dt.publicui.page.DeploymentTypePageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_initOnOffSaleSupplyPageDef"
+              path="oracle.retail.apps.aipdt.osos.publicui.flow.OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_initOnOffSaleSupplyPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_NetworkPathPageDef"
+              path="oracle.retail.apps.aipdt.np.publicui.page.NetworkPathPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_NetworkPathFlow_NetworkPathFlow_initNetworkPathPageDef"
+              path="oracle.retail.apps.aipdt.np.publicui.flow.NetworkPathFlow_NetworkPathFlow_initNetworkPathPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_NetworkPathFlow_NetworkPathFlow_RollbackPageDef"
+              path="oracle.retail.apps.aipdt.np.publicui.flow.NetworkPathFlow_NetworkPathFlow_RollbackPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_NetworkPathFlow_NetworkPathFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.np.publicui.flow.NetworkPathFlow_NetworkPathFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_RollbackPageDef"
+              path="oracle.retail.apps.aipdt.osos.publicui.flow.OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_RollbackPageDef"/>       
+        <page id="oracle_retail_apps_aipdt_view_CrossDockSetupFlow_CrossDockSetupFlow_initPageDef"
+              path="oracle.retail.apps.aipdt.cds.publicui.flow.CrossDockSetupFlow_CrossDockSetupFlow_initPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_CrossDockSetupPageDef"
+              path="oracle.retail.apps.aipdt.cds.publicui.page.CrossDockSetupPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_SupplyChainListCreationPageDef"
+              path="oracle.retail.apps.aipdt.list.create.publicui.page.SupplyChainListCreationPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_SupplyChainListCreationFlow_SupplyChainListCreationFlow_initCreateListActivityPageDef"
+              path="oracle.retail.apps.aipdt.list.create.publicui.flow.SupplyChainListCreationFlow_SupplyChainListCreationFlow_initCreateListActivityPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_DeploymentTypeFlow_DeploymentTypeFlow_initActivityPageDef"
+              path="oracle.retail.apps.aipdt.dt.publicui.flow.DeploymentTypeFlow_DeploymentTypeFlow_initActivityPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_SupplyChainListCreationFlow_SupplyChainListCreationFlow_rollbackDataPageDef"
+              path="oracle.retail.apps.aipdt.list.create.publicui.flow.SupplyChainListCreationFlow_SupplyChainListCreationFlow_rollbackDataPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_SupplyChainListCreationFlow_SupplyChainListCreationFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.list.create.publicui.flow.SupplyChainListCreationFlow_SupplyChainListCreationFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_DeploymentTypeFlow_DeploymentTypeFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.dt.publicui.flow.DeploymentTypeFlow_DeploymentTypeFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_DeploymentTypeFlow_DeploymentTypeFlow_Rollback1PageDef"
+              path="oracle.retail.apps.aipdt.dt.publicui.flow.DeploymentTypeFlow_DeploymentTypeFlow_Rollback1PageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_CrossDockSetupFlow_CrossDockSetupFlow_RollbackPageDef"
+              path="oracle.retail.apps.aipdt.cds.publicui.flow.CrossDockSetupFlow_CrossDockSetupFlow_RollbackPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_CrossDockSetupFlow_CrossDockSetupFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.cds.publicui.flow.CrossDockSetupFlow_CrossDockSetupFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_SupplyChainListMaintainPageDef"
+              path="oracle.retail.apps.aipdt.list.maintain.publicui.page.SupplyChainListMaintainPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_initMaintainListActivityPageDef"
+              path="oracle.retail.apps.aipdt.list.maintain.publicui.flow.SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_initMaintainListActivityPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.list.maintain.publicui.flow.SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_rollbackDataPageDef"
+              path="oracle.retail.apps.aipdt.list.maintain.publicui.flow.SupplyChainListMaintainFlow_SupplyChainListMaintainFlow_rollbackDataPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_closeContent1PageDef"
+              path="oracle.retail.apps.aipdt.osos.publicui.flow.OnOffSaleSupplyFlow_OnOffSaleSupplyFlow_closeContent1PageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_WhToStPriorityMatrixPageDef"
+              path="oracle.retail.apps.aipdt.rswspm.publicui.page.WhToStPriorityMatrixPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_initWhToStMatrixPageDef"
+              path="oracle.retail.apps.aipdt.rswspm.publicui.flow.RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_initWhToStMatrixPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.rswspm.publicui.flow.RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_rollbackDataPageDef"
+              path="oracle.retail.apps.aipdt.rswspm.publicui.flow.RsWhToStPriorityMatrixFlow_RsWhToStPriorityMatrixFlow_rollbackDataPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_XDOrderScheduleFlow_XDOrderScheduleFlow_initXDOrderSchedulePageDef"
+              path="oracle.retail.apps.aipdt.xdos.publicui.flow.XDOrderScheduleFlow_XDOrderScheduleFlow_initXDOrderSchedulePageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_XDOrderScheduleFlow_XDOrderScheduleFlow_RollbackPageDef"
+              path="oracle.retail.apps.aipdt.xdos.publicui.flow.XDOrderScheduleFlow_XDOrderScheduleFlow_RollbackPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_XDOrderScheduleFlow_XDOrderScheduleFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.xdos.publicui.flow.XDOrderScheduleFlow_XDOrderScheduleFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_XDOrderSchedulePageDef"
+              path="oracle.retail.apps.aipdt.xdos.publicui.page.XDOrderSchedulePageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.cnpd.publicui.flow.CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_RollbackPageDef"
+              path="oracle.retail.apps.aipdt.cnpd.publicui.flow.CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_RollbackPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_CorporateNonPlanningDaysPageDef"
+              path="oracle.retail.apps.aipdt.cnpd.publicui.page.CorporateNonPlanningDaysPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_initActivityPageDef"
+              path="oracle.retail.apps.aipdt.cnpd.publicui.flow.CorporateNonPlanningDaysFlow_CorporateNonPlanningDaysFlow_initActivityPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_RsOrderScheduleFlow_RsOrderScheduleFlow_initRsOrderSchedulePageDef"
+              path="oracle.retail.apps.aipdt.rsos.publicui.flow.RsOrderScheduleFlow_RsOrderScheduleFlow_initRsOrderSchedulePageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_RsOrderScheduleFlow_RsOrderScheduleFlow_closeContentPageDef"
+              path="oracle.retail.apps.aipdt.rsos.publicui.flow.RsOrderScheduleFlow_RsOrderScheduleFlow_closeContentPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_RsOrderScheduleFlow_RsOrderScheduleFlow_rollbackDataPageDef"
+              path="oracle.retail.apps.aipdt.rsos.publicui.flow.RsOrderScheduleFlow_RsOrderScheduleFlow_rollbackDataPageDef"/>
+        <page id="oracle_retail_apps_aipdt_view_RsOrderSchedulePageDef"
+              path="oracle.retail.apps.aipdt.rsos.publicui.page.RsOrderSchedulePageDef"/>
+    </pageDefinitionUsages>
+    <dataControlUsages>
+        <dc id="RetailAppsUIShellController"
+            path="oracle.retail.apps.framework.viewcontroller.RetailAppsUIShellController"/>
+        <BC4JDataControl id="ReceivingCalendarAMDataControl"
+                         Package="oracle.retail.apps.aipdt.rc.model.applicationmodule"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="ReceivingCalendarAMLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+        <BC4JDataControl id="AipdtRootAMDataControl" Package="oracle.retail.apps.aipdt.root.model.applicationmodule"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="AipdtRootAMLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+        <BC4JDataControl id="OnOffSaleSupplyAMDataControl"
+                         Package="oracle.retail.apps.aipdt.osos.model.applicationmodule"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="OnOffSaleSupplyAMLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    </dataControlUsages>
+</Application>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="XDOrderSchedulePageDef"
+                Package="oracle.retail.apps.aipdt.xdos.publicui.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Root.XDOrderScheduleAM.XDOrderScheduleSearchVO1" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="XDOrderScheduleSearchVO1Iterator"/>
+    <iterator Binds="Root.XDOrderScheduleAM.XDOrderScheduleResultsVO1" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="XDOrderScheduleResultsVO1Iterator"/>
+    <searchRegion Binds="XDOrderScheduleResultsVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="XDOrderScheduleResultsVO1Query"/>
+    <iterator Binds="Root.XDOrderScheduleAM.XDOrderScheduleItemHierPopupVO1" DataControl="AipdtRootAMDataControl"
+              RangeSize="25" id="XDOrderScheduleItemHierPopupVO1Iterator"/>
+    <searchRegion Binds="XDOrderScheduleItemHierPopupVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="XDOrderScheduleItemHierPopupVO1Query"/>
+    <iterator Binds="Root.XDOrderScheduleAM.XDOrderScheduleTimeSetAllVO1" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="XDOrderScheduleTimeSetAllVO1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Department" id="Department"
+          DTSupportsMRU="true"/>
+    <listOfValues IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Class1" id="Class1"/>
+    <listOfValues IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Subclass" id="Subclass"/>
+    <list IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_ItemList" id="ItemList"
+          DTSupportsMRU="true"/>
+    <listOfValues IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Supplier" id="Supplier"/>
+    <listOfValues IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Vpn" id="Vpn"/>
+    <listOfValues IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_StyleColor"
+                  id="StyleColor"/>
+    <listOfValues IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Item" id="Item"/>
+    <list IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Region" id="Region"
+          DTSupportsMRU="true"/>
+    <listOfValues IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Store" id="Store"/>
+    <list IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_StoreList" id="StoreList"
+          DTSupportsMRU="true"/>
+    <list IterBinding="XDOrderScheduleSearchVO1Iterator" StaticList="false" Uses="LOV_Warehouse" id="Warehouse"
+          DTSupportsMRU="true"/>
+    <methodAction id="filterStoreVO" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterStoreVO"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.filterStoreVO_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_filterStoreVO_result">
+      <NamedData NDName="regId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="filterSupplierLOVVO" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterSupplierLOVVO" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.filterSupplierLOVVO_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_filterSupplierLOVVO_result">
+      <NamedData NDName="deptId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getIdsFromDtListDetailTable" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getIdsFromDtListDetailTable" IsViewObjectMethod="false"
+                  DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.getIdsFromDtListDetailTable_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_getIdsFromDtListDetailTable_result">
+      <NamedData NDName="itemList" NDType="java.lang.Integer"/>
+      <NamedData NDName="TYPE" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getSupplierIdFromCode" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getSupplierIdFromCode" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.getSupplierIdFromCode_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_getSupplierIdFromCode_result">
+      <NamedData NDName="supplierCode" NDType="java.lang.String"/>
+      <NamedData NDName="deptId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="handleReset" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleReset"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleReset_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_handleReset_result"/>
+    <methodAction id="handleSearch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleSearch"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleSearch_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_handleSearch_result"/>
+    <tree IterBinding="XDOrderScheduleResultsVO1Iterator" id="XDOrderScheduleResultsVO1">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO"
+                      Name="XDOrderScheduleResultsVO10">
+        <AttrNames>
+          <Item Value="DeptCode"/>
+          <Item Value="DeptName"/>
+          <Item Value="ClassCode"/>
+          <Item Value="ClassName"/>
+          <Item Value="SubclassCode"/>
+          <Item Value="SubclassName"/>
+          <Item Value="VpnCode"/>
+          <Item Value="VpnDesc"/>
+          <Item Value="VpnColorCode"/>
+          <Item Value="VpnColorName"/>
+          <Item Value="CommodityCode"/>
+          <Item Value="CommodityDesc"/>
+          <Item Value="SupplierCode"/>
+          <Item Value="SuppDesc"/>
+          <Item Value="XdWarehouseCode"/>
+          <Item Value="XdWarehouseName"/>
+          <Item Value="StoreCode"/>
+          <Item Value="StoreDesc"/>
+          <Item Value="Frequency"/>
+          <Item Value="SunLeadTime"/>
+          <Item Value="MonLeadTime"/>
+          <Item Value="TueLeadTime"/>
+          <Item Value="WedLeadTime"/>
+          <Item Value="ThuLeadTime"/>
+          <Item Value="FriLeadTime"/>
+          <Item Value="SatLeadTime"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="UpdateInd" Binds="UpdateInd"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="XDOrderScheduleResultsVO1Iterator" id="UpdateInd" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="UpdateInd"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <methodAction id="saveXDOS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveXDOS"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.saveXDOS_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_saveXDOS_result"/>
+    <methodAction id="handleCheckBoxAll" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleCheckBoxAll"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.XDOrderScheduleAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleCheckBoxAll_AipdtRootAMDataControl_dataProvider_XDOrderScheduleAM_handleCheckBoxAll_result">
+      <NamedData NDName="isSelected" NDType="boolean"/>
+    </methodAction>
+    <tree IterBinding="XDOrderScheduleItemHierPopupVO1Iterator" id="XDOrderScheduleItemHierPopupVO1">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleItemHierPopupVO"
+                      Name="XDOrderScheduleItemHierPopupVO10">
+        <AttrNames>
+          <Item Value="VpnCode"/>
+          <Item Value="VpnName"/>
+          <Item Value="VpnColorCode"/>
+          <Item Value="VpnColorName"/>
+          <Item Value="CommodityCode"/>
+          <Item Value="CommodityName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="XDOrderScheduleTimeSetAllVO1Iterator" id="XDOrderScheduleTimeSetAllVO1">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO"
+                      Name="XDOrderScheduleTimeSetAllVO10">
+        <AttrNames>
+          <Item Value="Sunday"/>
+          <Item Value="Monday"/>
+          <Item Value="Tuesday"/>
+          <Item Value="Wednesday"/>
+          <Item Value="Thursday"/>
+          <Item Value="Friday"/>
+          <Item Value="Saturday"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

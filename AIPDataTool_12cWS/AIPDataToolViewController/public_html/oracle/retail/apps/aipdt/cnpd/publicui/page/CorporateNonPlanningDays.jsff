@@ -1,0 +1,445 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:retail="/retailApps" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:RetailAppCustomComponent="/RetailAppCustomComponent">
+    <c:set var="aipdatatoolviewcontrollerBundle"
+           value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+    <retail:appsPanel id="ap1" contentsFacet="stretch" title="" saveAndCloseRendered="true" saveAndCloseVisible="true"
+                      saveRendered="true" saveVisible="true" cancelRendered="true" cancelVisible="true"
+                      savePartialSubmit="true" saveAndClosePartialSubmit="true" cancelPartialSubmit="true"
+                      saveAction="#{pageFlowScope.CorporateNPDaysBean.handleSave}"
+                      saveAndCloseDisabled="#{pageFlowScope.CorporateNPDaysBean.isSaveBtnDisabled}"
+                      saveDisabled="#{pageFlowScope.CorporateNPDaysBean.isSaveBtnDisabled}"
+                      saveAndCloseAction="#{pageFlowScope.CorporateNPDaysBean.handleSaveAndClose}"
+                      cancelAction="#{pageFlowScope.CorporateNPDaysBean.handleCancel}"
+                      binding="#{pageFlowScope.CorporateNPDaysBean.appsPanelBind}">
+        <f:facet name="contents"/>
+        <f:facet name="contentsStretch">
+            <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="parent">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelGroupLayout layout="scroll" id="pgl12" inlineStyle="Width:100%">
+                        <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl4">
+                            <af:showDetailHeader text="#{aipdatatoolviewcontrollerBundle.SEARCH}" disclosed="true"
+                                                 id="sdh1">
+                                <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SEARCH_PANEL_BOXES_HEIGHT}"
+                                           id="s6"/>
+                                <af:panelBox id="pb2" text="#{aipdatatoolviewcontrollerBundle.SET_SETUP_TYPE}"
+                                             showDisclosure="false">
+                                    <af:spacer id="s11" height="10"/>
+                                    <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        <af:spacer id="s3" width="30"/>
+                                        <af:panelLabelAndMessage id="pfl2">
+                                            <af:selectBooleanRadio value="#{pageFlowScope.CorporateNPDaysBean.isDefaultSelected}"
+                                                                   autoSubmit="true" group="SetupType"
+                                                                   text="#{aipdatatoolviewcontrollerBundle.DEFAULT}"
+                                                                   binding="#{pageFlowScope.CorporateNPDaysBean.defaultRadioComp}"
+                                                                   shortDesc="#{aipdatatoolviewcontrollerBundle.DEFAULT}"
+                                                                   valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onDefaultVCE}"
+                                                                   id="sbc1" simple="true"/>
+                                            <af:spacer id="s5" width="30"/>
+                                            <af:selectBooleanRadio value="#{pageFlowScope.CorporateNPDaysBean.isExceptionSelected}"
+                                                                   autoSubmit="true" group="SetupType"
+                                                                   text="#{aipdatatoolviewcontrollerBundle.EXCEPTION}"
+                                                                   binding="#{pageFlowScope.CorporateNPDaysBean.exceptionRadioComp}"
+                                                                   valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onExceptionVCE}"
+                                                                   shortDesc="#{aipdatatoolviewcontrollerBundle.EXCEPTION}"
+                                                                   id="sbc3" simple="true"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:panelGroupLayout>
+                                    <af:spacer id="s18" height="10"/>
+                                </af:panelBox>
+                                <af:spacer height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_PANEL_BOXES_WIDTH}"
+                                           id="s10"/>
+                                <af:panelGroupLayout id="pgl217" layout="horizontal" valign="middle">
+                                    <af:panelBox text="#{aipdatatoolviewcontrollerBundle.ITEM_HEADER_TITLE}" id="pb1"
+                                                 showDisclosure="false" inlineStyle="width:300px;">
+                                        <af:spacer id="s19" height="17"/>
+                                        <af:panelGroupLayout id="pfl1" layout="horizontal">
+                                            <af:spacer width="20" id="s25"/>
+                                            <af:selectOneChoice value="#{bindings.DayType.inputValue}"
+                                                                label="#{bindings.DayType.label}"
+                                                                required="#{bindings.DayType.hints.mandatory}"
+                                                                shortDesc="#{bindings.DayType.hints.tooltip}"
+                                                                autoSubmit="true" id="soc1"
+                                                                contentStyle="#{aipdatatoolviewcontrollerBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onDayTypeVCE}"
+                                                                binding="#{pageFlowScope.CorporateNPDaysBean.dayTypeComp}">
+                                                <f:selectItems value="#{bindings.DayType.items}" id="si1"/>
+                                                <f:validator binding="#{bindings.DayType.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:panelGroupLayout>
+                                        <af:spacer id="s20" height="20"/>
+                                    </af:panelBox>
+                                    <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_PANEL_BOXES_WIDTH}"
+                                               id="s17"/>
+                                    <af:panelBox text="#{aipdatatoolviewcontrollerBundle.DESTINATION}" id="pb3"
+                                                 showDisclosure="false" inlineStyle="width:700px;">
+                                        <af:panelGroupLayout id="pgl3" layout="horizontal">
+                                            <af:panelFormLayout id="pfl3" rows="2">
+                                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.WAREHOUSE}"
+                                                                         id="plam1">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="WarehouseCode"
+                                                                                                      AttributeDesc="WarehouseName"
+                                                                                                      FieldBinding="Warehouse"
+                                                                                                      listAttributeName="WarehouseId"
+                                                                                                      IsDisabled="#{pageFlowScope.CorporateNPDaysBean.isWareHouseDisabled}"
+                                                                                                      valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onWarehouseVCE}"
+                                                                                                      id="smicb1"
+                                                                                                      binding="#{pageFlowScope.CorporateNPDaysBean.multiSelectBaseFieldsBean.wareHouseComp}"
+                                                                                                      autoSubmit="true"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:selectOneChoice value="#{bindings.WarehouseList.inputValue}"
+                                                                    label="#{aipdatatoolviewcontrollerBundle.WAREHOUSE_LIST_LABEL}"
+                                                                    required="#{bindings.WarehouseList.hints.mandatory}"
+                                                                    shortDesc="#{bindings.WarehouseList.hints.tooltip}"
+                                                                    id="soc2" autoSubmit="true" disabled="true"
+                                                                    contentStyle="#{aipdatatoolviewcontrollerBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onWarehouseListVCE}"
+                                                                    binding="#{pageFlowScope.CorporateNPDaysBean.wareHouseListComp}">
+                                                    <f:selectItems value="#{bindings.WarehouseList.items}" id="si2"/>
+                                                    <f:validator binding="#{bindings.WarehouseList.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:panelFormLayout>
+                                            <af:spacer width="45" id="s4"/>
+                                            <af:panelFormLayout id="pfl4" rows="2">
+                                                <af:panelLabelAndMessage label="#{aipdatatoolviewcontrollerBundle.STORE_LABEL}"
+                                                                         id="plam8">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                                                      AttributeDesc="StoreName"
+                                                                                                      FieldBinding="Store"
+                                                                                                      listAttributeName="StoreId"
+                                                                                                      IsDisabled="#{pageFlowScope.CorporateNPDaysBean.isStoreDisabled}"
+                                                                                                      valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onStoreVCE}"
+                                                                                                      id="smicb3"
+                                                                                                      binding="#{pageFlowScope.CorporateNPDaysBean.multiSelectBaseFieldsBean.storeComp}"
+                                                                                                      autoSubmit="true"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:selectOneChoice value="#{bindings.StoreList.inputValue}"
+                                                                    label="#{aipdatatoolviewcontrollerBundle.STORE_LIST_LABEL}"
+                                                                    required="#{bindings.StoreList.hints.mandatory}"
+                                                                    shortDesc="#{bindings.StoreList.hints.tooltip}"
+                                                                    id="soc3" autoSubmit="true" disabled="true"
+                                                                    contentStyle="#{aipdatatoolviewcontrollerBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onStoreListVCE}"
+                                                                    binding="#{pageFlowScope.CorporateNPDaysBean.storeListComp}">
+                                                    <f:selectItems value="#{bindings.StoreList.items}" id="si3"/>
+                                                    <f:validator binding="#{bindings.StoreList.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                        <af:spacer id="s24" height="5"/>
+                                    </af:panelBox>
+                                </af:panelGroupLayout>
+                                <hr style="margin: 0; height: 0.5px; background: rgb(226,231,236); border: none;"
+                                    class="AFStretchWidth"/>
+                                <af:spacer id="s2"
+                                           height="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_PANEL_BOXES_SEARCH_RESET_BTN_HEIGHT}"/>
+                                <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal">
+                                    <af:button text="#{aipdatatoolviewcontrollerBundle.SEARCH}" id="b1" disabled="true"
+                                               actionListener="#{pageFlowScope.CorporateNPDaysBean.handleSearch}"
+                                               binding="#{pageFlowScope.CorporateNPDaysBean.searchBtn}"
+                                               partialSubmit="true"/>
+                                    <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SEARCH_RESET_BTN_WIDTH}"
+                                               id="s12"/>
+                                    <af:button text="#{aipdatatoolviewcontrollerBundle.RESET_LABEL}" id="b2"
+                                               partialSubmit="true" immediate="true"
+                                               action="#{pageFlowScope.CorporateNPDaysBean.handleReset}">
+                                        <af:target execute="@this" render="pgl5"/>
+                                    </af:button>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                        <af:showDetailHeader text="#{aipdatatoolviewcontrollerBundle.RESULTS}" disclosed="true"
+                                             id="sdh2">
+                            <f:facet name="context"/>
+                            <f:facet name="menuBar"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="legend"/>
+                            <f:facet name="info"/>
+                            <af:panelGroupLayout id="pgl5"
+                                                 binding="#{pageFlowScope.CorporateNPDaysBean.resultContainer}">
+                                <retail:appsTable id="at1" styleClass="AFStretchWidth" exportEnabled="false"
+                                                  tableId="t1" viewEnabled="false"
+                                                  rendered="#{bindings.DtGttNonPlanningDaysVOIterator.estimatedRowCount > 0}">
+                                    <f:facet name="additionalToolbarButtons">
+                                        <af:panelGroupLayout id="pgl47" layout="horizontal">
+                                            <af:menuBar id="mb1">
+                                                <af:menu text="#{aipdatatoolviewcontrollerBundle.EXPORT_TO_EXCEL}"
+                                                         id="m2" icon="/oracle/retail/apps/aipdt/images/E2E.jpg">
+                                                    <af:commandMenuItem text="#{aipdatatoolviewcontrollerBundle.EXPORT_ALL_ROWS}"
+                                                                        id="cmi1">
+                                                        <af:setPropertyListener from="true"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                        <af:exportCollectionActionListener exportedId="t1"
+                                                                                           type="excelHTML"
+                                                                                           filename="#{pageFlowScope.CorporateNPDaysBean.exportFileName}"
+                                                                                           title="#{aipdatatoolviewcontrollerBundle.CDS_ALL_ROWS}"/>
+                                                        <af:setPropertyListener from="false"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                    </af:commandMenuItem>
+                                                    <af:commandMenuItem text="#{aipdatatoolviewcontrollerBundle.EXPORT_SELECTED_ROWS}"
+                                                                        id="cmi2">
+                                                        <af:setPropertyListener from="true"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                        <af:exportCollectionActionListener exportedId="t1"
+                                                                                           type="excelHTML"
+                                                                                           exportedRows="selected"
+                                                                                           filterMethod="#{pageFlowScope.CorporateNPDaysBean.exportSelectedRows}"
+                                                                                           filename="#{pageFlowScope.CorporateNPDaysBean.exportFileName}"/>
+                                                        <af:setPropertyListener from="false"
+                                                                                to="#{pageFlowScope.hideSomeColumns}"
+                                                                                type="action"/>
+                                                    </af:commandMenuItem>
+                                                </af:menu>
+                                            </af:menuBar>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <f:facet name="additionalActionItems">
+                                        <af:group id="g1">
+                                            <af:commandMenuItem text="#{aipdatatoolviewcontrollerBundle.SAVE}"
+                                                                action="#{pageFlowScope.CorporateNPDaysBean.handleSave}"
+                                                                disabled="#{pageFlowScope.CorporateNPDaysBean.isSaveBtnDisabled}"/>
+                                            <af:commandMenuItem text="#{aipdatatoolviewcontrollerBundle.SAVE_AND_CLOSE}"
+                                                                id="cmi4"
+                                                                disabled="#{pageFlowScope.CorporateNPDaysBean.isSaveBtnDisabled}"
+                                                                action="#{pageFlowScope.CorporateNPDaysBean.handleSaveAndClose}"/>
+                                        </af:group>
+                                    </f:facet>
+                                    <f:facet name="table">
+                                        <af:table value="#{bindings.DtGttNonPlanningDaysVO.collectionModel}" var="row"
+                                                  rows="#{bindings.DtGttNonPlanningDaysVO.rangeSize}"
+                                                  emptyText="#{bindings.DtGttNonPlanningDaysVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                  rowBandingInterval="0" columnStretching="multiple"
+                                                  binding="#{pageFlowScope.CorporateNPDaysBean.tableBind}"
+                                                  fetchSize="#{bindings.DtGttNonPlanningDaysVO.rangeSize}"
+                                                  autoHeightRows="15"
+                                                  filterModel="#{bindings.DtGttNonPlanningDaysVOQuery.queryDescriptor}"
+                                                  queryListener="#{bindings.DtGttNonPlanningDaysVOQuery.processQuery}"
+                                                  filterVisible="false" varStatus="vs" id="t1" rowSelection="single"
+                                                  rendered="#{bindings.DtGttNonPlanningDaysVO.rangeSize gt 0}">
+                                            <af:column sortProperty="#{bindings.DtGttNonPlanningDaysVO.hints.UpdateInd.name}"
+                                                       filterable="false" sortable="false" width="17" align="center"
+                                                       rendered="#{pageFlowScope.hideSomeColumns ne true}" id="c1">
+                                                <af:selectBooleanCheckbox value="#{row.bindings.UpdateInd.inputValue}"
+                                                                          label="#{row.bindings.UpdateInd.label}"
+                                                                          autoSubmit="true" simple="true"
+                                                                          disabled="#{row.bindings.Status.inputValue eq 'N'  or pageFlowScope.CorporateNPDaysBean.isExceptionSelected}"
+                                                                          valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onRowLevelCheckBoxVCE}"
+                                                                          shortDesc="#{bindings.DtGttNonPlanningDaysVO.hints.UpdateInd.tooltip}"
+                                                                          id="sbc2"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.DtGttNonPlanningDaysVO.hints.LocationCode.name}"
+                                                       filterable="true" sortable="true" align="center"
+                                                       rendered="#{pageFlowScope.CorporateNPDaysBean.isExceptionSelected}"
+                                                       headerText="#{pageFlowScope.CorporateNPDaysBean.dayTypeVal eq 'NDL' ? aipdatatoolviewcontrollerBundle.NPD_WAREHOUSE_LABEL : aipdatatoolviewcontrollerBundle.NPD_STORES_LABEL}"
+                                                       id="c8">
+                                                <af:inputText value="#{row.bindings.LocationCode.inputValue}"
+                                                              readOnly="true"
+                                                              label="#{bindings.DtGttNonPlanningDaysVO.hints.LocationCode.label}"
+                                                              required="#{bindings.DtGttNonPlanningDaysVO.hints.LocationCode.mandatory}"
+                                                              columns="#{bindings.DtGttNonPlanningDaysVO.hints.LocationCode.displayWidth}"
+                                                              maximumLength="#{bindings.DtGttNonPlanningDaysVO.hints.LocationCode.precision}"
+                                                              shortDesc="#{bindings.DtGttNonPlanningDaysVO.hints.LocationCode.tooltip}"
+                                                              id="it8">
+                                                    <f:validator binding="#{row.bindings.LocationCode.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.DtGttNonPlanningDaysVO.hints.Day.name}"
+                                                       filterable="true" sortable="true" align="center"
+                                                       headerText="#{aipdatatoolviewcontrollerBundle.NON_PLANNING_DAYS_DATE_LABEL}"
+                                                       id="c3" width="200">
+                                                <f:facet name="filter">
+                                                    <af:inputDate value="#{bindings.DtGttNonPlanningDaysVOQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.Day.value}"
+                                                                  id="id1">
+                                                        <af:convertDateTime pattern="#{bindings.DtGttNonPlanningDaysVO.hints.Day.format}"/>
+                                                    </af:inputDate>
+                                                </f:facet>
+                                                <af:inputDate value="#{row.bindings.Day.inputValue}"
+                                                              label="#{bindings.DtGttNonPlanningDaysVO.hints.Day.label}"
+                                                              required="false"
+                                                              columns="#{bindings.DtGttNonPlanningDaysVO.hints.Day.displayWidth}"
+                                                              shortDesc="#{bindings.DtGttNonPlanningDaysVO.hints.Day.tooltip}"
+                                                              id="id2" autoSubmit="true"
+                                                              validator="#{pageFlowScope.CorporateNPDaysBean.onDayDateValidator}"
+                                                              binding="#{pageFlowScope.CorporateNPDaysBean.dayBind}"
+                                                              valueChangeListener="#{pageFlowScope.CorporateNPDaysBean.onDayDateVCE}"
+                                                              disabled="#{row.bindings.Status.inputValue ne 'N'}">
+                                                    <f:validator binding="#{row.bindings.Day.validator}"/>
+                                                    <af:convertDateTime pattern="#{bindings.DtGttNonPlanningDaysVO.hints.Day.format}"/>
+                                                </af:inputDate>
+                                                <f:facet name="header">
+                                                    <af:panelGroupLayout id="pgl18" layout="vertical"
+                                                                         rendered="#{pageFlowScope.CorporateNPDaysBean.isExceptionSelected}">
+                                                        <h:outputText value="#{aipdatatoolviewcontrollerBundle.NON_PLANNING_DAYS_DATE_LABEL}"
+                                                                      id="ot8"/>
+                                                        <?audit suppress oracle.ide.xml.validation-error?>
+                                                        <af:separator id="s26"/>
+                                                        <af:panelGroupLayout id="pgl19" layout="horizontal">
+                                                            <af:inputDate id="id5" columns="11" autoSubmit="true"
+                                                                          validator="#{pageFlowScope.CorporateNPDaysBean.onHeaderDateValidator}"
+                                                                          binding="#{pageFlowScope.CorporateNPDaysBean.dayDateHeaderComp}">
+                                                                <af:convertDateTime pattern="#{bindings.DtGttNonPlanningDaysVO.hints.Day.format}"/>
+                                                                <!--<af:target execute="@this"
+                                                                                       events="valueChange"/>-->
+                                                            </af:inputDate>
+                                                            <af:spacer width="#{aipdatatoolviewcontrollerBundle.SPCR_BTWN_SET_ALL_WIDTH}"
+                                                                       id="s27"/>
+                                                            <af:button text="#{aipdatatoolviewcontrollerBundle.SET_ALL}"
+                                                                       id="b3"
+                                                                       rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleDayDateSetAll}">
+                                                                <af:target execute="none"/>
+                                                            </af:button>
+                                                        </af:panelGroupLayout>
+                                                    </af:panelGroupLayout>
+                                                </f:facet>
+                                            </af:column>
+                                        </af:table>
+                                    </f:facet>
+                                    <f:facet name="popup"/>
+                                    <f:facet name="appsTableSecondaryToolbar">
+                                        <af:toolbar id="t2">
+                                            <af:button id="b7" text="#{aipdatatoolviewcontrollerBundle.NPD_ADD_NEW_ROW}"
+                                                       disabled="#{pageFlowScope.CorporateNPDaysBean.isExceptionSelected}"
+                                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleAddNewRowEvent}">
+                                                <af:target execute="@this" events="action"/>
+                                            </af:button>
+                                            <af:spacer id="s9" width="10"/>
+                                            <!--<af:button id="b8"
+                                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleDeleteRowEvent}"
+                                                       text="#{aipdatatoolviewcontrollerBundle.NPD_DELETE_ROW}"/>-->
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="appsTableStatusbar"/>
+                                    <f:facet name="appsTableViewMenu"/>
+                                    <f:facet name="appsTableAfterToolbar"/>
+                                </retail:appsTable>
+                            </af:panelGroupLayout>
+                        </af:showDetailHeader>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+            </af:panelStretchLayout>
+        </f:facet>
+        <f:facet name="actionButtonBar"/>
+        <f:facet name="navigationBar"/>
+        <f:facet name="saveButtonMenu"/>
+        <f:facet name="submitButtonMenu"/>
+        <f:facet name="popup">
+            <af:panelGroupLayout id="pgl9">
+                <af:popup id="resetConfirmationPopup"
+                          binding="#{pageFlowScope.CorporateNPDaysBean.resetConfirmationPopup}" contentDelivery="lazy">
+                    <af:panelWindow id="pw4" title="#{aipdatatoolviewcontrollerBundle.RESET_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot28"
+                                       value="#{aipdatatoolviewcontrollerBundle.DEPL_TYPE_RESET_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s23"/>
+                        <af:panelGroupLayout id="pgl7" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.YES}" id="cb6" immediate="true"
+                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleResetYesListener}">
+                                <af:target execute="@this" render="pgl5"/>
+                            </af:button>
+                            <af:spacer width="10" height="10" id="s15"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.NO}" id="cb10" immediate="true"
+                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleResetNoListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="cancelConfirmationPopup"
+                          binding="#{pageFlowScope.CorporateNPDaysBean.cancelConfirmationPopup}" contentDelivery="lazy">
+                    <af:panelWindow id="pw3" title="#{aipdatatoolviewcontrollerBundle.CANCEL_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot27"
+                                       value="#{aipdatatoolviewcontrollerBundle.OSOS_CANCEL_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s21"/>
+                        <af:panelGroupLayout id="pgl15" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.YES}" id="cb7"
+                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleCancelYesListener}"
+                                       immediate="true"/>
+                            <af:spacer width="10" height="10" id="s22"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.NO}" id="cb8"
+                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleCancelNoListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveConfirmationPopup"
+                          binding="#{pageFlowScope.CorporateNPDaysBean.saveConfirmationPopup}"
+                          contentDelivery="lazyUncached">
+                    <af:panelWindow id="pw1" title="#{aipdatatoolviewcontrollerBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot1"
+                                       value="#{pageFlowScope.CorporateNPDaysBean.saveConfirmationPopUpMessage}"/>
+                        <af:spacer width="10" height="20" id="s7"/>
+                        <af:panelGroupLayout id="pgl6" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.YES}" id="b8"
+                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleSaveYesListener}">
+                                <!--<af:target execute="@this" render="pgl5"/>-->
+                            </af:button>
+                            <af:spacer width="10" height="10" id="s8"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.NO}" id="b4" immediate="true"
+                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleSaveNoListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveAndCloseConfirmationPopup"
+                          binding="#{pageFlowScope.CorporateNPDaysBean.saveAndCloseConfirmationPopup}"
+                          contentDelivery="lazyUncached">
+                    <af:panelWindow id="pw2" title="#{aipdatatoolviewcontrollerBundle.SAVE_CLOSE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot9"
+                                       value="#{pageFlowScope.CorporateNPDaysBean.saveConfirmationPopUpMessage}"/>
+                        <af:spacer width="10" height="20" id="s13"/>
+                        <af:panelGroupLayout id="pgl1" layout="horizontal" halign="end">
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.YES}" id="b5"
+                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleSaveAndCloseYesListener}">
+                                <!--<af:target execute="@this" render="pgl5"/>-->
+                            </af:button>
+                            <af:spacer width="10" height="10" id="s14"/>
+                            <af:button text="#{aipdatatoolviewcontrollerBundle.NO}" id="b6" immediate="true"
+                                       actionListener="#{pageFlowScope.CorporateNPDaysBean.handleSaveAndCloseNoListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveFailedPopup" binding="#{pageFlowScope.CorporateNPDaysBean.saveFailedPopup}">
+                    <af:panelWindow id="pw5" title="#{aipdatatoolviewcontrollerBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/raf/simple/images/delete_ena.png" modal="true"
+                                    closeIconVisible="false">
+                        <af:outputText id="ot2" value="#{aipdatatoolviewcontrollerBundle.DEPL_TYPE_SAVE_FAILED_MSG}"/>
+                        <af:spacer width="10" height="20" id="s16"/>
+                        <af:panelGroupLayout id="pgl13" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatoolviewcontrollerBundle.OK}" id="cb4" immediate="true"
+                                              actionListener="#{pageFlowScope.CorporateNPDaysBean.handleSaveFailedOkEvent}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveCloseSuccessPopup" binding="#{pageFlowScope.CorporateNPDaysBean.saveSuccessPopup}">
+                    <af:panelWindow id="pw6" title="#{aipdatatoolviewcontrollerBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot3"
+                                       value="#{aipdatatoolviewcontrollerBundle.CORP_NP_DAYS_SAVE_SUCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="s1"/>
+                        <af:panelGroupLayout id="pgl14" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatoolviewcontrollerBundle.OK}" id="cb5" immediate="true"
+                                              actionListener="#{pageFlowScope.CorporateNPDaysBean.okSavePopupListener}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="appsPanelLegend"/>
+        <f:facet name="appsPanelContext"/>
+        <f:facet name="customSaveDropButton"/>
+        <f:facet name="localContext"/>
+        <f:facet name="taskStamp"/>
+        <f:facet name="scalingInfo"/>
+        <f:facet name="collaborationToolbar"/>
+        <f:facet name="appsPanelTrain"/>
+    </retail:appsPanel>
+</jsp:root>

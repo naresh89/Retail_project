@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="oracle.retail.apps.aipdt.rc.model.applicationmodule.ReceivingCalendarAM">
+      <AppModuleConfig name="ReceivingCalendarAMLocal" DeployPlatform="LOCAL" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="oracle.retail.apps.aipdt.rc.model.applicationmodule.ReceivingCalendarAM">
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.rc.model.applicationmodule.ReceivingCalendarAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/aipdt_dbDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="ReceivingCalendarAMShared" DeployPlatform="LOCAL" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="oracle.retail.apps.aipdt.rc.model.applicationmodule.ReceivingCalendarAM">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.rc.model.applicationmodule.ReceivingCalendarAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/aipdt_dbDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

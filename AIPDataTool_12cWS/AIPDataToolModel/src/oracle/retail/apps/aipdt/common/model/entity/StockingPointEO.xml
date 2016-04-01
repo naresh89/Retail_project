@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="StockingPointEO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="STOCKING_POINT"
+  AliasName="StockingPointEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityDefImpl"
+  CollClass="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityCache">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="StockingPointId"
+    IsNotNull="true"
+    Precision="12"
+    Scale="0"
+    ColumnName="STOCKING_POINT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StockingPointName"
+    Precision="150"
+    ColumnName="STOCKING_POINT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StockingPointNumber"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="STOCKING_POINT_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StockingPointShortCode"
+    Precision="64"
+    ColumnName="STOCKING_POINT_SHORT_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="64"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StockingPointType"
+    IsNotNull="true"
+    Precision="1"
+    Scale="0"
+    ColumnName="STOCKING_POINT_TYPE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WhType"
+    Precision="6"
+    ColumnName="WH_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SystemOnlyInd"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="SYSTEM_ONLY_IND"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SurrogateStockingPointId"
+    Precision="12"
+    Scale="0"
+    ColumnName="SURROGATE_STOCKING_POINT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Tier"
+    IsNotNull="true"
+    Precision="1"
+    Scale="0"
+    ColumnName="TIER"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TwoStageOrderingFlag"
+    Precision="1"
+    ColumnName="TWO_STAGE_ORDERING_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Ownership"
+    Precision="1"
+    ColumnName="OWNERSHIP"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IsPrimary"
+    Precision="1"
+    ColumnName="IS_PRIMARY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PccType"
+    Precision="1"
+    Scale="0"
+    ColumnName="PCC_TYPE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StatusId"
+    Precision="2"
+    Scale="0"
+    ColumnName="STATUS_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IsSingleEnabled"
+    Precision="1"
+    ColumnName="IS_SINGLE_ENABLED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CapacityType"
+    Precision="1"
+    Scale="0"
+    ColumnName="CAPACITY_TYPE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ReconciliationFlag"
+    Precision="1"
+    ColumnName="RECONCILIATION_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ParentStockingPointId"
+    Precision="12"
+    Scale="0"
+    ColumnName="PARENT_STOCKING_POINT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OpenDate"
+    ColumnName="OPEN_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CopiedFromStockingPointId"
+    Precision="12"
+    Scale="0"
+    ColumnName="COPIED_FROM_STOCKING_POINT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CopyDate"
+    ColumnName="COPY_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Timestamp"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="TIMESTAMP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="STOCKING_POINT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="StockingPointEO"
+    Association="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFkAssoc"
+    AssociationEnd="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFkAssoc.StockingPointEO"
+    AssociationOtherEnd="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFkAssoc.ParentStockingPointIdStockingPointEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="ParentStockingPointIdStockingPointEO"
+    Association="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFkAssoc"
+    AssociationEnd="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFkAssoc.ParentStockingPointIdStockingPointEO"
+    AssociationOtherEnd="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFkAssoc.StockingPointEO"
+    Type="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="StockingPointEO1"
+    Association="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFk2Assoc"
+    AssociationEnd="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFk2Assoc.StockingPointEO1"
+    AssociationOtherEnd="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFk2Assoc.SurrogateStockingPointIdStockingPointEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SurrogateStockingPointIdStockingPointEO"
+    Association="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFk2Assoc"
+    AssociationEnd="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFk2Assoc.SurrogateStockingPointIdStockingPointEO"
+    AssociationOtherEnd="oracle.retail.apps.aipdt.common.model.entity.SpoSpoFk2Assoc.StockingPointEO1"
+    Type="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="ChkStockingPointCapType">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_CAP_TYPE"/>
+      <Attr Name="_checkCondition" Value="capacity_type IN (0, 1)"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.CapacityType"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointInSingle">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_IN_SINGLE"/>
+      <Attr Name="_checkCondition" Value="is_single_enabled IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.IsSingleEnabled"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointIsPrimary">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_IS_PRIMARY"/>
+      <Attr Name="_checkCondition" Value="is_primary IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.IsPrimary"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointOwnership">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_OWNERSHIP"/>
+      <Attr Name="_checkCondition" Value="ownership IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.Ownership"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointPccType">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_PCC_TYPE"/>
+      <Attr Name="_checkCondition" Value="pcc_type IN (1, 2, 3)"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.PccType"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointReconFlag">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_RECON_FLAG"/>
+      <Attr Name="_checkCondition" Value="reconciliation_flag IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.ReconciliationFlag"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointSpType">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_SP_TYPE"/>
+      <Attr Name="_checkCondition" Value="stocking_point_type IN (1, 2)"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.StockingPointType"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointSysOnlyId">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_SYS_ONLY_ID"/>
+      <Attr Name="_checkCondition" Value="SYSTEM_ONLY_IND in ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.SystemOnlyInd"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointTier">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_TIER"/>
+      <Attr Name="_checkCondition" Value="tier = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.Tier"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointTwoStage">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_TWO_STAGE"/>
+      <Attr Name="_checkCondition"
+        Value="two_stage_ordering_flag IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.TwoStageOrderingFlag"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkStockingPointWhType">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_STOCKING_POINT_WH_TYPE"/>
+      <Attr Name="_checkCondition"
+        Value="WH_TYPE IN ('XD_RG', 'CS_RG', 'XD_GS', 'CS_NT')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.WhType"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PkStockingPoint"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_STOCKING_POINT"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.StockingPointId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026810">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026810"/>
+      <Attr Name="_checkCondition" Value='"STOCKING_POINT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.StockingPointId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026811">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026811"/>
+      <Attr Name="_checkCondition" Value='"STOCKING_POINT_NUMBER" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.StockingPointNumber"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026812">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026812"/>
+      <Attr Name="_checkCondition" Value='"STOCKING_POINT_TYPE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.StockingPointType"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026813">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026813"/>
+      <Attr Name="_checkCondition" Value='"SYSTEM_ONLY_IND" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.SystemOnlyInd"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026814">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026814"/>
+      <Attr Name="_checkCondition" Value='"TIER" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.Tier"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026815">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026815"/>
+      <Attr Name="_checkCondition" Value='"TIMESTAMP" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.Timestamp"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SpoSpoFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PK_STOCKING_POINT"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SPO_SPO_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.ParentStockingPointId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SpoSpoFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PK_STOCKING_POINT"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SPO_SPO_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.SurrogateStockingPointId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SpoSpsFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PK_STOCKING_POINT_STATUS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SPO_SPS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.StockingPointEO.StatusId"/>
+    </AttrArray>
+  </Key>
+</Entity>

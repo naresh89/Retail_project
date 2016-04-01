@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1">
+    <file source-language="en" original="oracle.retail.apps.aipdt.model.AIPDataToolModelBundle" datatype="x-oracle-adf">
+        <body>
+            <trans-unit id="keyValue">
+                <source/>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.root.model.applicationmodule.AipdtRootAM_LABEL">
+                <source>Aipdt Root Am</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.LocationTypeVO_LABEL">
+                <source>Location Type Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO_LABEL">
+                <source>Receiving Calendar Results Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DeploymentTypeVO_LABEL">
+                <source>Deployment Type Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DeploymentTypeVO.SL_0_0">
+                <source>CD</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DeploymentTypeVO.SL_0_1">
+                <source>Cross Doc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DeploymentTypeVO.SL_1_0">
+                <source>RS</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DeploymentTypeVO.SL_1_1">
+                <source>Reserved Stock</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.FrequencyVO_LABEL">
+                <source>Frequency Vo</source>
+                <target/>
+            </trans-unit>            
+            <trans-unit id="RC_ERROR_UPDATE_STAGE_DATA">
+                <source>An error has occurred while updating the Receiving Calendar records in GTT table. </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_ERROR_INSERT_STAGE_DATA">
+                <source>An error has occurred while inserting the Receiving Calendar records in GTT table. </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.DtReceivingCalendarVO_LABEL">
+                <source>Dt Receiving Calendar Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarSearchVO.StockingPoint_LABEL">
+                <source>Warehouse</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarSearchVO.ProductType_LABEL">
+                <source>Product Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarSearchVO.LocationType_LABEL">
+                <source>Location Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO.EndDate_LABEL">
+                <source>End Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO.StartDate_LABEL">
+                <source>Start Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO.DestinationDesc_LABEL">
+                <source>Destination</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_PRODUCT_TYPE_NOT_FOUND">
+                <source>Product Type does not exist.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_DESTINATION_NOT_FOUND">
+                <source>One or more destinations do not exist.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.hierarchy.model.view.CommodityVO_LABEL">
+                <source>Commodity Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.hierarchy.model.view.DepartmentsVO_LABEL">
+                <source>Departments Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.hierarchy.model.view.DepartmentVO_LABEL">
+                <source>Department Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.hierarchy.model.view.DtSubclassVO_LABEL">
+                <source>Dt Subclass Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.hierarchy.model.view.SupplierVO_LABEL">
+                <source>Supplier Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.LocationTypeVO.SL_0_0">
+                <source>Store</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rc.model.view.LocationTypeVO.SL_1_0">
+                <source>Warehouse</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE_FORMAT">
+                <source>Store Format</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE">
+                <source>Store</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.onoffsalesupply.model.view.OnOffsaleSupplyResultsVO_LABEL">
+                <source>On Offsale Supply Results Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathSearchVO_LABEL">
+                <source>Network Path Search Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.SourceTypeVO_LABEL">
+                <source>Source Type Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.SourceTypeVO.SL_0_0">
+                <source>Supplier</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.SourceTypeVO.SL_1_0">
+                <source>Warehouse</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.DestinationTypeVO_LABEL">
+                <source>Destination Type Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.DestinationTypeVO.SL_0_0">
+                <source>Store</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.DestinationTypeVO.SL_1_0">
+                <source>Warehouse</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.WarehouseTypeVO_LABEL">
+                <source>Warehouse Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.WarehouseTypeVO.SL_0_0">
+                <source>All</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.WarehouseTypeVO.SL_1_0">
+                <source>Cross Dock</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.WarehouseTypeVO.SL_2_0">
+                <source>Reserved Stock</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO_LABEL">
+                <source>Network Path Results Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_INPUT_SOURCE_WH_TYPE_INVALID">
+                <source>Source Warehouse Type is not valid.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_INPUT_SOURCE_WH_INVALID">
+                <source>Source Warehouse is not valid.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_INPUT_DEST_INVALID">
+                <source>Destination is not valid.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_SOURCE_NOT_FOUND">
+                <source>One or more sources do not exist.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_DESTINATION_NOT_FOUND">
+                <source>One or more destinations do not exist.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_ERROR_UPDATE_STAGE_DATA">
+                <source>An error has occurred while updating the Warehouse Transfer Lead times in GTT table. </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_ERROR_INSERT_STAGE_DATA">
+                <source>An error has occurred while inserting the Warehouse Transfer Lead times in GTT table. </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_ERROR_READ_SYSTEM_PARAM">
+                <source>An error has occurred while reading the system paramter value. </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.SourceDesc_LABEL">
+                <source>Source</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.DestinationDesc_LABEL">
+                <source>Destination</source>
+                <target/>
+            </trans-unit>
+            <!-- List Creation-->
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathSearchVO.DestinationType_LABEL">
+                <source>Destination Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathSearchVO.SrcWhType_LABEL">
+                <source>Warehouse Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathSearchVO.DstWhType_LABEL">
+                <source>Warehouse Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathSearchVO.SourceType_LABEL">
+                <source>Source Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DeptOrdFromSuppVO_LABEL">
+                <source>Dept Ord From Supp Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.RegionVO_LABEL">
+                <source>Region Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplySearchFieldsVO.StyleColor_LABEL">
+                <source>VPN Colour</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplySearchFieldsVO.Item_LABEL">
+                <source>SKU</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplySearchFieldsVO.Supplier_LABEL">
+                <source>Order From Supplier</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.VpnVO_LABEL">
+                <source>Vpn Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.VpnColourVO_LABEL">
+                <source>Vpn Colour Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.SkuVO_LABEL">
+                <source>Sku Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.SourceDesc_LABEL">
+                <source>Source Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.DestinationDesc_LABEL">
+                <source>Destination Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.EffectiveDate_LABEL">
+                <source>Effective Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.SundayLeadTime_LABEL">
+                <source>Sun</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.MondayLeadTime_LABEL">
+                <source>Mon</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.TuesdayLeadTime_LABEL">
+                <source>Tue</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.WednesdayLeadTime_LABEL">
+                <source>Wed</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.ThursdayLeadTime_LABEL">
+                <source>Thu</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.FridayLeadTime_LABEL">
+                <source>Fri</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.SaturdayLeadTime_LABEL">
+                <source>Sat</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.StoreRegionVO_LABEL">
+                <source>Store Region Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.view.WorkingLevelTypeVO_LABEL">
+                <source>Working Level Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.view.SupplyListCreationProgVO_LABEL">
+                <source>Supply List Creation Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.view.WorkingPrivacyVO_LABEL">
+                <source>Working Privacy Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LOV_ListPrivacyAttr_LOVUIHints_NullValueId">
+                <source>&lt;No Selection&gt;</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.applicationmodule.SupplyChainListCreationAM_LABEL">
+                <source>Supply Chain List Creation Am</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplyItemHierarchyPopup_LABEL">
+                <source>On Off Sale Supply Item Hierarchy Popup</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplyItemHierPopupVO_LABEL">
+                <source>On Off Sale Supply Item Hier Popup Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DtSystemParametersVO_LABEL">
+                <source>Dt System Parameters Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DtLookupCodesVO_LABEL">
+                <source>Dt Lookup Codes Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.osos.model.view.OnOffSaleSupplyStorePopupVO_LABEL">
+                <source>On Off Sale Supply Store Popup Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.SourceCode_LABEL">
+                <source>Source</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.np.model.view.NetworkPathResultsVO.DestinationCode_LABEL">
+                <source>Destination</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.view.DtListDetailsVO_LABEL">
+                <source>Dt List Details Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.view.DtListHeadersVO_LABEL">
+                <source>Dt List Headers Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.view.DtGttListVO_LABEL">
+                <source>Dt Gtt List Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEAFULT_ERROR_MSG">
+                <source>An error has occured. Please contact your System Administrator.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.view.DtListHdrROVO_LABEL">
+                <source>Dt List Hdr Rovo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ALL_STORES">
+                <source>All Stores</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listcreate.model.view.ItemLevelFilterROVO_LABEL">
+                <source>Item Level Filter Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="REC_EXCEEDS_LIMIT">
+                <source>Result set exceeds limit.Please redefine the search creteria</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listmaintain.model.view.DtListHeadrVO_LABEL">
+                <source>Dt List Headr Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listmaintain.model.applicationmodule.SupplyChainListMaintainAM_LABEL">
+                <source>App Module Supply Chain List Maintain Am</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listmaintain.model.view.SupplychainListMaintainProgVO_LABEL">
+                <source>Supplychain List Maintain Prog Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.listmaintain.model.view.DtListDetailROVO_LABEL">
+                <source>Dt List Detail Rovo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="MAX_HOLDING_TIME">
+                <source>Maximum Holding Time</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="PROCESSING_TIME">
+                <source>Processing Time</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.cds.model.entity.CrossDockSetupResultEO.EndDate_Rule_0">
+                <source>CDS End Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rswspm.model.applicationmodule.WhStPriorityMatrixAM_LABEL">
+                <source>Wh St Priority Matrix Am</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rswspm.model.view.WhToStPriorityMatrixProgVO_LABEL">
+                <source>Wh To St Priority Matrix Prog Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rswspm.model.view.StorePriorityMatrixVO_LABEL">
+                <source>Store Priority Matrix Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleSearchVO_LABEL">
+                <source>Xd Order Schedule Search Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.CrossDockWHVO_LABEL">
+                <source>Cross Dock Whvo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.cnpd.model.view.CorporateNPDaysSearchVO_LABEL">
+                <source>Corporate Np Days Search Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.StockingPointListVO_LABEL">
+                <source>Stocking Point List Vo</source>
+                <target/>
+            </trans-unit>
+            
+              <trans-unit id="WH1_COMPARE_WH2_ERR">
+                <source>Primary Warehouse and Secondary Warehouse should not be same</source>
+                <target/>
+            </trans-unit>
+              <trans-unit id="WH1_COMPARE_WH3_ERR">
+                <source>Primary Warehouse and Tertiary Warehouse should not be same</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="WH2_COMPARE_WH3_ERR">
+                <source>Secondary Warehouse and Tertiary Warehouse should not be same</source>
+                <target/>
+            </trans-unit>            
+             <trans-unit id="DEPL_TYPE_DATE_VALIDATION">
+                <source>Same DeploymentType cannot be set for Same Store,Commodity combination with Same Start and End Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleItemHierPopupVO_LABEL">
+                <source>Xd Order Schedule Item Hier Popup Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO_LABEL">
+                <source>Xd Order Schedule Time Set All Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.SunLeadTime_LABEL">
+                <source>Sun</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.MonLeadTime_LABEL">
+                <source>Mon</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.TueLeadTime_LABEL">
+                <source>Tue</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.WedLeadTime_LABEL">
+                <source>Wed</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.ThuLeadTime_LABEL">
+                <source>Thu</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.FriLeadTime_LABEL">
+                <source>Fri</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.SatLeadTime_LABEL">
+                <source>Sat</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO.Sunday_LABEL">
+                <source>Sun</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO.Monday_LABEL">
+                <source>Mon</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO.Tuesday_LABEL">
+                <source>Tue</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO.Wednesday_LABEL">
+                <source>Wed</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO.Thursday_LABEL">
+                <source>Thu</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO.Friday_LABEL">
+                <source>Fri</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleTimeSetAllVO.Saturday_LABEL">
+                <source>Sat</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.SupplierCode_LABEL">
+                <source>Supplier</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.SuppDesc_LABEL">
+                <source>Supplier Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.XdWarehouseCode_LABEL">
+                <source>Warehouse</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.XdWarehouseName_LABEL">
+                <source>Warehouse Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.DeptCode_LABEL">
+                <source>Department</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.DeptName_LABEL">
+                <source>Department Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.ClassCode_LABEL">
+                <source>Class</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.ClassName_LABEL">
+                <source>Class Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.SubclassCode_LABEL">
+                <source>Subclass</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.SubclassName_LABEL">
+                <source>Subclass Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.VpnCode_LABEL">
+                <source>VPN</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.VpnDesc_LABEL">
+                <source>VPN Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.VpnColorCode_LABEL">
+                <source>VPN Color</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.VpnColorName_LABEL">
+                <source>VPN Color Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.CommodityCode_LABEL">
+                <source>SKU</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.CommodityDesc_LABEL">
+                <source>SKU Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.StoreCode_LABEL">
+                <source>Store</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.StoreDesc_LABEL">
+                <source>Store Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.StartDate_LABEL">
+                <source>Start Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleResultsVO.EndDate_LABEL">
+                <source>End Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rsos.model.view.RsOrderScheduleProgVO_LABEL">
+                <source>Rs Order Schedule Prog Vo</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rsos.model.applicationmodule.RsOrderScheduleAM_LABEL">
+                <source>Rs Order Schedule Am</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleItemHierPopupVO.VpnCode_LABEL">
+                <source>VPN</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleItemHierPopupVO.VpnName_LABEL">
+                <source>VPN Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleItemHierPopupVO.VpnColorCode_LABEL">
+                <source>VPN Color</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleItemHierPopupVO.VpnColorName_LABEL">
+                <source>VPN Color Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleItemHierPopupVO.CommodityCode_LABEL">
+                <source>SKU</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.xdos.model.view.XDOrderScheduleItemHierPopupVO.CommodityName_LABEL">
+                <source>SKU Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STARTDATE_LESS_THAN_ENDDATE_VALIDATION">
+                <source>Start Date Should not be greater than End Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.VpnVO.StyleCode_LABEL">
+                <source>VPN</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.VpnVO.StyleDesc_LABEL">
+                <source>VPN Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.VpnColourVO.StyleColorCode_LABEL">
+                <source>VPN/Color</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.VpnColourVO.StyleColorDesc_LABEL">
+                <source>VPN/Color Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.SkuVO.CommodityCode_LABEL">
+                <source>SKU</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.SkuVO.CommodityName_LABEL">
+                <source>SKU Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DeptOrdFromSuppVO.SupplierCode_LABEL">
+                <source>Order From Supplier</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.common.model.view.DeptOrdFromSuppVO.SupplierName_LABEL">
+                <source>Order From Supplier Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="oracle.retail.apps.aipdt.rsos.model.view.RsOrderScheduleResultVO_LABEL">
+                <source>Rs Order Schedule Result Vo</source>
+                <target/>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

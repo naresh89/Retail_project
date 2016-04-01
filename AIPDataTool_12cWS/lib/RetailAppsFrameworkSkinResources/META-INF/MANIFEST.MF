@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: 1.7.0_25-b15 (Oracle Corporation)
+RetailPlatform-Version:  4.0.5
+RetailPlatform-BuildTimestamp: 11/05/2015 09:54 AM
+RetailPlatform-BuildIdNum:  2015-11-05_09-33-42 (175)
+RetailPlatform-BuildTag:  n/a
+RetailPlatform-BuildBranch:  rgbutechcomponents_4_0_5_rc10
+

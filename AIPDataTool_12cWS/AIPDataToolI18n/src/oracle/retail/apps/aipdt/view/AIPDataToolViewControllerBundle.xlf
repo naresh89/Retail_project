@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1">
+    <file source-language="en" original="oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle"
+          datatype="x-oracle-adf">
+        <body>
+            <trans-unit id="EXAMPLE_FLOW">
+                <source/>
+                <target>Example Flow from rb</target>
+            </trans-unit>
+            <trans-unit id="NDM_TOOL">
+                <source>NDM Tool</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RECEIVING_CALENDAR_TITLE">
+                <source>Receiving Calendar</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RECEIVING_CALENDAR_SHORT_DESC">
+                <source>Receiving Calendar Pattern Creation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="YES">
+                <source>Yes</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NO">
+                <source>No</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OK">
+                <source>OK</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAVE_CONFIRMATION">
+                <source>Save Confirmation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAVE_CLOSE_CONFIRMATION">
+                <source>Save and Close Confirmation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RESET_CONFIRMATION">
+                <source>Reset Confirmation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CANCEL_CONFIRMATION">
+                <source>Cancel Confirmation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RECEIVING_CAL_SAVE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save this Receiving Calendar?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RECEIVING_CAL_CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to cancel this Receiving Calendar?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RECEIVING_CAL_RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset this Receiving Calendar?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RECEIVING_CAL_SAVE_SUCCESS_MSG">
+                <source>Receiving Calendar is saved successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEAFULT_ERROR_MSG">
+                <source>An error has occured. Please contact your System Administrator.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="EXCEPTION_WITHOUT_DEFAULT_ERROR">
+                <source>Default does not exist for one or more selected exceptions.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_LOCATION_TYPE_REQUIRED">
+                <source>Location Type is required.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_PRODUCT_TYPE_REQUIRED">
+                <source>Product Type is required.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_STORE_REQUIRED">
+                <source>Store is required.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_STORE_FORMAT_REQUIRED">
+                <source>Store Format is required.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_WAREHOUSE_REQUIRED">
+                <source>Warehouse is required.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SEARCH">
+                <source>Search</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RESULTS">
+                <source>Results</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SELECT">
+                <source>Select</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RESET">
+                <source>Reset</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAVE">
+                <source>Save</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CLOSE">
+                <source>Close</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAVE_AND_CLOSE">
+                <source>Save and Close</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="EXPORT_TO_EXCEL">
+                <source>Export To Excel</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="EXPORT_ALL_ROWS">
+                <source>Export All Rows</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="EXPORT_SELECTED_ROWS">
+                <source>Export Selected Rows</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEFAULT">
+                <source>Default</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="EXCEPTION">
+                <source>Exception</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LEVEL">
+                <source>Level : </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="TYPE">
+                <source>Type : </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DESTINATION">
+                <source>Destination : </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SOURCE">
+                <source>Source : </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE">
+                <source>Store</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WAREHOUSE">
+                <source>Warehouse</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SUPPLIER">
+                <source>Supplier</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RC_EXPORT_FILE_NAME">
+                <source>ReceivingCalendar</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ON_OFF_SALE_SUPPLY_TITLE">
+                <source>On/Off Sale &amp; Supply</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ON_OFF_SALE_SUPPLY_SHORT_DESC">
+                <source>On/Off Sale &amp; Supply</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NETWORK_PATH">
+                <source>Warehouse Transfers</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NETWORK_PATH_SHORT_DESC">
+                <source>Warehouse Transfers Creation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_SOURCE_TYPE_REQUIRED">
+                <source>Source Type is required.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_WH_TYPE_REQUIRED">
+                <source>Warehouse Type is required.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_SAVE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save Warehouse Transfer Lead times?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to cancel Warehouse Transfer Lead times?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset Warehouse Transfer Lead times?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_SAVE_SUCCESS_MSG">
+                <source>Warehouse Transfer Lead times saved successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_EXPORT_FILE_NAME">
+                <source>WarehouseTransfers</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="INVALID_SEARCH_CRITERIA">
+                <source>No records found, you may have entered the invalid search criteria.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NP_INVALID_LEAD_TIME">
+                <source>Invalid lead time entered. The value should be in the range [0-99].</source>
+                <target/>
+            </trans-unit>
+            <!-- List creation screen starts-->
+            <trans-unit id="CREATE_LIST_SUCCESS_MSG">
+                <source>List has been created successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WAREHOUSE_LT_CREATE_CONFIRMATION_MSG">
+                <source>Do you want to create a new Lead Time?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OK_BUTTON_LABEL">
+                <source>OK</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_CANCEL_MSG">
+                <source>Are you sure you want to cancel List?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WAREHOUSE_LT_CANCEL_CONFIRMATION_MSG">
+                <source>Do you want to cancel this Lead Time?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CREATE_SC_LIST_CONFIRMATION_MSG">
+                <source>Are you sure you want to create List?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CREATE_CONFIRMATION">
+                <source>Create Confirmation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPLOYMENT_TYPE">
+                <source>Deployment Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPLOYMENT_TYPE_SHORT_DESC">
+                <source>Deployment Type</source>
+                <target/>
+            </trans-unit>
+            <!-- List creation screen starts-->
+            <trans-unit id="CREATE_LIST_SUCCESS_MSG">
+                <source>List has been created successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WAREHOUSE_LT_CREATE_CONFIRMATION_MSG">
+                <source>Do you want to create a new Lead Time?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CREATE_LIST_SUCCESS_MSG">
+                <source>List has been created successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WAREHOUSE_LT_CREATE_CONFIRMATION_MSG">
+                <source>Do you want to create a new Lead Time?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="YES">
+                <source>Yes</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NO">
+                <source>No</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_CANCEL_MSG">
+                <source>Are you sure you want to cancel List?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CREATE_SC_LIST_CONFIRMATION_MSG">
+                <source>Are you sure you want to create List?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CREATE_CONFIRMATION">
+                <source>Create Confirmation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CREATE_SCLIST_TABLESUMMARY">
+                <source>Table displays the list of new Supply Chain List records to be
+                created.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NO_OF_RECORDS">
+                <source>Number of Records :</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WORKING_AREA">
+                <source>Working Area</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_NAME">
+                <source>List Name</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_PRIVACY">
+                <source>List Privacy</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_TYPE">
+                <source>List Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WORKING_LEVEL">
+                <source>*Working Level</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="PRODUCT_HIERARCHY">
+                <source>Product Hierarchy :</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPT_LABEL">
+                <source>Department</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPT_NAME_LABEL">
+                <source>Department Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CLASS_LABEL">
+                <source>Class</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CLASS_NAME_LABEL">
+                <source>Class Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SUBCLASS_LABEL">
+                <source>Subclass</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SUBCLASS_NAME_LABEL">
+                <source>Subclass Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="VPN_LABEL">
+                <source>VPN</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="VPN_NAME_LABEL">
+                <source>VPN Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="VPN_COLOR_LABEL">
+                <source>VPN / Color</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="VPN_COLOR_NAME_LABEL">
+                <source>VPN / Color Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SKU_LABEL">
+                <source>SKU</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SKU_NAME_LABEL">
+                <source>SKU Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="REGION_LABEL">
+                <source>Region</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="REGION_NAME_LABEL">
+                <source>Region Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ORD_SUPP_LABEL">
+                <source>Order From Supplier</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ORD_SUPP_NAME_LABEL">
+                <source>Order From Supplier Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SUBCLASS_HIERARCHY">
+                <source>Subclass</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ITEM_HIERARCHY">
+                <source>SKU</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SKU_PACKSIZE_LABEL">
+                <source>SKU Packsize</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ITEM_TYPE_LABEL">
+                <source>Item Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ITEM_SUPPLIER_LABEL">
+                <source>Item Supplier</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="MANAGE_LIST_LABEL">
+                <source>Manage List</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CREATE_LABEL">
+                <source>Create</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="MAINTAIN_LABEL">
+                <source>Maintain</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ITEM_LIST_LABEL">
+                <source>Item List</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="MANGE_LISTS_CREATE_TITLE">
+                <source>Create List</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="MANGE_LISTS_MAINTAIN_TITLE">
+                <source>Maintain List</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WAREHOUSE_LIST_LABEL">
+                <source>Warehouse List</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SUPPLIER_LABEL">
+                <source>Supplier</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SUPPLIER_LIST_LABEL">
+                <source>Supplier List</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE_FORMAT_LABEL">
+                <source>Store Format</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE_LABEL">
+                <source>Store</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE_NAME_LABEL">
+                <source>Store Desc</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE_LIST_LABEL">
+                <source>Store List</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SELECT_LABEL">
+                <source>Select</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RESET_LABEL">
+                <source>Reset</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_NAME_CAN_NOT_BE_NULL">
+                <source>List Name cannot be null.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_PRIVACY_CAN_NOT_BE_NULL">
+                <source>List Privacy cannot be null.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_TYPE_CAN_NOT_BE_NULL">
+                <source>List Type cannot be null.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPARTMENT_CAN_NOT_NULL">
+                <source>Please select at least one department to proceed.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="VPN_CAN_NOT_BE_NULL">
+                <source>Please select at least one VPN to proceed.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ANYONE_WAREHOUSE_LOV_SHOULD_HAVE_VALUE">
+                <source>At least one Warehouse should have a value in either Source or
+                Destination.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ONE_LOV_SHOULD_HAVE_VALUE_IN_ITEM">
+                <source>At least one LOV should have a valid value in the ITEM panel.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ONE_LOV_SHOULD_HAVE_VALUE_IN_SOURCE">
+                <source>Atleast one LOV should have a valid value in the SOURCE panel.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ONE_LOV_SHOULD_HAVE_VALUE_IN_DESTINATION">
+                <source>At least one LOV should have a valid value in the DESTINATION
+                panel.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SELECT_VALID_WORKING_LEVEL">
+                <source>Please select a valid working level.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ADT_ResetWarning">
+                <source>All selections will be cleared. Do you want to continue?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ANYONE_WAREHOUSE_LOV_SHOULD_HAVE_VALUE">
+                <source>At least one Warehouse should have a value in either Source or
+                Destination.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_NAME_CAN_NOT_BE_NULL">
+                <source>List Name cannot be null.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_PRIVACY_CAN_NOT_BE_NULL">
+                <source>List Privacy cannot be null.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_TYPE_CAN_NOT_BE_NULL">
+                <source>List Type cannot be null.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ATLEAST_TWO_SPL_NEEDS_TO_BE_SELECTED">
+                <source>At least two Suppliers should be selected.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ATLEAST_TWO_WH_NEEDS_TO_BE_SELECTED">
+                <source>At least two Warehouses should be selected.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ATLEAST_TWO_ST_NEEDS_TO_BE_SELECTED">
+                <source>At least two Stores should be selected.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ATLEAST_TWO_ITEM_NEEDS_TO_BE_SELECTED">
+                <source>At least two Items should be selected.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ATLEAST_TWO_CLS_NEEDS_TO_BE_SELECTED">
+                <source>At least two Classes should be selected.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ATLEAST_TWO_SCLS_NEEDS_TO_BE_SELECTED">
+                <source>At least two Sub Classes should be selected.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CREATE_LIST_SUCCESS_MSG">
+                <source>List has been created successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ATLEAST_TWO_ITEM_PS_NEEDS_TO_BE_SELECTED">
+                <source>At least two Item Pack Sizes should be selected.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DUPLICATE_LIST_NAME">
+                <source>The list name you are trying to save already exists, please try
+                a different name.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CODE_OR_DESC_ENTERED_IS_INCORRECT">
+                <source>Code or Description has been incorrectly entered.</source>
+                <target/>
+            </trans-unit>
+            <!-- List creation screen ends-->
+            <!-- OSOS screen starts-->
+            <trans-unit id="VALIDATION_INFO">
+                <source>Validation Failed</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_ITEM_VALIDATION">
+                <source>Item/ItemList should be selected</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_LOCATION_VALIDATION">
+                <source>Loaction should be selected</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_SUPPLIER_VALIDATION">
+                <source>Supplier should be selected</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset the screen?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to close the screen?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_SAVE_SUCESS_MSG">
+                <source>Records saved successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_SAVE_CLOSE_SUCESS_MSG">
+                <source>Records saved successfully.Click ok to close the screen.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_SAVE_FAILED_MSG">
+                <source>Save operation failed - Please check the logs.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SET_ALL">
+                <source>Set All</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ON_SALE_DATE_VALIDATION">
+                <source>OnSaleDate value should not be greater than OffSaleDate</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OFF_SALE_DATE_VALIDATION">
+                <source>OffSaleDate value should not be less than OnSaleDate</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ON_SALE_DATE_LABEL">
+                <source>OnSaleDate</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OFF_SALE_DATE_LABEL">
+                <source>OffSaleDate</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ON_SUPPLY_DATE_LABEL">
+                <source>OnSupplyDate</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OFF_SUPPLY_DATE_LABEL">
+                <source>OffSupplyDate</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OOSS_EXPORT_FILE_NAME">
+                <source>OnOffSaleSupply</source>
+                <target/>
+            </trans-unit>
+            <!-- OSOS screen ends-->
+            <trans-unit id="SETUP_TYPE">
+                <source>Setup Type : </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LEVEL_SELECTED">
+                <source>Level Selected : </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CROSS_DOCK_SETUP_TITLE">
+                <source>Cross Dock Setup</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SUPPLIER_Header">
+                <source>Supplier :</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE_Header">
+                <source>Store :</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WAREHOUSE_Header">
+                <source>Warehouse :</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LEVEL_SELECTED">
+                <source>Level Selected : </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="REC_EXCEEDS_LIMIT">
+                <source>Result set exceeds limit.Please redefine the search creteria</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_EMPTY_SAVE_MSG">
+                <source>No records modified / selected to save OnOffSaleSupply data</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NO_RECORDS_SELECTED_FOR_SAVE">
+                <source>No records selected for save.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NO_LEAD_TIME_ENTERED_FOR_SAVE">
+                <source>Lead time is not entered for one or more selected records.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SELECT_ONE_CHOICE_COMP_WIDTH">
+                <source>Width:170px;</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SPCR_BTWN_SEARCH_PANEL_BOXES_HEIGHT">
+                <source>10</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="PROD_HIER_PANEL_BOX_WIDTH">
+                <source>Width:650px</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEST_PANEL_BOX_WIDTH">
+                <source>Width:325px</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="PROD_HIER_SPCR_BTWN_FORM_WIDTH">
+                <source>40</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SPCR_BTWN_PANEL_BOXES_WIDTH">
+                <source>10</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SPCR_BTWN_PANEL_BOXES_SEARCH_RESET_BTN_HEIGHT">
+                <source>15</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SPCR_BTWN_SEARCH_RESET_BTN_WIDTH">
+                <source>5</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_ON_SALE_GRT_VADATE_MSG">
+                <source>OnSaleDate should be greater than current date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_OFF_SALE_GRT_VADATE_MSG">
+                <source>OffSaleDate should be greater than current date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_OFF_SALE_LESS_ON_SALE_MSG">
+                <source>OffSaleDate should not be less than OnSaleDate</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="OSOS_ON_SALE_GRT_OFF_SALE_MSG">
+                <source>OnSaleDate should not be greater than OffSaleDate</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SCLC_SAVE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save this list?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SCLC_CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to cancel this list?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SCLC_RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset this list?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SCLC_SAVE_SUCCESS_MSG">
+                <source>List is saved successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPL_TYPE_RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset this screen?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ALL_STORES">
+                <source>All Stores</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPL_TYPE_SAVE_SUCESS_MSG">
+                <source> Deployment Type data is saved successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPL_TYPE_SAVE_FAILED_MSG">
+                <source>Save operation failed - Please check the logs.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPL_TYPE_EXPORT_FILE_NAME">
+                <source>DeploymentType</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to close the screen?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="COMMODITY_POPUP_TITLE">
+                <source>Item Details</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="STORE_POPUP_TITLE">
+                <source>Store Details</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SPCR_BTWN_POP_UP_WIDTH">
+                <source>10</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SPCR_BTWN_POP_UP_HEIGHT">
+                <source>10</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SPCR_BTWN_SET_ALL_WIDTH">
+                <source>5</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPLOYMENT_TYPE">
+                <source>Deployment Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="START_DATE">
+                <source>Start Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="END_DATE">
+                <source>End Date</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CDS_EXPORT_FILE_NAME">
+                <source>CrossDockSetUp</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SUN_LABEL">
+                <source>Sun</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="MON_LABEL">
+                <source>Mon</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="TUE_LABEL">
+                <source>Tue</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="WED_LABEL">
+                <source>Wed</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="THU_LABEL">
+                <source>Thu</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="FRI_LABEL">
+                <source>Fri</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAT_LABEL">
+                <source>Sat</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAVE_FAILED_MSG">
+                <source>Save operation failed - Please check the logs</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAVE_SUCESS_MSG">
+                <source>Data is saved successfully</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="MAX_HOLDING_TIME">
+                <source>Maximum Holding Time</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="PROCESSING_TIME">
+                <source>Processing Time</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CROSS_DOCK_WAREHOUSE">
+                <source>Cross Dock Warehouse</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAVE_ERROR_MSG">
+                <source>Please select atlease one row to Proceed with Save</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SAVE_AND_CLOSE_ERROR_MSG">
+                <source>Please select atlease one row to Proceed with Save And Close</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ENTER_PROPER_START_DATE">
+                <source>SetAll can not be done with this Start Date. Please provide proper value.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="START_DATE_NULL">
+                <source>Please provide Start Date to apply setAll</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ENTER_PROPER_END_DATE">
+                <source>SetAll can not be done with this End Date. Please provide proper value.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="END_DATE_NULL">
+                <source>Please provide End Date to apply setAll</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SELECT_ROW_FOR_SETALL">
+                <source>Please select rows to apply Set All</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="TIME_SET_ALL">
+                <source>Time Set All</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DOW_SHORT_WIDTH">
+                <source>40</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DOW_INPUT_IS_NULL">
+                <source>No value set for DOW, at least one DOW should be given before Set All action</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="MHT_PT_DOW_SET_ALL">
+                <source>MHT / PT DOW Set All</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_ID">
+                <source>List Id</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ERR_SELECT_LIST">
+                <source>Please select at least a list to delete.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_EXPORT_FILE_NAME">
+                <source>Maintain_Supply_Chain_List_export</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LIST_DELETE_LABEL">
+                <source>Delete</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SCLM_DELETE_CONFIRMATION_MSG">
+                <source>Are you sure you want to delete this list(s)?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SCLM_DELETE_SUCCESS_MSG">
+                <source>List is deleted successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DELETE_CONFIRMATION">
+                <source>Delete Confirmation</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CDS_SELECTED_ROWS">
+                <source>CDS (Selected Rows)</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CDS_ALL_ROWS">
+                <source>CDS (All Rows)</source>
+                <target/>
+            </trans-unit>
+              <trans-unit id="WH_TO_ST_MATRIX_TITLE">
+                <source>RS WH to Store Priorities</source>
+                <target/>
+            </trans-unit>
+              <trans-unit id="PR_MATRIX_SAVE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save this matrix?</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="PR_MATRIX_CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to cancel this matrix?</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="PR_MATRIX_SAVE_SUCCESS_MSG">
+                <source>Matrix is saved successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="XD_ORDER_SCHEDULE_TITLE">
+                <source>XD Order Schedule</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="CORPORATE_NONPLANNING_DAYS_TITLE">
+                <source>Corporate Non Planning Days</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="STORE_CODE_LABEL">
+                <source>Store Code</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="PRIMARY_WH_LABEL">
+                <source>Primary Warehouse</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="SECONDARY_WH_LABEL">
+                <source>Secondary Warehouse</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="TERTIARY_WH_LABEL">
+                <source>Tertiary Warehouse</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="LOCATION_HIERARCHY">
+                <source>Location Hierarchy :</source>
+                <target/>
+            </trans-unit>            
+            <trans-unit id="DOW_S_TYPE">
+                <source>DOW's Type</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CDS_SAVE_SUCCESS_MSG">
+                <source>Cross Dock Setup Data is saved successfully</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CDS_SAVE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save Cross Dock Setup?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CDS_SAVE_CLOSE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save Cross Dock Setup and close screen?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CDS_CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to cancel Cross Dock Setup?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CDS_RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset Cross Dock Setup?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="XDOS_EXPORT_FILE_NAME">
+                <source>XDOrderSchedule</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SET_SETUP_TYPE">
+                <source>Set Setup Type : </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="ITEM_HEADER_TITLE">
+                <source>ITEM </source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPLTYPE_SAVE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save this DeploymentType?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CORP_NP_DAYS_DEF_SAVE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save this Corporate Non Planning Days?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CORP_NP_DAYS_DELETE_SAVE_CONFIRMATION_MSG">
+                <source>Some rows have been marked for Delete. If you proceed to save, marked rows will be deleted. Are you sure you want to save this Corporate Non Planning Days?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DEPLTYPE_SAVE_AND_CLOSE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save and close this DeploymentType?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CORP_NP_DAYS_SAVE_AND_CLOSE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save and close this Corporate Non Planning Days?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CORP_NP_DAYS_DELETE_SAVE_AND_CLOSE_CONFIRMATION_MSG">
+                <source>Some rows have been marked for Delete. If you proceed to save, marked rows will be deleted. Are you sure you want to save and close this Corporate Non Planning Days?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CORP_NP_DAYS_SAVE_SUCESS_MSG">
+                <source> Corporate Non Planning Days data is saved successfully.</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CNPD_EXPORT_FILE_NAME">
+                <source>CorporateNonPlanningDays</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NON_PLANNING_DAYS_DATE_LABEL">
+                <source>Non Planning Days</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NPD_STORES_LABEL">
+                <source>Stores</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NPD_WAREHOUSE_LABEL">
+                <source>Warehouses</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NPD_ADD_NEW_ROW">
+                <source>Add New Row</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="NPD_DELETE_ROW">
+                <source>Delete Row</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DOW_SET_ALL">
+                <source>DOW Set All</source>
+                <target/>
+            </trans-unit>            
+            <trans-unit id="CROSS_DOCK_SETUP_REPORT">
+                <source>Cross Dock Setup Report</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DOW_VALUES_ARE_OVERLAPPED">
+                <source>Lead times are overlapped. Please redefine DOW values.</source>
+                <target/>
+            </trans-unit>   
+            <trans-unit id="LEADTIME_CAN_BE_ENTERED_FOR_ONLY_ONE_DOW">
+                <source>Lead time can be entered for only one DOW.</source>
+                <target/>
+            </trans-unit>               
+            <trans-unit id="XDOS_DEPT_REQUIRED">
+                <source>Department is required.</source>
+                <target/>
+            </trans-unit>              
+            <trans-unit id="XDOS_DEPT_OR_ITEM_LIST_REQUIRED">
+                <source>Department or Item List is required.</source>
+                <target/>
+            </trans-unit>     
+            <trans-unit id="XDOS_WAREHOUSE_REQUIRED">
+                <source>Warehouse is required.</source>
+                <target/>
+            </trans-unit>  
+            <trans-unit id="XDOS_SUPPLIER_REQUIRED">
+                <source>Supplier is required.</source>
+                <target/>
+            </trans-unit>    
+            <trans-unit id="XDOS_PRODUCT_HIERARCHY_REQUIRED">
+                <source>One of Class, Subclass, VPN, VPN Color and SKU is required.</source>
+                <target/>
+            </trans-unit>    
+            <trans-unit id="XDOS_STORE_REQUIRED">
+                <source>Store is required.</source>
+                <target/>
+            </trans-unit>                
+            <trans-unit id="XDOS_SAVE_CONFIRMATION_MSG">
+                <source>Are you sure you want to save XD Order Schedule?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="XDOS_CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to cancel XD Order Schedule?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="XDOS_RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset XD Order Schedule?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="XDOS_SAVE_SUCCESS_MSG">
+                <source>XD Order Schedule is saved successfully.</source>
+                <target/>
+            </trans-unit>  
+            <trans-unit id="RELEASE_LEAD_TIME">
+                <source>Release Lead Time</source>
+                <target/>
+            </trans-unit>    
+            <trans-unit id="SET">
+                <source>Set</source>
+                <target/>
+            </trans-unit>     
+            <trans-unit id="FREQUENCY_IS_INVALID_FOR_SET_ALL">
+                <source>Frequency should be same for all the selected records to apply Set All.</source>
+                <target/>
+            </trans-unit>             
+              <trans-unit id="RS_ORDER_SCHEDULE_TITLE">
+                <source>RS Order Schedule</source>
+                <target/>
+            </trans-unit>
+             <trans-unit id="RSOS_CANCEL_CONFIRMATION_MSG">
+                <source>Are you sure you want to cancel RS Order Schedule?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="RSOS_RESET_CONFIRMATION_MSG">
+                <source>Are you sure you want to reset RS Order Schedule?</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="CROSS_DOCK_SETUP_ROW_DOW_SETUP">
+                <source>Cross Dock Setup - Row DOW Setup</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="History">
+                <source>History</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="DOW">
+                <source>DOW</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SET_DOW">
+                <source>Set DOW</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="SET">
+                <source>Set</source>
+                <target/>
+            </trans-unit>
+            <trans-unit id="VIEW_DOWS">
+                <source>View DOW's</source>
+                <target/>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

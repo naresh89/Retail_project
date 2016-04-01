@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DeploymentTypeSearchRVO"
+  Version="12.1.3.13.26"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+    RowClass="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVORowImpl"
+  PageIterMode="Full"
+  ComponentClass="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVOImpl"
+  DefClass="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVODefImpl">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access|Def|Coll|VarAccess"/>
+        <Attr Name="_isExpertMode" Value="true"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Properties>
+        <SchemaBasedProperties>
+            <LABEL
+              ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO_LABEL"/>
+        </SchemaBasedProperties>
+    </Properties>
+    <ViewAccessor
+      Name="ClassVO1"
+      ViewObjectName="oracle.retail.apps.aipdt.common.model.view.ClassVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+      Name="ItemListVO1"
+      ViewObjectName="oracle.retail.apps.aipdt.common.model.view.ItemListVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+      Name="SupplierListVO1"
+      ViewObjectName="oracle.retail.apps.aipdt.common.model.view.SupplierListVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+      Name="SubClassVO1"
+      ViewObjectName="oracle.retail.apps.aipdt.common.model.view.SubClassVO"
+      RowLevelBinds="true"/>    
+    <ViewAccessor
+      Name="StoreListVO1"
+      ViewObjectName="oracle.retail.apps.aipdt.common.model.view.StoreListVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+      Name="StoreFormatVO1"
+      ViewObjectName="oracle.retail.apps.aipdt.common.model.view.StoreFormatVO"
+      RowLevelBinds="true"/>    
+    <ViewAccessor
+      Name="DepartmentVO1"
+      ViewObjectName="oracle.retail.apps.aipdt.common.model.view.DepartmentVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+      Name="SetupTypeLovVO"
+      ViewObjectName="oracle.retail.apps.aipdt.dt.model.view.SetupTypeLovVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="RegionVO1"
+        ViewObjectName="oracle.retail.apps.aipdt.common.model.view.RegionVO"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="StoreRegionVO1"
+        ViewObjectName="oracle.retail.apps.aipdt.common.model.view.StoreRegionVO"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="DeptOrdFromSuppVO1"
+        ViewObjectName="oracle.retail.apps.aipdt.common.model.view.DeptOrdFromSuppVO"        
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="VpnVO1"
+        ViewObjectName="oracle.retail.apps.aipdt.common.model.view.VpnVO"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="VpnColourVO1"
+        ViewObjectName="oracle.retail.apps.aipdt.common.model.view.VpnColourVO"
+        RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="SkuVO1"
+        ViewObjectName="oracle.retail.apps.aipdt.common.model.view.SkuVO"
+        RowLevelBinds="true"/>
+    <ListBinding
+      Name="LOV_Class1"
+      ListVOName="ClassVO1"
+      ListRangeSize="10"
+      NullValueFlag="none"
+      MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="Class1"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="ClassId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="ClassCode"/>
+            <Item Value="ClassName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+      Name="LOV_Subclass"
+      ListVOName="SubClassVO1"
+      ListRangeSize="10"
+      NullValueFlag="none"
+      MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="Subclass"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SubclassId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SubclassCode"/>
+            <Item Value="SubclassDescription"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+      Name="LOV_ItemList"
+      ListVOName="ItemListVO1"
+      ListRangeSize="-1"
+        NullValueFlag="start"
+      MRUCount="0"
+        NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+        <AttrArray Name="AttrNames">
+            <Item Value="ItemList"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="ListId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="ListId"/>
+            <Item Value="ListName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+      Name="LOV_StoreList"
+      ListVOName="StoreListVO1"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      MRUCount="0"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+        <AttrArray Name="AttrNames">
+            <Item Value="StoreList"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="StoreListId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="StoreListId"/>
+            <Item Value="StoreListName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+      Name="LOV_StoreFormat"
+      ListVOName="StoreFormatVO1"
+      ListRangeSize="-1"
+      NullValueFlag="none"
+      MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="StoreFormat"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="StoreFormatCode"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="StoreFormatCode"/>
+            <Item Value="StoreFormatName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+      Name="LOV_Department"
+      ListVOName="DepartmentVO1"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+      MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="Department"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="RmsDepartmentId"/>
+            <Item Value="DepartmentName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+      Name="LOV_SupplierList"
+      ListVOName="SupplierListVO1"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      MRUCount="0"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+        <AttrArray Name="AttrNames">
+            <Item Value="SupplierList"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SupplierListId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SupplierListId"/>
+            <Item Value="SupplierListName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+      Name="LOV_SetupType"
+      ListVOName="SetupTypeLovVO"
+      ListRangeSize="-1"
+      NullValueFlag="none"
+      MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="SetupType"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="ExceptionCode"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="ExceptionDesc"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_Region"
+        ListVOName="RegionVO1"
+        ListRangeSize="-1"
+        NullValueFlag="start"
+        NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="Region"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="RegionId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="RegionCode"/>
+            <Item Value="RegionDesc"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_Store"
+        ListVOName="StoreRegionVO1"
+        ListRangeSize="-1"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="Store"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="StoreId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="StoreCode"/>
+            <Item Value="StoreName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_Supplier"
+        ListVOName="DeptOrdFromSuppVO1"
+        ListRangeSize="-1"
+        NullValueFlag="none"
+        MRUCount="0"
+        ComboRowCountHint="10">
+        <AttrArray Name="AttrNames">
+            <Item Value="Supplier"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SupplierCode"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentCode"/>
+            <Item Value="SupplierCode"/>
+            <Item Value="SupplierName"/>
+        </AttrArray>
+        <DisplayCriteria
+            Name="DeptOrdFromSuppVOCriteria"/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_Vpn"
+        ListVOName="VpnVO1"
+        ListRangeSize="-1"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="Vpn"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="StyleId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="StyleCode"/>
+            <Item Value="StyleDesc"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_StyleColor"
+        ListVOName="VpnColourVO1"
+        ListRangeSize="-1"
+        ComboRowCountHint="10"
+        NullValueFlag="none"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="StyleColor"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="StyleColorId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="StyleColorCode"/>
+            <Item Value="StyleColorDesc"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+        Name="LOV_Item"
+        ListVOName="SkuVO1"
+        ListRangeSize="-1"
+        NullValueFlag="none"
+        MRUCount="0"
+        ComboRowCountHint="10">
+        <AttrArray Name="AttrNames">
+            <Item Value="Item"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="CommodityId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="CommodityCode"/>
+            <Item Value="CommodityName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <SQLQuery><![CDATA[SELECT '' AS SUPPLIER, '' AS SUPPLIER_LIST, '' AS DEPARTMENT, '' AS CLASS1, '' AS SUBCLASS, '' AS VPN, '' AS STYLE_COLOR, '' AS ITEM, '' AS ITEM_LIST, '' AS REGION, '' AS STORE, '' AS STORE_LIST, '' AS STORE_FORMAT, '' AS WAREHOUSE, '' AS WAREHOUSE_LIST, '' AS DEPLOYMENT_TYPE,'' AS SETUP_TYPE,ROWNUM as id FROM DUAL]]></SQLQuery>
+    <ViewAttribute
+      Name="Supplier"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="SUPPLIER"
+      Expression="SUPPLIER"
+      SQLType="VARCHAR"
+      Passivate="true"
+        LOVName="LOV_Supplier">
+        <Properties>
+            <SchemaBasedProperties>
+                <AUTOSUBMIT
+                    Value="true"/>
+                <LABEL
+                    ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO.Supplier_LABEL"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="SupplierList"
+      LOVName="LOV_SupplierList"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="SUPPLIER_LIST"
+      Expression="SUPPLIER_LIST"
+      SQLType="VARCHAR"
+      Passivate="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                  Value="combo"/>
+                <AUTOSUBMIT
+                  Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="Department"
+      LOVName="LOV_Department"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="DEPARTMENT"
+      Expression="DEPARTMENT"
+      SQLType="VARCHAR"
+      Passivate="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                  Value="choice"/>
+                <LABEL
+                    ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO.Department_LABEL"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="Class1"
+      LOVName="LOV_Class1"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="CLASS1"
+      Expression="CLASS1"
+      SQLType="VARCHAR"
+        Passivate="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO.Class1_LABEL"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="Subclass"
+      LOVName="LOV_Subclass"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="SUBCLASS"
+      Expression="SUBCLASS"
+      SQLType="VARCHAR"
+        Passivate="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO.Subclass_LABEL"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="Vpn"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="VPN"
+      Expression="VPN"
+      SQLType="VARCHAR"
+        Passivate="true"
+        LOVName="LOV_Vpn">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="StyleColor"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="STYLE_COLOR"
+      Expression="STYLE_COLOR"
+      SQLType="VARCHAR"
+        Passivate="true"
+        LOVName="LOV_StyleColor">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO.StyleColor_LABEL"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="Item"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="ITEM"
+      Expression="ITEM"
+      SQLType="VARCHAR"
+      Passivate="true"
+        LOVName="LOV_Item">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO.Item_LABEL"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="ItemList"
+      LOVName="LOV_ItemList"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="ITEM_LIST"
+      Expression="ITEM_LIST"
+      SQLType="VARCHAR"
+      Passivate="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                  Value="combo"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="Region"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="REGION"
+      Expression="REGION"
+      SQLType="VARCHAR"
+        Passivate="true"
+        LOVName="LOV_Region">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                    Value="choice"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="Store"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="STORE"
+      Expression="STORE"
+      SQLType="VARCHAR"
+      Passivate="true"
+        LOVName="LOV_Store">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO.Store_LABEL"/>
+                <CONTROLTYPE
+                    Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="StoreList"
+      LOVName="LOV_StoreList"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="STORE_LIST"
+      Expression="STORE_LIST"
+      SQLType="VARCHAR"
+      Passivate="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                  Value="combo"/>
+                <AUTOSUBMIT
+                  Value="true"/>
+                <LABEL
+                    ResId="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeSearchRVO.StoreList_LABEL"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="StoreFormat"
+      LOVName="LOV_StoreFormat"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="STORE_FORMAT"
+      Expression="STORE_FORMAT"
+      SQLType="VARCHAR"
+        Passivate="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                  Value="combo"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="Warehouse"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="WAREHOUSE"
+      Expression="WAREHOUSE"
+      SQLType="VARCHAR"
+        Passivate="true"/>
+    <ViewAttribute
+      Name="WarehouseList"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="WAREHOUSE_LIST"
+      Expression="WAREHOUSE_LIST"
+      SQLType="VARCHAR"
+        Passivate="true"/>
+    <ViewAttribute
+      Name="DeploymentType"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="DEPLOYMENT_TYPE"
+      Expression="DEPLOYMENT_TYPE"
+      SQLType="VARCHAR"
+        Passivate="true"/>
+    <ViewAttribute
+      Name="SetupType"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="SETUP_TYPE"
+      Expression="SETUP_TYPE"
+      SQLType="VARCHAR"
+      LOVName="LOV_SetupType"
+      Passivate="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                  Value="radio"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        Name="Id"
+        IsUpdateable="false"
+        IsPersistent="false"
+        PrecisionRule="true"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        AliasName="ID"
+        Expression="ID"
+        SQLType="NUMERIC"
+        Passivate="true"/>
+    <!--ViewAttribute
+    Name="DefaultType"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="BIT"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT">
+    <TransientExpression
+      trustMode="untrusted"><![CDATA[true]]></TransientExpression>
+    <RecalcCondition
+      trustMode="untrusted"><![CDATA[true]]></RecalcCondition>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ExceptionType"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="BIT"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT"
+    DefaultValue="false"/-->
+    <AttrArray Name="KeyAttributes">
+        <Item Value="Id"/>
+    </AttrArray>
+</ViewObject>

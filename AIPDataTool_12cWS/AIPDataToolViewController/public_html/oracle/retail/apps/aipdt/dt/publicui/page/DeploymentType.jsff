@@ -1,0 +1,882 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core" xmlns:retail="/retailApps"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:RetailAppCustomComponent="/RetailAppCustomComponent">
+    <c:set var="aipdatatooluiBundle"
+           value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+    <af:pageTemplate viewId="/oracle/retail/apps/framework/uishell/pagetemplate/RetailUIShellMainArea.jspx"
+                     value="#{bindings.pageTemplateBinding}" id="pt1">
+        <f:facet name="localArea">
+            <retail:appsPanel id="ap1" contentsFacet="stretch" title="" saveAndCloseRendered="true"
+                              saveAndCloseVisible="true" saveRendered="true" saveVisible="true" cancelRendered="true"
+                              cancelVisible="true" saveAction="#{pageFlowScope.DeploymentTypeBean.handleSave}"
+                              saveAndCloseDisabled="#{pageFlowScope.DeploymentTypeBean.isSaveBtnDisabled}"
+                              saveDisabled="#{pageFlowScope.DeploymentTypeBean.isSaveBtnDisabled}"
+                              saveAndCloseAction="#{pageFlowScope.DeploymentTypeBean.handleSaveAndClose}"
+                              cancelAction="#{pageFlowScope.DeploymentTypeBean.handleCancel}"
+                              binding="#{pageFlowScope.DeploymentTypeBean.appsPanelBind}" panelPartialTriggers=":::cb1">
+                <f:facet name="contents"/>
+                <f:facet name="contentsStretch">
+                    <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="children">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                            <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="scroll">
+                                <af:panelGroupLayout id="pgl7" styleClass="AFStretchWidth" layout="vertical">
+                                    <af:showDetailHeader text="#{aipdatatooluiBundle.SEARCH}" disclosed="true" id="sdh3"
+                                                         styleClass="AFStretchWidth">
+                                        <af:spacer height="#{aipdatatooluiBundle.SPCR_BTWN_SEARCH_PANEL_BOXES_HEIGHT}"
+                                                   id="s6"/>
+                                        <af:panelBox id="pb2" text="#{aipdatatooluiBundle.SETUP_TYPE}"
+                                                     showDisclosure="false">
+                                            <!--<af:spacer id="s11" height="10"/>-->
+                                            <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                                <af:spacer id="s1" width="10"/>
+                                                <!--<af:panelLabelAndMessage id="plam10"
+                                                                         label="#{aipdatatooluiBundle.LEVEL_SELECTED}"
+                                                                         partialTriggers="sbc1 sbc3">
+                                                    <af:outputText value="#{pageFlowScope.DeploymentTypeBean.isDefaultSelected ? aipdatatooluiBundle.DEFAULT : aipdatatooluiBundle.EXCEPTION}"/>
+                                                </af:panelLabelAndMessage>-->
+                                                <af:spacer id="s3" width="30"/>
+                                                <af:panelLabelAndMessage id="pfl2">
+                                                    <af:selectBooleanRadio value="#{pageFlowScope.DeploymentTypeBean.isDefaultSelected}"
+                                                                           autoSubmit="true" group="SetupType"
+                                                                           text="#{aipdatatooluiBundle.DEFAULT}"
+                                                                           binding="#{pageFlowScope.DeploymentTypeBean.defaultRadioComp}"
+                                                                           disabled="#{pageFlowScope.DeploymentTypeBean.isDefaultDisable}"
+                                                                           shortDesc="#{aipdatatooluiBundle.DEFAULT}"
+                                                                           valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onDefaultVCE}"
+                                                                           id="sbc1" simple="true"/>
+                                                    <af:spacer id="s5" width="30"/>
+                                                    <af:selectBooleanRadio value="#{pageFlowScope.DeploymentTypeBean.isExceptionSelected}"
+                                                                           autoSubmit="true" group="SetupType"
+                                                                           text="#{aipdatatooluiBundle.EXCEPTION}"
+                                                                           binding="#{pageFlowScope.DeploymentTypeBean.exceptionRadioComp}"
+                                                                           disabled="#{pageFlowScope.DeploymentTypeBean.isExceptionDisable}"
+                                                                           valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onExceptionVCE}"
+                                                                           shortDesc="#{aipdatatooluiBundle.EXCEPTION}"
+                                                                           id="sbc3" simple="true"/>
+                                                </af:panelLabelAndMessage>
+                                            </af:panelGroupLayout>
+                                        </af:panelBox>
+                                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_PANEL_BOXES_WIDTH}" id="s10"/>
+                                        <af:panelGroupLayout id="pgl3" layout="horizontal" styleClass="AFStretchWidth">
+                                            <af:panelBox text="#{aipdatatooluiBundle.PRODUCT_HIERARCHY}" id="pb3"
+                                                         showDisclosure="false" styleClass="AFStretchWidth">
+                                                <af:panelGroupLayout id="pgl4" layout="horizontal" valign="top">
+                                                    <af:panelFormLayout id="pfl1" rows="4" maxColumns="1"
+                                                                        fieldWidth="80" labelWidth="20">
+                                                        <af:selectOneChoice value="#{bindings.Department.inputValue}"
+                                                                            valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onDepartmentVCE}"
+                                                                            shortDesc="#{aipdatatooluiBundle.DEPT_LABEL}"
+                                                                            binding="#{pageFlowScope.DeploymentTypeBean.departmentComp}"
+                                                                            id="soc1" autoSubmit="true"
+                                                                            contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                            label="#{aipdatatooluiBundle.DEPT_LABEL}">
+                                                            <f:selectItems value="#{bindings.Department.items}"
+                                                                           id="si1"/>
+                                                        </af:selectOneChoice>
+                                                        <af:panelLabelAndMessage label="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                                                 id="plam3">
+                                                            <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="ClassCode"
+                                                                                                              AttributeDesc="ClassName"
+                                                                                                              FieldBinding="Class1"
+                                                                                                              listAttributeName="ClassId"
+                                                                                                              ShortDescText="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                                                                              IsDisabled="#{pageFlowScope.DeploymentTypeBean.isClassDisable}"
+                                                                                                              binding="#{pageFlowScope.DeploymentTypeBean.multiSelectBaseFieldsBean.classComp}"
+                                                                                                              valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onClassVCE}"
+                                                                                                              id="smicb1"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                                                 id="plam2">
+                                                            <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="SubclassCode"
+                                                                                                              AttributeDesc="SubclassDescription"
+                                                                                                              FieldBinding="Subclass"
+                                                                                                              listAttributeName="SubclassId"
+                                                                                                              ShortDescText="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                                                                              IsDisabled="#{pageFlowScope.DeploymentTypeBean.isSubClassDisable}"
+                                                                                                              binding="#{pageFlowScope.DeploymentTypeBean.multiSelectBaseFieldsBean.subClassComp}"
+                                                                                                              valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onSubClassVCE}"
+                                                                                                              id="smicb2"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:selectOneChoice value="#{bindings.ItemList.inputValue}"
+                                                                            shortDesc="#{aipdatatooluiBundle.ITEM_LIST_LABEL}"
+                                                                            id="soc2"
+                                                                            label="#{aipdatatooluiBundle.ITEM_LIST_LABEL}"
+                                                                            binding="#{pageFlowScope.DeploymentTypeBean.itemListComp}"
+                                                                            disabled="#{pageFlowScope.DeploymentTypeBean.isItemListDisable}"
+                                                                            autoSubmit="true"
+                                                                            contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                            valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onItemListVCE}">
+                                                            <f:selectItems value="#{bindings.ItemList.items}" id="si2"/>
+                                                        </af:selectOneChoice>
+                                                    </af:panelFormLayout>
+                                                    <af:spacer id="s2" width="60"/>
+                                                    <af:panelFormLayout id="pfl3" rows="4" maxColumns="1"
+                                                                        fieldWidth="80" labelWidth="20">
+                                                        <af:inputListOfValues id="supplier1Id"
+                                                                              popupTitle="Search and Select: #{bindings.Supplier.hints.label}"
+                                                                              value="#{bindings.Supplier.inputValue}"
+                                                                              label="#{aipdatatooluiBundle.ORD_SUPP_LABEL}"
+                                                                              model="#{bindings.Supplier.listOfValuesModel}"
+                                                                              valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onSupplierVCE}"
+                                                                              binding="#{pageFlowScope.DeploymentTypeBean.supplierComp}"
+                                                                              disabled="#{pageFlowScope.DeploymentTypeBean.isSupplierDisable}"
+                                                                              contentStyle="width:150px;"
+                                                                              autoSubmit="true" partialTriggers="soc1"
+                                                                              columns="#{bindings.Supplier.hints.displayWidth}"
+                                                                              shortDesc="#{aipdatatooluiBundle.ORD_SUPP_LABEL}">
+                                                            <f:validator binding="#{bindings.Supplier.validator}"/>
+                                                        </af:inputListOfValues>
+                                                        <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                 id="plam6">
+                                                            <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleCode"
+                                                                                                                   AttributeDesc="StyleDesc"
+                                                                                                                   AttributeListIdName="StyleId"
+                                                                                                                   AttrMasterBinding="Department"
+                                                                                                                   AttrMasterCode="DepartmentCode"
+                                                                                                                   AttrMasterDesc="DepartmentName"
+                                                                                                                   FieldBinding="#{bindings.Vpn}"
+                                                                                                                   AttrMasterListAttrName="DepartmentId"
+                                                                                                                   id="msilov1"
+                                                                                                                   inputSize="22"
+                                                                                                                   Label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                                   ToolTip="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                                   InputDisabled="#{pageFlowScope.DeploymentTypeBean.isVPNDisable}"
+                                                                                                                   ChangeMethodName="onVpnVCE"
+                                                                                                                   ManagedBean="#{pageFlowScope.DeploymentTypeBean}"
+                                                                                                                   binding="#{pageFlowScope.DeploymentTypeBean.multiSelectBaseFieldsBean.vpnComp}"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                 id="plam4">
+                                                            <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleColorCode"
+                                                                                                                   AttributeDesc="StyleColorDesc"
+                                                                                                                   AttributeListIdName="StyleColorId"
+                                                                                                                   AttrMasterBinding="Department"
+                                                                                                                   AttrMasterCode="DepartmentCode"
+                                                                                                                   AttrMasterDesc="DepartmentName"
+                                                                                                                   AttrMasterListAttrName="DepartmentId"
+                                                                                                                   FieldBinding="#{bindings.StyleColor}"
+                                                                                                                   id="msilov3"
+                                                                                                                   ToolTip="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                                   inputSize="22"
+                                                                                                                   Label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                                   InputDisabled="#{pageFlowScope.DeploymentTypeBean.isVpnColourDisable}"
+                                                                                                                   ChangeMethodName="onVpnColourVCE"
+                                                                                                                   ManagedBean="#{pageFlowScope.DeploymentTypeBean}"
+                                                                                                                   binding="#{pageFlowScope.DeploymentTypeBean.multiSelectBaseFieldsBean.styleColourComp}"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                 id="plam5">
+                                                            <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="CommodityCode"
+                                                                                                                   AttributeDesc="CommodityName"
+                                                                                                                   AttributeListIdName="CommodityId"
+                                                                                                                   AttrMasterBinding="Department"
+                                                                                                                   AttrMasterCode="DepartmentCode"
+                                                                                                                   AttrMasterDesc="DepartmentName"
+                                                                                                                   AttrMasterListAttrName="DepartmentId"
+                                                                                                                   FieldBinding="#{bindings.Item}"
+                                                                                                                   id="msilov2"
+                                                                                                                   Label="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                                   inputSize="22"
+                                                                                                                   ToolTip="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                                   InputDisabled="#{pageFlowScope.DeploymentTypeBean.isItemDisable}"
+                                                                                                                   ChangeMethodName="onSkuVCE"
+                                                                                                                   ManagedBean="#{pageFlowScope.DeploymentTypeBean}"
+                                                                                                                   binding="#{pageFlowScope.DeploymentTypeBean.multiSelectBaseFieldsBean.itemComp}"/>
+                                                        </af:panelLabelAndMessage>
+                                                    </af:panelFormLayout>
+                                                </af:panelGroupLayout>
+                                            </af:panelBox>
+                                            <af:spacer id="s8" width="10"/>
+                                            <af:panelBox text="#{aipdatatooluiBundle.DESTINATION}" id="pb1"
+                                                         showDisclosure="false" inlineStyle="width:400px;">
+                                                <af:panelGroupLayout halign="center" id="pgl6" valign="middle">
+                                                    <af:panelFormLayout id="pfl5" labelAlignment="start" maxColumns="1">
+                                                        <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                                                                            label="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                            required="#{bindings.Region.hints.mandatory}"
+                                                                            shortDesc="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                            binding="#{pageFlowScope.DeploymentTypeBean.regionComp}"
+                                                                            valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onRegionVCE}"
+                                                                            disabled="#{pageFlowScope.DeploymentTypeBean.isRegionDisable}"
+                                                                            id="soc5" autoSubmit="true"
+                                                                            contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}">
+                                                            <f:selectItems value="#{bindings.Region.items}" id="si4"/>
+                                                            <f:validator binding="#{bindings.Region.validator}"/>
+                                                        </af:selectOneChoice>
+                                                        <af:panelLabelAndMessage label="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                                                 id="plam8">
+                                                            <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                                                              AttributeDesc="StoreName"
+                                                                                                              FieldBinding="Store"
+                                                                                                              listAttributeName="StoreId"
+                                                                                                              ShortDescText="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                                                                              IsDisabled="#{pageFlowScope.DeploymentTypeBean.isStoreDisable}"
+                                                                                                              binding="#{pageFlowScope.DeploymentTypeBean.multiSelectBaseFieldsBean.storeComp}"
+                                                                                                              valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onStoreVCE}"
+                                                                                                              id="smicb3"/>
+                                                        </af:panelLabelAndMessage>
+                                                        <af:selectOneChoice value="#{bindings.StoreList.inputValue}"
+                                                                            label="#{aipdatatooluiBundle.STORE_LIST_LABEL}"
+                                                                            shortDesc="#{aipdatatooluiBundle.STORE_LIST_LABEL}"
+                                                                            id="soc4" partialTriggers="soc1"
+                                                                            binding="#{pageFlowScope.DeploymentTypeBean.storeListComp}"
+                                                                            valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onStoreListVCE}"
+                                                                            disabled="#{pageFlowScope.DeploymentTypeBean.isStoreListDisable}"
+                                                                            autoSubmit="true"
+                                                                            contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}">
+                                                            <f:selectItems value="#{bindings.StoreList.items}"
+                                                                           id="si3"/>
+                                                        </af:selectOneChoice>
+                                                        <af:spacer id="s9" height="30"/>
+                                                    </af:panelFormLayout>
+                                                </af:panelGroupLayout>
+                                            </af:panelBox>
+                                        </af:panelGroupLayout>
+                                        <hr style="margin: 0; height: 0.5px; background: rgb(226,231,236); border: 2px;"
+                                            class="AFStretchWidth"/>
+                                        <!--<af:separator id="s7" styleClass="AFStretchWidth" inlineStyle=""/>-->
+                                        <af:spacer id="s11"
+                                                   height="#{aipdatatooluiBundle.SPCR_BTWN_PANEL_BOXES_SEARCH_RESET_BTN_HEIGHT}"/>
+                                        <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal">
+                                            <af:button text="#{aipdatatooluiBundle.SEARCH}" id="cb1" disabled="true"
+                                                       binding="#{pageFlowScope.DeploymentTypeBean.searchBtn}"
+                                                       partialSubmit="true"
+                                                       action="#{pageFlowScope.DeploymentTypeBean.handleSearch}">
+                                                <af:target execute="@this"/>
+                                            </af:button>
+                                            <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SEARCH_RESET_BTN_WIDTH}"
+                                                       id="s12"/>
+                                            <af:spacer width="10" height="10" id="s4"/>
+                                            <af:button text="#{aipdatatooluiBundle.RESET}" id="cb2" immediate="true"
+                                                       action="#{pageFlowScope.DeploymentTypeBean.handleReset}">
+                                                <af:target execute="@this" render="pgl5"/>
+                                            </af:button>
+                                        </af:panelGroupLayout>
+                                    </af:showDetailHeader>
+                                    <af:showDetailHeader text="#{aipdatatooluiBundle.RESULTS}" disclosed="true"
+                                                         id="sdh2">
+                                        <f:facet name="context"/>
+                                        <f:facet name="menuBar"/>
+                                        <f:facet name="toolbar"/>
+                                        <f:facet name="legend"/>
+                                        <f:facet name="info"/>
+                                        <af:panelGroupLayout id="pgl5"
+                                                             binding="#{pageFlowScope.DeploymentTypeBean.resutlContainer}">
+                                            <retail:appsTable id="at1" styleClass="AFStretchWidth" exportEnabled="false"
+                                                              exportFilename="#{pageFlowScope.DeploymentTypeBean.exportFileName}"
+                                                              tableId="t1" viewEnabled="false"
+                                                              rendered="#{bindings.DeploymentTypeResultVOIterator.estimatedRowCount > 0}">
+                                                <f:facet name="additionalToolbarButtons">
+                                                    <af:menuBar id="mb1">
+                                                        <af:menu text="#{aipdatatooluiBundle.EXPORT_TO_EXCEL}" id="m2"
+                                                                 icon="/oracle/retail/apps/aipdt/images/E2E.jpg">
+                                                            <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_ALL_ROWS}"
+                                                                                id="cmi1" immediate="true">
+                                                                <af:setPropertyListener from="true"
+                                                                                        to="#{pageFlowScope.hideSomeColumns}"
+                                                                                        type="action"/>
+                                                                <af:exportCollectionActionListener exportedId="t1"
+                                                                                                   type="excelHTML"
+                                                                                                   filename="#{pageFlowScope.DeploymentTypeBean.exportFileName}"/>
+                                                                <af:setPropertyListener from="false"
+                                                                                        to="#{pageFlowScope.hideSomeColumns}"
+                                                                                        type="action"/>
+                                                            </af:commandMenuItem>
+                                                            <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_SELECTED_ROWS}"
+                                                                                id="cmi2" immediate="true">
+                                                                <af:setPropertyListener from="true"
+                                                                                        to="#{pageFlowScope.hideSomeColumns}"
+                                                                                        type="action"/>
+                                                                <af:exportCollectionActionListener exportedId="t1"
+                                                                                                   type="excelHTML"
+                                                                                                   exportedRows="selected"
+                                                                                                   filterMethod="#{pageFlowScope.DeploymentTypeBean.exportSelectedRows}"
+                                                                                                   filename="#{pageFlowScope.DeploymentTypeBean.exportFileName}"/>
+                                                                <af:setPropertyListener from="false"
+                                                                                        to="#{pageFlowScope.hideSomeColumns}"
+                                                                                        type="action"/>
+                                                            </af:commandMenuItem>
+                                                        </af:menu>
+                                                    </af:menuBar>
+                                                </f:facet>
+                                                <f:facet name="additionalActionItems">
+                                                    <af:group id="g1">
+                                                        <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE}"
+                                                                            action="#{pageFlowScope.DeploymentTypeBean.handleSave}"
+                                                                            disabled="#{pageFlowScope.DeploymentTypeBean.isSaveBtnDisabled}"
+                                                                            id="cmi3" partialTriggers=":::cb1"/>
+                                                        <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE_AND_CLOSE}"
+                                                                            id="cmi4" partialTriggers=":::cb1"
+                                                                            disabled="#{pageFlowScope.DeploymentTypeBean.isSaveBtnDisabled}"
+                                                                            action="#{pageFlowScope.DeploymentTypeBean.handleSaveAndClose}"/>
+                                                    </af:group>
+                                                </f:facet>
+                                                <f:facet name="table">
+                                                    <af:table value="#{bindings.DeploymentTypeResultVO.collectionModel}"
+                                                              var="row"
+                                                              rendered="#{bindings.DeploymentTypeResultVO.rangeSize gt 0}"
+                                                              rows="#{bindings.DeploymentTypeResultVO.rangeSize}"
+                                                              emptyText="#{bindings.DeploymentTypeResultVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                              rowBandingInterval="0" autoHeightRows="15"
+                                                              selectedRowKeys="#{bindings.DeploymentTypeResultVO.collectionModel.selectedRow}"
+                                                              selectionListener="#{bindings.DeploymentTypeResultVO.collectionModel.makeCurrent}"
+                                                              rowSelection="single" filterVisible="false"
+                                                              binding="#{pageFlowScope.DeploymentTypeBean.resultTable}"
+                                                              fetchSize="#{bindings.DeploymentTypeResultVO.rangeSize}"
+                                                              filterModel="#{bindings.DeploymentTypeResultVOQuery.queryDescriptor}"
+                                                              queryListener="#{pageFlowScope.DeploymentTypeBean.processQuery}"
+                                                              id="t1">
+                                                        <af:column id="c1" width="17" align="center"
+                                                                   rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                            <af:selectBooleanCheckbox value="#{row.bindings.UpdateInd.inputValue}"
+                                                                                      label="#{row.bindings.UpdateInd.label}"
+                                                                                      shortDesc="#{bindings.DeploymentTypeResultVO.hints.UpdateInd.tooltip}"
+                                                                                      id="sbc2" autoSubmit="true"
+                                                                                      simple="true" immediate="true"
+                                                                                      binding="#{pageFlowScope.DeploymentTypeBean.selectRowComp}"
+                                                                                      valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onSelectionOfCheckBox}">
+                                                                <af:target events="valueChange" execute="sbc2"
+                                                                           render="t1"/>
+                                                            </af:selectBooleanCheckbox>
+                                                            <f:facet name="header">
+                                                                <af:selectBooleanCheckbox id="sbc4" autoSubmit="true"
+                                                                                          visible="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                          valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onClickSelectAllCheckBox}"
+                                                                                          binding="#{pageFlowScope.DeploymentTypeBean.selectAllComp}"/>
+                                                            </f:facet>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.DEPT_LABEL}"
+                                                                   id="c3"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.DepartmentCode.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:link text="#{row.DepartmentCode} - #{row.DepartmentDesc}"
+                                                                     id="l3"
+                                                                     actionListener="#{pageFlowScope.DeploymentTypeBean.onClickViewItemPopup}"
+                                                                     rendered="#{row.CommodityCode eq null}">
+                                                                <af:target execute="@this"/>
+                                                            </af:link>
+                                                            <!--<af:link text="#{row.ClassCode}" id="l2"
+                                                                     actionListener="#{pageFlowScope.DeploymentTypeBean.onClickViewItemPopup}"
+                                                                     rendered="#{row.ClassCode eq null}"/>-->
+                                                            <!--<h:commandLink value="#{row.DepartmentCode}" id="cl21"
+                                                                           actionListener="#{pageFlowScope.DeploymentTypeBean.onClickViewItemPopup}"
+                                                                           rendered="#{row.ClassCode eq null}"
+                                                                           immediate="true"/>-->
+                                                            <af:outputText value="#{row.DepartmentCode} - #{row.DepartmentDesc}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.DepartmentCode.tooltip}"
+                                                                           id="ot3"
+                                                                           rendered="#{row.CommodityCode ne null}"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                   id="c12"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.StyleCode.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.StyleCode}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.StyleCode.tooltip}"
+                                                                           id="ot12"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.VPN_NAME_LABEL}"
+                                                                   id="c13"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.StyleDesc.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.StyleDesc}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.StyleDesc.tooltip}"
+                                                                           id="ot13"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                   id="c15"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.StyleColorCode.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.StyleColorCode}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.StyleColorCode.tooltip}"
+                                                                           id="ot16"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.VPN_COLOR_NAME_LABEL}"
+                                                                   id="c16"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.StyleColorDesc.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.StyleColorDesc}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.StyleColorDesc.tooltip}"
+                                                                           id="ot17"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.SKU_LABEL}" id="c2"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.CommodityCode.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.CommodityDesc}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.CommodityCode.tooltip}"
+                                                                           id="ot4"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.SKU_NAME_LABEL}"
+                                                                   id="c19"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.CommodityDesc.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.CommodityDesc}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.CommodityDesc.tooltip}"
+                                                                           id="ot29"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.ORD_SUPP_LABEL}"
+                                                                   id="c21"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.SupplierCode.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:link text="#{row.SupplierCode}" id="cl6"
+                                                                     rendered="#{row.SupplierCode  eq 'All Suppliers'}"
+                                                                     actionListener="#{pageFlowScope.DeploymentTypeBean.onClickViewSupplierPopup}"
+                                                                     immediate="true"/>
+                                                            <af:outputText value="#{row.SupplierCode}"
+                                                                           rendered="#{row.SupplierDesc ne null}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.SupplierCode.tooltip}"
+                                                                           id="ot31"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.ORD_SUPP_NAME_LABEL}"
+                                                                   id="c22"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.SupplierDesc.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.SupplierDesc}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.SupplierDesc.tooltip}"
+                                                                           id="ot32"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                                   id="c24"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.StoreCode.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:link text="#{aipdatatooluiBundle.ALL_STORES}" id="l7"
+                                                                     actionListener="#{pageFlowScope.DeploymentTypeBean.onClickViewStorePopup}"
+                                                                     rendered="#{row.StoreCode eq 'All Stores' and row.RegionCode eq null}"
+                                                                     immediate="true"/>
+                                                            <af:outputText value="#{row.StoreCode}"
+                                                                           rendered="#{row.StoreCode ne null and row.RegionCode ne null}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.StoreCode.tooltip}"
+                                                                           id="ot34"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.STORE_NAME_LABEL}"
+                                                                   id="c25"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.StoreDesc.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.StoreDesc}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.StoreDesc.tooltip}"
+                                                                           id="ot35"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                   id="c27"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.RegionCode.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:link text="#{row.RegionCode}" id="l6"
+                                                                     actionListener="#{pageFlowScope.DeploymentTypeBean.onClickViewStorePopup}"
+                                                                     rendered="#{row.StoreCode eq null and row.RegionCode ne null}"
+                                                                     immediate="true"/>
+                                                            <af:outputText value="#{row.RegionCode}"
+                                                                           rendered="#{row.StoreCode ne null and row.RegionCode ne null}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.RegionCode.tooltip}"
+                                                                           id="ot37"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.REGION_NAME_LABEL}"
+                                                                   id="c28"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.RegionDesc.name}"
+                                                                   filterable="true" sortable="true">
+                                                            <af:outputText value="#{row.RegionDesc}"
+                                                                           shortDesc="#{bindings.DeploymentTypeResultVO.hints.RegionDesc.tooltip}"
+                                                                           id="ot38"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.DeploymentTypeResultVO.hints.DeploymentType.label}"
+                                                                   id="c29" width="230px" align="center"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.DeploymentType.name}"
+                                                                   filterable="true" sortable="true"
+                                                                   partialTriggers="sbc2">
+                                                            <af:selectOneChoice value="#{row.bindings.DeploymentType.inputValue}"
+                                                                                label="#{aipdatatooluiBundle.DEPLOYMENT_TYPE}"
+                                                                                shortDesc="#{bindings.DeploymentTypeResultVO.hints.DeploymentType.tooltip}"
+                                                                                id="soc3" autoSubmit="true"
+                                                                                contentStyle="width:120px;"
+                                                                                partialTriggers="sbc2"
+                                                                                required="#{row.bindings.UpdateInd.inputValue}"
+                                                                                validator="#{pageFlowScope.DeploymentTypeBean.onDeploymentTypeValidator}"
+                                                                                valueChangeListener="#{pageFlowScope.DeploymentTypeBean.onDeploymentTypeVCE}">
+                                                                <f:selectItems value="#{row.bindings.DeploymentType.items}"
+                                                                               id="si5"/>
+                                                                <f:validator binding="#{row.bindings.DeploymentType.validator}"/>
+                                                            </af:selectOneChoice>
+                                                            <!--<f:facet name="header">
+                                                                <af:panelGroupLayout id="pgl11" layout="vertical">
+                                                                    <h:outputText value="#{bindings.DeploymentTypeResultVO.hints.DeploymentType.label}"
+                                                                                  id="ol1"/>
+                                                                    <af:separator id="s14"/>
+                                                                    <af:panelGroupLayout id="pgl17" layout="horizontal">
+                                                                        <af:selectOneChoice shortDesc="#{bindings.DeploymentTypeResultVO.hints.DeploymentType.tooltip}"
+                                                                                            id="soc7" autoSubmit="true"
+                                                                                            simple="true"                                                                                            
+                                                                                            binding="#{pageFlowScope.DeploymentTypeBean.deploymentTypeHdrComp}">                                                                          
+                                                                            <af:forEach items="#{bindings.DeploymentType.items}"
+                                                                                        var="item">
+                                                                                <af:selectItem label="#{item.label}"
+                                                                                               id="si41"
+                                                                                               value="#{item.value}"/>
+                                                                            </af:forEach>                                                                            
+                                                                        </af:selectOneChoice>
+                                                                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SET_ALL_WIDTH}"
+                                                                                   id="s13"/>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="b1"
+                                                                                   rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   action="#{pageFlowScope.DeploymentTypeBean.handleDeploymentTypeSetAll}"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </f:facet>-->
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.START_DATE}"
+                                                                   id="c30" width="210px" align="center"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.StartDate.name}"
+                                                                   filterable="false" sortable="true"
+                                                                   partialTriggers="sbc2 id2">
+                                                            <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                                                          label="#{bindings.DeploymentTypeResultVO.hints.StartDate.label}"
+                                                                          columns="#{bindings.DeploymentTypeResultVO.hints.StartDate.displayWidth}"
+                                                                          shortDesc="#{bindings.DeploymentTypeResultVO.hints.StartDate.tooltip}"
+                                                                          id="id1" autoSubmit="true" simple="true"
+                                                                          valueChangeListener="#{pageFlowScope.DeploymentTypeBean.OnstartDateVCE}"                                                                          
+                                                                          required="#{row.bindings.UpdateInd.inputValue}"
+                                                                          partialTriggers="sbc2 id2"
+                                                                          binding="#{pageFlowScope.DeploymentTypeBean.startDateRowLevelComp}">
+                                                                <!--validator="#{pageFlowScope.DeploymentTypeBean.onStartDateValidator}"> -->
+                                                                <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                                                <af:convertDateTime pattern="#{bindings.DeploymentTypeResultVO.hints.StartDate.format}"/>
+                                                                <!--<af:validateDateTimeRange minimum="#{pageFlowScope.DeploymentTypeBean.VDate}"
+                                                                                          maximum="#{row.bindings.EndDate.inputValue}"/>-->
+                                                                <af:target execute="@this" render="id2"/>
+                                                            </af:inputDate>
+                                                            <f:facet name="header">
+                                                                <af:panelGroupLayout id="pgl18" layout="vertical">
+                                                                    <h:outputText value="#{bindings.DeploymentTypeResultVO.hints.StartDate.label}"
+                                                                                  id="ot8"/>
+                                                                    <af:separator id="s19"/>
+                                                                    <af:panelGroupLayout id="pgl19" layout="horizontal">
+                                                                        <af:inputDate id="id5" columns="11"
+                                                                                      autoSubmit="true" 
+                                                                                      maxValue="#{pageFlowScope.DeploymentTypeBean.sysHighDate}"
+                                                                                      minValue="#{pageFlowScope.DeploymentTypeBean.VDate}"
+                                                                                      binding="#{pageFlowScope.DeploymentTypeBean.startDateHeaderComp}">
+                                                                            <af:convertDateTime pattern="#{bindings.DeploymentTypeResultVO.hints.StartDate.format}"/>
+                                                                            <!--<af:target execute="@this"
+                                                                                       events="valueChange"/>-->
+                                                                        </af:inputDate>
+                                                                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SET_ALL_WIDTH}"
+                                                                                   id="s20"/>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="b3"
+                                                                                   rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   action="#{pageFlowScope.DeploymentTypeBean.handleOnStartDateSetAll}">
+                                                                            <af:target execute="none"/>
+                                                                        </af:button>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </f:facet>
+                                                        </af:column>
+                                                        <af:column headerText="#{aipdatatooluiBundle.END_DATE}" id="c31"
+                                                                   width="210px" align="center"
+                                                                   sortProperty="#{bindings.DeploymentTypeResultVO.hints.EndDate.name}"
+                                                                   filterable="false" sortable="true"
+                                                                   partialTriggers="sbc2 id1">
+                                                            <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                                                          label="#{bindings.DeploymentTypeResultVO.hints.EndDate.label}"
+                                                                          columns="#{bindings.DeploymentTypeResultVO.hints.EndDate.displayWidth}"
+                                                                          shortDesc="#{bindings.DeploymentTypeResultVO.hints.EndDate.tooltip}"
+                                                                          id="id2" autoSubmit="true"
+                                                                          partialTriggers="sbc2 id1"
+                                                                          required="#{row.bindings.UpdateInd.inputValue eq '1'}"
+                                                                          valueChangeListener="#{pageFlowScope.DeploymentTypeBean.OnEndDateVCE}"                                                                          
+                                                                          disabled="#{pageFlowScope.DeploymentTypeBean.isDefaultSelected}">
+                                                                <!-- validator="#{pageFlowScope.DeploymentTypeBean.onEndDateValidator}"> -->
+                                                                <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                                                <af:convertDateTime pattern="#{bindings.DeploymentTypeResultVO.hints.EndDate.format}"/>
+                                                                <!--<af:validateDateTimeRange minimum="#{row.bindings.StartDate.inputValue}"
+                                                                                          maximum="#{pageFlowScope.DeploymentTypeBean.sysHighDate}"/>-->
+                                                                <af:target execute="@this" render="id1"/>
+                                                            </af:inputDate>
+                                                            <f:facet name="header">
+                                                                <af:panelGroupLayout id="pgl10" layout="vertical">
+                                                                    <h:outputText value="#{bindings.DeploymentTypeResultVO.hints.EndDate.label}"
+                                                                                  id="ot5"/>
+                                                                    <af:separator id="s17"/>
+                                                                    <af:panelGroupLayout id="pgl16" layout="horizontal">
+                                                                        <af:inputDate id="id3" columns="11"
+                                                                                      autoSubmit="true"
+                                                                                      maxValue="#{pageFlowScope.DeploymentTypeBean.sysHighDate}"
+                                                                                      minValue="#{pageFlowScope.DeploymentTypeBean.VDate}"
+                                                                                      binding="#{pageFlowScope.DeploymentTypeBean.endDateHeaderComp}">
+                                                                            <af:convertDateTime pattern="#{bindings.DeploymentTypeResultVO.hints.EndDate.format}"/>
+                                                                            <!--<af:target execute="@this"
+                                                                                       events="valueChange"/>-->
+                                                                        </af:inputDate>
+                                                                        <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SET_ALL_WIDTH}"
+                                                                                   id="s18"/>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="b2"
+                                                                                   rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.DeploymentTypeBean.handleEndDateSetAll}">
+                                                                            <af:target execute="none"/>
+                                                                        </af:button>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </f:facet>
+                                                        </af:column>
+                                                        <!--af:column id="sdsd" headerText="UpdateInd"
+                                                                   partialTriggers="sbc2">  
+                                                            <af:outputText value="#{row.bindings.UpdateInd.inputValue}"
+                                                                           id="ot11"/>
+                                                        </af:column-->
+                                                    </af:table>
+                                                </f:facet>
+                                                <f:facet name="popup"/>
+                                                <f:facet name="appsTableSecondaryToolbar"/>
+                                                <f:facet name="appsTableStatusbar"/>
+                                                <f:facet name="appsTableViewMenu"/>
+                                                <f:facet name="appsTableAfterToolbar"/>
+                                            </retail:appsTable>
+                                        </af:panelGroupLayout>
+                                    </af:showDetailHeader>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                </f:facet>
+                <f:facet name="popup">
+                    <af:panelGroupLayout id="pgl9">
+                        <af:popup id="itemHierarchyPopup" contentDelivery="lazy"
+                                  binding="#{pageFlowScope.DeploymentTypeBean.itemHierarchyPopup}">
+                            <af:dialog id="d1" title="#{aipdatatooluiBundle.COMMODITY_POPUP_TITLE}" type="cancel"
+                                       contentHeight="100" contentWidth="100">
+                                <af:panelCollection id="pc1" featuresOff="viewMenu">
+                                    <af:table value="#{bindings.DeploymentTypeItemHierPopupVO.collectionModel}"
+                                              var="row" rows="#{bindings.DeploymentTypeItemHierPopupVO.rangeSize}"
+                                              emptyText="#{bindings.DeploymentTypeItemHierPopupVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" styleClass="AFStretchWidth"
+                                              fetchSize="#{bindings.DeploymentTypeItemHierPopupVO.rangeSize}" id="t2">
+                                        <af:column headerText="#{aipdatatooluiBundle.VPN_LABEL}" id="c115">
+                                            <af:outputText value="#{row.VpnCode}"
+                                                           shortDesc="#{bindings.DeploymentTypeItemHierPopupVO.hints.VpnCode.tooltip}"
+                                                           id="ot15"/>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatooluiBundle.VPN_NAME_LABEL}" id="c119">
+                                            <af:outputText value="#{row.VpnName}"
+                                                           shortDesc="#{bindings.DeploymentTypeItemHierPopupVO.hints.VpnName.tooltip}"
+                                                           id="ot19"/>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatooluiBundle.VPN_COLOR_LABEL}" id="c214">
+                                            <af:outputText value="#{row.VpnColorCode}"
+                                                           shortDesc="#{bindings.DeploymentTypeItemHierPopupVO.hints.VpnColorCode.tooltip}"
+                                                           id="ot21"/>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatooluiBundle.VPN_COLOR_NAME_LABEL}" id="c216">
+                                            <af:outputText value="#{row.VpnColorName}"
+                                                           shortDesc="#{bindings.DeploymentTypeItemHierPopupVO.hints.VpnColorName.tooltip}"
+                                                           id="ot22"/>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatooluiBundle.SKU_LABEL}" id="c217">
+                                            <af:outputText value="#{row.CommodityCode}"
+                                                           shortDesc="#{bindings.DeploymentTypeItemHierPopupVO.hints.CommodityCode.tooltip}"
+                                                           id="ot23"/>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatooluiBundle.SKU_NAME_LABEL}" id="c218">
+                                            <af:outputText value="#{row.CommodityName}"
+                                                           shortDesc="#{bindings.DeploymentTypeItemHierPopupVO.hints.CommodityName.tooltip}"
+                                                           id="ot24"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                                <!--<af:panelGroupLayout layout="vertical" id="pgl10" styleClass="AFStretchWidth">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl11">
+                                        
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>-->
+                                <af:spacer width="10" height="10" id="s25"/>
+                                <!--<af:panelGroupLayout id="pgl16" layout="horizontal" halign="end">
+                                    <af:button text="#{aipdatatooluiBundle.CLOSE}" id="cb9"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.closeItemPopUp}"/>
+                                </af:panelGroupLayout>-->
+                            </af:dialog>
+                            <!--<af:panelWindow id="pw5" modal="true" closeIconVisible="true" title="CommodityHierarchy">
+                                <af:noteWindow id="note1"></af:noteWindow>
+                            </af:panelWindow>-->
+                        </af:popup>
+                        <af:popup id="storePopup" binding="#{pageFlowScope.DeploymentTypeBean.storePopup}"
+                                  contentDelivery="lazy">
+                            <af:dialog id="d2" title="#{aipdatatooluiBundle.STORE_POPUP_TITLE}" type="cancel"
+                                       contentHeight="50" contentWidth="50">
+                                <af:panelCollection id="pc2" featuresOff="viewMenu">
+                                    <af:table value="#{bindings.DeploymentTypeStorePopupVO.collectionModel}" var="row"
+                                              rows="#{bindings.DeploymentTypeStorePopupVO.rangeSize}"
+                                              emptyText="#{bindings.DeploymentTypeStorePopupVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" columnStretching="last"
+                                              fetchSize="#{bindings.DeploymentTypeStorePopupVO.rangeSize}" id="t3">
+                                        <af:column headerText="#{aipdatatooluiBundle.STORE_LABEL}" id="c129" width="80">
+                                            <af:outputText value="#{row.StoreCode}"
+                                                           shortDesc="#{bindings.DeploymentTypeStorePopupVO.hints.StoreCode.tooltip}"
+                                                           id="ot25"/>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatooluiBundle.STORE_NAME_LABEL}" id="c130"
+                                                   width="150">
+                                            <af:outputText value="#{row.StoreName}"
+                                                           shortDesc="#{bindings.DeploymentTypeStorePopupVO.hints.StoreName.tooltip}"
+                                                           id="ot26"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                                <!--<af:spacer width="10" height="10" id="s12"/>-->
+                                <!--<af:panelGroupLayout id="pgl19" layout="horizontal" halign="end">
+                                    <af:button text="#{aipdatatooluiBundle.CLOSE}" id="cb11"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.closeStorePopUp}"/>
+                                </af:panelGroupLayout>-->
+                            </af:dialog>
+                        </af:popup>
+                        <af:popup id="supplierPopup" binding="#{pageFlowScope.DeploymentTypeBean.supplierPopup}"
+                                  contentDelivery="lazy">
+                            <af:dialog id="d3" title="#{aipdatatooluiBundle.STORE_POPUP_TITLE}" type="cancel"
+                                       contentHeight="50" contentWidth="50">
+                                <af:panelCollection id="pc3" featuresOff="viewMenu">
+                                    <af:table value="#{bindings.DeploymentTypeSupplierpopupVO.collectionModel}"
+                                              var="row" rows="#{bindings.DeploymentTypeSupplierpopupVO.rangeSize}"
+                                              emptyText="#{bindings.DeploymentTypeSupplierpopupVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0" columnStretching="last"
+                                              fetchSize="#{bindings.DeploymentTypeSupplierpopupVO.rangeSize}" id="t4">
+                                        <af:column headerText="#{aipdatatooluiBundle.ORD_SUPP_LABEL}" id="c4">
+                                            <af:outputText value="#{row.SupplierCode}"
+                                                           shortDesc="#{bindings.DeploymentTypeSupplierpopupVO.hints.SupplierCode.tooltip}"
+                                                           id="ot6"/>
+                                        </af:column>
+                                        <af:column headerText="#{aipdatatooluiBundle.ORD_SUPP_NAME_LABEL}" id="c5">
+                                            <af:outputText value="#{row.SupplierName}"
+                                                           shortDesc="#{bindings.DeploymentTypeSupplierpopupVO.hints.SupplierName.tooltip}"
+                                                           id="ot7"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                                <!--<af:spacer width="10" height="10" id="s12"/>-->
+                                <!--<af:panelGroupLayout id="pgl19" layout="horizontal" halign="end">
+                                    <af:button text="#{aipdatatooluiBundle.CLOSE}" id="cb11"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.closeStorePopUp}"/>
+                                </af:panelGroupLayout>-->
+                            </af:dialog>
+                        </af:popup>
+                        <af:popup id="resetPopup" binding="#{pageFlowScope.DeploymentTypeBean.resetPopup}"
+                                  contentDelivery="lazy">
+                            <af:panelWindow id="pw4" title="#{aipdatatooluiBundle.RESET_CONFIRMATION}"
+                                            titleIconSource="/afr/confirmation.png" modal="true"
+                                            closeIconVisible="false">
+                                <af:outputText id="ot28"
+                                               value="#{aipdatatooluiBundle.DEPL_TYPE_RESET_CONFIRMATION_MSG}"/>
+                                <af:spacer width="10" height="20" id="s23"/>
+                                <af:panelGroupLayout id="pgl12" layout="horizontal" halign="end">
+                                    <af:button text="#{aipdatatooluiBundle.YES}" id="cb6" immediate="true"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.resetYesListener}">
+                                        <af:target execute="@this" render="pgl5"/>
+                                    </af:button>
+                                    <af:spacer width="10" height="10" id="s15"/>
+                                    <af:button text="#{aipdatatooluiBundle.NO}" id="cb10" immediate="true"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.closeResetPopUp}"/>
+                                </af:panelGroupLayout>
+                            </af:panelWindow>
+                        </af:popup>
+                        <af:popup id="cancelPopup" binding="#{pageFlowScope.DeploymentTypeBean.cancelPopup}"
+                                  contentDelivery="lazy">
+                            <af:panelWindow id="pw3" title="#{aipdatatooluiBundle.CANCEL_CONFIRMATION}"
+                                            titleIconSource="/afr/confirmation.png" modal="true"
+                                            closeIconVisible="false">
+                                <af:outputText id="ot27" value="#{aipdatatooluiBundle.OSOS_CANCEL_CONFIRMATION_MSG}"/>
+                                <af:spacer width="10" height="20" id="s21"/>
+                                <af:panelGroupLayout id="pgl15" layout="horizontal" halign="end">
+                                    <af:button text="#{aipdatatooluiBundle.YES}" id="cb7"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.cancelBtnPopUpYesListener}"
+                                               immediate="true"/>
+                                    <af:spacer width="10" height="10" id="s22"/>
+                                    <af:button text="#{aipdatatooluiBundle.NO}" id="cb8"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.closeCancelPopUp}"/>
+                                </af:panelGroupLayout>
+                            </af:panelWindow>
+                        </af:popup>
+                        <!--<af:popup id="saveSuccessPopup" binding="#{pageFlowScope.DeploymentTypeBean.saveSuccessPopup}">
+                            <af:panelWindow id="pw1" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                            titleIconSource="/afr/confirmation.png" modal="true"
+                                            closeIconVisible="false">
+                                <af:outputText id="ot5" value="#{aipdatatooluiBundle.OSOS_SAVE_SUCESS_MSG}"/>
+                                <af:spacer width="10" height="20" id="s14"/>
+                                <af:panelGroupLayout id="pgl11" layout="horizontal" halign="end">
+                                    <af:commandButton text="#{aipdatatooluiBundle.OK}" id="cb3" immediate="true"
+                                                      actionListener="#{pageFlowScope.DeploymentTypeBean.resetYesListener}"/>
+                                </af:panelGroupLayout>
+                            </af:panelWindow>
+                        </af:popup>-->
+                        <af:popup id="saveFailedPopup" binding="#{pageFlowScope.DeploymentTypeBean.saveFailedPopup}">
+                            <af:panelWindow id="pw2" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                            titleIconSource="/raf/simple/images/delete_ena.png" modal="true"
+                                            closeIconVisible="false">
+                                <af:outputText id="ot2" value="#{aipdatatooluiBundle.DEPL_TYPE_SAVE_FAILED_MSG}"/>
+                                <af:spacer width="10" height="20" id="s16"/>
+                                <af:panelGroupLayout id="pgl13" layout="horizontal" halign="end">
+                                    <af:commandButton text="#{aipdatatooluiBundle.OK}" id="cb4" immediate="true"
+                                                      actionListener="#{pageFlowScope.DeploymentTypeBean.handleSaveFailedOkEvent}"/>
+                                </af:panelGroupLayout>
+                            </af:panelWindow>
+                        </af:popup>
+                        <af:popup id="saveCloseSuccessPopup"
+                                  binding="#{pageFlowScope.DeploymentTypeBean.saveCloseSuccessPopup}">
+                            <af:panelWindow id="pw6" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                            titleIconSource="/afr/confirmation.png" modal="true"
+                                            closeIconVisible="false">
+                                <af:outputText id="ot1" value="#{aipdatatooluiBundle.DEPL_TYPE_SAVE_SUCESS_MSG}"/>
+                                <af:spacer width="10" height="20" id="s7"/>
+                                <af:panelGroupLayout id="pgl14" layout="horizontal" halign="end">
+                                    <af:commandButton text="#{aipdatatooluiBundle.OK}" id="cb5" immediate="true"
+                                                      actionListener="#{pageFlowScope.DeploymentTypeBean.okSavePopupListener}"/>
+                                </af:panelGroupLayout>
+                            </af:panelWindow>
+                        </af:popup>
+                        <af:popup id="saveConfirmationPopup"
+                                  binding="#{pageFlowScope.DeploymentTypeBean.saveConfirmationPopup}"
+                                  contentDelivery="lazy">
+                            <af:panelWindow id="pw1" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                            titleIconSource="/afr/confirmation.png" modal="true"
+                                            closeIconVisible="false">
+                                <af:outputText id="ot9" value="#{aipdatatooluiBundle.DEPLTYPE_SAVE_CONFIRMATION_MSG}"/>
+                                <af:spacer width="10" height="20" id="s13"/>
+                                <af:panelGroupLayout id="pgl11" layout="horizontal" halign="end">
+                                    <af:button text="#{aipdatatooluiBundle.YES}" id="b1"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.handleSaveYesListener}">
+                                        <af:target execute="@this" render="pgl5"/>
+                                    </af:button>
+                                    <af:spacer width="10" height="10" id="s14"/>
+                                    <af:button text="#{aipdatatooluiBundle.NO}" id="b4" immediate="true"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.handleSaveNoListener}"/>
+                                </af:panelGroupLayout>
+                            </af:panelWindow>
+                        </af:popup>
+                        <af:popup id="saveAndCloseConfirmationPopup"
+                                  binding="#{pageFlowScope.DeploymentTypeBean.saveAndCloseConfirmationPopup}"
+                                  contentDelivery="lazy">
+                            <af:panelWindow id="pw5" title="#{aipdatatooluiBundle.SAVE_CLOSE_CONFIRMATION}"
+                                            titleIconSource="/afr/confirmation.png" modal="true"
+                                            closeIconVisible="false">
+                                <af:outputText id="ot10"
+                                               value="#{aipdatatooluiBundle.DEPLTYPE_SAVE_AND_CLOSE_CONFIRMATION_MSG}"/>
+                                <af:spacer width="10" height="20" id="s24"/>
+                                <af:panelGroupLayout id="pgl17" layout="horizontal" halign="end">
+                                    <af:button text="#{aipdatatooluiBundle.YES}" id="b5"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.handleSaveAndCloseYesListener}">
+                                        <af:target execute="@this" render="pgl5"/>
+                                    </af:button>
+                                    <af:spacer width="10" height="10" id="s26"/>
+                                    <af:button text="#{aipdatatooluiBundle.NO}" id="b6" immediate="true"
+                                               actionListener="#{pageFlowScope.DeploymentTypeBean.handleSaveAndCloseNoListener}"/>
+                                </af:panelGroupLayout>
+                            </af:panelWindow>
+                        </af:popup>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </retail:appsPanel>
+        </f:facet>
+        <f:facet name="localAreaScroll"/>
+    </af:pageTemplate>
+</jsp:root>

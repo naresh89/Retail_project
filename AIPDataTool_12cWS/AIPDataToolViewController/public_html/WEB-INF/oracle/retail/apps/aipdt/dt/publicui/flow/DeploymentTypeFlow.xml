@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2"
+             id="__2">
+  <task-flow-definition id="DeploymentTypeFlow">
+    <default-activity id="__1">initActivity</default-activity>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__6">
+      <managed-bean-name id="__5">DeploymentTypeBean</managed-bean-name>
+      <managed-bean-class id="__4">oracle.retail.apps.aipdt.dt.publicui.bean.DeploymentTypeBean</managed-bean-class>
+      <managed-bean-scope id="__7">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="DeploymentType">
+      <page id="__3">/oracle/retail/apps/aipdt/dt/publicui/page/DeploymentType.jsff</page>
+    </view>
+    <method-call id="initActivity">
+      <method>#{bindings.initActivity.execute}</method>
+      <outcome>
+        <fixed-outcome>success</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="closeContent">
+      <method>#{bindings.closeContent.execute}</method>
+      <outcome>
+        <fixed-outcome>closeContent</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Rollback1">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome>
+        <fixed-outcome>Rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__8">
+      <from-activity-id>initActivity</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>success</from-outcome>
+        <to-activity-id>DeploymentType</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>DeploymentType</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>closeContent</from-outcome>
+        <to-activity-id>closeContent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>Rollback1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>Rollback1</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>Rollback</from-outcome>
+        <to-activity-id>closeContent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

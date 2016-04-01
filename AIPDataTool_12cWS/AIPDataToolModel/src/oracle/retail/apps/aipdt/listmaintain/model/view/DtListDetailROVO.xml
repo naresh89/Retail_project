@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DtListDetailROVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewRowImpl"
+  ComponentClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewObjectImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewDefImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.retail.apps.aipdt.listmaintain.model.view.DtListDetailROVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="BV_N_List_Id"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <SQLQuery><![CDATA[SELECT vdc.commodity_code code, 
+       vdc.commodity_desc description 
+  FROM v_dt_commodity vdc, 
+       dt_list_detail dld1 
+WHERE dld1.list_id = :BV_N_List_Id 
+   and dld1.commodity_id IS NOT NULL 
+   and dld1.commodity_id = vdc.commodity_id 
+UNION ALL 
+SELECT vdsp.stocking_point_number code, 
+       vdsp.stocking_point_name description 
+  FROM v_dt_stocking_point vdsp, 
+       dt_list_detail dld2 
+WHERE dld2.list_id = :BV_N_List_Id 
+   and dld2.warehouse_id IS NOT NULL 
+   and dld2.warehouse_id = vdsp.stocking_point_id 
+UNION ALL 
+SELECT vds.store_code code, 
+       vds.store_name description 
+  FROM v_dt_store vds, 
+       dt_list_detail dld3 
+WHERE dld3.list_id = :BV_N_List_Id 
+   and dld3.store_id IS NOT NULL 
+   and dld3.store_id = vds.store_id]]></SQLQuery>
+  <ViewAttribute
+    Name="Code"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="CODE"
+    Expression="CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="DtListDetailROVOCriteria"
+    ViewObjectName="oracle.retail.apps.aipdt.listmaintain.model.view.DtListDetailROVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="DtListDetailROVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="DtListDetailROVOCriteria_DtListDetailROVOCriteria_row_0_Code"
+        ViewAttribute="Code"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Value=""
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="DtListDetailROVOCriteria_DtListDetailROVOCriteria_row_0_Description"
+        ViewAttribute="Description"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Value=""
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Code"/>
+  </AttrArray>
+  <ResourceBundle>
+    <XliffBundle
+      id="oracle.retail.apps.aipdt.model.AIPDataToolModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

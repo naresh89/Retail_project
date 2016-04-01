@@ -1,0 +1,629 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:retail="/retailApps"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:RetailAppCustomComponent="/RetailAppCustomComponent">
+    <c:set var="aipdatatooluiBundle"
+           value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+    <retail:appsPanel id="npAppsPanel" contentsFacet="stretch" title="" saveAndCloseRendered="true"
+                      saveAndCloseVisible="true" saveRendered="true" saveVisible="true" cancelRendered="true"
+                      cancelVisible="true" saveAndCloseDisabled="#{pageFlowScope.NetworkPathBean.saveDisabled}"
+                      saveDisabled="#{pageFlowScope.NetworkPathBean.saveDisabled}"
+                      cancelAction="#{pageFlowScope.NetworkPathBean.cancelNetworkPath}"
+                      saveAndCloseAction="#{pageFlowScope.NetworkPathBean.saveAndCloseNetworkPath}"
+                      saveActionListener="#{pageFlowScope.NetworkPathBean.saveNetworkPath}"
+                      savePartialTriggers="cb1"
+                      saveAndClosePartialTriggers="cb1">
+        <f:facet name="contents"/>
+        <f:facet name="contentsStretch">
+            <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="parent">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelGroupLayout layout="scroll" id="pgl12" inlineStyle="Width:100%">
+                        <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl4">
+                            <af:showDetailHeader text="#{aipdatatooluiBundle.SEARCH}" disclosed="true" id="sdh1">
+                                <af:panelGroupLayout layout="scroll" inlineStyle="Width:100%" id="pgl1">
+                                    <af:panelGroupLayout id="pgl27" layout="horizontal" valign="top">
+                                        <af:panelBox text="#{aipdatatooluiBundle.SOURCE}" id="pb1"
+                                                     showDisclosure="false" inlineStyle="width:400px;">
+                                            <af:panelFormLayout id="pfl5" maxColumns="1" rows="2">
+                                                <af:selectOneChoice value="#{bindings.SrcWhType.inputValue}"
+                                                                    label="#{bindings.SrcWhType.label}"
+                                                                    required="#{bindings.SrcWhType.hints.mandatory}"
+                                                                    shortDesc="#{bindings.SrcWhType.hints.tooltip}"
+                                                                    autoSubmit="true" contentStyle="width:173px"
+                                                                    id="soc1"
+                                                                    valueChangeListener="#{pageFlowScope.NetworkPathBean.onSourceWhTypeChange}"
+                                                                    binding="#{pageFlowScope.NetworkPathBean.srcWhTypeComp}"
+                                                                    disabled="false">
+                                                    <f:selectItems value="#{bindings.SrcWhType.items}" id="si2"/>
+                                                    <f:attribute name="srcWhTypeVal"
+                                                                 value="#{bindings.SrcWhType.items[bindings.SrcWhType.inputValue].label}"/>
+                                                </af:selectOneChoice>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.WAREHOUSE}"
+                                                                         id="plam2">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="WarehouseCode"
+                                                                                                      AttributeDesc="WarehouseName"
+                                                                                                      FieldBinding="SrcWarehouse"
+                                                                                                      listAttributeName="WarehouseId"
+                                                                                                      TextWidth="150px"
+                                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSourceWarehouseChange}"
+                                                                                                      id="smicb2"
+                                                                                                      selectAllVisible="true"
+                                                                                                      immediate="true"
+                                                                                                      IsDisabled="#{pageFlowScope.NetworkPathBean.srcWhDisable}"
+                                                                                                      binding="#{pageFlowScope.NetworkPathBean.srcWarehouseComp}"/>
+                                                </af:panelLabelAndMessage>
+                                            </af:panelFormLayout>
+                                        </af:panelBox>                                        
+                                        <af:spacer width="10px" id="s1"/>
+                                        <af:panelBox text="#{aipdatatooluiBundle.DESTINATION}" id="pb3"
+                                                     showDisclosure="false" inlineStyle="width:400px;">
+                                            <af:panelFormLayout id="pfl6" maxColumns="1" rows="2">
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.STORE}"
+                                                                         id="plam3">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                                                      AttributeDesc="StoreName"
+                                                                                                      FieldBinding="Store"
+                                                                                                      listAttributeName="StoreId"
+                                                                                                      TextWidth="150px"
+                                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onStoreChange}"
+                                                                                                      id="smicb3"
+                                                                                                      selectAllVisible="false"
+                                                                                                      immediate="true"
+                                                                                                      IsDisabled="#{pageFlowScope.NetworkPathBean.dstStoreDisable}"
+                                                                                                      binding="#{pageFlowScope.NetworkPathBean.storeComp}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.WAREHOUSE}"
+                                                                         id="plam4">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="WarehouseCode"
+                                                                                                      AttributeDesc="WarehouseName"
+                                                                                                      FieldBinding="DstWarehouse"
+                                                                                                      listAttributeName="WarehouseId"
+                                                                                                      TextWidth="150px"
+                                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onDestinationWarehouseChange}"
+                                                                                                      id="smicb4"
+                                                                                                      selectAllVisible="true"
+                                                                                                      immediate="true"
+                                                                                                      IsDisabled="#{pageFlowScope.NetworkPathBean.dstWhDisable}"
+                                                                                                      binding="#{pageFlowScope.NetworkPathBean.dstWarehouseComp}"/>
+                                                </af:panelLabelAndMessage>
+                                            </af:panelFormLayout>
+                                        </af:panelBox>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                                <hr style="margin: 0; height: 1px; background: rgb(226,231,236); border: none;"
+                                    class="AFStretchWidth"/>
+                                <af:spacer id="s2" height="5"/>
+                                <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal">
+                                    <af:button text="#{aipdatatooluiBundle.SEARCH}" id="cb1" disabled="true"
+                                               binding="#{pageFlowScope.NetworkPathBean.searchComp}"
+                                               actionListener="#{pageFlowScope.NetworkPathBean.handleSelectButtonClick}"/>
+                                    <af:spacer width="10" height="10" id="s4"/>
+                                    <af:button text="#{aipdatatooluiBundle.RESET}" id="cb2" disabled="false"
+                                               actionListener="#{pageFlowScope.NetworkPathBean.handleResetButtonClick}">
+                                        <af:target execute="@this" render="@this"/>
+                                    </af:button>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl11" styleClass="AFStretchWidth"
+                                             inlineStyle="border-style:solid; border-width:thin; border-color:rgb(226,231,236);">
+                            <af:showDetailHeader text="#{aipdatatooluiBundle.RESULTS}" disclosed="true" id="sdh2"
+                                                 styleClass="AFStretchWidth">
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend">
+                                    <af:panelGroupLayout id="pgl2" visible="false"
+                                                         binding="#{pageFlowScope.NetworkPathBean.resultsArea}">
+                                        <retail:appsTable id="at1" styleClass="AFStretchWidth" exportEnabled="false"
+                                                          exportFilename="#{pageFlowScope.NetworkPathBean.exportFileName}"
+                                                          tableId="t1" viewEnabled="false">
+                                            <f:facet name="additionalToolbarButtons">
+                                                <af:menuBar id="mb1">
+                                                    <af:menu text="#{aipdatatooluiBundle.EXPORT_TO_EXCEL}" id="m2"
+                                                             icon="/oracle/retail/apps/aipdt/images/E2E.jpg">
+                                                        <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_ALL_ROWS}"
+                                                                            id="cmi1">
+                                                            <af:setPropertyListener from="true"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                            <af:exportCollectionActionListener exportedId="t1"
+                                                                                               type="excelHTML"
+                                                                                               filename="#{pageFlowScope.NetworkPathBean.exportFileName}"/>
+                                                            <af:setPropertyListener from="false"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                        </af:commandMenuItem>
+                                                        <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_SELECTED_ROWS}"
+                                                                            id="cmi2">
+                                                            <af:setPropertyListener from="true"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                            <af:exportCollectionActionListener exportedId="t1"
+                                                                                               type="excelHTML"
+                                                                                               exportedRows="selected"
+                                                                                               filename="#{pageFlowScope.NetworkPathBean.exportFileName}"
+                                                                                               filterMethod="#{pageFlowScope.NetworkPathBean.exportSelectedRows}"/>
+                                                            <af:setPropertyListener from="false"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                        </af:commandMenuItem>
+                                                    </af:menu>
+                                                </af:menuBar>
+                                            </f:facet>
+                                            <f:facet name="additionalActionItems">
+                                                <af:group id="g1">
+                                                    <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE}" id="cmi3"
+                                                                        actionListener="#{pageFlowScope.NetworkPathBean.saveNetworkPath}"
+                                                                        disabled="#{pageFlowScope.NetworkPathBean.saveDisabled}"></af:commandMenuItem>
+                                                    <af:commandMenuItem text="#{aipdatatooluiBundle.SAVE_AND_CLOSE}"
+                                                                        id="cmi4"
+                                                                        disabled="#{pageFlowScope.NetworkPathBean.saveDisabled}"
+                                                                        action="#{pageFlowScope.NetworkPathBean.saveAndCloseNetworkPath}"></af:commandMenuItem>
+                                                </af:group>
+                                            </f:facet>
+                                            <f:facet name="table">
+                                                <af:table value="#{bindings.NetworkPathResultsVO1.collectionModel}"
+                                                          var="row" rows="#{bindings.NetworkPathResultsVO1.rangeSize}"
+                                                          emptyText="#{bindings.NetworkPathResultsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                          rowBandingInterval="0" rowSelection="none"
+                                                          selectedRowKeys="#{bindings.NetworkPathResultsVO1.collectionModel.selectedRow}"
+                                                          selectionListener = "#{bindings.NetworkPathResultsVO1.collectionModel.makeCurrent}"
+                                                          fetchSize="#{bindings.NetworkPathResultsVO1.rangeSize}"
+                                                          filterModel="#{bindings.NetworkPathResultsVO1Query.queryDescriptor}"
+                                                          queryListener="#{pageFlowScope.NetworkPathBean.processQuery}"
+                                                          filterVisible="false" varStatus="vs" id="t1"
+                                                          styleClass="AFStretchWidth"
+                                                          binding="#{pageFlowScope.NetworkPathBean.resultsTableComp}">
+                                                    <af:column headerText="#{bindings.NetworkPathResultsVO1.hints.UpdateInd.label}"
+                                                               id="c1" width="50%" align="center" rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                        <af:selectBooleanCheckbox value="#{row.bindings.UpdateInd.inputValue}"
+                                                                                  label="#{row.bindings.UpdateInd.label}"
+                                                                                  shortDesc="#{bindings.NetworkPathResultsVO1.hints.UpdateInd.tooltip}"
+                                                                                  id="sbc1" autoSubmit="true" immediate="true"
+                                                                                  valueChangeListener="#{pageFlowScope.NetworkPathBean.onCheckBoxValueChange}"/>
+                                                        <f:facet name="header">
+                                                            <af:selectBooleanCheckbox id="checkBoxAllId" label=""
+                                                                                      autoSubmit="true" immediate="true"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onCheckBoxAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.checkBoxAllComp}"/>
+                                                        </f:facet>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.SourceCode.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.SourceCode.label}"
+                                                               id="c2">
+                                                        <af:outputText value="#{row.SourceCode}"
+                                                                       shortDesc="#{bindings.NetworkPathResultsVO1.hints.SourceCode.tooltip}"
+                                                                       id="ot1"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.SourceDesc.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.SourceDesc.label}"
+                                                               id="c3">
+                                                        <af:outputText value="#{row.SourceDesc}"
+                                                                       shortDesc="#{bindings.NetworkPathResultsVO1.hints.SourceDesc.tooltip}"
+                                                                       id="ot5"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.DestinationCode.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.DestinationCode.label}"
+                                                               id="c4">
+                                                        <af:outputText value="#{row.DestinationCode}"
+                                                                       shortDesc="#{bindings.NetworkPathResultsVO1.hints.DestinationCode.tooltip}"
+                                                                       id="ot6"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.DestinationDesc.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.DestinationDesc.label}"
+                                                               id="c5">
+                                                        <af:outputText value="#{row.DestinationDesc}"
+                                                                       shortDesc="#{bindings.NetworkPathResultsVO1.hints.DestinationDesc.tooltip}"
+                                                                       id="ot7"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.label}"
+                                                               id="c6" width="155%" align="center">
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{bindings.NetworkPathResultsVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.EffectiveDate.value}"
+                                                                          minValue="#{pageFlowScope.InputDateBean.minStartDate}"
+                                                                          id="id1">
+                                                                <!--<af:convertDateTime pattern="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.format}"/>-->
+                                                                <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                                    type="date"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate value="#{row.bindings.EffectiveDate.inputValue}"
+                                                                      label="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.label}"
+                                                                      required="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.mandatory}"
+                                                                      columns="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.displayWidth}"
+                                                                      shortDesc="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.tooltip}"
+                                                                      minValue="#{pageFlowScope.InputDateBean.minStartDate}"
+                                                                      autoSubmit="true" 
+                                                                      id="id2">
+                                                            <f:validator binding="#{row.bindings.EffectiveDate.validator}"/>
+                                                            <!--<af:convertDateTime pattern="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.format}"/>-->
+                                                            <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                                type="date"/>
+                                                        </af:inputDate>
+                                                        <f:facet name="header">
+                                                            <af:group id="g3">
+                                                                <af:panelGroupLayout id="pgl18" layout="vertical">
+                                                                    <af:outputText value="#{bindings.NetworkPathResultsVO1.hints.EffectiveDate.label}"
+                                                                                   id="ot55"
+                                                                                   inlineStyle="text-align:center;"/>
+                                                                    <af:separator id="s10"/>
+                                                                    <af:panelGroupLayout id="pgl17" layout="horizontal">
+                                                                        <af:inputDate id="setAllEffDateId" columns="8"
+                                                                                      autoSubmit="true" 
+                                                                                      minValue="#{pageFlowScope.InputDateBean.minStartDate}"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSetAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.setAllEffDateComp}">
+                                                                            <af:convertDateTime pattern="#{RetailAppsPrefBean.preferredDatePattern}"
+                                                                                                type="date"/>
+                                                                        </af:inputDate>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="effDateSetAllButton" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.NetworkPathBean.handleSetAll}">
+                                                                                   <af:target execute="@this" render="@this"/></af:button>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </af:group>
+                                                        </f:facet>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.Frequency.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.Frequency.label}"
+                                                               id="c7">
+                                                        <af:selectOneChoice value="#{row.bindings.Frequency.inputValue}"
+                                                                            label="#{row.bindings.Frequency.label}"
+                                                                            required="#{bindings.NetworkPathResultsVO1.hints.Frequency.mandatory}"
+                                                                            shortDesc="#{bindings.NetworkPathResultsVO1.hints.Frequency.tooltip}"
+                                                                            id="soc2" readOnly="true">
+                                                            <f:selectItems value="#{row.bindings.Frequency.items}"
+                                                                           id="si3"/>
+                                                            <f:validator binding="#{row.bindings.Frequency.validator}"/>
+                                                        </af:selectOneChoice>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.SundayLeadTime.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.SundayLeadTime.label}"
+                                                               id="c8" width="110%" align="center">
+                                                        <af:inputText value="#{row.bindings.SundayLeadTime.inputValue}"
+                                                                      label="#{bindings.NetworkPathResultsVO1.hints.SundayLeadTime.label}"
+                                                                      required="#{bindings.NetworkPathResultsVO1.hints.SundayLeadTime.mandatory}"
+                                                                      columns="#{bindings.NetworkPathResultsVO1.hints.SundayLeadTime.displayWidth}"
+                                                                      maximumLength="#{bindings.NetworkPathResultsVO1.hints.SundayLeadTime.precision}"
+                                                                      shortDesc="#{bindings.NetworkPathResultsVO1.hints.SundayLeadTime.tooltip}"
+                                                                      id="it4" autoSubmit="true"
+                                                                      validator="#{pageFlowScope.NetworkPathBean.validateLeadTime}">
+                                                            <!--<f:validator binding="#{row.bindings.SundayLeadTime.validator}"/>-->
+                                                        </af:inputText>
+                                                        <f:facet name="header">
+                                                            <af:group id="g2">
+                                                                <af:panelGroupLayout id="pgl3" layout="vertical">
+                                                                    <af:outputText value="#{bindings.NetworkPathResultsVO1.hints.SundayLeadTime.label}"
+                                                                                   id="ot8"
+                                                                                   inlineStyle="text-align:center;"/>
+                                                                    <af:separator id="s3"/>
+                                                                    <af:panelGroupLayout id="pgl6" layout="horizontal">
+                                                                        <af:inputText id="setAllSunLDId" columns="3"
+                                                                                      autoSubmit="true"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSetAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.setAllSunLDComp}">
+                                                                            <af:validateRegExp pattern="^$|[0]|[1-9]{1,2}"
+                                                                                               messageDetailNoMatch="#{aipdatatooluiBundle.NP_INVALID_LEAD_TIME}"/>
+                                                                        </af:inputText>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="cb11"
+                                                                                   rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.NetworkPathBean.handleSetAll}"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </af:group>
+                                                        </f:facet>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.MondayLeadTime.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.MondayLeadTime.label}"
+                                                               id="c9" width="110%" align="center">
+                                                        <af:inputText value="#{row.bindings.MondayLeadTime.inputValue}"
+                                                                      label="#{bindings.NetworkPathResultsVO1.hints.MondayLeadTime.label}"
+                                                                      required="#{bindings.NetworkPathResultsVO1.hints.MondayLeadTime.mandatory}"
+                                                                      columns="#{bindings.NetworkPathResultsVO1.hints.MondayLeadTime.displayWidth}"
+                                                                      maximumLength="#{bindings.NetworkPathResultsVO1.hints.MondayLeadTime.precision}"
+                                                                      shortDesc="#{bindings.NetworkPathResultsVO1.hints.MondayLeadTime.tooltip}"
+                                                                      id="it5" autoSubmit="true"
+                                                                      validator="#{pageFlowScope.NetworkPathBean.validateLeadTime}"></af:inputText>
+                                                        <f:facet name="header">
+                                                            <af:group id="g4">
+                                                                <af:panelGroupLayout id="pgl5" layout="vertical">
+                                                                    <af:outputText value="#{bindings.NetworkPathResultsVO1.hints.MondayLeadTime.label}"
+                                                                                   id="ot9"
+                                                                                   inlineStyle="text-align:center;"/>
+                                                                    <af:separator id="s5"/>
+                                                                    <af:panelGroupLayout id="pgl7" layout="horizontal">
+                                                                        <af:inputText id="setAllMonLDId" columns="3"
+                                                                                      autoSubmit="true"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSetAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.setAllMonLDComp}">
+                                                                            <af:validateRegExp pattern="^$|[0]|[1-9]{1,2}"
+                                                                                               messageDetailNoMatch="#{aipdatatooluiBundle.NP_INVALID_LEAD_TIME}"/>
+                                                                        </af:inputText>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="cb12" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.NetworkPathBean.handleSetAll}"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </af:group>
+                                                        </f:facet>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.TuesdayLeadTime.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.TuesdayLeadTime.label}"
+                                                               id="c10" width="110%" align="center">
+                                                        <af:inputText value="#{row.bindings.TuesdayLeadTime.inputValue}"
+                                                                      label="#{bindings.NetworkPathResultsVO1.hints.TuesdayLeadTime.label}"
+                                                                      required="#{bindings.NetworkPathResultsVO1.hints.TuesdayLeadTime.mandatory}"
+                                                                      columns="#{bindings.NetworkPathResultsVO1.hints.TuesdayLeadTime.displayWidth}"
+                                                                      maximumLength="#{bindings.NetworkPathResultsVO1.hints.TuesdayLeadTime.precision}"
+                                                                      shortDesc="#{bindings.NetworkPathResultsVO1.hints.TuesdayLeadTime.tooltip}"
+                                                                      id="it6" autoSubmit="true"
+                                                                      validator="#{pageFlowScope.NetworkPathBean.validateLeadTime}"></af:inputText>
+                                                        <f:facet name="header">
+                                                            <af:group id="g5">
+                                                                <af:panelGroupLayout id="pgl9" layout="vertical">
+                                                                    <af:outputText value="#{bindings.NetworkPathResultsVO1.hints.TuesdayLeadTime.label}"
+                                                                                   id="ot10"
+                                                                                   inlineStyle="text-align:center;"/>
+                                                                    <af:separator id="s6"/>
+                                                                    <af:panelGroupLayout id="pgl10" layout="horizontal">
+                                                                        <af:inputText id="setAllTueLDId" columns="3"
+                                                                                      autoSubmit="true"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSetAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.setAllTueLDComp}">
+                                                                            <af:validateRegExp pattern="^$|[0]|[1-9]{1,2}"
+                                                                                               messageDetailNoMatch="#{aipdatatooluiBundle.NP_INVALID_LEAD_TIME}"/>
+                                                                        </af:inputText>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="cb13" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.NetworkPathBean.handleSetAll}"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </af:group>
+                                                        </f:facet>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.WednesdayLeadTime.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.WednesdayLeadTime.label}"
+                                                               id="c11" width="110%" align="center">
+                                                        <af:inputText value="#{row.bindings.WednesdayLeadTime.inputValue}"
+                                                                      label="#{bindings.NetworkPathResultsVO1.hints.WednesdayLeadTime.label}"
+                                                                      required="#{bindings.NetworkPathResultsVO1.hints.WednesdayLeadTime.mandatory}"
+                                                                      columns="#{bindings.NetworkPathResultsVO1.hints.WednesdayLeadTime.displayWidth}"
+                                                                      maximumLength="#{bindings.NetworkPathResultsVO1.hints.WednesdayLeadTime.precision}"
+                                                                      shortDesc="#{bindings.NetworkPathResultsVO1.hints.WednesdayLeadTime.tooltip}"
+                                                                      id="it7" autoSubmit="true"
+                                                                      validator="#{pageFlowScope.NetworkPathBean.validateLeadTime}"></af:inputText>
+                                                        <f:facet name="header">
+                                                            <af:group id="g6">
+                                                                <af:panelGroupLayout id="pgl19" layout="vertical">
+                                                                    <af:outputText value="#{bindings.NetworkPathResultsVO1.hints.WednesdayLeadTime.label}"
+                                                                                   id="ot11"
+                                                                                   inlineStyle="text-align:center;"/>
+                                                                    <af:separator id="s7"/>
+                                                                    <af:panelGroupLayout id="pgl20" layout="horizontal">
+                                                                        <af:inputText id="setAllWedLDId" columns="3"
+                                                                                      autoSubmit="true"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSetAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.setAllWedLDComp}">
+                                                                            <af:validateRegExp pattern="^$|[0]|[1-9]{1,2}"
+                                                                                               messageDetailNoMatch="#{aipdatatooluiBundle.NP_INVALID_LEAD_TIME}"/>
+                                                                        </af:inputText>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="cb14" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.NetworkPathBean.handleSetAll}"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </af:group>
+                                                        </f:facet>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.ThursdayLeadTime.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.ThursdayLeadTime.label}"
+                                                               id="c12" width="110%" align="center">
+                                                        <af:inputText value="#{row.bindings.ThursdayLeadTime.inputValue}"
+                                                                      label="#{bindings.NetworkPathResultsVO1.hints.ThursdayLeadTime.label}"
+                                                                      required="#{bindings.NetworkPathResultsVO1.hints.ThursdayLeadTime.mandatory}"
+                                                                      columns="#{bindings.NetworkPathResultsVO1.hints.ThursdayLeadTime.displayWidth}"
+                                                                      maximumLength="#{bindings.NetworkPathResultsVO1.hints.ThursdayLeadTime.precision}"
+                                                                      shortDesc="#{bindings.NetworkPathResultsVO1.hints.ThursdayLeadTime.tooltip}"
+                                                                      id="it8" autoSubmit="true"
+                                                                      validator="#{pageFlowScope.NetworkPathBean.validateLeadTime}"></af:inputText>
+                                                        <f:facet name="header">
+                                                            <af:group id="g7">
+                                                                <af:panelGroupLayout id="pgl21" layout="vertical">
+                                                                    <af:outputText value="#{bindings.NetworkPathResultsVO1.hints.ThursdayLeadTime.label}"
+                                                                                   id="ot13"
+                                                                                   inlineStyle="text-align:center;"/>
+                                                                    <af:separator id="s8"/>
+                                                                    <af:panelGroupLayout id="pgl22" layout="horizontal">
+                                                                        <af:inputText id="setAllThuLDId" columns="3"
+                                                                                      autoSubmit="true"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSetAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.setAllThuLDComp}">
+                                                                            <af:validateRegExp pattern="^$|[0]|[1-9]{1,2}"
+                                                                                               messageDetailNoMatch="#{aipdatatooluiBundle.NP_INVALID_LEAD_TIME}"/>
+                                                                        </af:inputText>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="cb15" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.NetworkPathBean.handleSetAll}"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </af:group>
+                                                        </f:facet>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.FridayLeadTime.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.FridayLeadTime.label}"
+                                                               id="c13" width="110%" align="center">
+                                                        <af:inputText value="#{row.bindings.FridayLeadTime.inputValue}"
+                                                                      label="#{bindings.NetworkPathResultsVO1.hints.FridayLeadTime.label}"
+                                                                      required="#{bindings.NetworkPathResultsVO1.hints.FridayLeadTime.mandatory}"
+                                                                      columns="#{bindings.NetworkPathResultsVO1.hints.FridayLeadTime.displayWidth}"
+                                                                      maximumLength="#{bindings.NetworkPathResultsVO1.hints.FridayLeadTime.precision}"
+                                                                      shortDesc="#{bindings.NetworkPathResultsVO1.hints.FridayLeadTime.tooltip}"
+                                                                      id="it9" autoSubmit="true"
+                                                                      validator="#{pageFlowScope.NetworkPathBean.validateLeadTime}"></af:inputText>
+                                                        <f:facet name="header">
+                                                            <af:group id="g8">
+                                                                <af:panelGroupLayout id="pgl23" layout="vertical">
+                                                                    <af:outputText value="#{bindings.NetworkPathResultsVO1.hints.FridayLeadTime.label}"
+                                                                                   id="ot14"
+                                                                                   inlineStyle="text-align:center;"/>
+                                                                    <af:separator id="s9"/>
+                                                                    <af:panelGroupLayout id="pgl24" layout="horizontal">
+                                                                        <af:inputText id="setAllFriLDId" columns="3"
+                                                                                      autoSubmit="true"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSetAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.setAllFriLDComp}">
+                                                                            <af:validateRegExp pattern="^$|[0]|[1-9]{1,2}"
+                                                                                               messageDetailNoMatch="#{aipdatatooluiBundle.NP_INVALID_LEAD_TIME}"/>
+                                                                        </af:inputText>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="cb16" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.NetworkPathBean.handleSetAll}"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </af:group>
+                                                        </f:facet>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.NetworkPathResultsVO1.hints.SaturdayLeadTime.name}"
+                                                               filterable="false" sortable="false"
+                                                               headerText="#{bindings.NetworkPathResultsVO1.hints.SaturdayLeadTime.label}"
+                                                               id="c14" width="110%" align="center">
+                                                        <af:inputText value="#{row.bindings.SaturdayLeadTime.inputValue}"
+                                                                      label="#{bindings.NetworkPathResultsVO1.hints.SaturdayLeadTime.label}"
+                                                                      required="#{bindings.NetworkPathResultsVO1.hints.SaturdayLeadTime.mandatory}"
+                                                                      columns="#{bindings.NetworkPathResultsVO1.hints.SaturdayLeadTime.displayWidth}"
+                                                                      maximumLength="#{bindings.NetworkPathResultsVO1.hints.SaturdayLeadTime.precision}"
+                                                                      shortDesc="#{bindings.NetworkPathResultsVO1.hints.SaturdayLeadTime.tooltip}"
+                                                                      id="it10" autoSubmit="true"
+                                                                      validator="#{pageFlowScope.NetworkPathBean.validateLeadTime}"></af:inputText>
+                                                        <f:facet name="header">
+                                                            <af:group id="g9">
+                                                                <af:panelGroupLayout id="pgl25" layout="vertical">
+                                                                    <af:outputText value="#{bindings.NetworkPathResultsVO1.hints.SaturdayLeadTime.label}"
+                                                                                   id="ot15"
+                                                                                   inlineStyle="text-align:center;"/>
+                                                                    <af:separator id="s11"/>
+                                                                    <af:panelGroupLayout id="pgl26" layout="horizontal">
+                                                                        <af:inputText id="setAllSatLDId" columns="3"
+                                                                                      autoSubmit="true"
+                                                                                      valueChangeListener="#{pageFlowScope.NetworkPathBean.onSetAllValueChange}"
+                                                                                      binding="#{pageFlowScope.NetworkPathBean.setAllSatLDComp}">
+                                                                            <af:validateRegExp pattern="^$|[0]|[1-9]{1,2}"
+                                                                                               messageDetailNoMatch="#{aipdatatooluiBundle.NP_INVALID_LEAD_TIME}"/>
+                                                                        </af:inputText>
+                                                                        <af:button text="#{aipdatatooluiBundle.SET_ALL}"
+                                                                                   id="cb17" rendered="#{pageFlowScope.hideSomeColumns ne true}"
+                                                                                   actionListener="#{pageFlowScope.NetworkPathBean.handleSetAll}"/>
+                                                                    </af:panelGroupLayout>
+                                                                </af:panelGroupLayout>
+                                                            </af:group>
+                                                        </f:facet>
+                                                    </af:column>
+                                                </af:table>
+                                            </f:facet>
+                                        </retail:appsTable>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="info"/>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </f:facet>
+        <f:facet name="popup">
+            <af:panelGroupLayout id="pgl0">
+                <af:popup id="savePopup" binding="#{pageFlowScope.NetworkPathBean.savePopup}">
+                    <af:panelWindow id="pw1" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot12" value="#{aipdatatooluiBundle.NP_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s12"/>
+                        <af:panelGroupLayout id="pgl13" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb3" immediate="true"
+                                              actionListener="#{pageFlowScope.NetworkPathBean.handleSaveYes}"/>
+                            <af:spacer width="10" height="10" id="s18"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb4" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveClosePopup" binding="#{pageFlowScope.NetworkPathBean.saveClosePopup}">
+                    <af:panelWindow id="pw2" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot2" value="#{aipdatatooluiBundle.NP_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s19"/>
+                        <af:panelGroupLayout id="pgl14" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb5" immediate="true"
+                                              actionListener="#{pageFlowScope.NetworkPathBean.handleSaveCloseYes}"/>
+                            <af:spacer width="10" height="10" id="s20"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb6" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="cancelPopup" binding="#{pageFlowScope.NetworkPathBean.cancelPopup}">
+                    <af:panelWindow id="pw3" title="#{aipdatatooluiBundle.CANCEL_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot3" value="#{aipdatatooluiBundle.NP_CANCEL_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s21"/>
+                        <af:panelGroupLayout id="pgl15" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb7" immediate="true"
+                                              actionListener="#{pageFlowScope.NetworkPathBean.handleCancelYes}"/>
+                            <af:spacer width="10" height="10" id="s22"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb8" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="resetPopup" binding="#{pageFlowScope.NetworkPathBean.resetPopup}">
+                    <af:panelWindow id="pw4" title="#{aipdatatooluiBundle.RESET_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot4" value="#{aipdatatooluiBundle.NP_RESET_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s23"/>
+                        <af:panelGroupLayout id="pgl16" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb9" immediate="true"
+                                              actionListener="#{pageFlowScope.NetworkPathBean.handleResetYes}"/>
+                            <af:spacer width="10" height="10" id="s25"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb10" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveSuccessPopup" binding="#{pageFlowScope.NetworkPathBean.saveSuccessPopup}">
+                    <af:panelWindow id="pw6" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="outputText1" value="#{aipdatatooluiBundle.NP_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="spacer1"/>
+                        <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="commandButton1" immediate="true"
+                                              actionListener="#{pageFlowScope.NetworkPathBean.handleSaveOk}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveCloseSuccessPopup" binding="#{pageFlowScope.NetworkPathBean.saveCloseSuccessPopup}">
+                    <af:panelWindow id="pw7" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="outputText2" value="#{aipdatatooluiBundle.NP_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="spacer2"/>
+                        <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="commandButton2" immediate="true"
+                                              actionListener="#{pageFlowScope.NetworkPathBean.handleSaveCloseOk}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+            </af:panelGroupLayout>
+        </f:facet>
+    </retail:appsPanel>
+</jsp:root>

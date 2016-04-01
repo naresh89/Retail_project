@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26" id="CrossDockSetupPageDef"
+                Package="oracle.retail.apps.aipdt.cds.publicui.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CrossDockSetupAM.CrossDockSetupSearchVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="CrossDockSetupSearchVOIterator"/>
+    <iterator Binds="CrossDockSetupAM.CrossDockSetupResultVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="CrossDockSetupResultVOIterator"/>
+    <searchRegion Binds="CrossDockSetupResultVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrossDockSetupResultVOQuery"/>
+    <iterator Binds="CrossDockSetupAM.CrossDockSetupStorePopupVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="CrossDockSetupStorePopupVOIterator"/>
+    <searchRegion Binds="CrossDockSetupStorePopupVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrossDockSetupStorePopupVOQuery"/>
+    <iterator Binds="CrossDockSetupAM.CrossDockSetupTimeSetAllVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="CrossDockSetupTimeSetAllVO1Iterator"/>
+    <iterator Binds="CrossDockSetupAM.CrossDockSetupItemHierPopupVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="CrossDockSetupItemHierPopupVOIterator"/>
+    <searchRegion Binds="CrossDockSetupItemHierPopupVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CrossDockSetupItemHierPopupVOQuery"/>
+    <iterator Binds="CrossDockSetupAM.CrossDockSetupReportVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="CrossDockSetupReportVOIterator"/>
+    <searchRegion Binds="CrossDockSetupReportVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CrossDockSetupReportVOQuery"/>
+    <iterator Binds="CrossDockSetupAM.CrossDockSetupDOWVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="CrossDockSetupDOWVOIterator"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_Supplier" id="Supplier"/>
+    <list IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_Department" id="Department"
+          DTSupportsMRU="false"/>
+    <list IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_Class1" id="Class1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_Subclass" id="Subclass"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_Vpn" id="Vpn"/>
+    <listOfValues IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_StyleColor"
+                  id="StyleColor"/>
+    <listOfValues IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_Item" id="Item"/>
+    <attributeValues IterBinding="CrossDockSetupSearchVOIterator" id="ItemList">
+      <AttrNames>
+        <Item Value="ItemList"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_Region" id="Region"
+          DTSupportsMRU="false"/>
+    <list IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_Store" id="Store"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="CrossDockSetupSearchVOIterator" StaticList="false" Uses="LOV_StoreList" id="StoreList"
+          DTSupportsMRU="false"/>
+    <attributeValues IterBinding="CrossDockSetupSearchVOIterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterStoresByRegion" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterStoresByRegion" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.filterStoresByRegion_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_filterStoresByRegion_result">
+      <NamedData NDName="selectedRegion" NDValue="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.regionId}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="loadStoresFromStoreList" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="loadStoresFromStoreList" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.loadStoresFromStoreList_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_loadStoresFromStoreList_result">
+      <NamedData NDName="storeListId" NDValue="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.storeListId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="CrossDockSetupResultVOIterator" id="CrossDockSetupResultVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupResultVO"
+                      Name="CrossDockSetupResultVO0">
+        <AttrNames>
+          <Item Value="UpdateInd" Binds="UpdateInd"/>
+          <Item Value="DepartmentCode"/>
+          <Item Value="DepartmentDesc"/>
+          <Item Value="SupplierCode"/>
+          <Item Value="SupplierDesc"/>
+          <Item Value="RegionCode"/>
+          <Item Value="RegionDesc"/>
+          <Item Value="StoreCode"/>
+          <Item Value="StoreDesc"/>
+          <Item Value="StockingPointNumber"/>
+          <Item Value="StockingPointName"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="MaxHoldingTime0"/>
+          <Item Value="MaxHoldingTime1"/>
+          <Item Value="MaxHoldingTime2"/>
+          <Item Value="MaxHoldingTime3"/>
+          <Item Value="MaxHoldingTime4"/>
+          <Item Value="MaxHoldingTime5"/>
+          <Item Value="MaxHoldingTime6"/>
+          <Item Value="ProcessingTime0"/>
+          <Item Value="ProcessingTime1"/>
+          <Item Value="ProcessingTime2"/>
+          <Item Value="ProcessingTime3"/>
+          <Item Value="ProcessingTime4"/>
+          <Item Value="ProcessingTime5"/>
+          <Item Value="ProcessingTime6"/>
+          <Item Value="StockingPointId"/>
+          <Item Value="RegionId"/>
+          <Item Value="SupplierId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="CrossDockSetupResultVOIterator" id="UpdateInd" DTSupportsMRU="false" StaticList="true">
+            <AttrNames>
+                <Item Value="UpdateInd"/>
+            </AttrNames>
+            <ValueList>
+                <Item Value="1"/>
+                <Item Value="0"/>
+            </ValueList>
+        </button>
+    <methodAction id="handleSearch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleSearch"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleSearch_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleSearch_result">
+      <NamedData NDName="inputMap" NDValue="#{pageFlowScope.CrossDockSetupBean.searchFieldsBean.searchInputs}"
+                 NDType="java.util.Map"/>
+    </methodAction>
+    <methodAction id="handleReset" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleReset"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleReset_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleReset_result"/>
+    <methodAction id="handleSave" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleSave"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleSave_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleSave_result"/>
+    <methodAction id="handleAllCheckBox" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleAllCheckBox"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleAllCheckBox_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleAllCheckBox_result">
+      <NamedData NDName="isSelected" NDType="boolean"/>
+    </methodAction>
+    <methodAction id="handleDateSetAll" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleDateSetAll"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleDateSetAll_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleDateSetAll_result">
+      <NamedData NDName="setAllMap" NDType="java.util.Map"/>
+    </methodAction>
+    <methodAction id="isRowSelectedInResultTable" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="isRowSelectedInResultTable" IsViewObjectMethod="false"
+                  DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.isRowSelectedInResultTable_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_isRowSelectedInResultTable_result"/>
+    <tree IterBinding="CrossDockSetupStorePopupVOIterator" id="CrossDockSetupStorePopupVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupStorePopupVO"
+                      Name="CrossDockSetupStorePopupVO0">
+        <AttrNames>
+          <Item Value="StoreCode"/>
+          <Item Value="StoreName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>    
+    <tree IterBinding="CrossDockSetupTimeSetAllVO1Iterator" id="CrossDockSetupTimeSetAllVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupTimeSetAllVO"
+                      Name="CrossDockSetupTimeSetAllVO0">
+        <AttrNames>
+          <Item Value="Timetype"/>
+          <Item Value="Sunday"/>
+          <Item Value="Monday"/>
+          <Item Value="Tuesday"/>
+          <Item Value="Wednesday"/>
+          <Item Value="Thursday"/>
+          <Item Value="Friday"/>
+          <Item Value="Saturday"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="handleDOWSetAll" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleDOWSetAll"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleDOWSetAll_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleDOWSetAll_result"/>
+    <methodAction id="createEmptyDOWSetAll" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createEmptyDOWSetAll" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.createEmptyDOWSetAll_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_createEmptyDOWSetAll_result"/>
+    <tree IterBinding="CrossDockSetupItemHierPopupVOIterator" id="CrossDockSetupItemHierPopupVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupItemHierPopupVO"
+                      Name="CrossDockSetupItemHierPopupVO0">
+        <AttrNames>
+          <Item Value="VpnCode"/>
+          <Item Value="VpnName"/>
+          <Item Value="VpnColorCode"/>
+          <Item Value="VpnColorName"/>
+          <Item Value="CommodityCode"/>
+          <Item Value="CommodityName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CrossDockSetupReportVOIterator" id="CrossDockSetupReportVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupReportVO"
+                      Name="CrossDockSetupReportVO0">
+        <AttrNames>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="MaxHoldingTime0"/>
+          <Item Value="MaxHoldingTime1"/>
+          <Item Value="MaxHoldingTime2"/>
+          <Item Value="MaxHoldingTime3"/>
+          <Item Value="MaxHoldingTime4"/>
+          <Item Value="MaxHoldingTime5"/>
+          <Item Value="MaxHoldingTime6"/>
+          <Item Value="ProcessingTime0"/>
+          <Item Value="ProcessingTime1"/>
+          <Item Value="ProcessingTime2"/>
+          <Item Value="ProcessingTime3"/>
+          <Item Value="ProcessingTime4"/>
+          <Item Value="ProcessingTime5"/>
+          <Item Value="ProcessingTime6"/>
+          <Item Value="StockingPointId"/>
+          <Item Value="StockingPointCode"/>
+          <Item Value="StockingPointName"/>
+          <Item Value="StoreCode"/>
+          <Item Value="StoreName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="handleRowDOWSet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleRowDOWSet"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleRowDOWSet_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleRowDOWSet_result">
+      <NamedData NDName="id" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <tree IterBinding="CrossDockSetupDOWVOIterator" id="CrossDockSetupDOWVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupTimeSetAllVO"
+                      Name="CrossDockSetupDOWVO0">
+        <AttrNames>
+          <Item Value="Timetype"/>
+          <Item Value="Sunday"/>
+          <Item Value="Monday"/>
+          <Item Value="Tuesday"/>
+          <Item Value="Wednesday"/>
+          <Item Value="Thursday"/>
+          <Item Value="Friday"/>
+          <Item Value="Saturday"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="createEmptyDOWRows" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createEmptyDOWRows" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.createEmptyDOWRows_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_createEmptyDOWRows_result">
+      <NamedData NDName="currentResultRow" NDValue="currentResultRow"
+                 NDType="oracle.retail.apps.aipdt.cds.model.view.CrossDockSetupResultVORowImpl"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

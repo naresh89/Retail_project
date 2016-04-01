@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="NetworkPathFlow_NetworkPathFlow_closeContentPageDef"
+                Package="oracle.retail.apps.aipdt.np.publicui.flow"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="closeContent" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="closeContent"
+                  IsViewObjectMethod="false"
+                  DataControl="RetailAppsUIShellController"
+                  InstanceName="RetailAppsUIShellController.dataProvider"
+                  ReturnName="data.RetailAppsUIShellController.methodResults.closeContent_RetailAppsUIShellController_dataProvider_closeContent_result">
+      <NamedData NDName="parameters"
+                 NDType="oracle.retail.apps.framework.uishell.navigation.handler.ContentParameters"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

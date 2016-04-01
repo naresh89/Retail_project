@@ -1,0 +1,929 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:retail="/retailApps"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:RetailAppCustomComponent="/RetailAppCustomComponent">
+    <c:set var="aipdatatooluiBundle"
+           value="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle']}"/>
+    <retail:appsPanel id="ap1" contentsFacet="stretch" title="" saveAndCloseRendered="true" saveAndCloseVisible="true"
+                      saveRendered="true" saveVisible="true" cancelRendered="true" cancelVisible="true"
+                      saveActionListener="#{pageFlowScope.RsOrderScheduleBean.handleSave}"
+                      saveAndCloseDisabled="#{pageFlowScope.RsOrderScheduleBean.saveDisabled}"
+                      saveDisabled="#{pageFlowScope.RsOrderScheduleBean.saveDisabled}"
+                      saveAndCloseAction="#{pageFlowScope.RsOrderScheduleBean.handleSaveAndClose}"
+                      cancelAction="#{pageFlowScope.RsOrderScheduleBean.handleCancel}" panelPartialTriggers=":::cb1"
+                      savePartialTriggers="cb1" saveAndClosePartialTriggers="cb1"
+                      binding="#{pageFlowScope.RsOrderScheduleBean.appsPanelBind}">
+        <f:facet name="contents"/>
+        <f:facet name="contentsStretch">
+            <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="children">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="scroll">
+                        <af:panelGroupLayout id="pgl7" styleClass="AFStretchWidth" layout="vertical">
+                         <af:showDetailHeader text="#{aipdatatooluiBundle.SEARCH}" disclosed="true" id="sdh3"
+                                                 styleClass="AFStretchWidth">
+                                <af:spacer height="#{aipdatatooluiBundle.SPCR_BTWN_SEARCH_PANEL_BOXES_HEIGHT}" id="s6"/>
+                                <af:panelBox id="pb2" text="#{aipdatatooluiBundle.SETUP_TYPE}" showDisclosure="false">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        <af:spacer id="s1" width="10"/>
+                                        <af:spacer id="s3" width="30"/>
+                                        <af:panelLabelAndMessage id="pfl2">
+                                            <af:selectBooleanRadio value="#{pageFlowScope.RsOrderScheduleBean.isDefaultSelected}"
+                                                                   autoSubmit="true" group="SetupType"
+                                                                   text="#{aipdatatooluiBundle.DEFAULT}"
+                                                                   shortDesc="#{aipdatatooluiBundle.DEFAULT}" id="sbc1"
+                                                                   simple="true"
+                                                                   binding="#{pageFlowScope.RsOrderScheduleBean.defaultRadioComp}"
+                                                                   valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onDefaultVCE}"/>
+                                            <af:spacer id="s5" width="30"/>
+                                            <af:selectBooleanRadio value="#{pageFlowScope.RsOrderScheduleBean.isExceptionSelected}"
+                                                                   autoSubmit="true" group="SetupType"
+                                                                   text="#{aipdatatooluiBundle.EXCEPTION}"
+                                                                   disabled="#{pageFlowScope.RsOrderScheduleBean.isExceptionDisable}"
+                                                                   shortDesc="#{aipdatatooluiBundle.EXCEPTION}"
+                                                                   id="sbc3" simple="true"
+                                                                   binding="#{pageFlowScope.RsOrderScheduleBean.exceptionRadioComp}"
+                                                                   valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onExceptionVCE}"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:panelGroupLayout>
+                                </af:panelBox>
+                                <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_PANEL_BOXES_WIDTH}" id="s10"/>
+                                <af:panelGroupLayout id="pgl3" layout="horizontal" styleClass="AFStretchWidth">
+                                    <af:panelBox text="#{aipdatatooluiBundle.PRODUCT_HIERARCHY}" id="pb3"
+                                                 showDisclosure="false" styleClass="AFStretchWidth">
+                                        <af:panelGroupLayout id="pgl4" layout="horizontal" valign="top">
+                                            <af:panelFormLayout id="pfl1" rows="4" maxColumns="1" fieldWidth="80"
+                                                                labelWidth="20">
+                                                <af:selectOneChoice value="#{bindings.Department.inputValue}"
+                                                                    shortDesc="#{aipdatatooluiBundle.DEPT_LABEL}"
+                                                                    id="soc1" autoSubmit="true"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    label="#{aipdatatooluiBundle.DEPT_LABEL}"
+                                                                    valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onDepartmentVCE}"
+                                                                    binding="#{pageFlowScope.RsOrderScheduleBean.departmentComp}">
+                                                    <f:selectItems value="#{bindings.Department.items}" id="si1"/>
+                                                </af:selectOneChoice>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                                         id="plam3">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="ClassCode"
+                                                                                                      AttributeDesc="ClassName"
+                                                                                                      FieldBinding="ClassAttr"
+                                                                                                      listAttributeName="ClassId"
+                                                                                                      ShortDescText="#{aipdatatooluiBundle.CLASS_LABEL}"
+                                                                                                      IsDisabled="#{pageFlowScope.RsOrderScheduleBean.isClassDisable}"
+                                                                                                      id="smicb1" 
+                                                                                                      binding="#{pageFlowScope.RsOrderScheduleBean.multiSelectBaseFieldsBean.classComp}"
+                                                                                                      valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onClassVCE}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                                         id="plam2">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="SubclassCode"
+                                                                                                      AttributeDesc="SubclassDescription"
+                                                                                                      FieldBinding="SubclassAttr"
+                                                                                                      listAttributeName="SubclassId"
+                                                                                                      ShortDescText="#{aipdatatooluiBundle.SUBCLASS_LABEL}"
+                                                                                                      IsDisabled="#{pageFlowScope.RsOrderScheduleBean.isSubClassDisable}"
+                                                                                                      id="smicb2"
+                                                                                                      binding="#{pageFlowScope.RsOrderScheduleBean.multiSelectBaseFieldsBean.subClassComp}"
+                                                                                                      valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onSubClassVCE}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:selectOneChoice value="#{bindings.ItemlistAttr.inputValue}"
+                                                                    shortDesc="#{aipdatatooluiBundle.ITEM_LIST_LABEL}"
+                                                                    id="soc2"
+                                                                    label="#{aipdatatooluiBundle.ITEM_LIST_LABEL}"
+                                                                    disabled="#{pageFlowScope.RsOrderScheduleBean.isItemListDisable}"
+                                                                    autoSubmit="true"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    binding="#{pageFlowScope.RsOrderScheduleBean.itemListComp}"
+                                                                    valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onItemListVCE}">
+                                                    <f:selectItems value="#{bindings.ItemlistAttr.items}" id="si2"/>
+                                                    <f:validator binding="#{bindings.ItemlistAttr.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:panelFormLayout>
+                                            <af:spacer id="s2" width="60"/>
+                                            <af:panelFormLayout id="pfl3" rows="4" maxColumns="1" fieldWidth="80"
+                                                                labelWidth="20">
+                                                <af:inputListOfValues id="supplier1Id"
+                                                                      popupTitle="Search and Select: #{bindings.Supplier.hints.label}"
+                                                                      value="#{bindings.Supplier.inputValue}"
+                                                                      label="#{aipdatatooluiBundle.ORD_SUPP_LABEL}"
+                                                                      model="#{bindings.Supplier.listOfValuesModel}"
+                                                                      disabled="#{pageFlowScope.RsOrderScheduleBean.isSupplierDisable}"
+                                                                      contentStyle="width:150px;" autoSubmit="true"
+                                                                      partialTriggers="soc1"
+                                                                      columns="#{bindings.Supplier.hints.displayWidth}"
+                                                                      shortDesc="#{aipdatatooluiBundle.ORD_SUPP_LABEL}"
+                                                                      valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onSupplierVCE}"
+                                                                      binding="#{pageFlowScope.RsOrderScheduleBean.supplierComp}">
+                                                    <f:validator binding="#{bindings.Supplier.validator}"/>
+                                                </af:inputListOfValues>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                         id="plam6">
+                                                    <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleCode"
+                                                                                                           AttributeDesc="StyleDesc"
+                                                                                                           AttributeListIdName="StyleId"
+                                                                                                           AttrMasterBinding="Department"
+                                                                                                           AttrMasterCode="DepartmentCode"
+                                                                                                           AttrMasterDesc="DepartmentName"
+                                                                                                           FieldBinding="#{bindings.VPN}"
+                                                                                                           AttrMasterListAttrName="DepartmentId"
+                                                                                                           id="msilov1"
+                                                                                                           inputSize="22" Label="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                           ToolTip="#{aipdatatooluiBundle.VPN_LABEL}"
+                                                                                                           InputDisabled="#{pageFlowScope.RsOrderScheduleBean.isVPNDisable}"
+                                                                                                           ChangeMethodName="onVpnVCE"
+                                                                                                           ManagedBean="#{pageFlowScope.RsOrderScheduleBean}"
+                                                                                                           binding="#{pageFlowScope.RsOrderScheduleBean.multiSelectBaseFieldsBean.vpnComp}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                         id="plam4">
+                                                    <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="StyleColorCode"
+                                                                                                           AttributeDesc="StyleColorDesc"
+                                                                                                           AttributeListIdName="StyleColorId"
+                                                                                                           AttrMasterBinding="Department"
+                                                                                                           AttrMasterCode="DepartmentCode"
+                                                                                                           AttrMasterDesc="DepartmentName"
+                                                                                                           AttrMasterListAttrName="DepartmentId"
+                                                                                                           FieldBinding="#{bindings.VPNColorAttr}"
+                                                                                                           id="msilov3"
+                                                                                                           ToolTip="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                           inputSize="22" Label="#{aipdatatooluiBundle.VPN_COLOR_LABEL}"
+                                                                                                           InputDisabled="#{pageFlowScope.RsOrderScheduleBean.isVpnColourDisable}"
+                                                                                                           ChangeMethodName="onVpnColourVCE"
+                                                                                                           ManagedBean="#{pageFlowScope.RsOrderScheduleBean}"
+                                                                                                           binding="#{pageFlowScope.RsOrderScheduleBean.multiSelectBaseFieldsBean.styleColourComp}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                         id="plam5">
+                                                    <RetailAppCustomComponent:MultiSelectInputListOfValues AttributeCode="CommodityCode"
+                                                                                                           AttributeDesc="CommodityName"
+                                                                                                           AttributeListIdName="CommodityId"
+                                                                                                           AttrMasterBinding="Department"
+                                                                                                           AttrMasterCode="DepartmentCode"
+                                                                                                           AttrMasterDesc="DepartmentName"
+                                                                                                           AttrMasterListAttrName="DepartmentId"
+                                                                                                           FieldBinding="#{bindings.SKUAttr}"
+                                                                                                           id="msilov2"
+                                                                                                           inputSize="22" Label="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                           ToolTip="#{aipdatatooluiBundle.SKU_LABEL}"
+                                                                                                           InputDisabled="#{pageFlowScope.RsOrderScheduleBean.isItemDisable}"
+                                                                                                           ChangeMethodName="onSkuVCE"
+                                                                                                           ManagedBean="#{pageFlowScope.RsOrderScheduleBean}"
+                                                                                                           binding="#{pageFlowScope.RsOrderScheduleBean.multiSelectBaseFieldsBean.itemComp}"/>
+                                                </af:panelLabelAndMessage>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelBox>
+                                    <af:spacer id="s8" width="10"/>
+                                    <af:panelBox text="#{aipdatatooluiBundle.SOURCE}" id="pb4" showDisclosure="false"
+                                                 styleClass="AFStretchWidth">
+                                        <af:panelGroupLayout halign="center" id="pgl10" valign="middle">
+                                            <af:panelFormLayout id="pfl6" labelAlignment="start" maxColumns="1">
+                                                <af:selectOneChoice value="#{bindings.Warehouse.inputValue}"
+                                                                    label="#{bindings.Warehouse.label}"
+                                                                    required="#{bindings.Warehouse.hints.mandatory}"
+                                                                    shortDesc="#{bindings.Warehouse.hints.tooltip}"
+                                                                    id="soc6" autoSubmit="true"
+                                                                    disabled="#{pageFlowScope.RsOrderScheduleBean.isWarehouseDisable}"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onWarehouseVCE}"
+                                                                    binding="#{pageFlowScope.RsOrderScheduleBean.warehouseComp}">
+                                                    <f:selectItems value="#{bindings.Warehouse.items}" id="si5"/>
+                                                    <f:validator binding="#{bindings.Warehouse.validator}"/>
+                                                </af:selectOneChoice>
+                                                <af:spacer id="s9" height="80"/>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelBox>
+                                    <af:spacer id="s13" width="10"/>
+                                    <af:panelBox text="#{aipdatatooluiBundle.DESTINATION}" id="pb1"
+                                                 showDisclosure="false" styleClass="AFStretchWidth">
+                                        <af:panelGroupLayout halign="center" id="pgl6" valign="middle">
+                                            <af:panelFormLayout id="pfl5" labelAlignment="start" maxColumns="1">
+                                                <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                                                                    label="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                    required="#{bindings.Region.hints.mandatory}"
+                                                                    shortDesc="#{aipdatatooluiBundle.REGION_LABEL}"
+                                                                    disabled="#{pageFlowScope.RsOrderScheduleBean.isRegionDisable}"
+                                                                    id="soc5" autoSubmit="true"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    binding="#{pageFlowScope.RsOrderScheduleBean.regionComp}"
+                                                                    valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onRegionVCE}">
+                                                    <f:selectItems value="#{bindings.Region.items}" id="si4"/>
+                                                    <f:validator binding="#{bindings.Region.validator}"/>
+                                                </af:selectOneChoice>
+                                                <af:panelLabelAndMessage label="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                                         id="plam8">
+                                                    <RetailAppCustomComponent:SelectManyInputCheckBox AttributeCode="StoreCode"
+                                                                                                      AttributeDesc="StoreName"
+                                                                                                      FieldBinding="Store"
+                                                                                                      listAttributeName="StoreId"
+                                                                                                      ShortDescText="#{aipdatatooluiBundle.STORE_LABEL}"
+                                                                                                      IsDisabled="#{pageFlowScope.RsOrderScheduleBean.isStoreDisable}"
+                                                                                                      binding="#{pageFlowScope.RsOrderScheduleBean.multiSelectBaseFieldsBean.storeComp}"
+                                                                                                      id="smicb3"
+                                                                                                      valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onStoreVCE}"/>
+                                                </af:panelLabelAndMessage>
+                                                <af:selectOneChoice value="#{bindings.StoreList.inputValue}"
+                                                                    label="#{aipdatatooluiBundle.STORE_LIST_LABEL}"
+                                                                    shortDesc="#{aipdatatooluiBundle.STORE_LIST_LABEL}"
+                                                                    id="soc4" partialTriggers="soc1"
+                                                                    disabled="#{pageFlowScope.RsOrderScheduleBean.isStoreListDisable}"
+                                                                    autoSubmit="true"
+                                                                    contentStyle="#{aipdatatooluiBundle.SELECT_ONE_CHOICE_COMP_WIDTH}"
+                                                                    binding="#{pageFlowScope.RsOrderScheduleBean.storeListComp}"
+                                                                    valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onStoreListVCE}">
+                                                    <f:selectItems value="#{bindings.StoreList.items}" id="si3"/>
+                                                </af:selectOneChoice>
+                                                <af:spacer id="s14" height="30"/>
+                                            </af:panelFormLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelBox>
+                                </af:panelGroupLayout>
+                                <hr style="margin: 0; height: 0.5px; background: rgb(226,231,236); border: 2px;"
+                                    class="AFStretchWidth"/>
+                                <!--<af:separator id="s7" styleClass="AFStretchWidth" inlineStyle=""/>-->
+                                <af:spacer id="s11"
+                                           height="#{aipdatatooluiBundle.SPCR_BTWN_PANEL_BOXES_SEARCH_RESET_BTN_HEIGHT}"/>
+                                <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal">
+                                    <af:button text="#{aipdatatooluiBundle.SEARCH}" id="cb1" disabled="true"
+                                               partialSubmit="true"
+                                               binding="#{pageFlowScope.RsOrderScheduleBean.searchBtn}"
+                                               actionListener="#{pageFlowScope.RsOrderScheduleBean.handleSearch}">
+                                        <af:target execute="@this"/>
+                                    </af:button>
+                                    <af:spacer width="#{aipdatatooluiBundle.SPCR_BTWN_SEARCH_RESET_BTN_WIDTH}"
+                                               id="s12"/>
+                                    <af:spacer width="10" height="10" id="s4"/>
+                                    <af:button text="#{aipdatatooluiBundle.RESET}" id="cb2"
+                                               actionListener="#{pageFlowScope.RsOrderScheduleBean.handleReset}">
+                                        <af:target execute="@this" render="pgl5"/>
+                                    </af:button>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                        
+  <af:showDetailHeader text="#{aipdatatooluiBundle.RESULTS}" disclosed="true" id="sdh2">
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                                <af:panelGroupLayout id="pgl5"
+                                                     binding="#{pageFlowScope.RsOrderScheduleBean.resultsContainer}">
+                                    <retail:appsTable id="at1" styleClass="AFStretchWidth" exportEnabled="false"
+                                                      exportFilename="RsOrderSchedule.xls"
+                                                      tableId="t1" viewEnabled="false">
+                                        <f:facet name="additionalToolbarButtons">
+                                            <af:panelGroupLayout id="pgl47" layout="horizontal">
+                                                <af:menuBar id="mb1">
+                                                    <af:menu text="#{aipdatatooluiBundle.EXPORT_TO_EXCEL}" id="m2"
+                                                             icon="/oracle/retail/apps/aipdt/images/E2E.jpg">
+                                                        <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_ALL_ROWS}"
+                                                                            id="cmi1">
+                                                            <af:setPropertyListener from="true"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                            <af:exportCollectionActionListener exportedId=""
+                                                                                               type="excelHTML"
+                                                                                               filename="RsOrderSchedule.xls"/>
+                                                            <af:setPropertyListener from="false"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                        </af:commandMenuItem>
+                                                        <af:commandMenuItem text="#{aipdatatooluiBundle.EXPORT_SELECTED_ROWS}"
+                                                                            id="cmi2">
+                                                            <af:setPropertyListener from="true"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                            <af:exportCollectionActionListener exportedId=""
+                                                                                               type="excelHTML"
+                                                                                               exportedRows="selected"
+                                                                                               filename="RsOrderSchedule.xls"
+                                                                                               filterMethod="#{pageFlowScope.RsOrderScheduleBean.exportSelectedRows}"/>
+                                                            <af:setPropertyListener from="false"
+                                                                                    to="#{pageFlowScope.hideSomeColumns}"
+                                                                                    type="action"/>
+                                                        </af:commandMenuItem>
+                                                    </af:menu>
+                                                </af:menuBar>
+                                                <!--<af:button text="#{aipdatatooluiBundle.DOW_SET_ALL}" id="b9"
+                                                           actionListener="#{pageFlowScope.RsOrderScheduleBean.handleDOWSetAllAction}"
+                                                           partialSubmit="true">
+                                                    <af:target execute="@this"/>
+                                                </af:button>-->
+                                            </af:panelGroupLayout>
+                                        </f:facet>
+                                        
+                                        <f:facet name="table">
+                                            <af:table value="#{bindings.RsOrderScheduleResultVO.collectionModel}"
+                                                      var="row" rows="#{bindings.RsOrderScheduleResultVO.rangeSize}"
+                                                      emptyText="#{bindings.RsOrderScheduleResultVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.RsOrderScheduleResultVO.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.RsOrderScheduleResultVO.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.RsOrderScheduleResultVO.rangeSize}"
+                                                      filterModel="#{bindings.RsOrderScheduleResultVOQuery.queryDescriptor}"
+                                                      queryListener="#{bindings.RsOrderScheduleResultVOQuery.processQuery}"
+                                                      filterVisible="false" varStatus="vs"
+                                                       styleClass="AFStretchWidth"
+                                                       binding="#{pageFlowScope.RsOrderScheduleBean.resultsTableComp}"
+                                                      id="t1">
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.UpdateInd.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.UpdateInd.label}"
+                                                           id="c1"
+                                                            width="50%" align="center"
+                                                           rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                    <af:selectBooleanCheckbox value="#{row.bindings.UpdateInd.inputValue}"
+                                                                              label="#{row.bindings.UpdateInd.label}"
+                                                                              shortDesc="#{bindings.RsOrderScheduleResultVO.hints.UpdateInd.tooltip}"
+                                                                              id="sbc2" autoSubmit="true"
+                                                                              immediate="true"/>
+                                                    <f:facet name="header">
+                                                        <af:selectBooleanCheckbox id="checkBoxAllId" label=""
+                                                                                  autoSubmit="true" immediate="true"
+                                                                                  binding="#{pageFlowScope.RsOrderScheduleBean.checkBoxAllComp}"
+                                                                                  valueChangeListener="#{pageFlowScope.RsOrderScheduleBean.onCheckBoxAllValueChange}"/>
+                                                    </f:facet>
+                                                </af:column>
+                                              <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.DeptId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.DeptId.label}"
+                                                           id="c9">
+                                                    <af:inputText value="#{row.bindings.DeptId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.DeptId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.DeptId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.DeptId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.DeptId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.DeptId.tooltip}"
+                                                                  id="it10">
+                                                        <f:validator binding="#{row.bindings.DeptId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.DeptId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                 <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.DeptName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.DeptName.label}"
+                                                           id="c10">
+                                                    <af:inputText value="#{row.bindings.DeptName.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.DeptName.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.DeptName.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.DeptName.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.DeptName.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.DeptName.tooltip}"
+                                                                  id="it11">
+                                                        <f:validator binding="#{row.bindings.DeptName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.DeptCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.DeptCode.label}"
+                                                           id="c2">
+                                                             <af:link text="#{row.DeptCode} - #{row.DeptName}" id="l3" partialSubmit="true"
+                                                             actionListener="#{pageFlowScope.RsOrderScheduleBean.onClickViewItemPopup}">
+                                                        
+                                                    </af:link>
+                                                    <!--<af:outputText value="#{row.DeptCode}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.DeptCode.tooltip}"
+                                                                   id="ot3"/>-->
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.ClassCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.ClassCode.label}"
+                                                           id="c3">
+                                                    <af:outputText value="#{row.bindings.ClassCode.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.ClassCode.tooltip}"
+                                                                   id="it4"/>
+                                                </af:column>
+                                                <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.ClassId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.ClassId.label}"
+                                                           id="c4">
+                                                    <af:inputText value="#{row.bindings.ClassId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.ClassId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.ClassId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.ClassId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.ClassId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.ClassId.tooltip}"
+                                                                  id="it5">
+                                                        <f:validator binding="#{row.bindings.ClassId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.ClassId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.ClassName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.ClassName.label}"
+                                                           id="c5">
+                                                    <af:outputText value="#{row.bindings.ClassName.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.ClassName.tooltip}"
+                                                                   id="it6"/>
+                                                </af:column>
+                                                 <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.SubclassCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.SubclassCode.label}"
+                                                           id="c26">
+                                                    <af:outputText value="#{row.bindings.SubclassCode.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.SubclassCode.tooltip}"
+                                                                   id="it24"/>
+                                                </af:column>
+                                                <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.SubclassId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.SubclassId.label}"
+                                                           id="c27">
+                                                    <af:inputText value="#{row.bindings.SubclassId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.SubclassId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.SubclassId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.SubclassId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.SubclassId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.SubclassId.tooltip}"
+                                                                  id="it25">
+                                                        <f:validator binding="#{row.bindings.SubclassId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.SubclassId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.SubclassName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.SubclassName.label}"
+                                                           id="c28">
+                                                    <af:outputText value="#{row.bindings.SubclassName.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.SubclassName.tooltip}"
+                                                                   id="it26"/>
+                                                </af:column>
+                                                 <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.VpnId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.VpnId.label}"
+                                                           id="c42">
+                                                    <af:inputText value="#{row.bindings.VpnId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.VpnId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.VpnId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.VpnId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.VpnId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.VpnId.tooltip}"
+                                                                  id="it39">
+                                                        <f:validator binding="#{row.bindings.VpnId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.VpnId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                  <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.VpnCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.VpnCode.label}"
+                                                           id="c37">
+                                                    <af:outputText value="#{row.bindings.VpnCode.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.VpnCode.tooltip}"
+                                                                   id="it34"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.VpnDesc.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.VpnDesc.label}"
+                                                           id="c41">
+                                                    <af:outputText value="#{row.bindings.VpnDesc.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.VpnDesc.tooltip}"
+                                                                   id="it38"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.VpnColorCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.VpnColorCode.label}"
+                                                           id="c38">
+                                                    <af:outputText value="#{row.bindings.VpnColorCode.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.VpnColorCode.tooltip}"
+                                                                   id="it35"/>
+                                                </af:column>
+                                                <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.VpnColorId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.VpnColorId.label}"
+                                                           id="c39">
+                                                    <af:inputText value="#{row.bindings.VpnColorId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.VpnColorId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.VpnColorId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.VpnColorId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.VpnColorId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.VpnColorId.tooltip}"
+                                                                  id="it36">
+                                                        <f:validator binding="#{row.bindings.VpnColorId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.VpnColorId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.VpnColorName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.VpnColorName.label}"
+                                                           id="c40">
+                                                    <af:outputText value="#{row.bindings.VpnColorName.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.VpnColorName.tooltip}"
+                                                                   id="it37"/>
+                                                </af:column>
+                                                
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.CommodityCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.CommodityCode.label}"
+                                                           id="c6">
+                                                    <af:outputText value="#{row.bindings.CommodityCode.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.CommodityCode.tooltip}"
+                                                                   id="it7"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.CommodityDesc.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.CommodityDesc.label}"
+                                                           id="c7">
+                                                    <af:outputText value="#{row.bindings.CommodityDesc.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.CommodityDesc.tooltip}"
+                                                                   id="it8"/>
+                                                </af:column>
+                                                <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.CommodityId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.CommodityId.label}"
+                                                           id="c8">
+                                                    <af:inputText value="#{row.bindings.CommodityId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.CommodityId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.CommodityId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.CommodityId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.CommodityId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.CommodityId.tooltip}"
+                                                                  id="it9">
+                                                        <f:validator binding="#{row.bindings.CommodityId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.CommodityId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.SupplierCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.SupplierCode.label}"
+                                                           id="c31">
+                                                    <af:outputText value="#{row.bindings.SupplierCode.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.SupplierCode.tooltip}"
+                                                                   id="it29"/>
+                                                </af:column>
+                                                 <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.SuppDesc.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.SuppDesc.label}"
+                                                           id="c30">
+                                                    <af:outputText value="#{row.bindings.SuppDesc.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.SuppDesc.tooltip}"
+                                                                   id="it28"/>
+                                                </af:column>
+                                                <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.SupplierId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.SupplierId.label}"
+                                                           id="c32">
+                                                    <af:inputText value="#{row.bindings.SupplierId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.SupplierId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.SupplierId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.SupplierId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.SupplierId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.SupplierId.tooltip}"
+                                                                  id="it30">
+                                                        <f:validator binding="#{row.bindings.SupplierId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.SupplierId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseCode.label}"
+                                                           id="c18">
+                                                    <af:outputText value="#{row.bindings.RsWarehouseCode.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseCode.tooltip}"
+                                                                   id="it17"/>
+                                                </af:column>
+                                                <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseId.label}"
+                                                           id="c19">
+                                                    <af:inputText value="#{row.bindings.RsWarehouseId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseId.tooltip}"
+                                                                  id="it18">
+                                                        <f:validator binding="#{row.bindings.RsWarehouseId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseName.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseName.label}"
+                                                           id="c20">
+                                                    <af:outputText value="#{row.bindings.RsWarehouseName.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.RsWarehouseName.tooltip}"
+                                                                   id="it19"/>
+                                                </af:column>
+                                                
+                                                  <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.StoreCode.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.StoreCode.label}"
+                                                           id="c23">
+                                                    <af:outputText value="#{row.bindings.StoreCode.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.StoreCode.tooltip}"
+                                                                   id="it21"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.StoreDesc.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.StoreDesc.label}"
+                                                           id="c24">
+                                                    <af:outputText value="#{row.bindings.StoreDesc.inputValue}"
+                                                                   shortDesc="#{bindings.RsOrderScheduleResultVO.hints.StoreDesc.tooltip}"
+                                                                   id="it22"/>
+                                                </af:column>
+                                                <!--<af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.StoreId.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.StoreId.label}"
+                                                           id="c25">
+                                                    <af:inputText value="#{row.bindings.StoreId.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.StoreId.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.StoreId.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.StoreId.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.StoreId.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.StoreId.tooltip}"
+                                                                  id="it23">
+                                                        <f:validator binding="#{row.bindings.StoreId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.StoreId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                 <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.Frequency.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.Frequency.label}"
+                                                           id="c12">
+                                                    <af:selectOneChoice value="#{row.bindings.Frequency.inputValue}"
+                                                                        label="#{row.bindings.Frequency.label}"
+                                                                        required="#{bindings.RsOrderScheduleResultVO.hints.Frequency.mandatory}"
+                                                                        shortDesc="#{bindings.RsOrderScheduleResultVO.hints.Frequency.tooltip}"
+                                                                        id="soc3">
+                                                        <f:selectItems value="#{row.bindings.Frequency.items}"
+                                                                       id="si6"/>
+                                                        <f:validator binding="#{row.bindings.Frequency.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                
+                                                
+                                                <af:column  headerText="Lead Time"
+                                                           id="c49" rendered="#{pageFlowScope.hideSomeColumns ne true}">
+                                                    <af:link text="Set Lead Time" id="l1"
+                                                             actionListener="#{pageFlowScope.RsOrderScheduleBean.onClickSetDowPopup}"
+                                                             partialSubmit="true">
+                                                    </af:link>
+                                                    <!--<af:outputText value="#{row.DeptCode}"
+                                                                   shortDesc="#{bindings.XDOrderScheduleResultsVO1.hints.DeptCode.tooltip}"
+                                                                   id="ot3"/>-->
+                                                </af:column>
+                                                <!-- <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.SunLeadTime.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.SunLeadTime.label}"
+                                                           id="c29">
+                                                    <af:inputText value="#{row.bindings.SunLeadTime.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.SunLeadTime.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.SunLeadTime.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.SunLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.SunLeadTime.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.SunLeadTime.tooltip}"
+                                                                  id="it27">
+                                                        <f:validator binding="#{row.bindings.SunLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.SunLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                 <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.MonLeadTime.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.MonLeadTime.label}"
+                                                           id="c16">
+                                                    <af:inputText value="#{row.bindings.MonLeadTime.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.MonLeadTime.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.MonLeadTime.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.MonLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.MonLeadTime.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.MonLeadTime.tooltip}"
+                                                                  id="it15">
+                                                        <f:validator binding="#{row.bindings.MonLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.MonLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.TueLeadTime.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.TueLeadTime.label}"
+                                                           id="c34">
+                                                    <af:inputText value="#{row.bindings.TueLeadTime.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.TueLeadTime.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.TueLeadTime.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.TueLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.TueLeadTime.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.TueLeadTime.tooltip}"
+                                                                  id="it32">
+                                                        <f:validator binding="#{row.bindings.TueLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.TueLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                 <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.WedLeadTime.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.WedLeadTime.label}"
+                                                           id="c43">
+                                                    <af:inputText value="#{row.bindings.WedLeadTime.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.WedLeadTime.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.WedLeadTime.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.WedLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.WedLeadTime.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.WedLeadTime.tooltip}"
+                                                                  id="it40">
+                                                        <f:validator binding="#{row.bindings.WedLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.WedLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                               <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.ThuLeadTime.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.ThuLeadTime.label}"
+                                                           id="c33">
+                                                    <af:inputText value="#{row.bindings.ThuLeadTime.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.ThuLeadTime.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.ThuLeadTime.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.ThuLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.ThuLeadTime.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.ThuLeadTime.tooltip}"
+                                                                  id="it31">
+                                                        <f:validator binding="#{row.bindings.ThuLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.ThuLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.FriLeadTime.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.FriLeadTime.label}"
+                                                           id="c13">
+                                                    <af:inputText value="#{row.bindings.FriLeadTime.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.FriLeadTime.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.FriLeadTime.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.FriLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.FriLeadTime.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.FriLeadTime.tooltip}"
+                                                                  id="it12">
+                                                        <f:validator binding="#{row.bindings.FriLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.FriLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.SatLeadTime.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.SatLeadTime.label}"
+                                                           id="c21">
+                                                    <af:inputText value="#{row.bindings.SatLeadTime.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.SatLeadTime.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.SatLeadTime.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.SatLeadTime.displayWidth}"
+                                                                  maximumLength="#{bindings.RsOrderScheduleResultVO.hints.SatLeadTime.precision}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.SatLeadTime.tooltip}"
+                                                                  id="it20">
+                                                        <f:validator binding="#{row.bindings.SatLeadTime.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RsOrderScheduleResultVO.hints.SatLeadTime.format}"/>
+                                                    </af:inputText>
+                                                </af:column>-->
+                                                <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.StartDate.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.StartDate.label}"
+                                                           id="c22">
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.RsOrderScheduleResultVOQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.StartDate.value}"
+                                                                      id="id3">
+                                                            <af:convertDateTime pattern="#{bindings.RsOrderScheduleResultVO.hints.StartDate.format}"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.StartDate.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.StartDate.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.StartDate.displayWidth}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.StartDate.tooltip}"
+                                                                  id="id4">
+                                                        <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                                        <af:convertDateTime pattern="#{bindings.RsOrderScheduleResultVO.hints.StartDate.format}"/>
+                                                    </af:inputDate>
+                                                </af:column>
+                                              <af:column sortProperty="#{bindings.RsOrderScheduleResultVO.hints.EndDate.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.RsOrderScheduleResultVO.hints.EndDate.label}"
+                                                           id="c11">
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.RsOrderScheduleResultVOQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.EndDate.value}"
+                                                                      id="id1">
+                                                            <af:convertDateTime pattern="#{bindings.RsOrderScheduleResultVO.hints.EndDate.format}"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                                                  label="#{bindings.RsOrderScheduleResultVO.hints.EndDate.label}"
+                                                                  required="#{bindings.RsOrderScheduleResultVO.hints.EndDate.mandatory}"
+                                                                  columns="#{bindings.RsOrderScheduleResultVO.hints.EndDate.displayWidth}"
+                                                                  shortDesc="#{bindings.RsOrderScheduleResultVO.hints.EndDate.tooltip}"
+                                                                  id="id2">
+                                                        <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                                        <af:convertDateTime pattern="#{bindings.RsOrderScheduleResultVO.hints.EndDate.format}"/>
+                                                    </af:inputDate>
+                                                </af:column>
+                                            </af:table>
+                                        </f:facet>
+                                        <f:facet name="popup"/>
+                                        <f:facet name="appsTableSecondaryToolbar"/>
+                                        <f:facet name="appsTableStatusbar"/>
+                                        <f:facet name="appsTableViewMenu"/>
+                                        <f:facet name="appsTableAfterToolbar"/> 
+                                    </retail:appsTable>
+                                </af:panelGroupLayout>
+                            </af:showDetailHeader>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+            </af:panelStretchLayout>
+        </f:facet>
+         <f:facet name="popup">
+            <af:panelGroupLayout id="pgl9">
+              <af:popup id="savePopup" binding="#{pageFlowScope.RsOrderScheduleBean.savePopup}">
+                    <af:panelWindow id="pw1" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot31" value="#{aipdatatooluiBundle.XDOS_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s17"/>
+                        <af:panelGroupLayout id="pgl13" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb3" immediate="true"
+                                              actionListener="#{pageFlowScope.RsOrderScheduleBean.handleSaveYes}"/>
+                            <af:spacer width="10" height="10" id="s18"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb4" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveClosePopup" binding="#{pageFlowScope.RsOrderScheduleBean.saveClosePopup}">
+                    <af:panelWindow id="pw2" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot2" value="#{aipdatatooluiBundle.XDOS_SAVE_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s19"/>
+                        <af:panelGroupLayout id="pgl14" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb5" immediate="true"
+                                              actionListener="#{pageFlowScope.RsOrderScheduleBean.handleSaveCloseYes}"/>
+                            <af:spacer width="10" height="10" id="s20"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb6" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="cancelPopup" binding="#{pageFlowScope.RsOrderScheduleBean.cancelPopup}">
+                    <af:panelWindow id="pw3" title="#{aipdatatooluiBundle.CANCEL_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot1" value="#{aipdatatooluiBundle.RSOS_CANCEL_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s21"/>
+                        <af:panelGroupLayout id="pgl15" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb7" immediate="true"
+                                              actionListener="#{pageFlowScope.RsOrderScheduleBean.handleCancelYes}"/>
+                            <af:spacer width="10" height="10" id="s22"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb8" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="resetPopup" binding="#{pageFlowScope.RsOrderScheduleBean.resetPopup}">
+                    <af:panelWindow id="pw4" title="#{aipdatatooluiBundle.RESET_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="ot32" value="#{aipdatatooluiBundle.RSOS_RESET_CONFIRMATION_MSG}"/>
+                        <af:spacer width="10" height="20" id="s23"/>
+                        <af:panelGroupLayout id="pgl16" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.YES}" id="cb9" immediate="true"
+                                              actionListener="#{pageFlowScope.RsOrderScheduleBean.handleResetYes}"/>
+                            <af:spacer width="10" height="10" id="s24"/>
+                            <af:commandButton text="#{aipdatatooluiBundle.NO}" id="cb10" immediate="true"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveSuccessPopup" binding="#{pageFlowScope.RsOrderScheduleBean.saveSuccessPopup}">
+                    <af:panelWindow id="pw6" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="outputText1" value="#{aipdatatooluiBundle.XDOS_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="spacer1"/>
+                        <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="commandButton1" immediate="true"
+                                              actionListener="#{pageFlowScope.RsOrderScheduleBean.handleSaveOk}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+                <af:popup id="saveCloseSuccessPopup"
+                          binding="#{pageFlowScope.RsOrderScheduleBean.saveCloseSuccessPopup}">
+                    <af:panelWindow id="pw7" title="#{aipdatatooluiBundle.SAVE_CONFIRMATION}"
+                                    titleIconSource="/afr/confirmation.png" modal="true" closeIconVisible="false">
+                        <af:outputText id="outputText2" value="#{aipdatatooluiBundle.XDOS_SAVE_SUCCESS_MSG}"/>
+                        <af:spacer width="10" height="20" id="spacer2"/>
+                        <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal" halign="end">
+                            <af:commandButton text="#{aipdatatooluiBundle.OK}" id="commandButton2" immediate="true"
+                                              actionListener="#{pageFlowScope.RsOrderScheduleBean.handleSaveCloseOk}"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+             
+             
+             </af:panelGroupLayout>
+        </f:facet>
+         </retail:appsPanel>
+</jsp:root>

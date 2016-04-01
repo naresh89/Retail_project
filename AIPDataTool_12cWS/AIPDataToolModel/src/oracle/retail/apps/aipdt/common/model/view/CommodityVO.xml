@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+
+<ViewObject
+   xmlns="http://xmlns.oracle.com/bc4j"
+   Name="CommodityVO"
+   Version="12.1.3.13.26"
+   InheritPersonalization="true"
+   QueryHint="ALL_ROWS"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.retail.apps.aipdt.common.model.view.CommodityVORowImpl"
+   ComponentClass="oracle.retail.apps.aipdt.common.model.view.CommodityVOImpl"
+   DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewDefImpl"
+   FetchMode="FETCH_ALL"
+   FetchSize="1001"
+   RangeSize="1000"
+   Passivate="All"
+   PageIterMode="Partial">
+   <DesignTime>
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+      <Attr Name="_isExpertMode" Value="true"/>
+      <Attr Name="_isCodegen" Value="true"/>
+   </DesignTime>
+   <SQLQuery><![CDATA[SELECT c.DEPARTMENT_ID AS DEPARTMENT_ID,c.commodity_code AS sku_code     
+      ,c.short_desc AS sku_short_desc     
+      ,c.commodity_id AS sku_id  
+      ,rownum AS id     
+FROM V_DT_COMMODITY c     
+ORDER BY sku_code]]></SQLQuery>
+   <ViewAttribute
+      Name="DepartmentId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.Integer"
+      ColumnType="NUMBER"
+      AliasName="DEPARTMENT_ID"
+      Expression="DEPARTMENT_ID"
+      SQLType="INTEGER"/>
+   <ViewAttribute
+      Name="SkuCode"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SKU_CODE"
+      Expression="SKU_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+      <Properties >
+         <SchemaBasedProperties >
+            <LABEL
+               ResId="oracle.retail.apps.aipdt.common.model.view.CommodityVO.SkuCode_LABEL" >
+            </LABEL>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SkuShortDesc"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SKU_SHORT_DESC"
+      Expression="SKU_SHORT_DESC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+      <Properties >
+         <SchemaBasedProperties >
+            <LABEL
+               ResId="oracle.retail.apps.aipdt.common.model.view.CommodityVO.SkuShortDesc_LABEL" >
+            </LABEL>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SkuId"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Precision="10"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SKU_ID"
+      Expression="SKU_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="11" />
+      </DesignTime>
+      <Properties >
+         <SchemaBasedProperties >
+            <LABEL
+               ResId="oracle.retail.apps.aipdt.common.model.view.CommodityVO.SkuId_LABEL" >
+            </LABEL>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Id"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ID"
+      Expression="ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="39" />
+      </DesignTime>
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="SkuId"/>
+   </AttrArray>
+</ViewObject>

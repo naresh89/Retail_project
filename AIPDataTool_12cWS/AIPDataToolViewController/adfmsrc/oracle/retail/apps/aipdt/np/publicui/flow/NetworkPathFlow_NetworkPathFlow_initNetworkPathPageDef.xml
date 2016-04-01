@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="NetworkPathFlow_NetworkPathFlow_initNetworkPathPageDef"
+                Package="oracle.retail.apps.aipdt.np.publicui.flow"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="initNetworkPath" RequiresUpdateModel="true"
+            Action="invokeMethod" MethodName="initNetworkPath"
+            IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+            InstanceName="AipdtRootAMDataControl.dataProvider.Root.NetworkPathAM"/>
+  </bindings>
+</pageDefinition>

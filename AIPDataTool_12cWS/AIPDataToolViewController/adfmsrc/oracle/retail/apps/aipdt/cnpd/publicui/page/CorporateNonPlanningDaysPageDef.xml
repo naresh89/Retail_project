@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26"
+                id="CorporateNonPlanningDaysPageDef" Package="oracle.retail.apps.aipdt.cnpd.publicui.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CorporateNonPlanningDaysAM.CorporateNPDaysSearchVO" DataControl="AipdtRootAMDataControl"
+              RangeSize="25" id="CorporateNPDaysSearchVO1Iterator"/>
+    <iterator Binds="CorporateNonPlanningDaysAM.DtGttNonPlanningDaysVO" DataControl="AipdtRootAMDataControl"
+              RangeSize="25" id="DtGttNonPlanningDaysVOIterator"/>
+    <searchRegion Binds="DtGttNonPlanningDaysVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="DtGttNonPlanningDaysVOQuery"/>
+  </executables>
+  <bindings>
+    <list IterBinding="CorporateNPDaysSearchVO1Iterator" id="Default1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Default1"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="CorporateNPDaysSearchVO1Iterator" StaticList="false" Uses="LOV_DayType" id="DayType"
+          DTSupportsMRU="true"/>
+    <list IterBinding="CorporateNPDaysSearchVO1Iterator" StaticList="false" Uses="LOV_WarehouseList"
+          id="WarehouseList" DTSupportsMRU="true"/>
+    <list IterBinding="CorporateNPDaysSearchVO1Iterator" StaticList="false" Uses="LOV_StoreList" id="StoreList"
+          DTSupportsMRU="true"/>
+    <listOfValues IterBinding="CorporateNPDaysSearchVO1Iterator" StaticList="false" Uses="LOV_Store" id="Store"/>
+    <listOfValues IterBinding="CorporateNPDaysSearchVO1Iterator" StaticList="false" Uses="LOV_Warehouse"
+                  id="Warehouse"/>
+    <methodAction id="filterDayTypeDropdown" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterDayTypeDropdown" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.filterDayTypeDropdown_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_filterDayTypeDropdown_result">
+      <NamedData NDName="lookupType" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getIdsFromDtListDetailTable" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getIdsFromDtListDetailTable" IsViewObjectMethod="false"
+                  DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.getIdsFromDtListDetailTable_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_getIdsFromDtListDetailTable_result">
+      <NamedData NDName="itemList" NDType="java.lang.Integer"/>
+      <NamedData NDName="TYPE" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="handleSearch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleSearch"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleSearch_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_handleSearch_result">
+      <NamedData NDName="inputMap" NDType="java.util.Map"/>
+    </methodAction>
+    <tree IterBinding="DtGttNonPlanningDaysVOIterator" id="DtGttNonPlanningDaysVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.cnpd.model.view.DtGttNonPlanningDaysVO"
+                      Name="DtGttNonPlanningDaysVO0">
+        <AttrNames>
+          <Item Value="UpdateInd" Binds="UpdateInd"/>
+          <Item Value="LocationId"/>
+          <Item Value="Day"/>
+          <Item Value="DayType"/>
+          <Item Value="TransactionId"/>
+          <Item Value="Status"/>
+          <Item Value="LocType"/>
+          <Item Value="LocationCode"/>
+          <Item Value="LocationDesc"/>
+          <Item Value="IsException"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="DtGttNonPlanningDaysVOIterator" id="UpdateInd" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="UpdateInd"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <methodAction id="handleReset" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleReset"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleReset_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_handleReset_result"/>
+    <methodAction id="addRowOnResultVO" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addRowOnResultVO"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.addRowOnResultVO_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_addRowOnResultVO_result"/>
+    <methodAction id="deleteRowsFromResultVO" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteRowsFromResultVO" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.deleteRowsFromResultVO_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_deleteRowsFromResultVO_result"/>
+    <methodAction id="handleSave" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleSave"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.handleSave_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_handleSave_result"/>
+    <methodAction id="setAll" RequiresUpdateModel="true" Action="invokeMethod" MethodName="setAll"
+                  IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.setAll_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_setAll_result">
+      <NamedData NDName="date" NDType="java.util.Date"/>
+    </methodAction>
+    <methodAction id="isTransactionDirty" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="isTransactionDirty" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                  InstanceName="data.AipdtRootAMDataControl.dataProvider.CorporateNonPlanningDaysAM"
+                  ReturnName="data.AipdtRootAMDataControl.methodResults.isTransactionDirty_AipdtRootAMDataControl_dataProvider_CorporateNonPlanningDaysAM_isTransactionDirty_result"/>
+  </bindings>
+</pageDefinition>

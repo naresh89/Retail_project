@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.1.65.57" id="DeploymentTypePageDef"
+                Package="oracle.retail.apps.aipdt.dt.publicui.page">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <page path="oracle.retail.apps.framework.uishell.pagetemplate.RetailUIShellMainAreaPageDef"
+              id="pageTemplateBinding" Refresh="ifNeeded"/>
+        <iterator Binds="Root.DeploymentTypeAM.DeploymentTypeSearchRVO1" DataControl="AipdtRootAMDataControl"
+                  RangeSize="25" id="DeploymentTypeSearchRVO1Iterator"/>
+        <iterator id="DeploymentTypeStorePopupVOIterator" Binds="DeploymentTypeAM.DeploymentTypeStorePopupVO"
+                  DataControl="AipdtRootAMDataControl" RangeSize="25"/>
+        <iterator id="DeploymentTypeItemHierPopupVOIterator" Binds="DeploymentTypeAM.DeploymentTypeItemHierPopupVO"
+                  DataControl="AipdtRootAMDataControl" RangeSize="25"/>
+        <iterator Binds="DeploymentTypeAM.DeploymentTypeResultVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+                  id="DeploymentTypeResultVOIterator"/>
+        <searchRegion Binds="DeploymentTypeResultVOIterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      id="DeploymentTypeResultVOQuery"/>
+        <iterator Binds="DeploymentTypeAM.DeploymentTypeSupplierpopupVO" DataControl="AipdtRootAMDataControl"
+                  RangeSize="25" id="DeploymentTypeSupplierpopupVOIterator"/>
+    </executables>
+    <bindings>
+        <listOfValues StaticList="false" IterBinding="DeploymentTypeSearchRVO1Iterator" Uses="LOV_Class1" id="Class1"/>
+        <listOfValues StaticList="false" IterBinding="DeploymentTypeSearchRVO1Iterator" Uses="LOV_Subclass"
+                      id="Subclass"/>
+        <list IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_Department" id="Department"
+              DTSupportsMRU="true"/>
+        <listOfValues StaticList="false" IterBinding="DeploymentTypeSearchRVO1Iterator" Uses="LOV_Item" id="Item"/>
+        <list IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_ItemList" id="ItemList"
+              DTSupportsMRU="true"/>
+        <list IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_StoreList" id="StoreList"
+              DTSupportsMRU="true"/>
+        <listOfValues StaticList="false" IterBinding="DeploymentTypeSearchRVO1Iterator" Uses="LOV_Store" id="Store"/>
+        <list IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_StoreFormat" id="StoreFormat"
+              DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+        <list IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_SupplierList"
+              id="SupplierList" DTSupportsMRU="true"/>
+        <list IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_Region" id="Region"
+              DTSupportsMRU="true"/>
+        <methodAction id="filterStoreVO" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterStoreVO"
+                      IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.filterStoreVO_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_filterStoreVO_result">
+            <NamedData NDName="regId" NDType="java.lang.String"/>
+        </methodAction>
+        <methodAction id="filterSupplierLOVVO" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="filterSupplierLOVVO" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.filterSupplierLOVVO_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_filterSupplierLOVVO_result">
+            <NamedData NDName="deptId" NDType="java.lang.String"/>
+        </methodAction>
+        <methodAction id="resetViewObject" RequiresUpdateModel="true" Action="invokeMethod" MethodName="resetViewObject"
+                      IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.resetViewObject_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_resetViewObject_result"/>
+        <listOfValues IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_Vpn" id="Vpn"/>
+        <listOfValues IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_StyleColor"
+                      id="StyleColor"/>
+        <methodAction id="initActivity" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initActivity"
+                      IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.initActivity_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_initActivity_result"/>
+        <listOfValues IterBinding="DeploymentTypeSearchRVO1Iterator" StaticList="false" Uses="LOV_Supplier"
+                      id="Supplier"/>
+        <methodAction id="getIdsFromDtListDetailTable" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="getIdsFromDtListDetailTable" IsViewObjectMethod="false"
+                      DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.getIdsFromDtListDetailTable_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_getIdsFromDtListDetailTable_result">
+            <NamedData NDName="itemList" NDType="java.lang.Integer"/>
+            <NamedData NDName="TYPE" NDType="java.lang.String"/>
+        </methodAction>
+        <methodAction id="handleCheckBoxAll" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="handleCheckBoxAll" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.handleCheckBoxAll_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_handleCheckBoxAll_result">
+            <NamedData NDName="isSelected" NDType="boolean"/>
+        </methodAction>
+        <tree IterBinding="DeploymentTypeItemHierPopupVOIterator" id="DeploymentTypeItemHierPopupVO">
+            <nodeDefinition DefName="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeItemHierPopupVO"
+                            Name="DeploymentTypeItemHierPopupVO0">
+                <AttrNames>
+                    <Item Value="VpnCode"/>
+                    <Item Value="VpnName"/>
+                    <Item Value="VpnColorCode"/>
+                    <Item Value="VpnColorName"/>
+                    <Item Value="CommodityCode"/>
+                    <Item Value="CommodityName"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="DeploymentTypeStorePopupVOIterator" id="DeploymentTypeStorePopupVO">
+            <nodeDefinition DefName="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeStorePopupVO"
+                            Name="DeploymentTypeStorePopupVO0">
+                <AttrNames>
+                    <Item Value="StoreCode"/>
+                    <Item Value="StoreName"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="DeploymentTypeResultVOIterator" id="DeploymentTypeResultVO">
+            <nodeDefinition DefName="oracle.retail.apps.aipdt.dt.model.view.DeploymentTypeResultVO"
+                            Name="DeploymentTypeResultVO0">
+                <AttrNames>
+                    <Item Value="DepartmentId"/>
+                    <Item Value="DepartmentCode"/>
+                    <Item Value="DepartmentDesc"/>
+                    <Item Value="ClassId"/>
+                    <Item Value="ClassCode"/>
+                    <Item Value="ClassDesc"/>
+                    <Item Value="SubclassId"/>
+                    <Item Value="SubclassCode"/>
+                    <Item Value="SubclassDesc"/>
+                    <Item Value="StyleId"/>
+                    <Item Value="StyleCode"/>
+                    <Item Value="StyleDesc"/>
+                    <Item Value="StyleColorId"/>
+                    <Item Value="StyleColorCode"/>
+                    <Item Value="StyleColorDesc"/>
+                    <Item Value="CommodityId"/>
+                    <Item Value="CommodityCode"/>
+                    <Item Value="CommodityDesc"/>
+                    <Item Value="SupplierId"/>
+                    <Item Value="SupplierCode"/>
+                    <Item Value="SupplierDesc"/>
+                    <Item Value="StoreId"/>
+                    <Item Value="StoreCode"/>
+                    <Item Value="StoreDesc"/>
+                    <Item Value="RegionId"/>
+                    <Item Value="RegionCode"/>
+                    <Item Value="RegionDesc"/>
+                    <Item Value="DeploymentType"/>
+                    <Item Value="StartDate"/>
+                    <Item Value="EndDate"/>
+                    <Item Value="UpdateInd" Binds="UpdateInd"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <button IterBinding="DeploymentTypeResultVOIterator" id="UpdateInd" DTSupportsMRU="false" StaticList="true">
+            <AttrNames>
+                <Item Value="UpdateInd"/>
+            </AttrNames>
+            <ValueList>
+                <Item Value="1"/>
+                <Item Value="0"/>
+            </ValueList>
+        </button>
+        <methodAction id="getSupplierIdFromCode" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="getSupplierIdFromCode" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.getSupplierIdFromCode_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_getSupplierIdFromCode_result">
+            <NamedData NDName="supplierCode" NDType="java.lang.String"/>
+            <NamedData NDName="deptId" NDType="java.lang.String"/>
+        </methodAction>
+        <methodAction id="handleSearch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleSearch"
+                      IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.handleSearch_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_handleSearch_result">
+            <NamedData NDName="inputMap" NDType="java.util.Map"/>
+        </methodAction>
+        <methodAction id="handleSave" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleSave"
+                      IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.handleSave_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_handleSave_result"/>
+        <methodAction id="handleTimeSetAll" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="handleTimeSetAll" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.handleTimeSetAll_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleTimeSetAll_result">
+            <NamedData NDName="setAllMap" NDType="java.util.Map&lt;java.lang.String, java.lang.Object>"/>
+        </methodAction>
+        <methodAction id="handleDateSetAll" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="handleDateSetAll" IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.CrossDockSetupAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.handleDateSetAll_AipdtRootAMDataControl_dataProvider_CrossDockSetupAM_handleDateSetAll_result">
+            <NamedData NDName="setAllMap" NDType="java.util.Map"/>
+        </methodAction>
+        <methodAction id="handleSetAll" RequiresUpdateModel="true" Action="invokeMethod" MethodName="handleSetAll"
+                      IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+                      InstanceName="data.AipdtRootAMDataControl.dataProvider.DeploymentTypeAM"
+                      ReturnName="data.AipdtRootAMDataControl.methodResults.handleSetAll_AipdtRootAMDataControl_dataProvider_DeploymentTypeAM_handleSetAll_result">
+            <NamedData NDName="setAllMap" NDType="java.util.Map"/>
+        </methodAction>
+        <tree IterBinding="DeploymentTypeSupplierpopupVOIterator" id="DeploymentTypeSupplierpopupVO">
+            <nodeDefinition DefName="oracle.retail.apps.aipdt.common.model.view.DeptOrdFromSuppVO"
+                            Name="DeploymentTypeSupplierpopupVO0">
+                <AttrNames>
+                    <Item Value="SupplierCode"/>
+                    <Item Value="SupplierName"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+    </bindings>
+</pageDefinition>

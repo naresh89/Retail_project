@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<NavigationDefinition id="Folder_1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:www.oracle.com:oracle.retail.apps.framework.navigation"
+    xsi:schemaLocation="urn:www.oracle.com:oracle.retail.apps.framework.navigation classpath:oracle/retail/apps/framework/uishell/navigation/model/schema/NavigationModel.xsd">
+    <Items>
+        <Item id="bieeAnalysis1" type="link" title="Demand Profit (OBIEE)" 
+        shortDesc="This is a Customer Order Demand Profit Report." visible="#{true}">
+            <url><![CDATA[http://mspdv171.us.oracle.com:9704/analytics/saw.dll?Go&Path=/shared/customer order/Demand Profit&NQUser=weblogic&NQPassword=weblogic1]]></url>
+            <!-- Optional attributes that control how the panelBox will be displayed in the contextual area -->
+            <!-- Disabling panelBox Header: We do not expose the showHeader attribute of the panelBox. If you do not want to display the standard panelBox header, simply set the title of the Item
+                 to a blank string. ex. title="" The header will be automatically removed from the panelBox. You might have to set the showDisclosure attribute to false, if you do not want 
+                 the disclosure to be enabled for the disabled header.-->
+            <Attributes>
+                <!--When showDisclosure attribute is set to false, the panelBox will not have disclosure enabled. When this attribute is not provided as in the examples below,
+                    it defaults to true. -->
+                <Attribute attributeId="showDisclosure" value="true"/>
+                <!--When disclosed attribute is set to false, the panelBox will not be disclosed by default. When this attribute is not provided as in the examples below, 
+                    it defaults to true. The attribute only applies when showDisclosure is true.-->
+                <Attribute attributeId="disclosed" value="true"/>
+            </Attributes>
+        </Item>
+        <Item id="exampleDVTBarGraph"
+              title="#{adfBundle['RetailAppsViewControllerBundle'].EXAMPLE_DVT_BAR_GRAPH}"
+              shortDesc="#{adfBundle['RetailAppsViewControllerBundle'].EXAMPLE_DVT_BAR_GRAPH}"
+              type="taskflow" visible="#{true}">
+            <url>/WEB-INF/oracle/retail/apps/framework/uishell/example/flow/UiShellDvtChartExampleFlow.xml#UiShellDvtChartExampleFlow</url>
+        </Item>
+        <Item id="bieeAnalysis2" title="Fulfillment Profit Year over Year (OBIEE)" shortDesc="This is a Fulfillment Profit Year over Year Report." type="link" 
+               visible="#{true}">
+            <url><![CDATA[http://mspdv171.us.oracle.com:9704/analytics/saw.dll?Go&Path=/shared/customer order/Fulfillment Profit Year over Year&NQUser=weblogic&NQPassword=weblogic1]]></url>
+        </Item>
+        <Item id="exampleDVTPieGraph"
+              title="#{adfBundle['RetailAppsViewControllerBundle'].EXAMPLE_DVT_PIE_GRAPH}"
+              shortDesc="#{adfBundle['RetailAppsViewControllerBundle'].EXAMPLE_DVT_PIE_GRAPH}"
+              type="taskflow" visible="#{true}">
+            <url>/WEB-INF/oracle/retail/apps/framework/uishell/example/flow/UiShellDvtChartExampleFlow.xml#UiShellDvtChartExampleFlow</url>
+           <Parameters>
+                <Parameter id="graphType">pie</Parameter>
+           </Parameters>
+        </Item>
+        <!-- The ContextAwareReport framework enables in-context view of an OBIEE report.-->
+       <Item id="viewContextAwareReportFlowDefault"
+              title="ViewContextAwareReportFlow taskflow wraps an OBIEE Dashboard"
+              shortDesc="The ViewContextAwareReportFlow taskflow wraps an OBIEE dashboard and listens to the contextual event UpdateContextAwareReportEvent. When the event is received it parses the payload and passes the parameters to the report and refreshes the report."
+              type="taskflow" visible="#{true}">
+            <url>/WEB-INF/oracle/retail/apps/framework/contextawarereport/publicui/flow/ViewContextAwareReportFlow.xml#ViewContextAwareReportFlow</url>
+          <Parameters>
+            <Parameter id="reportDescription">Channel Profitability Comparisons</Parameter>
+            <Parameter id="primaryUrl"><![CDATA[http://mspdv171.us.oracle.com:9704/analytics/saw.dll?SyndicatePages&syndicate=portal&PortalPath=/shared/Customer Order/_portal/Customer Order&Page=Channel Profitability Comparisons&Action=Navigate&NQUser=weblogic&NQPassword=weblogic1&col1=<col1:token01>&val1=<val1:token02>&psa1=<psa1:token03>&col2=<col2:token04>&val2=<val2:token05>&psa2=<psa2:token06>]]></Parameter>
+            <Parameter id="actionType">TableSelectedEvent</Parameter>
+            <Parameter id="token01"><![CDATA["Business Calendar"."Fiscal Year"]]></Parameter>
+            <Parameter id="token02"><![CDATA["2010"]]></Parameter>
+            <Parameter id="token03"><![CDATA["Retail Merchandising Analytics As-Was"]]></Parameter>
+            <Parameter id="token04"><![CDATA["Business Calendar"."Fiscal Quarter"]]></Parameter>
+            <Parameter id="token05"><![CDATA["2010Quarter1" "2010Quarter2" "2010Quarter3" "2010Quarter4"]]></Parameter>
+            <Parameter id="token06"><![CDATA["Retail Merchandising Analytics As-Was"]]></Parameter>
+          </Parameters>
+        </Item>
+    </Items>
+</NavigationDefinition>

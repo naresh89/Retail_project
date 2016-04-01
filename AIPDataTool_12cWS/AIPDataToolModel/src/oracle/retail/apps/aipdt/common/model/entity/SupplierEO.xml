@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SupplierEO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="SUPPLIER"
+  AliasName="SupplierEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityDefImpl"
+  CollClass="oracle.retail.apps.aipdt.common.adfbc.AipdtEntityCache">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="SupplierId"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="SUPPLIER_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="SUPPLIER"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SupplierCode"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="SUPPLIER_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SupplierName"
+    IsNotNull="true"
+    Precision="240"
+    ColumnName="SUPPLIER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ShipTo"
+    Precision="6"
+    ColumnName="SHIP_TO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContactName"
+    Precision="30"
+    ColumnName="CONTACT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContactPhone"
+    Precision="20"
+    ColumnName="CONTACT_PHONE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContactFax"
+    Precision="20"
+    ColumnName="CONTACT_FAX"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContactEmail"
+    Precision="100"
+    ColumnName="CONTACT_EMAIL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IsDirectSupply"
+    Precision="1"
+    ColumnName="IS_DIRECT_SUPPLY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Timestamp"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="TIMESTAMP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="ChkSupplierIsDirectSupply">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_SUPPLIER_IS_DIRECT_SUPPLY"/>
+      <Attr Name="_checkCondition" Value="is_direct_supply IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.SupplierEO.IsDirectSupply"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ChkSupplierShipTo">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_SUPPLIER_SHIP_TO"/>
+      <Attr Name="_checkCondition"
+        Value="SHIP_TO in ('XD_RG','CS_RG','XD_GS','XDDCS','CS_ST','STR','XDFCS')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.SupplierEO.ShipTo"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PkSupplier"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_SUPPLIER"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.SupplierEO.SupplierId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026996">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026996"/>
+      <Attr Name="_checkCondition" Value='"SUPPLIER_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.SupplierEO.SupplierId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026997">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026997"/>
+      <Attr Name="_checkCondition" Value='"SUPPLIER_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.SupplierEO.SupplierCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026998">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026998"/>
+      <Attr Name="_checkCondition" Value='"SUPPLIER_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.SupplierEO.SupplierName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0026999">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0026999"/>
+      <Attr Name="_checkCondition" Value='"TIMESTAMP" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="oracle.retail.apps.aipdt.common.model.entity.SupplierEO.Timestamp"/>
+    </AttrArray>
+  </Key>
+</Entity>

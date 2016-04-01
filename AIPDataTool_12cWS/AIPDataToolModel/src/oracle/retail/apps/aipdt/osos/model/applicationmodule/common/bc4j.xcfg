@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="oracle.retail.apps.aipdt.osos.model.applicationmodule.OnOffSaleSupplyAM">
+      <AppModuleConfig name="OnOffSaleSupplyAMLocal" DeployPlatform="LOCAL" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="oracle.retail.apps.aipdt.osos.model.applicationmodule.OnOffSaleSupplyAM">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.osos.model.applicationmodule.OnOffSaleSupplyAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/aipdt_dbDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="OnOffSaleSupplyAMShared" DeployPlatform="LOCAL" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="oracle.retail.apps.aipdt.osos.model.applicationmodule.OnOffSaleSupplyAM">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.osos.model.applicationmodule.OnOffSaleSupplyAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/aipdt_dbDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

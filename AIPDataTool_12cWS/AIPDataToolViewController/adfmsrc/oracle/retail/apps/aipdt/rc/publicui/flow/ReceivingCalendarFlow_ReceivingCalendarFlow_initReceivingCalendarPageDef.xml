@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="ReceivingCalendarFlow_ReceivingCalendarFlow_initReceivingCalendarPageDef"
+                Package="oracle.retail.apps.aipdt.rc.publicui.flow"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="initReceivingCalendar" RequiresUpdateModel="true"
+            Action="invokeMethod" MethodName="initReceivingCalendar"
+            IsViewObjectMethod="false" DataControl="AipdtRootAMDataControl"
+            InstanceName="AipdtRootAMDataControl.dataProvider.Root.ReceivingCalendarAM"/>
+  </bindings>
+</pageDefinition>

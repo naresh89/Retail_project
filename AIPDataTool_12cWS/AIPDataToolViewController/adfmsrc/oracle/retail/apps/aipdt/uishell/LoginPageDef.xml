@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="LoginPageDef"
+                Package="oracle.retail.apps.aipdt.uishell">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="oracle.retail.apps.framework.uishell.pagetemplate.RetailPageTemplatePageDef"
+          id="pageTemplateBinding" Refresh="ifNeeded"/>
+    <taskFlow id="LoginFormFlow1"
+              taskFlowId="/WEB-INF/oracle/retail/apps/framework/uishell/security/flow/LoginFormFlow.xml#LoginFormFlow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="defaultSuccessUrl" value="/faces/Home"/>
+        <parameter id="copyrightYear1" value="2014"/>
+        <parameter id="copyrightYear2" value="2014"/>
+        <parameter id="renderAsFullPage" value="true"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

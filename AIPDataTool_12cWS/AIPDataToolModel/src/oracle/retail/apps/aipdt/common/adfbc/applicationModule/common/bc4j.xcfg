@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="oracle.retail.apps.aipdt.common.adfbc.applicationModule.ExceptionsAM">
+      <AppModuleConfig DeployPlatform="LOCAL" JDBCName="ndm_dt" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel" name="ExceptionsAMLocal" ApplicationName="oracle.retail.apps.aipdt.common.adfbc.applicationModule.ExceptionsAM">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.common.adfbc.applicationModule.ExceptionsAM"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" JDBCName="ndm_dt" jbo.project="oracle.retail.apps.aipdt.model.AIPDataToolModel" name="ExceptionsAMShared" ApplicationName="oracle.retail.apps.aipdt.common.adfbc.applicationModule.ExceptionsAM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="oracle.retail.apps.aipdt.common.adfbc.applicationModule.ExceptionsAM"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

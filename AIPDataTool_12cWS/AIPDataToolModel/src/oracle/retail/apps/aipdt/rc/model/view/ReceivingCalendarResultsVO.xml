@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReceivingCalendarResultsVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVORowImpl"
+  ComponentClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewObjectImpl"
+  DefClass="oracle.retail.apps.aipdt.common.adfbc.AipdtViewDefImpl"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="50"
+  RangeSize="100"
+  Passivate="All"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[SELECT RCSTG.TRANSACTION_ID,
+RCSTG.IS_EXCEPTION,
+RCSTG.PRODUCT_TYPE_ID,
+RCSTG.DESTINATION_TYPE,
+RCSTG.SELECTION_TYPE,
+RCSTG.DESTINATION_ID,
+DRCAL.RECEIVING_PATTERN,
+CASE 
+WHEN DRCAL.START_DATE IS NULL THEN
+RCSTG.START_DATE
+ELSE 
+DRCAL.START_DATE
+END START_DATE,
+CASE 
+WHEN DRCAL.END_DATE IS NULL THEN
+RCSTG.END_DATE
+ELSE 
+DRCAL.END_DATE
+END END_DATE,
+CASE
+WHEN DRCAL.CREATE_USER IS NULL THEN
+RCSTG.CREATE_USER
+ELSE
+DRCAL.CREATE_USER END CREATE_USER,
+CASE 
+WHEN DRCAL.CREATE_DATE IS NULL THEN
+RCSTG.CREATE_DATE
+ELSE 
+DRCAL.CREATE_DATE END CREATE_DATE,
+RCSTG.UPDATE_USER,
+RCSTG.UPDATE_DATE,
+CASE RCSTG.DESTINATION_TYPE
+WHEN 'S' THEN
+CASE 
+WHEN RCSTG.SELECTION_TYPE IS NULL THEN 
+(SELECT STORE_CODE || ' ' || STORE_NAME FROM V_DT_STORE ST WHERE ST.STORE_ID = RCSTG.DESTINATION_ID)
+ELSE 'All Stores' END
+WHEN 'W' THEN
+CASE 
+WHEN RCSTG.SELECTION_TYPE IS NULL THEN
+(SELECT STOCKING_POINT_NUMBER || ' ' || STOCKING_POINT_NAME FROM V_DT_STOCKING_POINT SP WHERE SP.STOCKING_POINT_ID = RCSTG.DESTINATION_ID)
+ELSE 'All Warehouses' END
+ELSE '' END AS DESTINATION_DESC,
+CASE DRCAL.RECEIVING_PATTERN
+  WHEN NULL THEN 'false'
+  ELSE 
+(DECODE(SUBSTR(DRCAL.RECEIVING_PATTERN,1,1), 'Y', 'true', 'false')) END SUN,
+CASE DRCAL.RECEIVING_PATTERN
+  WHEN NULL THEN 'false'
+  ELSE
+(DECODE(SUBSTR(DRCAL.RECEIVING_PATTERN,2,1), 'Y', 'true', 'false')) END MON,
+CASE DRCAL.RECEIVING_PATTERN
+  WHEN NULL THEN 'false'
+  ELSE
+(DECODE(SUBSTR(DRCAL.RECEIVING_PATTERN,3,1), 'Y', 'true', 'false')) END TUE,
+CASE DRCAL.RECEIVING_PATTERN
+  WHEN NULL THEN 'false'
+  ELSE
+(DECODE(SUBSTR(DRCAL.RECEIVING_PATTERN,4,1), 'Y', 'true', 'false')) END WED,
+CASE DRCAL.RECEIVING_PATTERN
+  WHEN NULL THEN 'false'
+  ELSE
+(DECODE(SUBSTR(DRCAL.RECEIVING_PATTERN,5,1), 'Y', 'true', 'false')) END THU,
+CASE DRCAL.RECEIVING_PATTERN
+  WHEN NULL THEN 'false'
+  ELSE
+(DECODE(SUBSTR(DRCAL.RECEIVING_PATTERN,6,1), 'Y', 'true', 'false')) END FRI,
+CASE DRCAL.RECEIVING_PATTERN
+  WHEN NULL THEN 'false'
+  ELSE
+(DECODE(SUBSTR(DRCAL.RECEIVING_PATTERN,7,1), 'Y', 'true', 'false')) END SAT,
+ ROWNUM AS ID
+FROM DT_RECEIVING_CAL_STG RCSTG LEFT JOIN DT_RECEIVING_CALENDAR DRCAL
+ON RCSTG.DESTINATION_ID = DRCAL.DESTINATION_ID AND
+ RCSTG.IS_EXCEPTION = DRCAL.IS_EXCEPTION
+AND RCSTG.PRODUCT_TYPE_ID = DRCAL.PRODUCT_TYPE_ID
+AND RCSTG.DESTINATION_TYPE = DRCAL.DESTINATION_TYPE]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="TransactionId"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="TRANSACTION_ID"
+    Expression="TRANSACTION_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="13"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IsException"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IS_EXCEPTION"
+    Expression="IS_EXCEPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProductTypeId"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRODUCT_TYPE_ID"
+    Expression="PRODUCT_TYPE_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="13"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DestinationType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESTINATION_TYPE"
+    Expression="DESTINATION_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SelectionType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SELECTION_TYPE"
+    Expression="SELECTION_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DestinationId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DESTINATION_ID"
+    Expression="DESTINATION_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="13"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReceivingPattern"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="7"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="RECEIVING_PATTERN"
+    Expression="RECEIVING_PATTERN"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StartDate"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="START_DATE"
+    Expression="START_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO.StartDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndDate"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="END_DATE"
+    Expression="END_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO.EndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreateUser"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="16"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREATE_USER"
+    Expression="CREATE_USER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="16"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreateDate"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="CREATE_DATE"
+    Expression="CREATE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UpdateUser"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="16"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UPDATE_USER"
+    Expression="UPDATE_USER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="16"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UpdateDate"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="UPDATE_DATE"
+    Expression="UPDATE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DestinationDesc"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="171"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESTINATION_DESC"
+    Expression="DESTINATION_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="171"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.retail.apps.aipdt.rc.model.view.ReceivingCalendarResultsVO.DestinationDesc_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Sun"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.Boolean"
+    ColumnType="VARCHAR2"
+    AliasName="SUN"
+    Expression="SUN"
+    SQLType="BIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Mon"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.Boolean"
+    ColumnType="VARCHAR2"
+    AliasName="MON"
+    Expression="MON"
+    SQLType="BIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Tue"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.Boolean"
+    ColumnType="VARCHAR2"
+    AliasName="TUE"
+    Expression="TUE"
+    SQLType="BIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Wed"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.Boolean"
+    ColumnType="VARCHAR2"
+    AliasName="WED"
+    Expression="WED"
+    SQLType="BIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Thu"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.Boolean"
+    ColumnType="VARCHAR2"
+    AliasName="THU"
+    Expression="THU"
+    SQLType="BIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fri"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.Boolean"
+    ColumnType="VARCHAR2"
+    AliasName="FRI"
+    Expression="FRI"
+    SQLType="BIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Sat"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.Boolean"
+    ColumnType="VARCHAR2"
+    AliasName="SAT"
+    Expression="SAT"
+    SQLType="BIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ID"
+    Expression="ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>  
+  <AttrArray Name="KeyAttributes">
+    <Item Value="TransactionId"/>
+    <Item Value="IsException"/>
+    <Item Value="ProductTypeId"/>
+    <Item Value="DestinationType"/>
+    <Item Value="DestinationId"/>
+    <Item Value="Id"/>
+  </AttrArray>
+  <ResourceBundle>
+    <XliffBundle
+      id="oracle.retail.apps.aipdt.model.AIPDataToolModelBundle"/>
+  </ResourceBundle>  
+</ViewObject>

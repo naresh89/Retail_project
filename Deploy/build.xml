@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="NDMTool" default="all" basedir=".">
+   <property environment="env" />
+   <property file="build.properties" />
+
+   <taskdef name="ojdeploy" 
+	classname="oracle.jdeveloper.deploy.ant.OJDeployAntTask" 
+	uri="oraclelib:OJDeployAntTask" 
+	classpath="${oracle.jdeveloper.ant.library}" />
+
+   <!-- This target is to disable the application's jdbc autosync -->
+   <target name="disable-wls-jdbc-autosync">
+      <replaceregexp match="${oracle.jdeveloper.autosync.true}" 
+      file="${oracle.jdeveloper.workspace.path}" 
+      replace="${oracle.jdeveloper.autosync.false}" />
+   </target>
+
+   <!-- This target is to enable the application's jdbc autosync -->
+   <target name="enable-wls-jdbc-autosync">
+      <replaceregexp match="${oracle.jdeveloper.autosync.false}" 
+      file="${oracle.jdeveloper.workspace.path}" 
+      replace="${oracle.jdeveloper.autosync.true}" />
+   </target>
+
+   <!-- This target is to build the application's bundle project -->
+   <target name="build-bundle-project">
+      <ora:ojdeploy xmlns:ora="oraclelib:OJDeployAntTask" 
+		executable="${oracle.jdeveloper.ojdeploy.path}" 
+		ora:buildscript="${oracle.jdeveloper.deploy.dir}/ojdeploy-build-bundle.xml" 
+		ora:statuslog="${oracle.jdeveloper.deploy.dir}/ojdeploy-statuslog-bundle.xml">
+         <ora:deploy>
+            <ora:parameter name="workspace" value="${oracle.jdeveloper.workspace.path}" />
+            <ora:parameter name="project" value="${oracle.jdeveloper.bundle.project.name}" />
+            <ora:parameter name="profile" value="*" />
+         </ora:deploy>
+      </ora:ojdeploy>
+   </target>
+
+   <!-- This target is to build the application's model project -->
+   <target name="build-model-project" depends="build-bundle-project">
+      <ora:ojdeploy xmlns:ora="oraclelib:OJDeployAntTask" 
+		executable="${oracle.jdeveloper.ojdeploy.path}" 
+		ora:buildscript="${oracle.jdeveloper.deploy.dir}/ojdeploy-build-model.xml" 
+		ora:statuslog="${oracle.jdeveloper.deploy.dir}/ojdeploy-statuslog-model.xml">
+         <ora:deploy>
+            <ora:parameter name="workspace" value="${oracle.jdeveloper.workspace.path}" />
+            <ora:parameter name="project" value="${oracle.jdeveloper.model.project.name}" />
+            <ora:parameter name="profile" value="*" />
+         </ora:deploy>
+      </ora:ojdeploy>
+   </target>
+
+   <!-- This target is to build the application's viewcontroller project -->
+   <target name="build-viewcontroller-project" depends="build-model-project">
+      <ora:ojdeploy xmlns:ora="oraclelib:OJDeployAntTask" 
+		executable="${oracle.jdeveloper.ojdeploy.path}" 
+		ora:buildscript="${oracle.jdeveloper.deploy.dir}/ojdeploy-build-viewc.xml" 
+		ora:statuslog="${oracle.jdeveloper.deploy.dir}/ojdeploy-statuslog-viewc.xml">
+         <ora:deploy>
+            <ora:parameter name="workspace" value="${oracle.jdeveloper.workspace.path}" />
+            <ora:parameter name="project" value="${oracle.jdeveloper.viewcontroller.project.name}" />
+            <ora:parameter name="profile" value="*" />
+         </ora:deploy>
+      </ora:ojdeploy>
+   </target>
+
+   <!-- This target is to build the ear for application -->
+   <target name="build-ear" depends="build-viewcontroller-project">
+      <ora:ojdeploy xmlns:ora="oraclelib:OJDeployAntTask" 
+		executable="${oracle.jdeveloper.ojdeploy.path}" 
+		ora:buildscript="${oracle.jdeveloper.deploy.dir}/ojdeploy-build.xml" 
+		ora:statuslog="${oracle.jdeveloper.deploy.dir}/ojdeploy-statuslog.xml">
+         <ora:deploy>
+            <ora:parameter name="workspace" value="${oracle.jdeveloper.workspace.path}" />
+            <ora:parameter name="profile" value="*" />
+            <ora:parameter name="nocompile" value="true" />
+            <ora:parameter name="nodatasources" value="true" />
+            <ora:parameter name="forcerewrite" value="true" />
+            <ora:parameter name="outputfile" value="${oracle.jdeveloper.workspace.dir}/deploy/${ear.filename}" />
+         </ora:deploy>
+      </ora:ojdeploy>
+   </target>
+
+   <!-- This target is to configure and build the ear for application -->
+   <target name="deploy-to-ear">
+      <antcall target="disable-wls-jdbc-autosync" />
+      <antcall target="build-ear" />
+      <antcall target="enable-wls-jdbc-autosync" />
+   </target>
+
+   <!-- This target is to deploy the application on WLS server  -->
+   <target name="deploy-to-dev-server">
+      <exec executable="${oracle.wlst.path}" spawn="false" failonerror="true">
+         <!-- Python Script Relative Path from build.xml.In this case both are in same folder-->
+         <arg value="deploy.py" />
+         <!-- WLS credential and URL -->
+         <arg value="${dev.wls.username}" />
+         <arg value="${dev.wls.password}" />
+         <arg value="${dev.wls.adminurl}" />
+         <!--<arg value="${dev.wls.cluster.name}"/>-->
+         <!-- Application ear Path -->
+         <arg value="${ear.location}" />
+         <!-- MDS Repository Name -->
+         <arg value="${dev.wc.mds.repository}" />
+         <!-- Application Name. See Project Properties -> Java EE Application -->
+         <arg value="${application.name}" />
+         <!-- Repository type (DB/file) -->
+         <arg value="${dev.wc.mds.repository.type}" />
+         <!-- Repository JNDI. See WLS EM console -->
+         <arg value="${dev.wc.mds.repository.jndi}" />
+         <!-- Target server name -->
+         <arg value="${dev.wls.target}" />
+		 <!-- Target server control command -->
+         <arg value="${dev.wls.target.control.command}" />		 
+      </exec>
+   </target>
+</project>

@@ -1,0 +1,1972 @@
+/* Copyright (c) 2014, Oracle and/or its affiliates.
+All rights reserved. */
+
+/**
+ * Default styles for Retail Applications
+ */
+
+/* PAGE TEMPLATE STYLES*/
+
+/* LOGIN PAGE STYLES */
+
+.RetailLoginPagePanelBox .AFRequiredIconStyle {
+    color: #336699;
+}
+
+/* END LOGIN PAGE STYLES */
+
+/* ABOUT PAGE STYLES */
+
+/* This style ensures there is an appropriate amount of padding between the window and text on the About page. */
+.RetailAboutPage {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+/* END ABOUT PAGE STYLES */
+
+/* BRANDING STYLES */
+/* These styles can be overriden in a skin extending this skin to customize
+ * the branding */
+ 
+.RetailBrandingBar {
+    border-bottom: 2px solid #d8d8d8;
+}
+
+.RetailBrandingBarBackground {
+    background-image: url("/raf/retail-core/images/background_brandingBar.png");
+    background-color: #3b6087;
+    background-repeat: repeat-x;
+    background-position: bottom left;
+}
+
+.RetailBrandingBarItemTop {
+    white-space: nowrap;
+}
+
+.RetailBrandingBarItemTopLogo {
+    background-image: url("/raf/retail-core/images/background_brandingBar-logo.png ");
+    background-repeat: repeat-x;
+    background-position: bottom left;
+    background-color: white;
+}
+
+.RetailBrandingBarItemTopGradient {
+    background-image: url("/raf/retail-core/images/background_brandingBar-gradient.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    max-height: 32px;
+    min-height: 32px;
+}
+
+.RetailBrandingBarItemTopGradient:rtl {
+    background-image: url("/raf/retail-core/images/background_brandingBar-gradient-rtl.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+.RetailApplicationTitle {
+    display: block;
+    -tr-rule-ref: selector(".AFDefaultBoldFont:alias");
+    -tr-rule-ref: selector(".AFMediumHeaderFont:alias");
+    -tr-rule-ref: selector(".AFTextColor:alias");
+    font-size: 15px;
+}
+
+/* Default Global Main Menu Skinning */
+/* The following selectors can be modified to change the look and behavior of the menus
+ * in the global header. The RetailRed skin modifies these to change the menus to fit
+ * the red theme.
+ */
+.RetailGlobalMainMenu {
+    color: white;
+}
+
+/** Fix for "Bug 19145749 - not able to see command link text in global menu bar using retail-core skin" **/
+.RetailGlobalMainMenu af|commandImageLink,
+.RetailGlobalMainMenu af|commandLink,
+.RetailGlobalMainMenu af|goLink {
+    color: white;
+}
+
+.RetailGlobalMainMenu af|commandImageLink::text,
+.RetailGlobalMainMenu af|goImageLink::text,
+.RetailGlobalMainMenu af|link::text {
+    color: white;
+}
+
+
+af|menu::bar-item:hover af|menu::bar-item-text, /* UX Top navigation menu items, should stay white after clicking, then hovering */
+af|menuBar.RetailMenuBar af|menu::bar-item-text,
+af|commandMenuItem.RetailMainMenuCommandMenuItem::bar-item-text,
+af|goMenuItem.RetailMainMenuCommandMenuItem::bar-item-text {
+    font-weight: normal;
+    color: white;
+}
+
+/* bar item, command menu item, go menu item - highlighted and depressed - text */
+af|menuBar.RetailMenuBar af|menu::bar-item:highlighted af|menu::bar-item-text,
+af|menuBar.RetailMenuBar af|menu::bar-item:depressed af|menu::bar-item-text,
+af|menuBar.RetailMenuBar af|commandMenuItem.RetailMainMenuCommandMenuItem:highlighted af|commandMenuItem::bar-item-text,
+af|menuBar.RetailMenuBar af|commandMenuItem.RetailMainMenuCommandMenuItem:depressed af|commandMenuItem::bar-item-text,
+af|menuBar.RetailMenuBar af|goMenuItem.RetailMainMenuCommandMenuItem:highlighted af|goMenuItem::bar-item-text,
+af|menuBar.RetailMenuBar af|goMenuItem.RetailMainMenuCommandMenuItem:depressed af|goMenuItem::bar-item-text {
+    -tr-rule-ref: selector(".AFTextForeground:alias");
+}
+
+.AFTextColor:alias,
+.AFTextForeground:alias {
+    color: #000000;
+}
+
+
+af|menuBar.RetailMenuBar af|menu::bar-item-open-icon-style {
+    background-image: url("/raf/retail-core/images/global_menu_downArrow.png");
+}
+
+/* highlighted menu bar item open icon style */
+af|menuBar.RetailMenuBar af|menu::bar-item:highlighted af|menu::bar-item-open-icon-style {
+    background-image: url(/raf/retail-core/images/menu_downArrow.png);
+}
+
+/* Menu bar container and text-block background color */
+.RetailMenuBar af|menu::bar-item:depressed,
+.RetailMenuBar af|menu::bar-item:depressed af|menu::bar-item-text,
+.RetailMenuBar af|menu::bar-item:depressed:hover af|menu::bar-item-text {
+    background-color: #1e3c5a;
+    color: #ffffff;
+}
+
+/* active and depressed menu bar item open icon style */
+af|menuBar.RetailMenuBar af|menu::bar-item:active af|menu::bar-item-open-icon-style,
+af|menuBar.RetailMenuBar af|menu::bar-item:depressed af|menu::bar-item-open-icon-style {
+    background-image: url(/raf/retail-core/images/global_menu_upArrow.png);
+}
+
+/* Menu bar text, black color to make it visible when hovering over the item */
+.AFBrandingBar af|menu:highlighted af|menu::bar-item-text,
+af|menuBar.RetailMenuBar af|menu::bar-item:highlighted af|menu::bar-item-text {
+    color: #000000;
+}
+
+/* Menu bar text, white color when the menu is open */
+.AFBrandingBar af|menu::bar-item:depressed af|menu::bar-item-text,
+af|menuBar.RetailMenuBar af|menu::bar-item:depressed af|menu::bar-item-text {
+    color: #ffffff;
+}
+
+/* BugDB 20800589 - Visited Link Color Update */
+/* Top Menu link */
+.RetailGlobalMainMenu af|goLink:visited,
+.RetailGlobalMainMenu af|goLink:visited:active {
+  color: white !important;
+}
+
+/* END MENU BAR SKINNING */
+/*START APP SWITCHER MENU BAR SKINNING*/
+
+af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item-open-icon-style,
+af|menuBar.RetailAppSwitcherMenuBar af|menu:hover::bar-item-open-icon-style,
+af|menuBar.RetailAppSwitcherMenuBar af|menu:focus::bar-item-open-icon-style {
+   background-image: url(/raf/retail-core/images/app-switcher-gray.png);
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+}
+
+/* highlighted menu bar item open icon style */
+
+
+af|menuBar.RetailAppSwitcherMenuBar af|menu:hover,
+af|menuBar.RetailAppSwitcherMenuBar af|menu:highlighted,
+af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item:hover,
+af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item:highlighted {
+    border-color: transparent;
+}
+
+/* active and depressed menu bar item open icon style */
+af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item:active af|menu::bar-item-open-icon-style,
+af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item:depressed af|menu::bar-item-open-icon-style {
+    background-image: url(/raf/retail-core/images/app-switcher-white.png);
+}
+af|menuBar.RetailAppSwitcherMenuBar af|menu:active,
+af|menuBar.RetailAppSwitcherMenuBar af|menu:depressed,
+af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item:active,
+af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item:depressed {
+    background-color: Silver;
+    border-color: transparent;
+}
+
+af|menuBar.RetailAppSwitcherMenuBar af|menu:active::bar-item-text,
+af|menuBar.RetailAppSwitcherMenuBar af|menu:depressed::bar-item-text{
+    background-color: Silver;
+}
+
+af|goMenuItem.RetailAppSwitcherGoMenuItem::menu-item-icon-style {
+    background-image: url("/raf/retail-core/images/qual_checkmark_16_full.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*END APP SWITCHER MENU BAR SKINNING*/
+
+af|statusIndicator::idle-icon {
+    content: url("/raf/retail-core/images/connected_idle.png");
+    height: 13px;
+}
+
+af|statusIndicator::processing-icon {
+    content: url("/raf/retail-core/images/processing.gif");
+    height: 13px;
+}
+
+af|statusIndicator::connecting-icon {
+    content: url("/raf/retail-core/images/connecting_reconnecting.gif");
+    height: 13px;
+}
+
+af|statusIndicator::connected-icon {
+    content: url("/raf/retail-core/images/connected_idle.png");
+    height: 13px;
+}
+
+af|statusIndicator::reconnecting-icon {
+    content: url("/raf/retail-core/images/connecting_reconnecting.gif");
+    height: 13px;
+}
+
+af|statusIndicator::disconnected-icon {
+    content: url("/raf/retail-core/images/disconnected_idle.png");
+    height: 13px;
+}
+
+
+.RetailPanelDialogLightBackground:alias {
+    background-image: url(/raf/retail-core/images/background_PanelTitleBar.png);
+    background-repeat: repeat-x;
+}
+
+.RetailDisclosedIconStyle:alias {
+    background-image: url("/afr/alta-v1/discloseexpanded_16_ena.png");
+    background-repeat: no-repeat;
+}
+
+.RetailDisclosedIcon:alias {
+    content: url("/afr/alta-v1/discloseexpanded_16_ena.png");
+}
+
+.RetailUndisclosedIconStyle:alias {
+    background-image: url(/afr/alta-v1/disclosecollapsed_16_ena.png);
+    background-repeat: no-repeat;
+}
+
+.RetailUndisclosedIconStyle:alias:rtl {
+    background-image: url(/raf/retail-core/images/icon_accordionClosed_rtl.png);
+}
+
+
+.AFOverflowImageHorizontalStart:alias {
+    background-image: url(/raf/retail-core/images/icon_tabOverflowLeft.png);
+}
+
+.AFOverflowImageHorizontalStartHover:alias {
+    background-image: url(/raf/retail-core/images/icon_tabOverflowLeft_hover.png);
+}
+
+.AFOverflowImageHorizontalStartDepressed:alias {
+    -tr-rule-ref: selector(".AFOverflowImageHorizontalStartHover:alias");
+}
+
+.AFOverflowImageHorizontalEnd:alias {
+    background-image: url(/raf/retail-core/images/icon_tabOverflowRight.png);
+}
+
+.AFOverflowImageHorizontalEndHover:alias {
+    background-image: url(/raf/retail-core/images/icon_tabOverflowRight_hover.png);
+}
+
+.AFOverflowImageHorizontalEndDepressed:alias {
+    -tr-rule-ref: selector(".AFOverflowImageHorizontalEndHover:alias");
+}
+
+
+/* overflow indicator at the start (top) side of a vertical list */
+.AFOverflowImageVerticalEnd:alias {
+    background-image: url(/raf/retail-core/images/icon_verticalOverflowTop.png);
+}
+
+/* in simple, use same image for hover and depressed */
+.AFOverflowImageVerticalEndHover:alias {
+    background-image: url(/raf/retail-core/images/icon_verticalOverflowTop.png); /* UX Update */
+    cursor: pointer; /* UX Update */
+}
+
+/* in simple, use same image for hover and depressed */
+.AFOverflowImageVerticalEndDepressed:alias {
+    -tr-rule-ref: selector(".AFOverflowImageVerticalEndHover:alias");
+    /* UX Update */
+}
+
+/* overflow indicator at the end (right) side of a Vertical list */
+.AFOverflowImageVerticalStart:alias {
+    background-image: url(/raf/retail-core/images/icon_verticalOverflowBottom.png);
+}
+
+/* in simple, use same image for hover and depressed */
+.AFOverflowImageVerticalStartHover:alias {
+     background-image: url(/raf/retail-core/images/icon_verticalOverflowBottom.png); /* UX Update */
+     cursor: pointer; /* UX Update */
+}
+
+/* in simple, use same image for hover and depressed */
+.AFOverflowImageVerticalStartDepressed:alias {
+    -tr-rule-ref: selector(".AFOverflowImageVerticalStartHover:alias");
+    /* UX Update */
+}
+
+af|menu::bar-item-open-icon-style,
+af|menu:hover::bar-item-open-icon-style,
+af|menu:focus::bar-item-open-icon-style {
+    background-image: url(/raf/retail-core/images/menu_downArrow.png);
+}
+
+af|menu:depressed::bar-item-open-icon-style {
+    background-image: url(/raf/retail-core/images/global_menu_upArrow.png);
+}
+
+/* -zoconnor Remove padding from nested toolbars */
+af|toolbar::body af|toolbar::body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/**
+ * Buttons
+ *
+ */
+ 
+/*Start -ncortez- Disable text of button*/
+af|toolbar af|button:disabled af|button::text {
+    -tr-rule-ref: selector(".AFButtonForegroundDisabled:alias");
+}
+
+af|toolbar af|button:text-only:disabled {
+    background-image: none;
+    background-color: #F4F6F7;
+    border-color: #E0E6EB;
+}
+
+af|toolbar af|button:text-only:disabled:hover-target:hover {
+    background-image: none;
+    background-color: #F4F6F7;
+    border-color: #E0E6EB;
+}
+/*End*/
+
+/**
+ * ADF removes the padding on the right side of the button text for dropdown buttons. The styles to do this differ 
+ * depending on whether the button is in a toolbar. ADF also apparently adds these styles after our custom skin styles, 
+ * so they cannot be directly overriden unless an !important is used.
+ * 
+ * To override this, padding was added to the link-cell class. The class appears in both normal and toolbar dropdown 
+ * buttons, so one style will fix both issues. This class is paired with the dropdown-cell class, and only appears in 
+ * dropdown buttons, so this style won't change normal buttons. Further, because this class is not where padding was 
+ * originally applied, it avoids any conflicts with the ADF styles.
+ * 
+ * This issue was found in Alloy229
+ **/
+af|button:text-only af|button::link-cell,
+af|commandToolbarButton:text-only af|commandToolbarButton::link-cell {
+    padding: 0px 7px 0px 0px;
+}
+
+
+/* ADF Skin aliases */
+
+.AFLogoIcon:alias {
+    content: url(/raf/retail-core/images/oracle_logo.png);
+}
+
+/* Bencio: Bug #20182948 - ICONS IN POPUPS ARE DIFFERENT FROM 14.1, changed to standard icons */
+.AFConfirmationIcon:alias {
+    content: url(/raf/retail-core/images/icon_errorsNone.png);
+}
+
+/*
+ * Dynamic help icon styles.
+ */
+/*
+ * This key is an alias for the dynamic help icon style.
+ * This key uses background-image to set the dynamic help image.
+ * If you want to use text instead of a background-image, you can
+ * use .AFDynamicHelpIcon:alias {content:"Text"}.
+ */
+.AFDynamicHelpIconStyle:alias {
+    background-image: url(/raf/retail-core/images/helptopics_ena.png);
+    -tr-rule-ref: selector(".AFClickableImageAnchor:alias");
+    margin-right: 4px;
+    position: relative;
+}
+
+.AFDynamicHelpIconStyleHover:alias {
+    background-image: url(/raf/retail-core/images/helptopics_ovr.png);
+    position: relative;
+}
+
+.AFDynamicHelpIconStyleActive:alias {
+    background-image: url(/raf/retail-core/images/helptopics_dwn.png);
+    position: relative;
+}
+
+.AFDynamicHelpIconStyleDisabled:alias {
+    background-image: url(/raf/retail-core/images/helptopics_dis.png);
+    position: relative;
+}
+
+/* Start of af:panelAccordion styles */
+af|panelAccordion::disclosed-icon-style {
+    background: url("/afr/alta-v1/discloseexpanded_ena.png") center center no-repeat;
+}
+
+af|panelAccordion::header:highlight af|panelAccordion::disclosed-icon-style,
+af|panelAccordion::header-subsequent:highlight af|panelAccordion::disclosed-icon-style {
+    background: url("/afr/alta-v1/discloseexpanded_ovr.png") center center no-repeat;
+    cursor: pointer;
+}
+/* End of af:panelAccordion styles */
+
+/* Start of af|tree */
+af|tree::expanded-icon-style {
+    background-image: url("/afr/alta-v1/discloseexpanded_16_ena.png");
+    padding-right: 9px;
+    background-position: center center;
+    margin-left: 10px;
+    margin-right: 0px;
+    height: 9px;
+}
+
+af|tree::expanded-icon-style:rtl {
+    background-image: url(/raf/retail-core/images/icon_accordionOpen.png);
+    padding-left: 9px;
+    background-position: center center;
+    margin-right: 10px;
+    margin-left: 0px;
+    height: 9px;
+}
+
+af|tree::collapsed-icon-style {
+    background-image: url("/afr/alta-v1/disclosecollapsed_16_ena.png");
+    padding-right: 9px;
+    background-position: center center;
+    margin-left: 10px;
+    margin-right: 0px;
+    height: 9px;
+}
+
+af|tree::collapsed-icon-style:rtl {
+    background-image: url(/raf/retail-core/images/icon_accordionClosed_rtl.png);
+    padding-left: 9px;
+    background-position: center center;
+    margin-right: 10px;
+    margin-left: 0px;
+    height: 9px;
+}
+
+/* This is a 'blank' image to keep things lined up when we are viewing a leaf node */
+af|tree::leaf-icon-style {
+    background-image: url("/afr/leaf.png");
+    padding-right: 9px;
+    background-position: center center;
+    margin-left: 10px;
+    margin-right: 0px;
+    height: 9px;
+}
+
+af|tree::leaf-icon-style:rtl {
+    background-image: url("/afr/leaf.png");
+    padding-left: 9px;
+    background-position: center center;
+    margin-right: 10px;
+    margin-left: 0px;
+    height: 9px;
+}
+
+/* This is a 'blank' image to keep things lined up when we are viewing a leaf node */
+af|tree::leaf-icon {
+    -tr-rule-ref: selector(".AFClickableImageAnchor:alias");
+    background-image: url(/raf/retail-core/images/icon_folder.png);
+    padding-right: 9px;
+    background-position: center center;
+    margin-left: 10px;
+    margin-right: 0px;
+    height: 9px;
+}
+
+/* This is a 'blank' image to keep things lined up when we are viewing a leaf node */
+af|tree::leaf-icon:rtl {
+    -tr-rule-ref: selector(".AFClickableImageAnchor:alias");
+    background-image: url(/raf/retail-core/images/icon_folder.png);
+    padding-left: 9px;
+    background-position: center center;
+    margin-right: 10px;
+    margin-left: 0px;
+    height: 9px;
+}
+
+/* This is an animated icon rendered during data fetch when a node is expanded */
+af|tree::node-anim-icon-style {
+    background-image: url("/afr/node_anim.gif");
+    padding-right: 9px;
+    background-position: center center;
+    margin-left: 20px;
+    margin-right: 10px;
+    height: 12px;
+}
+
+af|tree::node-anim-icon-style:rtl {
+    background-image: url("/afr/node_anim.gif");
+    padding-left: 9px;
+    background-position: center center;
+    margin-right: 20px;
+    margin-left: 10px;
+    height: 12px;
+}
+/* End style for af|tree */
+
+/* Start of af:panelTabbed styles */
+af|panelTabbed::tab af|panelTabbed::tab-text-link:hover {
+    text-decoration: none;
+}
+
+af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style,
+af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:active,
+af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style,
+af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:active {
+    background-image: url(/raf/retail-core/images/icon_closeTab.png);
+    background-repeat: no-repeat;
+    width: 9px;
+    height: 9px;
+    border: 1px solid transparent;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:rtl,
+af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:active:rtl,
+af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:rtl,
+af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:active:rtl {
+    background-image: url(/raf/retail-core/images/icon_closeTab.png);
+    background-repeat: no-repeat;
+    width: 9px;
+    height: 9px;
+    border: 1px solid transparent;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:hover,
+af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:hover {
+    background-image: url(/raf/retail-core/images/icon_closeTab.png);
+    background-repeat: no-repeat;
+    background-color: #eeeeee;
+    width: 9px;
+    height: 9px;
+    border: 1px solid #333333;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:hover:rtl,
+af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:hover:rtl {
+    background-image: url(/raf/retail-core/images/icon_closeTab.png);
+    background-repeat: no-repeat;
+    background-color: #eeeeee;
+    width: 9px;
+    height: 9px;
+    border: 1px solid #333333;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+/* end style panelTabbed */
+
+/* Start of af:navigationPane styles */
+af|navigationPane-tabs::tab af|navigationPane-tabs::disclosed-remove-icon-style,
+af|navigationPane-tabs::tab af|navigationPane-tabs::disclosed-remove-icon-style:active,
+af|navigationPane-tabs::tab af|navigationPane-tabs::undisclosed-remove-icon-style,
+af|navigationPane-tabs::tab af|navigationPane-tabs::undisclosed-remove-icon-style:active {
+    background-image: url(/raf/retail-core/images/icon_closeTab.png);
+    background-repeat: no-repeat;
+    width: 9px;
+    height: 9px;
+    border: 1px solid transparent;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+af|navigationPane-tabs::tab af|navigationPane-tabs::disclosed-remove-icon-style:rtl,
+af|navigationPane-tabs::tab af|navigationPane-tabs::disclosed-remove-icon-style:active:rtl,
+af|navigationPane-tabs::tab af|navigationPane-tabs::undisclosed-remove-icon-style:rtl,
+af|navigationPane-tabs::tab af|navigationPane-tabs::undisclosed-remove-icon-style:active:rtl {
+    background-image: url(/raf/retail-core/images/icon_closeTab.png);
+    background-repeat: no-repeat;
+    width: 9px;
+    height: 9px;
+    border: 1px solid transparent;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+af|navigationPane-tabs::tab af|navigationPane-tabs::disclosed-remove-icon-style:hover,
+af|navigationPane-tabs::tab af|navigationPane-tabs::undisclosed-remove-icon-style:hover {
+    background-image: url(/raf/retail-core/images/icon_closeTab.png);
+    background-repeat: no-repeat;
+    background-color: #eeeeee;
+    width: 9px;
+    height: 9px;
+    border: 1px solid #333333;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+af|navigationPane-tabs::tab af|navigationPane-tabs::disclosed-remove-icon-style:hover:rtl,
+af|navigationPane-tabs::tab af|navigationPane-tabs::undisclosed-remove-icon-style:hover:rtl {
+    background-image: url(/raf/retail-core/images/icon_closeTab.png);
+    background-repeat: no-repeat;
+    background-color: #eeeeee;
+    width: 9px;
+    height: 9px;
+    border: 1px solid #333333;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+/* end style af:navigationPane */
+
+/* Begin styles for af|dialog and af|panelWindow */
+@agent (touchScreen:none) {
+    af|panelWindow::close-icon-style:hover,
+    af|dialog::close-icon-style:hover {
+        background-image: url("/raf/retail-core/images/icon-remove-hover.png");
+        background-repeat: no-repeat;
+    }
+}
+
+af|panelWindow::close-icon-style:active,
+af|panelWindow::close-icon-style:active:hover,
+af|dialog::close-icon-style:active,
+af|dialog::close-icon-style:active:hover {
+    background-image: url("/raf/retail-core/images/icon-remove-active.png") !important;
+    background-repeat: no-repeat;
+}
+
+af|panelWindow::close-icon-style,
+af|dialog::close-icon-style {
+    background-image: url(/raf/retail-core/images/icon-remove-inactive.png);
+    background-repeat: no-repeat;
+}
+
+af|panelWindow::close-icon-style:disabled,
+af|dialog::close-icon-style:disabled {
+    background-image: url(/raf/retail-core/images/icon-remove-disabled.png);
+    background-repeat: no-repeat;
+}
+
+/* End panelWindow & dialog styles */
+
+/* Start of af|query */
+af|query::undisclosed-icon-style {
+    background-image: url(/afr/alta-v1/disclosecollapsed_16_ena.png);
+    cursor: pointer;
+}
+
+af|query::disclosed-icon-style {
+    background-image: url(/afr/alta-v1/discloseexpanded_16_ena.png);
+    cursor: pointer;
+}
+
+af|query::criterion-delete-icon-style {
+    background-image: url(/raf/retail-core/images/icon-remove-inactive.png);
+}
+
+af|query::criterion-delete-icon-style:hover {
+    background-image: url(/raf/retail-core/images/icon-remove-hover.png);
+}
+
+af|query::criterion-delete-icon-style:active,
+af|query::criterion-delete-icon-style:active:hover {
+    background-image: url(/raf/retail-core/images/icon-remove-active.png);
+}
+
+af|query::criterion-delete-icon-style:disabled {
+    background-image: url(/raf/retail-core/images/icon-remove-disabled.png);
+}
+
+@agent (touchScreen:none) {
+  af|query::criterion-delete-icon-style:hover {
+      background-image: url(/raf/retail-core/images/icon-remove-hover.png);
+  }
+}
+
+
+af|showDetailHeader::disclosed-icon-style {
+    -tr-rule-ref: selector(".RetailDisclosedIconStyle:alias");
+}
+
+af|showDetailHeader::undisclosed-icon-style {
+    -tr-rule-ref: selector(".RetailUndisclosedIconStyle:alias");
+}
+
+@agent (touchScreen:none) {
+  af|query::undisclosed-icon-style:hover,
+  af|showDetailHeader::undisclosed-icon-style:hover {
+      -tr-rule-ref: selector(".RetailUndisclosedIconStyle:alias");
+  }
+}
+
+
+@agent (touchScreen:none) {
+  af|query::disclosed-icon-style:hover,
+  af|showDetailHeader::disclosed-icon-style:hover {
+      -tr-rule-ref: selector(".RetailDisclosedIconStyle:alias");
+  }
+}
+
+/* End of af|query */
+
+/* Start af|showDetailHeader, af|panelHeader */
+
+/* Fix size of header elements to match style guide. */
+/* Level 1 header corresponds with title-text0; all style selectors are off-by-one. */
+af|showDetailHeader::title-text0,
+af|panelHeader::title-text0 {
+    font-size: 15px;
+}
+
+af|showDetailHeader::title-text1,
+af|panelHeader::title-text1 {
+    font-size: 14px;
+}
+
+af|showDetailHeader::title-text2,
+af|panelHeader::title-text2 {
+    font-size: 13px;
+}
+
+af|showDetailHeader::title-text3,
+af|panelHeader::title-text3 {
+    font-size: 13px;
+}
+
+af|showDetailHeader::title-text4,
+af|panelHeader::title-text4 {
+    font-size: 12px;
+}
+
+/* start list of values */
+
+af|inputListOfValues::search-icon-style,
+af|inputListOfValues::search-icon-style:hover,
+af|inputListOfValues::search-icon-style:active, 
+af|inputListOfValues::search-icon-style:hover:active {
+    background-image: url(/raf/retail-core/images/search_ena.png) !important; /* Search Icon Fix - Bug 19296906 part 1 of 2 */
+}
+
+af|inputListOfValues::search-disabled-icon {
+    content: url(/raf/retail-core/images/search_dis.png) !important;
+    vertical-align: middle;
+}
+
+/* Start DVT Pivot Table styles */
+af|dvt-pivotTable::drill-expanded-icon {
+    content: url("/afr/alta-v1/discloseexpanded_16_ena.png");
+    height: 4px;
+    width: 7px;
+}
+
+af|dvt-pivotTable::drill-collapsed-icon {
+    content: url("/afr/alta-v1/disclosecollapsed_16_ena.png");
+    height: 7px;
+    width: 4px;
+}
+
+/* start of panelBox/region */
+af|panelBox::disclosed-icon-style,
+af|region::disclosed-icon-style {
+    -tr-rule-ref: selector(".RetailDisclosedIconStyle:alias");
+    cursor: pointer;
+}
+
+af|panelBox::undisclosed-icon-style,
+af|region::undisclosed-icon-style {
+    -tr-rule-ref: selector(".RetailUndisclosedIconStyle:alias");
+    cursor: pointer;
+}
+
+@agent (touchScreen:none) {
+  af|panelBox::disclosed-icon-style:hover,
+  af|region::disclosed-icon-style:hover {
+      -tr-rule-ref: selector(".RetailDisclosedIconStyle:alias");
+      cursor: pointer;
+  }
+}
+
+
+@agent (touchScreen:none) {
+  af|panelBox::undisclosed-icon-style:hover,
+  af|region::undisclosed-icon-style:hover {
+    -tr-rule-ref: selector(".RetailUndisclosedIconStyle:alias");
+    cursor: pointer;
+  }
+}
+
+af|panelBox::dynamic-help-icon-style,
+af|region::dynamic-help-icon-style {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyle:alias");
+}
+
+af|panelBox::dynamic-help-icon-style:hover,
+af|region::dynamic-help-icon-style:hover {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyleHover:alias");
+}
+
+af|panelBox::dynamic-help-icon-style:focus,
+af|region::dynamic-help-icon-style:focus {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyleHover:alias");
+}
+
+/* end panelBox/region styles */
+
+/* start af|selectOrderShuttle */
+af|selectOrderShuttle af|selectOrderShuttle::removeall-horizontal-icon-style,
+af|selectOrderShuttle af|selectOrderShuttle::moveall-horizontal-icon-style:rtl {
+    background-image: url(/raf/retail-core/images/button_2arrowleft_off.png);
+    height: 26px;
+    width: 26px;
+    padding: 0;
+}
+
+af|selectOrderShuttle af|selectOrderShuttle::removeall-horizontal-icon-style:disabled,
+af|selectOrderShuttle af|selectOrderShuttle::moveall-horizontal-icon-style:disabled:rtl,
+af|selectOrderShuttle:hover af|selectOrderShuttle::removeall-horizontal-icon-style:hover:disabled,
+af|selectOrderShuttle:hover af|selectOrderShuttle::moveall-horizontal-icon-style:hover:disabled:rtl {
+    background-image: url(/raf/retail-core/images/button_2arrowleft-disabled.png);
+}
+
+af|selectOrderShuttle:hover af|selectOrderShuttle::removeall-horizontal-icon-style:hover,
+af|selectOrderShuttle:hover af|selectOrderShuttle::moveall-horizontal-icon-style:hover:rtl {
+    background-image: url(/raf/retail-core/images/button_2arrowleft-hover.png);
+}
+
+af|selectOrderShuttle af|selectOrderShuttle::moveall-horizontal-icon-style,
+af|selectOrderShuttle af|selectOrderShuttle::removeall-horizontal-icon-style:rtl {
+    background-image: url(/raf/retail-core/images/button_2arrowright_off.png);
+    height: 26px;
+    width: 26px;
+    padding: 0;
+}
+
+af|selectOrderShuttle af|selectOrderShuttle::moveall-horizontal-icon-style:disabled,
+af|selectOrderShuttle af|selectOrderShuttle::removeall-horizontal-icon-style:disabled:rtl,
+af|selectOrderShuttle:hover af|selectOrderShuttle::moveall-horizontal-icon-style:hover:disabled,
+af|selectOrderShuttle:hover af|selectOrderShuttle::removeall-horizontal-icon-style:hover:disabled:rtl {
+    background-image: url(/raf/retail-core/images/button_2arrowright-disabled.png);
+}
+
+af|selectOrderShuttle:hover af|selectOrderShuttle::moveall-horizontal-icon-style:hover,
+af|selectOrderShuttle:hover af|selectOrderShuttle::removeall-horizontal-icon-style:hover:rtl {
+    background-image: url(/raf/retail-core/images/button_2arrowright-hover.png);
+}
+
+af|selectOrderShuttle af|selectOrderShuttle::remove-horizontal-icon-style,
+af|selectOrderShuttle af|selectOrderShuttle::move-horizontal-icon-style:rtl {
+    background-image: url(/raf/retail-core/images/button_arrowleft_off.png);
+    height: 26px;
+    width: 26px;
+    padding: 0;
+}
+
+af|selectOrderShuttle af|selectOrderShuttle::remove-horizontal-icon-style:disabled,
+af|selectOrderShuttle af|selectOrderShuttle::move-horizontal-icon-style:disabled:rtl,
+af|selectOrderShuttle:hover af|selectOrderShuttle::remove-horizontal-icon-style:hover:disabled,
+af|selectOrderShuttle:hover af|selectOrderShuttle::move-horizontal-icon-style:hover:disabled:rtl {
+    background-image: url(/raf/retail-core/images/button_arrowleft-disabled.png);
+}
+
+af|selectOrderShuttle:hover af|selectOrderShuttle::remove-horizontal-icon-style:hover,
+af|selectOrderShuttle:hover af|selectOrderShuttle::move-horizontal-icon-style:hover:rtl {
+    background-image: url(/raf/retail-core/images/button_arrowleft-hover.png);
+}
+
+af|selectOrderShuttle af|selectOrderShuttle::move-horizontal-icon-style,
+af|selectOrderShuttle af|selectOrderShuttle::remove-horizontal-icon-style:rtl {
+    background-image: url(/raf/retail-core/images/button_arrowright_off.png);
+    height: 26px;
+    width: 26px;
+    padding: 0;
+}
+
+af|selectOrderShuttle af|selectOrderShuttle::move-horizontal-icon-style:disabled,
+af|selectOrderShuttle af|selectOrderShuttle::remove-horizontal-icon-style:disabled:rtl,
+af|selectOrderShuttle:hover af|selectOrderShuttle::move-horizontal-icon-style:hover:disabled,
+af|selectOrderShuttle:hover af|selectOrderShuttle::remove-horizontal-icon-style:hover:disabled:rtl {
+    background-image: url(/raf/retail-core/images/button_arrowright-disabled.png);
+}
+
+af|selectOrderShuttle:hover af|selectOrderShuttle::move-horizontal-icon-style:hover,
+af|selectOrderShuttle:hover af|selectOrderShuttle::remove-horizontal-icon-style:hover:rtl {
+    background-image: url(/raf/retail-core/images/button_arrowright-hover.png);
+}
+
+/* end selectOrderShuttle */
+
+/* start Composer components */
+af|showDetailFrame::collapse-icon-style,
+af|showDetailFrame::collapse-icon-style:hover,
+af|showDetailFrame::collapse-icon-style:active {
+    -tr-rule-ref: selector(".RetailDisclosedIconStyle:alias");
+    cursor: pointer;
+}
+
+af|showDetailFrame::disclose-icon-style,
+af|showDetailFrame::disclose-icon-style:hover,
+af|showDetailFrame::disclose-icon-style:active {
+    -tr-rule-ref: selector(".RetailUndisclosedIconStyle:alias");
+    cursor: pointer;
+}
+
+af|showDetailFrame::remove-icon-style {
+    background-image: url(/raf/retail-core/images/icon-remove-inactive.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 18px;
+    display: block;
+    margin: 0;
+}
+
+af|showDetailFrame::remove-icon-style:hover {
+    background-image: url(/raf/retail-core/images/icon-remove-hover.png);
+}
+
+af|showDetailFrame::remove-icon-style:active,
+af|showDetailFrame::remove-icon-style:active:hover {
+    background-image: url(/raf/retail-core/images/icon-remove-active.png);
+}
+
+af|showDetailFrame::remove-icon-style:disabled {
+    background-image: url(/raf/retail-core/images/icon-remove-disabled.png);
+}
+
+af|showDetailFrame::dynamic-help-icon-style {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyle:alias");
+    background-position: center center;
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+af|showDetailFrame::dynamic-help-icon-style:active {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyleActive:alias");
+}
+
+af|showDetailFrame::dynamic-help-icon-style:hover {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyleHover:alias");
+}
+
+/* end Composer components */
+
+/* af|inputText */
+af|inputText::dynamic-help-icon-style,
+af|inputText::dynamic-help-icon-style:disabled {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyle:alias");
+}
+
+@agent (touchScreen:none) {
+   af|inputText::dynamic-help-icon-style:hover,
+   af|inputText::dynamic-help-icon-style:disabled:hover {
+     -tr-rule-ref: selector(".AFDynamicHelpIconStyleHover:alias");
+   }
+}
+
+af|inputText::dynamic-help-icon-style:active,
+af|inputText::dynamic-help-icon-style:disabled:active {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyleActive:alias");
+}
+/* end af|inputText */
+
+/* start af|panelLabelAndMessage */
+af|panelLabelAndMessage::dynamic-help-icon-style,
+af|panelLabelAndMessage::dynamic-help-icon-style:disabled {
+       -tr-rule-ref: selector(".AFDynamicHelpIconStyle:alias");
+}
+ 
+@agent (touchScreen:none) {
+   af|panelLabelAndMessage::dynamic-help-icon-style:hover,
+   af|panelLabelAndMessage::dynamic-help-icon-style:disabled:hover {
+     -tr-rule-ref: selector(".AFDynamicHelpIconStyleHover:alias");
+   }
+}
+ 
+af|panelLabelAndMessage::dynamic-help-icon-style:active,
+af|panelLabelAndMessage::dynamic-help-icon-style:disabled:active {
+    -tr-rule-ref: selector(".AFDynamicHelpIconStyleActive:alias");
+}
+
+/* end af|panelLabelAndMessage */
+
+/* Popup Notification Classes - fixes the column widths */
+.FivePercentWidth {
+  width: 5%;
+}
+.TenPercentWidth {
+  width: 10%;
+}
+.ThirtyPercentWidth {
+  width: 30%;
+}
+.SixtyPercentWidth {
+  width: 60%;
+}
+
+
+/****************************
+ * B. UX Skin Modifications *
+ ****************************/
+
+af|panelAccordion::undisclosed-icon-style {
+    background: url("/afr/alta-v1/disclosecollapsed_ena.png") center center no-repeat;
+}
+
+af|panelAccordion::header:highlight af|panelAccordion::undisclosed-icon-style,
+af|panelAccordion::header-subsequent:highlight af|panelAccordion::undisclosed-icon-style {
+    background: url("/afr/alta-v1/disclosecollapsed_ovr.png") center center no-repeat;
+}
+
+af|panelAccordion af|panelAccordion::header:selected af|panelAccordion::undisclosed-icon-style,
+af|panelAccordion af|panelAccordion::header-subsequent:selected af|panelAccordion::undisclosed-icon-style,
+af|panelAccordion af|panelAccordion::header:selected af|panelAccordion::undisclosed-icon-style,
+af|panelAccordion af|panelAccordion::header-subsequent:selected af|panelAccordion::undisclosed-icon-style {
+    background: url("/afr/alta-v1/discloseexpanded_dwn.png") center center no-repeat;
+}
+
+af|panelAccordion af|panelAccordion::header:selected af|panelAccordion::disclosed-icon-style,
+af|panelAccordion af|panelAccordion::header-subsequent:selected af|panelAccordion::disclosed-icon-style {
+    background: url("/afr/alta-v1/disclosecollapsed_dwn.png") center center no-repeat;
+}
+
+af|panelWindow::content-center,
+af|dialog::content-center {
+    line-height: 16px;
+    margin: 10px 0 0 5px;
+    padding: 0;
+}
+
+af|panelTabbed::body af|panelSplitter af|panelStretchLayout,
+af|panelTabbed::body af|panelSplitter af|panelStretchLayout:stretched {
+    margin: 0;
+}
+
+af|inputDate::launch-icon-style, 
+af|panelList af|inputDate::launch-icon-style,
+af|inputDate::launch-icon-style:hover {
+    background-image: url("/raf/retail-core/images/chooseDate.png") !important;
+}
+
+af|richTextEditor::foreground-color-overlay {
+    background-image: url("/raf/retail-core/images/colorpickertxt_ena.png");
+}
+
+af|richTextEditor::background-color-overlay {
+    background-image: url("/raf/retail-core/images/colorpicker_ena.png");
+}
+
+af|richTextEditor::mode-code-active-icon {
+    content: url(/raf/retail-core/images/codemode_dwn.png);
+}
+
+af|richTextEditor::mode-code-disabled-icon {
+    content: url(/raf/retail-core/images/codemode_dis.png);
+}
+
+af|richTextEditor::mode-code-hover-icon {
+    content: url(/raf/retail-core/images/codemode_ovr.png);
+}
+
+af|richTextEditor::mode-code-icon {
+    content: url(/raf/retail-core/images/codemode_ena.png);
+}
+
+af|richTextEditor::mode-rich-text-active-icon {
+    content: url(/raf/retail-core/images/designmode_dwn.png);
+}
+
+af|richTextEditor::mode-rich-text-disabled-icon {
+    content: url(/raf/retail-core/images/designmode_dis.png);
+}
+
+af|richTextEditor::mode-rich-text-hover-icon {
+    content: url(/raf/retail-core/images/designmode_ovr.png);
+}
+
+af|richTextEditor::mode-rich-text-icon {
+    content: url(/raf/retail-core/images/designmode_ena.png);
+}
+
+.RetailPanelCollection {
+    width: auto !important;
+}
+
+af|panelCollection::qbe-icon {
+    content: url(/raf/retail-core/images/qbe_ena.png);
+}
+
+af|panelCollection::qbe-hover-icon {
+    content: url(/raf/retail-core/images/qbe_ovr.png);
+}
+
+af|panelCollection::qbe-depressed-icon {
+    content: url(/raf/retail-core/images/qbe_dwn.png);
+}
+
+af|panelCollection::maximize-icon {
+    content: url(/raf/retail-core/images/maximize_ena.png);
+}
+
+af|panelCollection::maximize-hover-icon {
+    content: url(/raf/retail-core/images/maximize_ovr.png);
+}
+
+af|panelCollection::maximize-depressed-icon {
+    content: url(/raf/retail-core/images/maximize_dwn.png);
+}
+
+af|panelCollection::maximize-disabled-icon {
+    content: url(/raf/retail-core/images/maximize_dis.png);
+}
+
+/* Fix for Bug 20198496 - LOV Search and Result Dialog scroll bar displays outside of dialog box frame. - start */
+af|inputListOfValues,
+af|inputComboboxListOfValues {
+    -tr-stretch-search-dialog: true;
+}
+/* Fix for Bug 20198496 - end */
+
+.RetailPanelBoxNoHeaderText {
+    padding-top: 10px;
+}
+
+/*
+* Defect #109: Selectors that could be referenced to provide a specific text color to the form field input/output text values.
+* The selector ".RetailInputOutputFormFieldText" can be referenced from an "af:outputText" and/or an "af:inputText" component.
+* In the case of an "af:inputText", it would only have an impact if the component is readOnly="true".
+* The selector references the alias ".RetailInputOutputFormFieldText:alias".
+* If you need to change the text color, just change it in the alias ".RetailInputOutputFormFieldText:alias"
+*/
+.RetailInputOutputFormFieldText:alias {
+    color: rgb(118, 118, 118);
+}
+
+.RetailInputOutputFormFieldText {
+    -tr-rule-ref: selector(".RetailInputOutputFormFieldText:alias");
+}
+
+/** aligning labels to the left and fields to the right in a PanelFormLayout */
+.RetailOutputTextAlignment af|panelFormLayout::label-cell {
+    text-align: left;
+}
+
+.RetailOutputTextAlignment af|panelLabelAndMessage::content-cell.AFPanelFormLayoutContentCell {
+    padding-right: 8px;
+    text-align: right;
+}
+
+.RetailInputTextAlignment af|inputText::content,
+.RetailInputTextAlignment af|inputListOfValues::content,
+.RetailInputTextAlignment af|inputComboboxListOfValues::content,
+.RetailInputTextAlignment af|selectOneChoice::content,
+.RetailInputTextAlignment af|selectOneListbox::content {
+    text-align: left !important;
+}
+
+/* Border color update */
+af|column::column-footer af|column::detail-column-header-cell {
+    border-top: 1px solid #d6dfe6;
+}
+
+af|toolbar af|commandToolbarButton:depressed,
+af|toolbar af|commandToolbarButton:selected,
+af|toolbar af|commandToolbarButton:selected:active {
+    background-color: transparent !important;
+}
+
+af|toolbar af|commandToolbarButton::text,
+af|toolbar af|commandToolbarButton::link {
+    color: #000000;
+}
+
+/* B. SEARCH BAR MODIFICATIONS */
+body > div > form > af|panelGridLayout > div:nth-child(2) > af|panelSplitter > af|panelSplitter::pane:first-child > af|panelAccordion:first-child af|panelAccordion::body-content af|panelStretchLayout .AFPrivatePositionAbsoluteZeroTopLeftRightOverflowHidden {
+    height: 50px !important;
+    border-bottom: 1px solid #d9dfe3;
+}
+
+.RetailSearchBar af|panelGroupLayout {
+    left: 20px !important;
+    top: 11px !important;
+}
+
+.RetailSearchBar af|inputText::content {
+    width: 135px !important;
+}
+
+.RetailSearchBar af|button {
+    margin-left: 2px;
+}
+
+body > div > form > af|panelGridLayout > div:nth-child(2) > af|panelSplitter > af|panelSplitter::pane:first-child > af|panelAccordion:first-child af|panelAccordion::body-content af|panelStretchLayout .AFPrivatePositionAbsoluteZeroTopLeftRightOverflowHidden + .AFPrivatePositionAbsoluteOverflowHidden {
+    margin-top: 15px;
+    top: 41px !important;
+}
+/* E. SEARCH BAR MODIFICATIONS */
+
+/* Pop-ups. Modify the height of the overlay */
+af|panelWindow::main {
+    min-height: 5em;
+}
+
+/* Removed to address skinning issues Alc25, Alloy215, and Alloy218
+af|inputText::content {
+  width: 100% !important;
+} */
+
+/* Preferences > Regional - fixes the layout issue */
+af|panelFormLayout::content-cell {
+    padding: 0;
+}
+
+/* Aligns the search panel with the results panel */
+af|panelStretchLayout af|query {
+    padding: 0;
+}
+/* Reduces the size of the "results" panel header, matches "search" */
+af|showDetailHeader::title-text-cell af|showDetailHeader::title-text1 {
+    font-size: 14px;
+}
+/* Results Panel borders */
+af|panelCollection,
+af|showDetailHeader af|panelCollection {
+    border: 1px solid #d6dfe6;
+}
+/* Remove some borders to clean-up the page */
+af|panelSplitter::pane,
+af|panelCollection af|tree,
+af|panelCollection af|table, 
+af|panelCollection af|treeTable {
+    border: none;
+}
+/* Remove some borders for parts of the Results Panel, which conflict with the new border */
+af|panelCollection::statusbar af|toolbox::last-row {
+    border-bottom: none;
+    border-top: 1px solid #d6dfe6;
+}
+
+/* B. Search Dialog Pop-up Styles */
+af|inputListOfValues::dialog af|dialog::footer,
+af|inputComboboxListOfValues::dialog af|dialog::footer {
+    padding-top: 5px;
+}
+af|inputListOfValues::dialog af|dialog::content-center,
+af|inputComboboxListOfValues::dialog af|dialog::content-center {
+    min-height: 500px;
+    min-width: 500px;
+}
+af|inputListOfValues::dialog af|panelHeader > div:first-child,
+af|inputComboboxListOfValues::dialog af|panelHeader > div:first-child {
+    display: none;
+}
+af|inputListOfValues::dialog af|panelHeader > div:first-child + div,
+af|inputComboboxListOfValues::dialog af|panelHeader > div:first-child + div {
+    top: 0 !important;
+}
+
+/* the padding-bottom on the panelHeader and margin-top below are 
+complementary styles that address an issue where the div containing the table
+extended above the top of the table, and overlapped buttons 
+on the bottom of the panelHeader, making them unclickable*/
+af|inputListOfValues::dialog af|panelHeader,
+af|inputComboboxListOfValues::dialog af|panelHeader {
+    height: 100% !important;
+    padding-bottom: 0 !important
+}
+
+af|inputListOfValues::dialog af|table,
+af|inputComboboxListOfValues::dialog af|table{
+  margin-top: 0;
+}
+
+/* this style puts space between the query scrollbar and basic/advanced button. */
+af|query::content0,
+af|query::content1,
+af|query::content2,
+af|query::content3,
+af|query::content4,
+af|query::content5 {
+    margin-top: 2px;
+}
+
+af|inputListOfValues::dialog af|table::data-table,
+af|inputComboboxListOfValues::dialog af|table::data-table {
+    overflow-y: auto;
+}
+/* E. Search Dialog Pop-up Styles */
+
+/****************************************
+ * B. SELECT ONE DROPDOWN MODIFICATIONS *
+ ****************************************/
+/* FF 38+ and Chrome */
+@media (max-resolution: 2dppx), (-webkit-min-device-pixel-ratio: 2) {
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fcfdfe;
+    background-image: url("/raf/retail-core/images/ux_dropdown_arrow_default.png");
+    background-repeat: no-repeat;
+    background-position: calc(100% + 2px) center;
+    background-size: 30px 30px;
+    border-style: solid;
+    border-width: 1px;
+    max-height: 28px;
+    padding: 0 30px 0 0 !important;
+  }
+  select:hover {
+    background-image: url("/raf/retail-core/images/ux_dropdown_arrow_hover.png");
+  }
+  select:active {
+    background-image: url("/raf/retail-core/images/ux_dropdown_arrow_click.png");
+  }
+  
+  select:disabled,
+  select:disabled:hover,
+  select:disabled:active {
+    background-image: url("/raf/retail-core/images/ux_dropdown_arrow_default_disabled.png");
+  }  
+}  
+  /* IE 10+ Media Query */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    select,
+    select:hover,
+    select:active,
+    select:disabled,
+    select:disabled:hover,
+    select:disabled:active {
+      background-image: none;
+      padding: 0 !important;
+    }
+  }
+  
+/****************************************
+ * E. SELECT ONE DROPDOWN MODIFICATIONS *
+ ****************************************/
+
+/* ALLOY Solution - FIX THE BUTTONS ON THE MERCHANDISE HIERARCHY PAGE */
+af|commandButton:text-only,
+af|goButton:text-only {
+    border-left-style: solid !important;
+    border-left-width: thin !important;
+    border-right-style: solid !important;
+    border-right-width: thin !important;
+    min-width: 100px;
+}
+
+/* In RPAS, the element that uses this class has a static value of 23px for line-height */
+af|selectBooleanCheckbox::content {
+  line-height: normal;
+}
+
+/* RPAS-based solution */
+af|panelSplitter::pane,
+af|panelSplitter,
+af|panelSplitter::vertical-divider {
+  overflow: visible !important;
+}
+
+af|panelGroupLayout.AFStretchWidth {
+  top: 12px !important;
+}
+
+af|panelSplitter::vertical-icon-container {
+  top: 3px !important;
+}
+
+/* Left Nav link */
+af|goLink.RetailTasklistLink:visited,
+af|goLink.RetailTasklistLink:visited:active {
+  color: #145c9e !important;
+}
+
+/* BugDB 20800771 - Label text color */
+label,
+af|quickQuery::label {
+  color: #000;
+}
+
+/* Add padding to the hover-state of left-nav items that extend beyond the visible area */
+.AFZOrderLayerContainer .AFTooltip {
+    padding: 0px 7px;
+}
+
+/* Shrink the clickable area around the help and close icons in a dialog window */
+af|dialog::dynamic-help-icon-style, 
+af|panelWindow::dynamic-help-icon-style,
+af|panelWindow::close-icon-style, 
+af|dialog::close-icon-style {
+    padding: 0;
+}
+af|panelWindow::close-icon-region, 
+af|dialog::close-icon-region, 
+af|dialog::dynamic-help-icon-container, 
+af|panelWindow::dynamic-help-icon-container {
+    padding: 6px 4px;
+}
+
+/* Right-align the dates within the notification dialog */
+af|panelWindow af|panelWindow::main td.ThirtyPercentWidth {
+    text-align: right;
+}
+
+/* Add margin to the dialog windows */
+af|panelWindow::content-center,
+af|dialog::content-center {
+    margin: 10px;
+}
+
+/* Table and Tree headers and footers, should be 12px font-size and bold */
+af|column::column-header-cell,
+af|column::column-footer-cell {
+    font-size: 12px;
+}
+
+/* Adjust table row height when a menu button is present */
+af|column::data-cell af|menuBar {
+  margin: -1px 0;
+}
+af|column::data-cell af|menuBar af|menuBar::body {
+  min-height: 10px;
+
+}
+af|column::data-cell af|menuBar af|menuBar::content {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+af|column::data-cell af|menuBar af|menuBar::content div.af|menu::bar-item,
+af|column::data-cell af|menuBar af|menuBar::content div.af|menu::bar-item:highlighted {
+  max-height: 20px;
+  min-height: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+af|column::data-cell span input.af|inputText::content {
+  height: auto;
+  padding: 2px;
+}
+af|column::data-cell af|menuBar af|menuBar::content div.af|menu::bar-item af|menu::bar-item-text {
+  height: auto;
+}
+af|column::data-cell af|menuBar af|menuBar::content div.af|menu::bar-item af|menu::bar-item-open-icon-style {
+  padding: 1px;
+}
+
+/* Pivot Table fix for header-cell rows where the arrow is barely visibile */
+af|dvt-pivotTable::header-cell-content af|dvt-pivotTable::drill-collapsed-icon-style img,
+af|dvt-pivotTable::header-cell-content af|dvt-pivotTable::drill-expanded-icon-style img {
+  height: 16px;
+  width: 16px; 
+}
+
+/* B. Search Icon Fix - Bug 19296906 part 2 of 2 */
+af|inputListOfValues:disabled a,
+af|inputListOfValues:disabled:focus-target a {
+    background-image: none ! important;
+}
+af|inputListOfValues:disabled img {
+    padding-top: 5px;
+}
+af|inputListOfValues::search-icon-style:hover {
+    background-image: url("/raf/retail-core/images/search_ena.png") !important;
+}
+/* E. Search Icon Fix - Bug 19296906 */
+
+
+/*******************************************
+ *        BEGIN - RMS SPECIFIC CSS         *
+ *******************************************/
+
+/*
+ *
+ * RMS SPECIFIC CSS, use form[action*="/Rms"] prefix
+ *
+ */
+
+
+/* ALLOY 103 - Remove the parent border */
+form[action*="/Rms"] af|decorativeBox::frame {
+  border: none;
+}
+
+/* ALLOY 108 - Add padding around panel text */
+form[action*="/Rms"] .RetailOutputTextAlignment {
+    padding: 0 0 8px 5px;
+}
+
+/* ALLOY 109 - Clean-up for layouts like the item detail page */
+form[action*="/Rms"] af|decorativeBox::frame {
+    border: none;
+}
+
+form[action*="/Rms"] af|panelBox::table + af|panelBox::center {
+    border-top: 1px solid #d6dfe6;
+    margin: 5px 5px 0 5px;
+}
+
+form[action*="/Rms"] af|panelGroupLayout div.af|panelFormLayout {
+    border: none !important;
+}
+form[action*="/Rms"] af|panelGroupLayout div.af|panelBox {
+    margin-bottom: 5px;
+    min-height: 42px;
+}
+
+/* ALLOY 112 - Old Help Icon */
+form[action*="/Rms"] af|column::dynamic-help-icon-style, 
+form[action*="/Rms"] af|inputColor::dynamic-help-icon-style,
+form[action*="/Rms"] af|inputComboboxListOfValues::dynamic-help-icon-style, 
+form[action*="/Rms"] af|inputDate::dynamic-help-icon-style,
+form[action*="/Rms"] af|inputFile::dynamic-help-icon-style,
+form[action*="/Rms"] af|inputListOfValues::dynamic-help-icon-style, 
+form[action*="/Rms"] af|inputNumberSlider::dynamic-help-icon-style,
+form[action*="/Rms"] af|inputNumberSpinbox::dynamic-help-icon-style,
+form[action*="/Rms"] af|inputRangeSlider::dynamic-help-icon-style,
+form[action*="/Rms"] af|panelLabelAndMessage::dynamic-help-icon-style,
+form[action*="/Rms"] af|query::dynamic-help-icon-style,
+form[action*="/Rms"] af|quickQuery::dynamic-help-icon-style, 
+form[action*="/Rms"] af|codeEditor::dynamic-help-icon-style,
+form[action*="/Rms"] af|selectManyChoice::dynamic-help-icon-style, 
+form[action*="/Rms"] af|selectOneChoice::dynamic-help-icon-style, 
+form[action*="/Rms"] af|panelBox::dynamic-help-icon-style, 
+form[action*="/Rms"] af|region::dynamic-help-icon-style, 
+form[action*="/Rms"] af|inputText::dynamic-help-icon-style:disabled,
+form[action*="/Rms"] af|panelLabelAndMessage::dynamic-help-icon-style:disabled {
+    background-image: url("/afr/helptopics_ena.png");
+    margin: 0;
+}
+
+form[action*="/Rms"] af|inputText::dynamic-help-icon-style:disabled:active,
+form[action*="/Rms"] af|panelLabelAndMessage::dynamic-help-icon-style:disabled:active,
+form[action*="/Rms"] af|column::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputColor::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputComboboxListOfValues::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputDate::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputFile::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputListOfValues::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputNumberSlider::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputNumberSpinbox::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputRangeSlider::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|inputText::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|panelHeader::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|panelLabelAndMessage::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|query::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|quickQuery::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|richTextEditor::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectBooleanCheckbox::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectBooleanRadio::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectManyCheckbox::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectManyChoice::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectManyListbox::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectManyShuttle::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectOneChoice::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectOneListbox::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectOneRadio::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|selectOrderShuttle::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|showDetailHeader::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|dialog::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|panelWindow::dynamic-help-icon-style:active,
+form[action*="/Rms"] af|panelBox::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|region::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|panelBox::dynamic-help-icon-style:focus,
+form[action*="/Rms"] af|region::dynamic-help-icon-style:focus, 
+form[action*="/Rms"] af|showDetailFrame::dynamic-help-icon-style:active, 
+form[action*="/Rms"] af|showDetailFrame::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputText::dynamic-help-icon-style:disabled:hover,
+form[action*="/Rms"] af|panelLabelAndMessage::dynamic-help-icon-style:disabled:hover,
+form[action*="/Rms"] af|column::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputColor::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputComboboxListOfValues::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputDate::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputFile::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputListOfValues::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputNumberSlider::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputNumberSpinbox::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputRangeSlider::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|inputText::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|panelHeader::dynamic-help-icon-style:hover, 
+form[action*="/Rms"] af|panelLabelAndMessage::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|query::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|quickQuery::dynamic-help-icon-style:hover, 
+form[action*="/Rms"] af|richTextEditor::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectBooleanCheckbox::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectBooleanRadio::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectManyCheckbox::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectManyChoice::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectManyListbox::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectManyShuttle::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectOneChoice::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectOneListbox::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectOneRadio::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|selectOrderShuttle::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|showDetailHeader::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|dialog::dynamic-help-icon-style:hover, 
+form[action*="/Rms"] af|panelWindow::dynamic-help-icon-style:hover,
+form[action*="/Rms"] af|column::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|inputColor::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|inputComboboxListOfValues::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|inputDate::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|inputFile::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|inputListOfValues::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|inputNumberSlider::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|inputNumberSpinbox::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|inputRangeSlider::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|inputText::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|panelHeader::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|panelLabelAndMessage::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|query::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|quickQuery::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|richTextEditor::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|selectBooleanCheckbox::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|selectBooleanRadio::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|selectManyCheckbox::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|selectManyChoice::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|selectManyListbox::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|selectManyShuttle::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|selectOneChoice::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|selectOneListbox::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|selectOneRadio::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|selectOrderShuttle::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|showDetailHeader::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|dialog::dynamic-help-icon-style:active:hover,
+form[action*="/Rms"] af|panelWindow::dynamic-help-icon-style:active:hover, 
+form[action*="/Rms"] af|column::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|inputColor::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|inputComboboxListOfValues::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|inputDate::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|inputFile::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|inputListOfValues::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|inputNumberSlider::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|inputNumberSpinbox::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|inputRangeSlider::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|inputText::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|panelHeader::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|panelLabelAndMessage::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|query::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|quickQuery::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|richTextEditor::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|selectBooleanCheckbox::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|selectBooleanRadio::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|selectManyCheckbox::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|selectManyChoice::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|selectManyListbox::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|selectManyShuttle::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|selectOneChoice::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|selectOneListbox::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|selectOneRadio::dynamic-help-icon-style:selected:hover,
+form[action*="/Rms"] af|selectOrderShuttle::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|showDetailHeader::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|dialog::dynamic-help-icon-style:selected:hover, 
+form[action*="/Rms"] af|panelWindow::dynamic-help-icon-style:selected:hover {
+    background-image: url("/afr/helptopics_ovr.png");
+    margin: 0;
+}
+
+/* ALLOY 117 - Add margin between container divs */
+form[action*="/Rms"] af|panelGroupLayout > div {
+    margin: 5px 0;
+}
+
+form[action*="/Rms"] .RetailTopBorder{
+    border-top: 1px solid #ABB8CE;
+}
+
+/* Add padding around panel text */
+form[action*="/Rms"] .RetailOutputTextAlignment {
+    padding: 0 0 8px 5px;
+}
+
+/* Fix the checkbox alignment issue 
+ * Fix for Alloy219
+form[action*="/Rms"] af|selectBooleanCheckbox .AFPanelFormLayoutContentCell {
+    padding-top: 0;
+}
+ * Alternative fix for Alloy 219 including compressed checkboxes
+form[action*="/Rms"] af|selectBooleanCheckbox::label af|panelFormLayout::label-cell {
+    padding-top: 0;
+}
+*/
+
+form[action*="/Rms"] af|panelFormLayout::column af|inputText af|panelFormLayout::label-cell {
+    padding-right: 5px;
+}
+/* Alloy219 fix
+form[action*="/Rms"] af|panelFormLayout::column af|inputText .AFPanelFormLayoutContentCell {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+*/
+form[action*="/Rms"] af|panelFormLayout::column + af|panelFormLayout::column {
+    padding-right: 4px;
+}
+
+/* Clean-up extra whitespace*/
+
+/* Removed to resolve skinning issue Alloy217
+form[action*="/Rms"] div.af_panelHeader.p_AFStretched > div:first-of-type + div > div:first-of-type > div:first-of-type > div:first-of-type + div {
+  top: 0 !important;
+} */
+/* fixes af query wasted space without breaking Alloy217 again */
+form[action*="/Rms"] div.af|panelHeader:stretched > div:first-of-type + div > div:first-of-type > div:first-of-type > div:first-of-type + .AFPrivatePositionAbsoluteOverflowHidden {
+    top: 0 !important;
+}
+form[action*="/Rms"] af|region.RetailContentTabContainer > div:first-of-type > div:first-of-type + div + div {
+  top: 5px !important;
+}
+
+/* Hide parent border for specific pages */
+form[action*="/Rms"] af|decorativeBox::frame af|decorativeBox::center af|panelStretchLayout af|panelStretchLayout af|panelStretchLayout af|panelGroupLayout af|panelBox {
+    border: none;
+}
+
+/* Fixes the panel-without-header display */
+form[action*="/Rms"] af|panelBox.RetailPanelBoxNoHeaderText af|panelBox::center af|panelBox::content af|panelDashboard {
+    min-height: 80px;
+}
+form[action*="/Rms"] af|panelBox.RetailPanelBoxNoHeaderText af|panelBox::center af|panelBox::content af|panelDashboard div:first-of-type > div {
+    min-height: 40px;
+}
+
+/*******************************************
+ *        END - RMS SPECIFIC CSS           *
+ *******************************************/
+ 
+ /******************************************
+ *        BEGIN - RPAS SPECIFIC CSS        *
+ *******************************************/
+/* LOGIN PAGE FIXES */
+form[action*="/Atlantis"] af|panelSplitter::pane af|panelStretchLayout .AFPrivatePositionAbsoluteOverflowHidden {
+  min-height: 67%;
+  min-width: 36%;
+}
+form[action*="/Atlantis"] af|panelBox.loginPagePanelBox {
+  position: relative !important;
+}
+form[action*="/Atlantis"] af|panelBox::content {
+  margin: 0 !important;
+  padding: 0;
+  min-width: 90%;
+}
+
+/* Fix the buttons cut-off */
+form[action*="SelectDomain"] .AFPrivatePositionAbsoluteZeroBottomLeftRightOverflowHidden af|panelGroupLayout table.af|panelGroupLayout {
+    position: relative;
+    top: -2px;
+}
+form[action*="WorkbookList"] .AFPrivatePositionAbsoluteZeroBottomLeftRightOverflowHidden af|panelGroupLayout table.af|panelGroupLayout {
+    position: relative;
+    top: -3px;
+}
+
+/* Fix line-height */
+form[action*="/Atlantis"] af|selectBooleanRadio::content, af|selectBooleanCheckbox::content, af|selectManyCheckbox::content, af|selectOneRadio::content {
+    line-height: normal;
+}
+
+/* Remove excess white-space */
+form[action*="workbook"] af|panelWindow af|panelWindow::main af|panelWindow::content af|inlineFrame:hover-target {
+    padding: 0 !important;
+}
+ /*****************************************
+ *        END - RPAS SPECIFIC CSS         *
+ ******************************************/
+
+/* Media Queries */
+@media screen and (min-width: 1024px) {
+    af|table af|inputText::content {
+        height: 22px;
+        padding: 3px 2px 2px 2px;
+    }
+    af|table::undisclosed-icon-style {
+        height: 10px;
+        padding: 3px 5px;
+    }
+    af|column::detail-cell {
+        padding: 0 5px;
+    }
+    af|table::detail-area-cell {
+        padding: 4px 9px;
+    }
+
+    af|panelFormLayout::label-cell {
+        padding-left: 0;
+        /* Alloy219 Fix
+        padding: 0;
+        */
+    }
+
+    af|panelLabelAndMessage::content-cell.AFPanelFormLayoutContentCell {
+        height: 22px;
+         /* Alloy219 Fix
+        padding-top: 3px;
+        padding-bottom: 3px;
+        */
+    }
+    af|table::data-table af|panelLabelAndMessage .AFPanelFormLayoutContentCell {
+        padding: 0 0 0 14px !important;
+    }
+    af|table af|column::column-filter-cell {
+        padding 1px 2px;
+    }
+    af|table af|button {
+        min-height: 16px;
+    }
+    af|table af|button af|button::link {
+        padding: 2px 5px 2px 6px;
+    }
+    af|table af|inputComboboxListOfValues::container input {
+        height: 22px;
+    }
+    af|table af|inputComboboxListOfValues::container a {
+        padding: 3px 13px 3px 3px;
+        width: 10px;
+    }
+    /* Table input field with date-picker icon */
+   af|table af|inputDate::content {
+        height: 18px;
+        margin-left: 0;
+        padding-left: 3px;
+        padding-right: 20px;
+    }
+    /* Table input field with date-picker icon */
+    af|table af|inputDate::launch-icon-style, 
+    af|table af|panelList af|inputDate::launch-icon-style {
+        top: 2px;
+    }
+}
+
+/****************
+* High-Contrast *
+*****************/
+@accessibility-profile high-contrast {
+    /* Remove all of our icons in high-contrast mode, otherwise both our icons and high-contrast icons will appear */
+    af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style,
+    af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:hover,
+    af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:active,
+    af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style,
+    af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:hover,
+    af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:active,
+    af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:rtl,
+    af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:rtl:hover,
+    af|panelTabbed::tab af|panelTabbed::disclosed-remove-icon-style:rtl:active,
+    af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:rtl,
+    af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:rtl:hover,
+    af|panelTabbed::tab af|panelTabbed::undisclosed-remove-icon-style:rtl:active {
+        background: none;
+        border: none;
+    }
+
+    af|panelAccordion::undisclosed-icon-style,
+    af|panelAccordion::header:highlight af|panelAccordion::undisclosed-icon-style,
+    af|panelAccordion::header-subsequent:highlight af|panelAccordion::undisclosed-icon-style,
+    af|panelAccordion af|panelAccordion::header:selected af|panelAccordion::undisclosed-icon-style,
+    af|panelAccordion af|panelAccordion::header-subsequent:selected af|panelAccordion::undisclosed-icon-style,
+    af|panelAccordion af|panelAccordion::header:selected af|panelAccordion::undisclosed-icon-style,
+    af|panelAccordion af|panelAccordion::header-subsequent:selected af|panelAccordion::undisclosed-icon-style,
+    af|panelAccordion af|panelAccordion::header:selected af|panelAccordion::disclosed-icon-style,
+    af|panelAccordion af|panelAccordion::header-subsequent:selected af|panelAccordion::disclosed-icon-style {
+        background: none;
+    }
+
+    af|panelWindow::close-icon-style:hover,
+    af|panelWindow::close-icon-style,
+    af|panelWindow::close-icon-style:disabled {
+        background-image: none;
+    }
+    af|panelWindow::close-icon-style:active,
+    af|panelWindow::close-icon-style:active:hover {
+        background-image: none !important;
+    }
+
+    af|dialog::close-icon-style:hover,
+    af|dialog::close-icon-style,
+    af|dialog::close-icon-style:disabled {
+        background-image: none;
+    }
+    af|dialog::close-icon-style:active,
+    af|dialog::close-icon-style:active:hover {
+        background-image: none !important;
+    }
+
+    af|tree::expanded-icon-style,
+    af|tree::expanded-icon-style:hover,
+    af|tree::expanded-icon-style:active,
+    af|tree::collapsed-icon-style,
+    af|tree::collapsed-icon-style:hover,
+    af|tree::collapsed-icon-style:active,
+    af|tree::node-anim-icon-style,
+    af|tree::expanded-icon-style:rtl,
+    af|tree::expanded-icon-style:rtl:hover,
+    af|tree::expanded-icon-style:rtl:active,
+    af|tree::collapsed-icon-style:rtl,
+    af|tree::collapsed-icon-style:rtl:hover,
+    af|tree::collapsed-icon-style:rtl:active,
+    af|tree::node-anim-icon-style:rtl{
+        background-image: none;
+    }
+
+    af|menuBar.RetailMenuBar af|menu::bar-item-open-icon-style,
+    af|menuBar.RetailMenuBar af|menu::bar-item:highlighted af|menu::bar-item-open-icon-style,
+    af|menuBar.RetailMenuBar af|menu::bar-item:active af|menu::bar-item-open-icon-style,
+    af|menuBar.RetailMenuBar af|menu::bar-item:depressed af|menu::bar-item-open-icon-style {
+        background-image: none;
+    }
+
+    af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item-open-icon-style,
+    af|menuBar.RetailAppSwitcherMenuBar af|menu:hover::bar-item-open-icon-style,
+    af|menuBar.RetailAppSwitcherMenuBar af|menu:focus::bar-item-open-icon-style,
+    af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item:active af|menu::bar-item-open-icon-style,
+    af|menuBar.RetailAppSwitcherMenuBar af|menu::bar-item:depressed af|menu::bar-item-open-icon-style {
+        background-image: none;
+    }
+
+    af|goMenuItem.RetailAppSwitcherGoMenuItem::menu-item-icon-style {
+        /* background-image: none; */
+    }
+
+    af|menu::bar-item-open-icon-style,
+    af|menu:hover::bar-item-open-icon-style,
+    af|menu:focus::bar-item-open-icon-style,
+    af|menu:depressed::bar-item-open-icon-style {
+        background-image: none;
+    }
+
+    af|inputListOfValues::search-icon-style,
+    af|inputListOfValues::search-icon-style:hover,
+    af|inputListOfValues::search-icon-style:active,
+    af|inputListOfValues::search-icon-style:hover:active {
+        background-image: none;
+    }
+
+    af|inputListOfValues::search-disabled-icon {
+        content: none;
+    }
+}
+/****************************
+ * E. UX Skin Modifications *
+ ****************************/

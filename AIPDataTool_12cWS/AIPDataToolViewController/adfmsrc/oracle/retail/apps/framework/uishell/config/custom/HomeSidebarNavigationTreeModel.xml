@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<NavigationDefinition id="Folder_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xmlns="urn:www.oracle.com:oracle.retail.apps.framework.navigation"
+                      xsi:schemaLocation="urn:www.oracle.com:oracle.retail.apps.framework.navigation classpath:oracle/retail/apps/framework/uishell/navigation/model/schema/NavigationModel.xsd">
+    <Items>
+        <Item id="ndmlist" type="folder"
+              title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].MANAGE_LIST_LABEL}"
+              visible="#{securityContext.authenticated}">
+            <Items>
+                <Item id="ndmlist_create"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].CREATE_LABEL}"
+                      type="taskflow"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].CREATE_LABEL}"
+                      visible="#{securityContext.authenticated}" targetTitle="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].MANGE_LISTS_CREATE_TITLE}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/list/create/publicui/flow/SupplyChainListCreationFlow.xml#SupplyChainListCreationFlow</url>
+                </Item>
+                <Item id="ndmlist_maintain"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].MAINTAIN_LABEL}"
+                      type="taskflow" targetTitle="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].MANGE_LISTS_MAINTAIN_TITLE}"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].MAINTAIN_LABEL}"
+                      visible="#{securityContext.authenticated}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/list/maintain/publicui/flow/SupplyChainListMaintainFlow.xml#SupplyChainListMaintainFlow</url>
+                </Item>
+            </Items>
+        </Item>
+        <Item id="ndmf1" type="folder" title="SC Setup" visible="#{securityContext.authenticated}">
+            <Items>
+                <Item id="rc"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].RECEIVING_CALENDAR_TITLE}"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].RECEIVING_CALENDAR_SHORT_DESC}"
+                      type="taskflow" visible="false">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/rc/publicui/flow/ReceivingCalendarFlow.xml#ReceivingCalendarFlow</url>
+                </Item>
+                <Item id="astf1"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].ON_OFF_SALE_SUPPLY_TITLE}"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].ON_OFF_SALE_SUPPLY_SHORT_DESC}"
+                      type="taskflow" visible="#{securityContext.authenticated}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/osos/publicui/flow/OnOffSaleSupplyFlow.xml#OnOffSaleSupplyFlow</url>
+                </Item>
+                <Item id="astf2"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].DEPLOYMENT_TYPE}"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].DEPLOYMENT_TYPE_SHORT_DESC}"
+                      type="taskflow" visible="#{securityContext.authenticated}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/dt/publicui/flow/DeploymentTypeFlow.xml#DeploymentTypeFlow</url>
+                </Item>
+                <Item id="np"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].NETWORK_PATH}"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].NETWORK_PATH_SHORT_DESC}"
+                      type="taskflow" visible="#{securityContext.authenticated}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/np/publicui/flow/NetworkPathFlow.xml#NetworkPathFlow</url>
+                </Item>
+                <Item id="TF_4_3_2"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].CROSS_DOCK_SETUP_TITLE}"
+                      type="taskflow"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].CROSS_DOCK_SETUP_TITLE}"
+                      visible="#{securityContext.authenticated}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/cds/publicui/flow/CrossDockSetupFlow.xml#CrossDockSetupFlow</url>
+                </Item>
+                  <Item id="WhToStMatrix"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].WH_TO_ST_MATRIX_TITLE}"
+                      type="taskflow"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].WH_TO_ST_MATRIX_TITLE}"
+                      visible="#{securityContext.authenticated}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/rswspm/publicui/flow/RsWhToStPriorityMatrixFlow.xml#RsWhToStPriorityMatrixFlow</url>
+                </Item>
+                <Item id="XDOrderScheduleFlow"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].XD_ORDER_SCHEDULE_TITLE}"
+                      type="taskflow"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].XD_ORDER_SCHEDULE_TITLE}"
+                      visible="#{securityContext.authenticated}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/xdos/publicui/flow/XDOrderScheduleFlow.xml#XDOrderScheduleFlow</url>
+                </Item>
+                <Item id="cnpd"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].CORPORATE_NONPLANNING_DAYS_TITLE}"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].CORPORATE_NONPLANNING_DAYS_TITLE}"
+                      type="taskflow" visible="true">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/cnpd/publicui/flow/CorporateNonPlanningDaysFlow.xml#CorporateNonPlanningDaysFlow</url>
+                </Item>
+                 <!--Item id="RsOrderScheduleFlow"
+                      title="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].RS_ORDER_SCHEDULE_TITLE}"
+                      type="taskflow"
+                      shortDesc="#{adfBundle['oracle.retail.apps.aipdt.view.AIPDataToolViewControllerBundle'].RS_ORDER_SCHEDULE_TITLE}"
+                      visible="#{securityContext.authenticated}">
+                    <url>/WEB-INF/oracle/retail/apps/aipdt/rsos/publicui/flow/RsOrderScheduleFlow.xml#RsOrderScheduleFlow</url>
+                </Item-->
+            </Items>
+        </Item>
+    </Items>
+</NavigationDefinition>

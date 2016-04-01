@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="RsOrderSchedulePageDef"
+                Package="oracle.retail.apps.aipdt.rsos.publicui.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RsOrderScheduleAM.RsOrderScheduleProgVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="RsOrderScheduleProgVOIterator"/>
+    <iterator Binds="RsOrderScheduleAM.RsOrderScheduleResultVO" DataControl="AipdtRootAMDataControl" RangeSize="25"
+              id="RsOrderScheduleResultVOIterator"/>
+    <searchRegion Binds="RsOrderScheduleResultVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="RsOrderScheduleResultVOQuery"/>
+  </executables>
+  <bindings>
+    <list IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_Department" id="Department"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_ClassAttr" id="ClassAttr"/>
+    <listOfValues IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_SubclassAttr"
+                  id="SubclassAttr"/>
+    <list IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_ItemlistAttr" id="ItemlistAttr"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_Supplier" id="Supplier"/>
+    <listOfValues IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_VPN" id="VPN"/>
+    <listOfValues IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_VPNColorAttr"
+                  id="VPNColorAttr"/>
+    <listOfValues IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_SKUAttr" id="SKUAttr"/>
+    <list IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_Warehouse" id="Warehouse"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_Region" id="Region"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_Store" id="Store"/>
+    <list IterBinding="RsOrderScheduleProgVOIterator" StaticList="false" Uses="LOV_StoreList" id="StoreList"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="RsOrderScheduleResultVOIterator" id="RsOrderScheduleResultVO">
+      <nodeDefinition DefName="oracle.retail.apps.aipdt.rsos.model.view.RsOrderScheduleResultVO"
+                      Name="RsOrderScheduleResultVO0">
+        <AttrNames>
+          <Item Value="UpdateInd"/>
+          <Item Value="DeptCode"/>
+          <Item Value="ClassCode"/>
+          <Item Value="ClassId"/>
+          <Item Value="ClassName"/>
+          <Item Value="CommodityCode"/>
+          <Item Value="CommodityDesc"/>
+          <Item Value="CommodityId"/>
+          <Item Value="DeptId"/>
+          <Item Value="DeptName"/>
+          <Item Value="EndDate"/>
+          <Item Value="Frequency"/>
+          <Item Value="FriLeadTime"/>
+          <Item Value="Id"/>
+          <Item Value="LevelInd"/>
+          <Item Value="MonLeadTime"/>
+          <Item Value="ReleaseCycleId"/>
+          <Item Value="RsWarehouseCode"/>
+          <Item Value="RsWarehouseId"/>
+          <Item Value="RsWarehouseName"/>
+          <Item Value="SatLeadTime"/>
+          <Item Value="StartDate"/>
+          <Item Value="StoreCode"/>
+          <Item Value="StoreDesc"/>
+          <Item Value="StoreId"/>
+          <Item Value="SubclassCode"/>
+          <Item Value="SubclassId"/>
+          <Item Value="SubclassName"/>
+          <Item Value="SunLeadTime"/>
+          <Item Value="SuppDesc"/>
+          <Item Value="SupplierCode"/>
+          <Item Value="SupplierId"/>
+          <Item Value="ThuLeadTime"/>
+          <Item Value="TueLeadTime"/>
+          <Item Value="UpdateDate"/>
+          <Item Value="UpdateUser"/>
+          <Item Value="VpnCode"/>
+          <Item Value="VpnColorCode"/>
+          <Item Value="VpnColorId"/>
+          <Item Value="VpnColorName"/>
+          <Item Value="VpnDesc"/>
+          <Item Value="VpnId"/>
+          <Item Value="WedLeadTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

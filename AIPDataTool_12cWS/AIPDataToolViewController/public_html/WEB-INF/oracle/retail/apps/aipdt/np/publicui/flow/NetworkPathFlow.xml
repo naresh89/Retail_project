@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="NetworkPathFlow">
+    <default-activity id="__2">initNetworkPath</default-activity>
+    <data-control-scope id="__1">
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__5">
+      <managed-bean-name id="__6">NetworkPathBean</managed-bean-name>
+      <managed-bean-class id="__4">oracle.retail.apps.aipdt.np.publicui.bean.NetworkPathBean</managed-bean-class>
+      <managed-bean-scope id="__3">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__36">
+      <managed-bean-name id="__38">InputDateBean</managed-bean-name>
+      <managed-bean-class id="__37">oracle.retail.apps.aipdt.common.publicui.bean.InputDateBean</managed-bean-class>
+      <managed-bean-scope id="__35">pageFlow</managed-bean-scope>
+    </managed-bean>    
+    <view id="NetworkPath.jsff">
+      <page id="__13">/oracle/retail/apps/aipdt/np/publicui/page/NetworkPath.jsff</page>
+    </view>
+    <method-call id="initNetworkPath">
+      <method id="__14">#{bindings.initNetworkPath.execute}</method>
+      <outcome id="__7">
+        <fixed-outcome id="__15">initNetworkPath</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Rollback">
+      <method id="__31">#{bindings.Rollback.execute}</method>
+      <outcome id="__16">
+        <fixed-outcome id="__32">Rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="closeContent">
+      <method id="__33">#{bindings.closeContent.execute}</method>
+      <outcome id="__17">
+        <fixed-outcome id="__34">closeContent</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__8">
+      <from-activity-id id="__9">initNetworkPath</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome id="__10">initNetworkPath</from-outcome>
+        <to-activity-id id="__11">NetworkPath.jsff</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id id="__19">NetworkPath.jsff</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome id="__22">cancel</from-outcome>
+        <to-activity-id id="__21">Rollback</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__28">
+        <from-outcome id="__30">closeContent</from-outcome>
+        <to-activity-id id="__29">closeContent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__24">Rollback</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__25">Rollback</from-outcome>
+        <to-activity-id id="__27">closeContent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

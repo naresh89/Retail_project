@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<skins xmlns="http://myfaces.apache.org/trinidad/skin">
+  <skin>
+    <id>retail-core-v1.desktop</id>
+    <family>retail-core</family>
+    <extends>fusionFx-v1.desktop</extends>
+    <version>
+      <default>true</default>
+      <name>v1</name>
+    </version>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>raf/retail-core/styles/retail-core-v1.css</style-sheet-name>
+  </skin>
+
+  <skin>
+    <id>retail-alta-v1.desktop</id>
+    <family>retail-alta</family>
+    <extends>alta-v1.desktop</extends>
+    <version>
+      <default>true</default>
+      <name>v1</name>
+    </version>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>raf/retail-core/styles/retail-alta-v1.css</style-sheet-name>
+  </skin>
+
+  <skin-addition>
+    <skin-id>simple.desktop</skin-id>
+    <style-sheet-name>raf/simple/styles/rafstyles-simple-desktop.css</style-sheet-name>
+  </skin-addition>
+</skins>
